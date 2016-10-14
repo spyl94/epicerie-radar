@@ -1,6 +1,4 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
  * @flow
  */
 
@@ -11,43 +9,82 @@ import {
   Text,
   View
 } from 'react-native';
+import MapView from 'react-native-maps';
+import data from './data'
 
 export default class epicerie extends Component {
+  state = {
+    initialCoords: null,
+    lastPosition: null,
+    markers: data,
+  };
+
+  watchID: ?number = null;
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const data = position;
+        const initialCoords = {
+          long: data.coords.longitude,
+          lat: data.coords.latitude,
+        };
+        this.setState({initialCoords});
+      },
+      (error) => alert(JSON.stringify(error)),
+      {enableHighAccuracy: true, timeout: 20000}
+    );
+    this.watchID = navigator.geolocation.watchPosition(position => {
+      const lastPosition = JSON.stringify(position);
+      this.setState({lastPosition});
+    });
+  }
+
+  componentWillUnmount() {
+    navigator.geolocation.clearWatch(this.watchID);
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+        {
+          this.state.initialCoords
+            ? <MapView
+                style={styles.map}
+                region={{
+                  latitude: this.state.initialCoords.lat,
+                  longitude: this.state.initialCoords.long,
+                  latitudeDelta: 0.015,
+                  longitudeDelta: 0.0121,
+                }}
+              >
+              {
+                this.state.markers.map((marker, key) =>
+                  <MapView.Marker
+                      key={key}
+                      coordinate={marker.coords}
+                      title={marker.name}
+                  />
+                )
+              }
+              </MapView>
+            : <Text style={styles.welcome}>
+                Receiving GPS information...
+              </Text>
+        }
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+ container: {
+   ...StyleSheet.absoluteFillObject,
+ },
+ map: {
+   ...StyleSheet.absoluteFillObject,
+ },
 });
+
 
 AppRegistry.registerComponent('epicerie', () => epicerie);
