@@ -24,18 +24,20 @@ export default class epicerie extends Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        const data = position;
         const initialCoords = {
-          long: data.coords.longitude,
-          lat: data.coords.latitude,
+          long: position.coords.longitude,
+          lat: position.coords.latitude,
         };
-        this.setState({initialCoords});
+        this.setState({initialCoords, lastPosition: initialCoords});
       },
       (error) => alert(JSON.stringify(error)),
       {enableHighAccuracy: true, timeout: 20000}
     );
-    this.watchID = navigator.geolocation.watchPosition(position => {
-      const lastPosition = JSON.stringify(position);
+    this.watchID = navigator.geolocation.watchPosition(data => {
+      const lastPosition = {
+        long: data.coords.longitude,
+        lat: data.coords.latitude,
+      };
       this.setState({lastPosition});
     });
   }
@@ -48,12 +50,12 @@ export default class epicerie extends Component {
     return (
       <View style={styles.container}>
         {
-          this.state.initialCoords
+          this.state.lastPosition
             ? <MapView
                 style={styles.map}
                 region={{
-                  latitude: this.state.initialCoords.lat,
-                  longitude: this.state.initialCoords.long,
+                  latitude: this.state.lastPosition.lat,
+                  longitude: this.state.lastPosition.long,
                   latitudeDelta: 0.015,
                   longitudeDelta: 0.0121,
                 }}
