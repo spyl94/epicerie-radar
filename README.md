@@ -1,5 +1,7 @@
 # epicerie-radar
 
+Android emulator: genymotion
+
 Build production:
 
 ```
