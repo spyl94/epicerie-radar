@@ -32,7 +32,7 @@ export default class epicerie extends Component {
           lat: position.coords.latitude,
         };
         this.setState({initialCoords, lastPosition: initialCoords});
-      },
+    },
       error => alert(JSON.stringify(error)),
       {enableHighAccuracy: true, timeout: 20000}
     );
