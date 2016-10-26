@@ -10,7 +10,10 @@ import {
   View
 } from 'react-native';
 import MapView from 'react-native-maps';
-import data from './data'
+import data from './data.json'
+
+const LATITUDE_DELTA = 0.015;
+const LONGITUDE_DELTA = 0.0121;
 
 export default class epicerie extends Component {
   state = {
@@ -30,7 +33,7 @@ export default class epicerie extends Component {
         };
         this.setState({initialCoords, lastPosition: initialCoords});
       },
-      (error) => alert(JSON.stringify(error)),
+      error => alert(JSON.stringify(error)),
       {enableHighAccuracy: true, timeout: 20000}
     );
     this.watchID = navigator.geolocation.watchPosition(data => {
@@ -47,25 +50,29 @@ export default class epicerie extends Component {
   }
 
   render() {
+    const { lastPosition, markers } = this.state;
     return (
       <View style={styles.container}>
         {
-          this.state.lastPosition
+          lastPosition
             ? <MapView
                 style={styles.map}
+                showsUserLocation
+                // followsUserLocation
                 region={{
-                  latitude: this.state.lastPosition.lat,
-                  longitude: this.state.lastPosition.long,
-                  latitudeDelta: 0.015,
-                  longitudeDelta: 0.0121,
+                  latitude: lastPosition.lat,
+                  longitude: lastPosition.long,
+                  latitudeDelta: LATITUDE_DELTA,
+                  longitudeDelta: LONGITUDE_DELTA,
                 }}
               >
               {
-                this.state.markers.map((marker, key) =>
+                markers.map(marker =>
                   <MapView.Marker
-                      key={key}
+                      key={marker.name}
                       coordinate={marker.coords}
                       title={marker.name}
+                      description={marker.name}
                   />
                 )
               }
