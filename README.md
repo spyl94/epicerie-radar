@@ -4,6 +4,8 @@ Android emulator: genymotion
 
 Build production:
 
+Update `versionCode` (and `versionName`) in `android/app/build.gradle`
+
 ```
 cd android && ./gradlew assembleRelease
 ```
