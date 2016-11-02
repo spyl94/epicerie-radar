@@ -7,6 +7,7 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
+  Image,
   View
 } from 'react-native';
 import MapView from 'react-native-maps';
@@ -56,30 +57,30 @@ export default class epicerie extends Component {
         {
           lastPosition
             ? <MapView
-                style={styles.map}
-                showsUserLocation
-                // followsUserLocation
-                region={{
-                  latitude: lastPosition.lat,
-                  longitude: lastPosition.long,
-                  latitudeDelta: LATITUDE_DELTA,
-                  longitudeDelta: LONGITUDE_DELTA,
-                }}
+              style={styles.map}
+              showsUserLocation
+              region={{
+                latitude: lastPosition.lat,
+                longitude: lastPosition.long,
+                latitudeDelta: LATITUDE_DELTA,
+                longitudeDelta: LONGITUDE_DELTA,
+              }}
               >
               {
                 markers.map(marker =>
                   <MapView.Marker
-                      key={marker.name}
-                      coordinate={marker.coords}
-                      title={marker.name}
-                      description={marker.name}
+                    key={marker.name}
+                    coordinate={marker.coords}
+                    title={marker.name}
+                    description={marker.name}
+                    image={<Image source={require('./img/beer-marker.png')} />}
                   />
                 )
               }
-              </MapView>
-            : <Text style={styles.welcome}>
-                Receiving GPS information...
-              </Text>
+            </MapView>
+          : <Text style={styles.welcome}>
+            Receiving GPS information...
+          </Text>
         }
       </View>
     );
