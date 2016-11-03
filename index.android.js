@@ -10,8 +10,8 @@ import {
   Image,
   View
 } from 'react-native';
-import MapView from 'react-native-maps';
-import data from './datas2.json'
+import MapView, { Marker } from 'react-native-maps';
+import data from './data.json'
 
 const LATITUDE_DELTA = 0.015;
 const LONGITUDE_DELTA = 0.0121;
@@ -69,9 +69,9 @@ export default class epicerie extends Component {
               }}
               >
               {
-                markers.map(marker =>
-                  <MapView.Marker
-                    key={marker.name}
+                markers.map((marker, key) =>
+                  <Marker
+                    key={key}
                     coordinate={marker.coords}
                     title={marker.name}
                     image={markerImage}
