@@ -1,0 +1,66 @@
+[
+  {
+      "name": "20 rue Jean-Pierre Timbaud",
+      "coords":  {
+        "latitude": 48.888195,
+        "longitude": 2.352047
+      },
+      "sells": {
+        "cigarets": true,
+      },
+      "prices": {
+        "1664": 2,
+        "Campbell": 15,
+        "Eristoff": 16.1
+      },
+      "phone": "0142550830"
+  },
+  {
+      "name": "39 rue Letellier – 75015",
+      "coords":  {
+        "latitude": 48.847720,
+        "longitude": 2.297009
+      },
+      "sells": {
+        "cigarets": true,
+      },
+      "prices": {
+        "1664": 1.80,
+        "Campbell": 18.80,
+        "Eristoff": 19.90
+      },
+      "phone": null
+  },
+  {
+      "name": "5 boulevard Garibaldi – 75015",
+      "coords":  {
+      "latitude": 48.847718,
+        "longitude": 2.3009157
+      },
+      "sells": {
+        "cigarets": true,
+      },
+      "prices": {
+        "1664": 1.7,
+        "Campbell": 15,
+        "Eristoff": 16.1
+      },
+      "phone": "0142550830"
+  },
+  {
+      "name": "138 avenue d’Italie",
+      "coords":  {
+        "latitude": 48.823178,
+        "longitude": 2.357670
+      },
+      "sells": {
+        "cigarets": true,
+      },
+      "prices": {
+        "1664": 2,
+        "Campbell": 15,
+        "Eristoff": 16.1
+      },
+      "phone": null
+  },
+]
