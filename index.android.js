@@ -7,13 +7,16 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
+  Image,
   View
 } from 'react-native';
 import MapView from 'react-native-maps';
-import data from './data.json'
+import data from './datas2.json'
 
 const LATITUDE_DELTA = 0.015;
 const LONGITUDE_DELTA = 0.0121;
+
+const markerImage = require('./img/beer-marker.png');
 
 export default class epicerie extends Component {
   state = {
@@ -56,30 +59,32 @@ export default class epicerie extends Component {
         {
           lastPosition
             ? <MapView
-                style={styles.map}
-                showsUserLocation
-                // followsUserLocation
-                region={{
-                  latitude: lastPosition.lat,
-                  longitude: lastPosition.long,
-                  latitudeDelta: LATITUDE_DELTA,
-                  longitudeDelta: LONGITUDE_DELTA,
-                }}
+              style={styles.map}
+              showsUserLocation
+              region={{
+                latitude: lastPosition.lat,
+                longitude: lastPosition.long,
+                latitudeDelta: LATITUDE_DELTA,
+                longitudeDelta: LONGITUDE_DELTA,
+              }}
               >
               {
                 markers.map(marker =>
                   <MapView.Marker
-                      key={marker.name}
-                      coordinate={marker.coords}
-                      title={marker.name}
-                      description={marker.name}
+                    key={marker.name}
+                    coordinate={marker.coords}
+                    title={marker.name}
+                    image={markerImage}
                   />
                 )
               }
-              </MapView>
-            : <Text style={styles.welcome}>
-                Receiving GPS information...
-              </Text>
+            </MapView>
+          : <Text style={styles.welcome}>
+            Receiving GPS information...
+            <Image
+              source={markerImage}
+            />
+          </Text>
         }
       </View>
     );
