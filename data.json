@@ -11,7 +11,7 @@
     "name": "Lahore Supermarche",
     "address":"89 r Fbg St Denis, 75010 PARIS",
     "coords":  {
-      "latitude": 48.874011,
+      "latitude": 48.874010,
       "longitude": 2.354914
     }
   },
@@ -29,6 +29,14 @@
     "coords":  {
       "latitude": 48.895032,
       "longitude": 2.352599
+    }
+  },
+{
+    "name": "Ben Thayer Ismaïl",
+    "address":"1 r Erlanger, 75016 PARIS",
+    "coords":  {
+      "latitude": 48.847831,
+      "longitude": 2.26226
     }
   },
 {
@@ -120,11 +128,35 @@
     }
   },
 {
+    "name": "Do Pio Coelho Antonina",
+    "address":"10 r L'Olive, 75018 PARIS",
+    "coords":  {
+      "latitude": 48.891138,
+      "longitude": 2.361375
+    }
+  },
+{
+    "name": "Barbouch Fethi",
+    "address":"10 r Pontoise, 75005 PARIS",
+    "coords":  {
+      "latitude": 48.850088,
+      "longitude": 2.352051
+    }
+  },
+{
     "name": "Alimentation du Marché",
     "address":"100 bd Chapelle, 75018 PARIS",
     "coords":  {
       "latitude": 48.884188,
       "longitude": 2.352581
+    }
+  },
+{
+    "name": "Sitis Sutha",
+    "address":"100 r Bagnolet, 75020 PARIS",
+    "coords":  {
+      "latitude": 48.85906,
+      "longitude": 2.402902
     }
   },
 {
@@ -139,8 +171,8 @@
     "name": "El Ghoul Mahmoud",
     "address":"101 bd Malesherbes, 75008 PARIS",
     "coords":  {
-      "latitude": 48.87914,
-      "longitude": 2.314241
+      "latitude": 48.879095,
+      "longitude": 2.314084
     }
   },
 {
@@ -219,8 +251,8 @@
     "name": "Express Distribution Sampathkumar",
     "address":"106 av Jean Jaurès, 75019 PARIS",
     "coords":  {
-      "latitude": 48.885263,
-      "longitude": 2.380441
+      "latitude": 48.885321,
+      "longitude": 2.38043
     }
   },
 {
@@ -229,6 +261,22 @@
     "coords":  {
       "latitude": 48.865141,
       "longitude": 2.28828
+    }
+  },
+{
+    "name": "Marche Rapide",
+    "address":"108 cours Vincennes, 75012 PARIS",
+    "coords":  {
+      "latitude": 48.846722,
+      "longitude": 2.409162
+    }
+  },
+{
+    "name": "Montacir Tahar",
+    "address":"108 r Faubourg du Temple, 75011 PARIS",
+    "coords":  {
+      "latitude": 48.871385,
+      "longitude": 2.375529
     }
   },
 {
@@ -264,6 +312,14 @@
     }
   },
 {
+    "name": "CMK Helen",
+    "address":"11 r Halles, 75001 PARIS",
+    "coords":  {
+      "latitude": 48.859741,
+      "longitude": 2.346473
+    }
+  },
+{
     "name": "PELLA",
     "address":"11 r Martyrs, 75009 PARIS",
     "coords":  {
@@ -277,6 +333,14 @@
     "coords":  {
       "latitude": 48.878876,
       "longitude": 2.370968
+    }
+  },
+{
+    "name": "BAZAR MONDIAL",
+    "address":"11 r Ménilmontant, 75020 PARIS",
+    "coords":  {
+      "latitude": 48.86738,
+      "longitude": 2.384093
     }
   },
 {
@@ -296,6 +360,14 @@
     }
   },
 {
+    "name": "El Mouaid Abdellah",
+    "address":"11 r Procession, 75015 PARIS",
+    "coords":  {
+      "latitude": 48.839821,
+      "longitude": 2.305734
+    }
+  },
+{
     "name": "El Mokhtari Ahmed",
     "address":"11 r Sorbier, 75020 PARIS",
     "coords":  {
@@ -309,6 +381,30 @@
     "coords":  {
       "latitude": 48.88545,
       "longitude": 2.381456
+    }
+  },
+{
+    "name": "proxi Krouna Jalel",
+    "address":"110 r Olivier de Serres, 75015 PARIS",
+    "coords":  {
+      "latitude": 48.831565,
+      "longitude": 2.29276
+    }
+  },
+{
+    "name": "Kh-Market",
+    "address":"111 av du Général Michel Bizot, 75012 PARIS",
+    "coords":  {
+      "latitude": 48.839532,
+      "longitude": 2.403955
+    }
+  },
+{
+    "name": "Zac",
+    "address":"111 r d'Avron, 75020 PARIS",
+    "coords":  {
+      "latitude": 48.853099,
+      "longitude": 2.407206
     }
   },
 {
@@ -368,6 +464,14 @@
     }
   },
 {
+    "name": "Taupin Michel",
+    "address":"114 r Convention, 75015 PARIS",
+    "coords":  {
+      "latitude": 48.840843,
+      "longitude": 2.288041
+    }
+  },
+{
     "name": "El Yousfi Mohamed",
     "address":"114 r Sèvres, 75015 PARIS",
     "coords":  {
@@ -405,6 +509,14 @@
     "coords":  {
       "latitude": 48.895277,
       "longitude": 2.327843
+    }
+  },
+{
+    "name": "Z.A.D",
+    "address":"119 bd Hôpital, 75013 PARIS",
+    "coords":  {
+      "latitude": 48.835674,
+      "longitude": 2.359136
     }
   },
 {
@@ -488,11 +600,83 @@
     }
   },
 {
+    "name": "Khou Thien Hok",
+    "address":"12 r Mathis, 75019 PARIS",
+    "coords":  {
+      "latitude": 48.890982,
+      "longitude": 2.375745
+    }
+  },
+{
+    "name": "Lai Tin Ching",
+    "address":"12 r Péclet, 75015 PARIS",
+    "coords":  {
+      "latitude": 48.842722,
+      "longitude": 2.298204
+    }
+  },
+{
+    "name": "Souissi Mohamed",
+    "address":"17 r Trévise, 75009 PARIS",
+    "coords":  {
+      "latitude": 48.873317,
+      "longitude": 2.345279
+    }
+  },
+{
+    "name": "Le petit marché de Villiers",
+    "address":"122 av Villiers, 75017 PARIS",
+    "coords":  {
+      "latitude": 48.885377,
+      "longitude": 2.295465
+    }
+  },
+{
+    "name": "Akdime Abdellah",
+    "address":"122 bd Murat, 75016 PARIS",
+    "coords":  {
+      "latitude": 48.837386,
+      "longitude": 2.257722
+    }
+  },
+{
+    "name": "Syndicat des Copropriétaires du Groupe d'Immeubles 123-125 Bd Massena",
+    "address":"123 bd Masséna, 75013 PARIS",
+    "coords":  {
+      "latitude": 48.819133,
+      "longitude": 2.36246
+    }
+  },
+{
+    "name": "Wang Shenshen",
+    "address":"123 r Falguière, 75015 PARIS",
+    "coords":  {
+      "latitude": 48.837406,
+      "longitude": 2.31104
+    }
+  },
+{
     "name": "Proxi Service",
     "address":"124 r Cherche Midi, 75006 PARIS",
     "coords":  {
       "latitude": 48.845908,
       "longitude": 2.319405
+    }
+  },
+{
+    "name": "Fromagerie Damremont",
+    "address":"125 r Caulaincourt, 75018 PARIS",
+    "coords":  {
+      "latitude": 48.889914,
+      "longitude": 2.341971
+    }
+  },
+{
+    "name": "Boudaya Ouissem",
+    "address":"128 bd Davout, 75020 PARIS",
+    "coords":  {
+      "latitude": 48.860209,
+      "longitude": 2.409529
     }
   },
 {
@@ -512,6 +696,22 @@
     }
   },
 {
+    "name": "Bastille Market",
+    "address":"13 bd Beaumarchais, 75004 PARIS",
+    "coords":  {
+      "latitude": 48.854679,
+      "longitude": 2.368266
+    }
+  },
+{
+    "name": "Supérette Des Plantes",
+    "address":"13 r Plantes, 75014 PARIS",
+    "coords":  {
+      "latitude": 48.830998,
+      "longitude": 2.324165
+    }
+  },
+{
     "name": "COCCI-MARKET BELGRAND",
     "address":"13 r Belgrand, 75020 PARIS",
     "coords":  {
@@ -520,11 +720,35 @@
     }
   },
 {
+    "name": "A-Plus Bazar",
+    "address":"13 r Borrégo, 75020 PARIS",
+    "coords":  {
+      "latitude": 48.872756,
+      "longitude": 2.399152
+    }
+  },
+{
+    "name": "Cope Marche",
+    "address":"13 r Copernic, 75116 PARIS",
+    "coords":  {
+      "latitude": 48.869051,
+      "longitude": 2.289895
+    }
+  },
+{
     "name": "ALIMENTATION GÉNÉRALE CUSTINE",
     "address":"13 r Custine, 75018 PARIS",
     "coords":  {
       "latitude": 48.887719,
       "longitude": 2.348401
+    }
+  },
+{
+    "name": "Tieu Seng Meng",
+    "address":"13 r Rameau, 75002 PARIS",
+    "coords":  {
+      "latitude": 48.867939,
+      "longitude": 2.336533
     }
   },
 {
@@ -541,6 +765,38 @@
     "coords":  {
       "latitude": 48.854228,
       "longitude": 2.37104
+    }
+  },
+{
+    "name": "Belgacem Hakim",
+    "address":"131 r Léon Maurice Nordmann, 75013 PARIS",
+    "coords":  {
+      "latitude": 48.833889,
+      "longitude": 2.34417
+    }
+  },
+{
+    "name": "Zahzou Abed",
+    "address":"132 bd Charonne, 75020 PARIS",
+    "coords":  {
+      "latitude": 48.85568,
+      "longitude": 2.39538
+    }
+  },
+{
+    "name": "Super Toni",
+    "address":"133 av Flandre, 75019 PARIS",
+    "coords":  {
+      "latitude": 48.89219,
+      "longitude": 2.378392
+    }
+  },
+{
+    "name": "Suppiah Vishnu",
+    "address":"134 r Fbg St Martin, 75010 PARIS",
+    "coords":  {
+      "latitude": 48.874605,
+      "longitude": 2.359082
     }
   },
 {
@@ -568,6 +824,62 @@
     }
   },
 {
+    "name": "Chem's Alimentation",
+    "address":"138 bd Ney, 75018 PARIS",
+    "coords":  {
+      "latitude": 48.898259,
+      "longitude": 2.339031
+    }
+  },
+{
+    "name": "Maison Z & K",
+    "address":"10 av Félix Faure, 75015 PARIS",
+    "coords":  {
+      "latitude": 48.842499,
+      "longitude": 2.291016
+    }
+  },
+{
+    "name": "Alimentation Cavallotti",
+    "address":"14 r Cavallotti, 75018 PARIS",
+    "coords":  {
+      "latitude": 48.886614,
+      "longitude": 2.327965
+    }
+  },
+{
+    "name": "Ganesan",
+    "address":"14 r Marx Dormoy, 75018 PARIS",
+    "coords":  {
+      "latitude": 48.885654,
+      "longitude": 2.359661
+    }
+  },
+{
+    "name": "Brahim",
+    "address":"16 r Meaux, 75019 PARIS",
+    "coords":  {
+      "latitude": 48.878828,
+      "longitude": 2.371404
+    }
+  },
+{
+    "name": "Lherdoum Jamaa",
+    "address":"14 r Mouffetard, 75005 PARIS",
+    "coords":  {
+      "latitude": 48.844404,
+      "longitude": 2.349015
+    }
+  },
+{
+    "name": "Sanh Deo Duy",
+    "address":"14 r Nélaton, 75015 PARIS",
+    "coords":  {
+      "latitude": 48.853194,
+      "longitude": 2.287659
+    }
+  },
+{
     "name": "El Cadi Mourad",
     "address":"14 r Poirier de Narçay, 75014 PARIS",
     "coords":  {
@@ -576,11 +888,43 @@
     }
   },
 {
+    "name": "VINGTEKHONG",
+    "address":"14 r Suez, 75018 PARIS",
+    "coords":  {
+      "latitude": 48.887423,
+      "longitude": 2.351324
+    }
+  },
+{
+    "name": "Ela St Ouen",
+    "address":"141 av St Ouen, 75017 PARIS",
+    "coords":  {
+      "latitude": 48.896792,
+      "longitude": 2.328438
+    }
+  },
+{
     "name": "CHUONG",
     "address":"142 bd Ménilmontant, 75020 PARIS",
     "coords":  {
       "latitude": 48.866553,
       "longitude": 2.383955
+    }
+  },
+{
+    "name": "Hadji Constantinou",
+    "address":"142 r St Honoré, 75001 PARIS",
+    "coords":  {
+      "latitude": 48.86192,
+      "longitude": 2.340549
+    }
+  },
+{
+    "name": "San super marche",
+    "address":"140 Bis r Ménilmontant, 75020 PARIS",
+    "coords":  {
+      "latitude": 48.870169,
+      "longitude": 2.396783
     }
   },
 {
@@ -600,11 +944,35 @@
     }
   },
 {
+    "name": "EAST BENGAL TRADING",
+    "address":"147 r La Fayette, 75010 PARIS",
+    "coords":  {
+      "latitude": 48.879288,
+      "longitude": 2.356226
+    }
+  },
+{
+    "name": "BOUTIN MARTINE",
+    "address":"147 r Ordener, 75018 PARIS",
+    "coords":  {
+      "latitude": 48.893112,
+      "longitude": 2.338987
+    }
+  },
+{
     "name": "Atik Ahmed",
     "address":"148 av Clichy, 75017 PARIS",
     "coords":  {
       "latitude": 48.891158,
       "longitude": 2.319654
+    }
+  },
+{
+    "name": "Europasie (SARL)",
+    "address":"15 av Choisy, 75013 PARIS",
+    "coords":  {
+      "latitude": 48.820682,
+      "longitude": 2.363719
     }
   },
 {
@@ -664,6 +1032,14 @@
     }
   },
 {
+    "name": "Libre Service Longchamp Cali",
+    "address":"150 r Longchamp, 75116 PARIS",
+    "coords":  {
+      "latitude": 48.86814,
+      "longitude": 2.275936
+    }
+  },
+{
     "name": "Soussi Bachir",
     "address":"151 bd Charonne, 75011 PARIS",
     "coords":  {
@@ -720,6 +1096,30 @@
     }
   },
 {
+    "name": "LIMAR MOHAMED",
+    "address":"157 av Clichy, 75017 PARIS",
+    "coords":  {
+      "latitude": 48.891681,
+      "longitude": 2.317834
+    }
+  },
+{
+    "name": "PANNIER DE LA CONVENTION",
+    "address":"158 r Convention, 75015 PARIS",
+    "coords":  {
+      "latitude": 48.838843,
+      "longitude": 2.292492
+    }
+  },
+{
+    "name": "Sitis Market",
+    "address":"158 r La Fayette, 75010 PARIS",
+    "coords":  {
+      "latitude": 48.879312,
+      "longitude": 2.357429
+    }
+  },
+{
     "name": "Iguenfer Mohamed",
     "address":"159 av Italie, 75013 PARIS",
     "coords":  {
@@ -744,6 +1144,14 @@
     }
   },
 {
+    "name": "Bouigagane Mouloud",
+    "address":"16 Bis av René Coty, 75014 PARIS",
+    "coords":  {
+      "latitude": 48.830077,
+      "longitude": 2.333724
+    }
+  },
+{
     "name": "Epicerie de l'arrivée",
     "address":"16 r Arrivée, 75015 PARIS",
     "coords":  {
@@ -760,11 +1168,59 @@
     }
   },
 {
+    "name": "Oueghlani Hamida",
+    "address":"16 r Card Lemoine, 75005 PARIS",
+    "coords":  {
+      "latitude": 48.848809,
+      "longitude": 2.353511
+    }
+  },
+{
+    "name": "TRANQUILLITE",
+    "address":"16 r Chabrol, 75010 PARIS",
+    "coords":  {
+      "latitude": 48.876934,
+      "longitude": 2.354322
+    }
+  },
+{
     "name": "Mireis Aphitchaya",
     "address":"16 r Chanoinesse, 75004 PARIS",
     "coords":  {
       "latitude": 48.853841,
       "longitude": 2.350939
+    }
+  },
+{
+    "name": "Jardins D'Afrique (SARL)",
+    "address":"16 r Clignancourt, 75018 PARIS",
+    "coords":  {
+      "latitude": 48.884864,
+      "longitude": 2.347337
+    }
+  },
+{
+    "name": "De Souza Jorge",
+    "address":"16 r Dufrenoy, 75116 PARIS",
+    "coords":  {
+      "latitude": 48.866273,
+      "longitude": 2.273847
+    }
+  },
+{
+    "name": "Guerrida Mohamed",
+    "address":"16 r Eugène Jumin, 75019 PARIS",
+    "coords":  {
+      "latitude": 48.887369,
+      "longitude": 2.392695
+    }
+  },
+{
+    "name": "AKSHA",
+    "address":"16 r Gauthey, 75017 PARIS",
+    "coords":  {
+      "latitude": 48.891724,
+      "longitude": 2.32055
     }
   },
 {
@@ -781,6 +1237,22 @@
     "coords":  {
       "latitude": 48.877521,
       "longitude": 2.339936
+    }
+  },
+{
+    "name": "Haddad Hedi Ben said",
+    "address":"16 r Orme, 75019 PARIS",
+    "coords":  {
+      "latitude": 48.878819,
+      "longitude": 2.400122
+    }
+  },
+{
+    "name": "Alimentation Gral",
+    "address":"16 r Romainville, 75019 PARIS",
+    "coords":  {
+      "latitude": 48.876396,
+      "longitude": 2.399706
     }
   },
 {
@@ -864,6 +1336,14 @@
     }
   },
 {
+    "name": "ZAMAN (SARL)",
+    "address":"17 r Boucry, 75018 PARIS",
+    "coords":  {
+      "latitude": 48.894024,
+      "longitude": 2.361534
+    }
+  },
+{
     "name": "L'Epicerie Du Village D'Auteui",
     "address":"17 r George Sand, 75016 PARIS",
     "coords":  {
@@ -880,6 +1360,30 @@
     }
   },
 {
+    "name": "Ben Laya Jamil",
+    "address":"17 r Lebon, 75017 PARIS",
+    "coords":  {
+      "latitude": 48.881149,
+      "longitude": 2.29142
+    }
+  },
+{
+    "name": "Abe Alimentation",
+    "address":"17 r Molitor, 75016 PARIS",
+    "coords":  {
+      "latitude": 48.845039,
+      "longitude": 2.26375
+    }
+  },
+{
+    "name": "Ben-maamer Mohamed",
+    "address":"17 r Trétaigne, 75018 PARIS",
+    "coords":  {
+      "latitude": 48.892495,
+      "longitude": 2.342401
+    }
+  },
+{
     "name": "Aksha II",
     "address":"176 bd Voltaire, 75011 PARIS",
     "coords":  {
@@ -891,8 +1395,48 @@
     "name": "Krouna Soufiane",
     "address":"179 r Crimée, 75019 PARIS",
     "coords":  {
-      "latitude": 48.89012,
-      "longitude": 2.37723
+      "latitude": 48.890105,
+      "longitude": 2.377134
+    }
+  },
+{
+    "name": "BAJA",
+    "address":"18 bd Ney, 75018 PARIS",
+    "coords":  {
+      "latitude": 48.898794,
+      "longitude": 2.368518
+    }
+  },
+{
+    "name": "Bas Alimentaire",
+    "address":"18 r Crimée, 75019 PARIS",
+    "coords":  {
+      "latitude": 48.87835,
+      "longitude": 2.391248
+    }
+  },
+{
+    "name": "Thanh Binh Jeune",
+    "address":"18 r Lagrange, 75005 PARIS",
+    "coords":  {
+      "latitude": 48.850366,
+      "longitude": 2.348321
+    }
+  },
+{
+    "name": "KTM (SARL)",
+    "address":"18 r Ménilmontant, 75020 PARIS",
+    "coords":  {
+      "latitude": 48.867314,
+      "longitude": 2.385057
+    }
+  },
+{
+    "name": "Euro Market",
+    "address":"18 r Mesnil, 75116 PARIS",
+    "coords":  {
+      "latitude": 48.867783,
+      "longitude": 2.283913
     }
   },
 {
