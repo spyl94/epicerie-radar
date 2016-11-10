@@ -76,6 +76,8 @@ export default class App extends Component {
                     key={key}
                     coordinate={marker.coords}
                     title={marker.name}
+                    description={marker.address}
+                    title={marker.name}
                     image={markerImage}
                   />
                 )
