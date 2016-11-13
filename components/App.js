@@ -12,42 +12,46 @@ import {
 import MapView, { Marker } from 'react-native-maps';
 import data from '../data.json'
 
+const INITIAL_LATITUDE = 48.853;
+const INITIAL_LONGITUDE = 2.35;
 const LATITUDE_DELTA = 0.015;
 const LONGITUDE_DELTA = 0.0121;
 
 const markerImage = require('../img/beer-marker.png');
+const logo = require('../android/app/src/main/res/playstore-icon.png');
 
 export default class App extends Component {
   state = {
-    initialCoords: null,
-    lastPosition: null,
+    lastPosition: {
+      latitude: INITIAL_LATITUDE,
+      longitude: INITIAL_LONGITUDE,
+    },
     markers: data,
+    geolocated: false,
   };
 
   watchID: ?number = null;
 
+  setPosition(position) {
+      this.setState({
+        geolocated: true,
+        lastPosition: {
+          longitude: position.coords.longitude,
+          latitude: position.coords.latitude,
+        },
+      });
+  }
+
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const initialCoords = {
-          long: position.coords.longitude,
-          lat: position.coords.latitude,
-        };
-        this.setState({
-          initialCoords,
-          lastPosition: initialCoords
-        });
-    },
-      error => alert(JSON.stringify(error)),
-      {enableHighAccuracy: true, timeout: 20000}
+      this.setPosition,
+      error => this.setState({ geolocated: true }),
+      {
+        enableHighAccuracy: true,
+        timeout: 50000
+      }
     );
-    this.watchID = navigator.geolocation.watchPosition(data => {
-      const lastPosition = {
-        long: data.coords.longitude,
-        lat: data.coords.latitude,
-      };
-      this.setState({lastPosition});
-    });
+    this.watchID = navigator.geolocation.watchPosition(this.setPosition);
   }
 
   componentWillUnmount() {
@@ -55,17 +59,18 @@ export default class App extends Component {
   }
 
   render() {
-    const { lastPosition, markers } = this.state;
+    const { lastPosition, markers, geolocated } = this.state;
     return (
       <View style={styles.container}>
         {
-          lastPosition
+          geolocated
             ? <MapView
               style={styles.map}
               showsUserLocation
+              followsUserLocation
               region={{
-                latitude: lastPosition.lat,
-                longitude: lastPosition.long,
+                latitude: lastPosition.latitude,
+                longitude: lastPosition.longitude,
                 latitudeDelta: LATITUDE_DELTA,
                 longitudeDelta: LONGITUDE_DELTA,
               }}
@@ -83,12 +88,12 @@ export default class App extends Component {
                 )
               }
             </MapView>
-          : <Text style={styles.welcome}>
-            Receiving GPS information...
-            <Image
-              source={markerImage}
-            />
-          </Text>
+          : <View style={styles.loadingScreen}>
+            <Image style={styles.logo} source={logo} />
+            <Text style={{ marginTop: 15 }}>
+              Récupération de votre position...
+            </Text>
+          </View>
         }
       </View>
     );
@@ -98,6 +103,16 @@ export default class App extends Component {
 const styles = StyleSheet.create({
  container: {
    ...StyleSheet.absoluteFillObject,
+ },
+ loadingScreen: {
+   flex: 1,
+   flexDirection: 'column',
+   justifyContent: 'center',
+   alignItems: 'center',
+ },
+ logo: {
+   width: 150,
+   height: 150,
  },
  map: {
    ...StyleSheet.absoluteFillObject,
