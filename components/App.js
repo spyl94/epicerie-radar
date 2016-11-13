@@ -48,7 +48,7 @@ export default class App extends Component {
       error => this.setState({ geolocated: true }),
       {
         enableHighAccuracy: true,
-        timeout: 50000
+        timeout: 5000
       }
     );
     this.watchID = navigator.geolocation.watchPosition(this.setPosition);
