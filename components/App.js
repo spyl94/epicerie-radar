@@ -32,7 +32,7 @@ export default class App extends Component {
 
   watchID: ?number = null;
 
-  setPosition(position) {
+  setPosition = position => {
       this.setState({
         geolocated: true,
         lastPosition: {
