@@ -20,7 +20,6 @@ const LONGITUDE_DELTA = 0.0121;
 
 const markerImage = require('../img/beer-marker.png');
 const logo = require('../android/app/src/main/res/playstore-icon.png');
-let tracker = new GoogleAnalyticsTracker('UA-87371140-1');
 
 export default class App extends Component {
   state = {
@@ -65,6 +64,8 @@ export default class App extends Component {
 
   render() {
     const { lastPosition, markers, geolocated } = this.state;
+    let tracker = new GoogleAnalyticsTracker('UA-87371140-1');
+    tracker.setTrackUncaughtExceptions(true);
     return (
       <View style={styles.container}>
         {
