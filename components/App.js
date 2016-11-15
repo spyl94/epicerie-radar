@@ -9,11 +9,7 @@ import {
   Image,
   View
 } from 'react-native';
-import {
-  GoogleAnalyticsTracker,
-  GoogleTagManager,
-  GoogleAnalyticsSettings
-} from 'react-native-google-analytics-bridge';
+import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
 import MapView, { Marker } from 'react-native-maps';
 import data from '../data.json'
 
@@ -24,7 +20,7 @@ const LONGITUDE_DELTA = 0.0121;
 
 const markerImage = require('../img/beer-marker.png');
 const logo = require('../android/app/src/main/res/playstore-icon.png');
-const tracker = new GoogleAnalyticsTracker('UA-87371140-1');
+let tracker = new GoogleAnalyticsTracker('UA-87371140-1');
 
 export default class App extends Component {
   state = {
@@ -51,7 +47,10 @@ export default class App extends Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       this.setPosition,
-      error => this.setState({ geolocated: true }),
+      error => {
+        console.log(error);
+        // this.setState({ geolocated: true });
+      },
       {
         enableHighAccuracy: true,
         timeout: 5000
@@ -95,7 +94,7 @@ export default class App extends Component {
               }
             </MapView>
           : <View style={styles.loadingScreen}>
-            <Image style={styles.logo} source={logo} />
+            {/* <Image style={styles.logo} source={logo} /> */}
             <Text style={{ marginTop: 15 }}>
               Récupération de votre position...
             </Text>
