@@ -9,6 +9,7 @@ import {
   Image,
   View
 } from 'react-native';
+import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
 import MapView, { Marker } from 'react-native-maps';
 import data from '../data.json'
 
@@ -45,7 +46,10 @@ export default class App extends Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       this.setPosition,
-      error => this.setState({ geolocated: true }),
+      error => {
+        console.log(error);
+        // this.setState({ geolocated: true });
+      },
       {
         enableHighAccuracy: true,
         timeout: 5000
@@ -60,6 +64,8 @@ export default class App extends Component {
 
   render() {
     const { lastPosition, markers, geolocated } = this.state;
+    let tracker = new GoogleAnalyticsTracker('UA-87371140-1');
+    tracker.setTrackUncaughtExceptions(true);
     return (
       <View style={styles.container}>
         {
@@ -89,7 +95,7 @@ export default class App extends Component {
               }
             </MapView>
           : <View style={styles.loadingScreen}>
-            <Image style={styles.logo} source={logo} />
+            {/* <Image style={styles.logo} source={logo} /> */}
             <Text style={{ marginTop: 15 }}>
               Récupération de votre position...
             </Text>
