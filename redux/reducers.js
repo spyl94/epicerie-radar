@@ -1,9 +1,11 @@
+/* @flow */
 import { combineReducers } from 'redux';
+import data from '../data.json';
 
 const SELECT = 'epicerie/SELECT';
 
 const initialState = {
-    epiceries: [],
+    epiceries: data,
     currentSelected: null,
 };
 
