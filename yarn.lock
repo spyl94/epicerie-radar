@@ -3116,6 +3116,10 @@ react-native-maps@^0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.11.0.tgz#8baa56eef83e9f2f04a70b192624b7bc9c56289d"
 
+react-native-nav@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/react-native-nav/-/react-native-nav-1.1.4.tgz#e5d9453a4723745197429bb6cadff36a29cbbde7"
+
 react-native@^0.36.1:
   version "0.36.1"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.36.1.tgz#f7f53e28cb1f10d656dd26f666f795bdb9d11a94"
