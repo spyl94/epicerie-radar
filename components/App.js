@@ -8,6 +8,8 @@ import {
   View
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
+import FirstScreen from './FirstScreen';
+import NavBar from './NavBar';
 
 const INITIAL_LATITUDE = 48.853;
 const INITIAL_LONGITUDE = 2.35;
@@ -15,7 +17,6 @@ const LATITUDE_DELTA = 0.015;
 const LONGITUDE_DELTA = 0.0121;
 
 const markerImage = require('../img/beer-marker.png');
-const logo = require('../android/app/src/main/res/playstore-icon.png');
 
 class App extends Component {
   state = {
@@ -55,43 +56,43 @@ class App extends Component {
   }
 
   render() {
-    const { markers } = this.props;
+    const { markers, dispatch } = this.props;
     const { lastPosition, geolocated } = this.state;
+    if (!geolocated) {
+      return <FirstScreen />;
+    }
     return (
       <View style={styles.container}>
-        {
-          geolocated
-            ? <MapView
-              style={styles.map}
-              showsUserLocation
-              followsUserLocation
-              region={{
+        <NavBar />
+        <MapView
+          style={styles.map}
+          showsUserLocation
+          followsUserLocation
+          region={{
                 latitude: lastPosition.latitude,
                 longitude: lastPosition.longitude,
                 latitudeDelta: LATITUDE_DELTA,
                 longitudeDelta: LONGITUDE_DELTA,
-              }}
-              >
-              {
-                markers.map((marker, key) =>
-                  <Marker
-                    key={key}
-                    coordinate={marker.coords}
-                    title={marker.name}
-                    description={marker.address}
-                    title={marker.name}
-                    image={markerImage}
-                  />
-                )
-              }
-            </MapView>
-          : <View style={styles.loadingScreen}>
-            <Image style={styles.logo} source={logo} />
+          }}
+        >
+          {
+            markers.map((marker, key) =>
+              <Marker
+                key={key}
+                coordinate={marker.coords}
+                title={marker.name}
+                description={marker.address}
+                title={marker.name}
+                image={markerImage}
+              />
+            )
+          }
+          <View style={styles.selectedMarker}>
             <Text style={{ marginTop: 15 }}>
-              Récupération de votre position...
+              Epicerie Bidule
             </Text>
           </View>
-        }
+        </MapView>
       </View>
     );
   }
@@ -99,20 +100,17 @@ class App extends Component {
 
 const styles = StyleSheet.create({
  container: {
-   ...StyleSheet.absoluteFillObject,
- },
- loadingScreen: {
    flex: 1,
    flexDirection: 'column',
-   justifyContent: 'center',
-   alignItems: 'center',
+   backgroundColor: '#F5FCFF',
  },
- logo: {
-   width: 150,
-   height: 150,
+ selectedMarker: {
+    height: 50,
+    backgroundColor: 'powderblue',
  },
  map: {
-   ...StyleSheet.absoluteFillObject,
+   flex: 0.6,
+  //  ...StyleSheet.absoluteFillObject,
  },
 });
 
