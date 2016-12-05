@@ -3,6 +3,6 @@
  */
 import React from 'react';
 import { AppRegistry } from 'react-native';
-import App from './components/App';
+import AppContainer from './components/AppContainer';
 
-AppRegistry.registerComponent('epicerie', () => App);
+AppRegistry.registerComponent('epicerie', () => AppContainer);

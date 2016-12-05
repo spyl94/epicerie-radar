@@ -1,8 +1,6 @@
-/**
- * @flow
- */
-
+/* @flow */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   StyleSheet,
   Text,
@@ -10,7 +8,6 @@ import {
   View
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import data from '../data.json'
 
 const INITIAL_LATITUDE = 48.853;
 const INITIAL_LONGITUDE = 2.35;
@@ -20,13 +17,12 @@ const LONGITUDE_DELTA = 0.0121;
 const markerImage = require('../img/beer-marker.png');
 const logo = require('../android/app/src/main/res/playstore-icon.png');
 
-export default class App extends Component {
+class App extends Component {
   state = {
     lastPosition: {
       latitude: INITIAL_LATITUDE,
       longitude: INITIAL_LONGITUDE,
     },
-    markers: data,
     geolocated: false,
   };
 
@@ -59,7 +55,8 @@ export default class App extends Component {
   }
 
   render() {
-    const { lastPosition, markers, geolocated } = this.state;
+    const { markers } = this.props;
+    const { lastPosition, geolocated } = this.state;
     return (
       <View style={styles.container}>
         {
@@ -118,3 +115,7 @@ const styles = StyleSheet.create({
    ...StyleSheet.absoluteFillObject,
  },
 });
+
+export default connect(
+  state => ({ markers: state.epiceries })
+)(App);
