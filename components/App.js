@@ -102,7 +102,7 @@ class App extends Component {
             />
             <TouchableHighlight
               onPress={() => {
-                fetch('https://api.github.com/repos/spyl94/epicerie-radar/issues/', {
+                fetch('https://api.github.com/repos/spyl94/epicerie-radar/issues', {
                   method: 'POST',
                   headers: {
                     'Accept': 'application/json',
