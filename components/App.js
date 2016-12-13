@@ -11,6 +11,7 @@ import {
   PermissionsAndroid,
   Platform,
 } from 'react-native';
+import Config from 'react-native-config';
 import MapView, { Marker } from 'react-native-maps';
 import FirstScreen from './FirstScreen';
 import NavBar from './NavBar';
@@ -101,26 +102,25 @@ class App extends Component {
             />
             <TouchableHighlight
               onPress={() => {
-                fetch('https://api.github.com/repos/spyl94/epicerie-radar/issues', {
+                fetch('https://api.github.com/repos/spyl94/epicerie-radar/issues/', {
                   method: 'POST',
                   headers: {
-                    'Authorization': 'token fbc8afa6399f01bde41c17058a45243f5dc7e0d2',
+                    'Accept': 'application/json',
+                    'Authorization': 'token ' + Config.GH_TOKEN,
                     'User-Agent': 'Epicerie Radar',
-                    'Content-Type': 'application/json; charset=utf-8',
+                    'Content-Type': 'application/json',
                   },
                   body: JSON.stringify({
                     title: 'Un utilisateur vient d\'ajouter des informations.',
                     body: 'Test',
-                  }),
+                  })
                 })
-                // .then(res => res.json())
-                // .then(res => {
-                //   this.setState({text: null});
-                //   hideModal();
-                // })
-                .catch(e => {
-                  console.error(e);
-                });
+                .then(res => res.json())
+                .then(res => {
+                  this.setState({text: null});
+                  hideModal();
+                })
+                .catch(console.error);
               }}
               style={styles.modalButton}
               underlayColor="#a9d9d4"
