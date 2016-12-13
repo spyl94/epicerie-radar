@@ -8,7 +8,9 @@
     "test": "jest"
   },
   "dependencies": {
+    "es6-promise": "^4.0.5",
     "immutable": "^3.8.1",
+    "isomorphic-fetch": "^2.2.1",
     "react": "15.3.2",
     "react-native": "^0.36.1",
     "react-native-maps": "^0.11.0",

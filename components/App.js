@@ -31,6 +31,7 @@ class App extends Component {
       latitude: INITIAL_LATITUDE,
       longitude: INITIAL_LONGITUDE,
     },
+    text: null,
     geolocated: false,
   };
 
@@ -86,22 +87,41 @@ class App extends Component {
       <View style={styles.container}>
         <NavBar />
         <Modal
-          // animationType="fade"
-          // transparent
           visible={modalVisible}
-          // onRequestClose={() => { hideModal() }}
         >
           <View style={styles.modal}>
-            <Text style={{ margin: 10 }}>Vous souhaitez rajouter une épicerie ou indiquer qu'un emplacement n'est pas correct ? C'est possible!</Text>
+            <Text style={{ margin: 10, fontWeight: 'bold' }}>Vous souhaitez rajouter une épicerie ou indiquer qu'un emplacement n'est pas correct ? C'est possible!</Text>
             <TextInput
               multiline
               autoFocus
+              onChangeText={text => this.setState({text})}
               style={{ width: 300 }}
-              placeholder={`Alimentation generale, \n9 rue Voltaire\nOuvert du lundi au dimimanche de 9h à 2h`}
+              placeholder={`Alimentation generale, \n9 rue Voltaire\nOuvert du lundi au dimimanche de 9h à 2h\n\nou\n\nCette épicerie n\'existe pas!`}
               numberOfLines={10}
             />
             <TouchableHighlight
-              onPress={() => {}}
+              onPress={() => {
+                fetch('https://api.github.com/repos/spyl94/epicerie-radar/issues', {
+                  method: 'POST',
+                  headers: {
+                    'Authorization': 'token fbc8afa6399f01bde41c17058a45243f5dc7e0d2',
+                    'User-Agent': 'Epicerie Radar',
+                    'Content-Type': 'application/json; charset=utf-8',
+                  },
+                  body: JSON.stringify({
+                    title: 'Un utilisateur vient d\'ajouter des informations.',
+                    body: 'Test',
+                  }),
+                })
+                // .then(res => res.json())
+                // .then(res => {
+                //   this.setState({text: null});
+                //   hideModal();
+                // })
+                .catch(e => {
+                  console.error(e);
+                });
+              }}
               style={styles.modalButton}
               underlayColor="#a9d9d4"
             >
@@ -158,19 +178,18 @@ class App extends Component {
 const styles = StyleSheet.create({
  container: {
    flex: 1,
+   margin: 0,
    flexDirection: 'column',
    backgroundColor: '#F5FCFF',
  },
  selectedMarker: {
     margin: 0,
     flex: 0.1,
-    padding: 15
+    paddingTop: 15,
+    paddingLeft: 15
  },
  modal: {
-   top: 10,
-   right: 0,
-   bottom: 20,
-   left: 0,
+   width: 320,
    justifyContent: 'center',
    alignItems: 'center',
    backgroundColor: 'rgba(255, 255, 255, 0.8)',
@@ -178,19 +197,14 @@ const styles = StyleSheet.create({
    overflow: 'hidden'
  },
  modalButton: {
-   marginTop: 10,
-   backgroundColor: 'grey',
+   margin: 15,
+   backgroundColor: '#178c80',
    borderRadius: 10,
- },
- modalInnerContainer: {
-  borderRadius: 10,
-  flex: 0.5,
-  alignItems: 'center',
-  backgroundColor: '#fff',
-  padding: 20,
+   padding: 15
  },
  map: {
    flex: 0.6,
+   margin: 0,
  },
 });
 
