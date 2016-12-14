@@ -2,21 +2,28 @@
 import React, { Component } from 'react';
 import NavBar, { NavTitle, NavGroup, NavButton } from 'react-native-nav';
 import { Image, StyleSheet } from 'react-native';
+import { showModal } from '../redux/reducers';
+import { connect } from 'react-redux';
 
+const plus = require('../img/plus.png');
 const logo = require('../android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png');
 const styles = StyleSheet.create({
  statusBar: {
     backgroundColor: '#3343BD',
  },
  navBar: {
+   margin: 0,
+   padding: 0,
    backgroundColor: '#fff',
  },
  navButton: {
    flex: 1,
  },
  image: {
+   flex: 1,
    width: 30,
-   height: 25,
+   height: 30,
+   resizeMode: 'contain'
  },
  title: {
    flex: 1,
@@ -24,22 +31,28 @@ const styles = StyleSheet.create({
  },
 });
 
-export default class Nav extends Component {
+class Nav extends Component {
   render() {
     return (
         <NavBar style={styles}>
           <NavButton style={styles.navButton}>
             <Image
               style={styles.image}
-              resizeMode={"contain"}
               source={logo}
             />
           </NavButton>
           <NavTitle style={styles.title}>
             { "Epicerie Radar" }
           </NavTitle>
-          <NavButton style={styles.navButton} />
+          <NavButton onPress={() => { this.props.showModal(); }} style={styles.navButton}>
+            <Image
+              style={[styles.image, {marginRight: 10}]}
+              source={plus}
+            />
+          </NavButton>
         </NavBar>
     );
   }
 };
+
+export default connect(undefined, ({ showModal }))(Nav);

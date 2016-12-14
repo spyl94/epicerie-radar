@@ -5,17 +5,24 @@ import {
   StyleSheet,
   Text,
   Image,
-  View
+  View,
+  TouchableHighlight,
+  PermissionsAndroid,
+  Platform,
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import FirstScreen from './FirstScreen';
 import NavBar from './NavBar';
+import { select, updatePosition } from '../redux/reducers';
+import InformationModal from './InformationModal';
+import SelectedEpicerie from './SelectedEpicerie';
 
 const INITIAL_LATITUDE = 48.853;
 const INITIAL_LONGITUDE = 2.35;
 const LATITUDE_DELTA = 0.015;
 const LONGITUDE_DELTA = 0.0121;
 
+const markerSelected = undefined;
 const markerImage = require('../img/beer-marker.png');
 
 class App extends Component {
@@ -24,22 +31,18 @@ class App extends Component {
       latitude: INITIAL_LATITUDE,
       longitude: INITIAL_LONGITUDE,
     },
+    text: null,
     geolocated: false,
   };
 
   watchID: ?number = null;
 
   setPosition = position => {
-      this.setState({
-        geolocated: true,
-        lastPosition: {
-          longitude: position.coords.longitude,
-          latitude: position.coords.latitude,
-        },
-      });
+      this.props.updatePosition(position.coords);
+      this.setState({ geolocated: true });
   }
 
-  componentDidMount() {
+  watchLocation() {
     navigator.geolocation.getCurrentPosition(
       this.setPosition,
       error => this.setState({ geolocated: true }),
@@ -51,48 +54,64 @@ class App extends Component {
     this.watchID = navigator.geolocation.watchPosition(this.setPosition);
   }
 
+  componentDidMount() {
+    if (Platform.OS === 'android') {
+      PermissionsAndroid
+        .requestPermission(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
+        .then(granted => {
+          if (granted) this.watchLocation();
+        });
+    } else {
+      this.watchLocation();
+    }
+  }
+
   componentWillUnmount() {
-    navigator.geolocation.clearWatch(this.watchID);
+    if (this.watchID) {
+      navigator.geolocation.clearWatch(this.watchID);
+    }
   }
 
   render() {
-    const { markers, dispatch } = this.props;
-    const { lastPosition, geolocated } = this.state;
+    const { position, markers, currentIndex, select } = this.props;
+    const { geolocated } = this.state;
     if (!geolocated) {
       return <FirstScreen />;
     }
     return (
       <View style={styles.container}>
         <NavBar />
+        <InformationModal />
         <MapView
           style={styles.map}
           showsUserLocation
           followsUserLocation
+          moveOnMarkerPress={false}
           region={{
-                latitude: lastPosition.latitude,
-                longitude: lastPosition.longitude,
-                latitudeDelta: LATITUDE_DELTA,
-                longitudeDelta: LONGITUDE_DELTA,
+            ...position,
+            latitudeDelta: LATITUDE_DELTA,
+            longitudeDelta: LONGITUDE_DELTA,
           }}
         >
           {
             markers.map((marker, key) =>
               <Marker
                 key={key}
+                onPress={() => { select(key); }}
                 coordinate={marker.coords}
-                title={marker.name}
-                description={marker.address}
-                title={marker.name}
-                image={markerImage}
+                image={
+                  currentIndex === key
+                  ? markerSelected
+                  : markerImage
+                }
               />
             )
           }
-          <View style={styles.selectedMarker}>
-            <Text style={{ marginTop: 15 }}>
-              Epicerie Bidule
-            </Text>
-          </View>
         </MapView>
+        {
+          currentIndex &&
+            <SelectedEpicerie epicerie={markers[currentIndex]} />
+        }
       </View>
     );
   }
@@ -101,19 +120,22 @@ class App extends Component {
 const styles = StyleSheet.create({
  container: {
    flex: 1,
+   margin: 0,
+   padding: 0,
    flexDirection: 'column',
    backgroundColor: '#F5FCFF',
  },
- selectedMarker: {
-    height: 50,
-    backgroundColor: 'powderblue',
- },
  map: {
    flex: 0.6,
-  //  ...StyleSheet.absoluteFillObject,
+   margin: 0,
  },
 });
 
 export default connect(
-  state => ({ markers: state.epiceries })
+  state => ({
+    markers: state.default.epiceries,
+    currentIndex: state.default.currentSelected,
+    position: state.default.position,
+  }),
+  ({ select, updatePosition })
 )(App);
