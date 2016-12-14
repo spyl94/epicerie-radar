@@ -13,7 +13,7 @@ import {
 import MapView, { Marker } from 'react-native-maps';
 import FirstScreen from './FirstScreen';
 import NavBar from './NavBar';
-import { select } from '../redux/reducers';
+import { select, updatePosition } from '../redux/reducers';
 import InformationModal from './InformationModal';
 import SelectedEpicerie from './SelectedEpicerie';
 
@@ -38,13 +38,8 @@ class App extends Component {
   watchID: ?number = null;
 
   setPosition = position => {
-      this.setState({
-        geolocated: true,
-        lastPosition: {
-          longitude: position.coords.longitude,
-          latitude: position.coords.latitude,
-        },
-      });
+      this.props.updatePosition(position.coords);
+      this.setState({ geolocated: true });
   }
 
   watchLocation() {
@@ -78,8 +73,8 @@ class App extends Component {
   }
 
   render() {
-    const { markers, currentIndex, select } = this.props;
-    const { lastPosition, geolocated } = this.state;
+    const { position, markers, currentIndex, select } = this.props;
+    const { geolocated } = this.state;
     if (!geolocated) {
       return <FirstScreen />;
     }
@@ -93,10 +88,9 @@ class App extends Component {
           followsUserLocation
           moveOnMarkerPress={false}
           region={{
-                latitude: lastPosition.latitude,
-                longitude: lastPosition.longitude,
-                latitudeDelta: LATITUDE_DELTA,
-                longitudeDelta: LONGITUDE_DELTA,
+            ...position,
+            latitudeDelta: LATITUDE_DELTA,
+            longitudeDelta: LONGITUDE_DELTA,
           }}
         >
           {
@@ -116,7 +110,7 @@ class App extends Component {
         </MapView>
         {
           currentIndex &&
-            <SelectedEpicerie current={markers[currentIndex]}/>
+            <SelectedEpicerie epicerie={markers[currentIndex]} />
         }
       </View>
     );
@@ -127,6 +121,7 @@ const styles = StyleSheet.create({
  container: {
    flex: 1,
    margin: 0,
+   padding: 0,
    flexDirection: 'column',
    backgroundColor: '#F5FCFF',
  },
@@ -140,6 +135,7 @@ export default connect(
   state => ({
     markers: state.default.epiceries,
     currentIndex: state.default.currentSelected,
+    position: state.default.position,
   }),
-  ({ select })
+  ({ select, updatePosition })
 )(App);

@@ -7,11 +7,11 @@ import {
 } from 'react-native';
 
 const styles = StyleSheet.create({
-  epicerie: {
+  selectedEpicerie: {
      margin: 0,
-     flex: 0.1,
+     height: 100,
      paddingTop: 15,
-     paddingLeft: 15
+     paddingLeft: 15,
   },
 });
 
@@ -20,15 +20,15 @@ export default class SelectedEpicerie extends Component {
   render() {
     const { epicerie } = this.props;
     return (
-        <View style={styles.epicerie}>
+        <View style={styles.selectedEpicerie}>
           <Text style={{ fontWeight: 'bold' }}>
             {epicerie.name}
           </Text>
           <Text>
             {epicerie.address}
           </Text>
-          <Text style={{ marginTop: 20 }}>
-            Les horaires seront bientôt disponible!
+          <Text style={{ paddingTop: 10 }}>
+            Promis, les horaires seront bientôt disponible!
           </Text>
         </View>
       );
