@@ -28,7 +28,7 @@ export default class SelectedEpicerie extends Component {
             {epicerie.address}
           </Text>
           <Text style={{ paddingTop: 10 }}>
-            Promis, les horaires seront bientôt disponible!
+            Horaire bientôt disponible!
           </Text>
         </View>
       );

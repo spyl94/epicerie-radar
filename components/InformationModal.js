@@ -10,7 +10,10 @@ import {
   TouchableNativeFeedback,
   TouchableOpacity,
   Platform,
+  Dimensions,
+  Alert,
 } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Config from 'react-native-config';
 import MapView, { Marker } from 'react-native-maps';
 import FirstScreen from './FirstScreen';
@@ -19,6 +22,7 @@ import { hideModal } from '../redux/reducers';
 import Modal from 'react-native-root-modal';
 
 const cancel = require('../img/cancel.png');
+const { width, height } = Dimensions.get('window');
 
 class InformationModal extends Component {
   state = {
@@ -41,6 +45,7 @@ class InformationModal extends Component {
       })
     })
     .then(() => {
+      Alert.alert('Merci de nous aider!', 'Nous traitons votre message, on ajoute les données à la prochaine mise à jour!');
       this.setState({ text: null });
       hideModal();
     })
@@ -54,38 +59,41 @@ class InformationModal extends Component {
       <Modal
         visible={visible}
       >
-        <View style={styles.modal}>
-          <Touchable onPress={() => { hideModal() }}>
-            <View>
-              <Image
-                style={styles.image}
-                source={cancel}
-              />
-            </View>
-          </Touchable>
-          <Text style={{ margin: 10, fontWeight: 'bold' }}>Vous souhaitez rajouter une épicerie ou indiquer qu'un emplacement n'est pas correct ?</Text>
-          <TextInput
-            multiline
-            autoFocus
-            onChangeText={text => this.setState({text})}
-            style={{ width: 300 }}
-            placeholder={`Alimentation générale, \n9 rue Voltaire\nOuvert du lundi au dimimanche de 9h à 2h\n\nou\n\nCette épicerie n\'existe pas!`}
-            numberOfLines={10}
-          />
-          <Touchable
-            accessibilityComponentType="button"
-            disabled={this.state.text === null}
-            onPress={() => {this.createIssue(); }}
-            style={styles.modalButton}
-            underlayColor="#a9d9d4"
-          >
-            <View style={styles.modalButton}>
-              <Text style={{ textAlign: 'center', padding: 8, fontWeight: '500' }}>
-                Envoyer les informations à ma position
-              </Text>
-            </View>
-          </Touchable>
-        </View>
+        <KeyboardAwareScrollView>
+          <View style={styles.modal}>
+            <Touchable onPress={() => { hideModal() }}>
+              <View>
+                <Image
+                  style={styles.image}
+                  source={cancel}
+                />
+              </View>
+            </Touchable>
+            {/* <Text style={{ margin: 10, fontWeight: 'bold' }}>Vous souhaitez rajouter une épicerie ou indiquer qu'un emplacement n'est pas correct ?</Text> */}
+            <TextInput
+              multiline
+              autoFocus
+              value={this.state.text}
+              style={{height: 200, width: Math.ceil(width/2), padding: 10 }}
+              onChangeText={text => this.setState({text})}
+              placeholder={`Exemple:\nAlimentation générale, \n9 rue Voltaire\nOuvert du lundi au dimanche de 9h à 2h\n\nou\n\nCette épicerie n\'existe pas!`}
+              numberOfLines={10}
+            />
+            <Touchable
+              accessibilityComponentType="button"
+              disabled={this.state.text === null}
+              onPress={() => {this.createIssue(); }}
+              style={styles.modalButton}
+              underlayColor="#a9d9d4"
+            >
+              <View style={styles.modalButton}>
+                <Text style={{ textAlign: 'center', padding: 8, fontWeight: '500' }}>
+                  Envoyer les informations à ma position
+                </Text>
+              </View>
+            </Touchable>
+          </View>
+        </KeyboardAwareScrollView>
       </Modal>
         );
     }
@@ -96,7 +104,7 @@ const styles = StyleSheet.create({
    width: 320,
    justifyContent: 'center',
    alignItems: 'center',
-   backgroundColor: 'rgba(255, 255, 255, 0.8)',
+   backgroundColor: 'rgba(255, 255, 255, 0.9)',
    borderRadius: 10,
    overflow: 'hidden'
  },
@@ -116,7 +124,7 @@ const styles = StyleSheet.create({
 export default connect(
   state => ({
     visible: state.default.modalVisible,
-    position: state.default.position
+    position: state.location.location
   }),
   ({ hideModal })
 )(InformationModal);
