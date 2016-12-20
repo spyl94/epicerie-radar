@@ -40,9 +40,8 @@ const setLocationError = (message: string) => ({
 
 export const getAndSetCurrentLocation = (dispatch: Function) => {
     const options = {
-    	enableHighAccuracy: true,
-    	timeout: 20000,
-    	maximumAge: 1000
+      enableHighAccuracy: true,
+      timeout: 5000,
     };
 		navigator.geolocation.getCurrentPosition(
       ({ coords }) => dispatch(setInitialLocation(coords)),
@@ -58,20 +57,20 @@ export const getAndSetCurrentLocation = (dispatch: Function) => {
 
 export default function location (state: State = initialState, action: Action) {
   switch (action.type) {
-    case 'SET_REGION' :
+    case 'SET_REGION':
       return { ...state, region: action.region };
-    case 'SET_INITIAL_LOCATION' :
+    case 'SET_INITIAL_LOCATION':
       const initialRegion = {
         ...state.initialRegion,
         longitude: action.location.longitude,
         latitude: action.location.latitude,
       };
       return { ...state, location: action.location, enabled: true, initialRegion };
-    case 'UPDATE_LOCATION' :
+    case 'UPDATE_LOCATION':
       return { ...state, location: action.location, enabled: true };
-    case 'SET_LOCATION_ERROR' :
+    case 'SET_LOCATION_ERROR':
       return { ...state, enabled: false }
     default :
-      return state
+      return state;
   }
 }

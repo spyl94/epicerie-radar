@@ -52,7 +52,7 @@ class InformationModal extends Component {
     .catch(console.error);
   }
 
-  render() {
+  render(): React.Element<any> {
     const { visible, hideModal } = this.props;
     const Touchable = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
     return (

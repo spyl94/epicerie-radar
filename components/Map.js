@@ -17,7 +17,7 @@ const markerImage = require('../img/beer-marker.png');
 
 class Map extends Component {
 
-  render() {
+  render(): React.Element<any> {
     const { initialRegion, currentIndex, select } = this.props;
     return (
         <MapView

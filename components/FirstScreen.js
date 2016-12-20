@@ -12,7 +12,7 @@ const logo = require('../android/app/src/main/res/playstore-icon.png');
 
 export default class FirstScreen extends Component {
 
-  render() {
+  render(): React.Element<any> {
     return (
         <View style={styles.loadingScreen}>
           <Image style={styles.logo} source={logo} />

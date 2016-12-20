@@ -9,7 +9,7 @@ const plus = require('../img/plus.png');
 const logo = require('../android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png');
 const styles = StyleSheet.create({
  statusBar: {
-    backgroundColor: '#3343BD',
+    backgroundColor: '#fff',
  },
  navBar: {
    margin: 0,
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
 });
 
 class Nav extends Component {
-  render() {
+  render(): React.Element<any> {
     return (
         <NavBar style={styles}>
           <NavButton style={styles.navButton}>

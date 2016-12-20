@@ -11,6 +11,7 @@ import MapView, { Marker } from 'react-native-maps';
 import FirstScreen from './FirstScreen';
 import NavBar from './NavBar';
 import Map from './Map';
+import LocationInfo from './LocationInfo';
 import { firstScreenLoader } from '../redux/reducers';
 import { getAndSetCurrentLocation } from '../redux/reducers/location';
 import InformationModal from './InformationModal';
@@ -33,11 +34,12 @@ class App extends Component {
     }
   }
 
-  render() {
+  render(): React.Element<any> {
     const { showMap, locationEnabled, currentIndex } = this.props;
     if (showMap) {
       return (
         <View style={styles.container}>
+          <LocationInfo enabled={locationEnabled} />
           <NavBar />
           <InformationModal />
           <Map />
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
 
 export default connect(
   state => ({
-    locationEnabled: state.location.locationEnabled,
+    locationEnabled: state.location.enabled,
     currentIndex: state.default.currentSelected,
     showMap: state.default.showMap,
   })

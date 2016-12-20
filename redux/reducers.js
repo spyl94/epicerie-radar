@@ -8,9 +8,6 @@ const SELECT = 'epicerie/SELECT';
 const SHOW_MODAL = 'epicerie/SHOW_MODAL';
 const HIDE_MODAL = 'epicerie/HIDE_MODAL';
 
-const INITIAL_LATITUDE = 48.853;
-const INITIAL_LONGITUDE = 2.35;
-
 const initialState = {
     currentSelected: null,
     modalVisible: false,
@@ -20,7 +17,7 @@ const initialState = {
 export const firstScreenLoader = (dispatch: Function) => {
   setTimeout(() => {
     dispatch({type: 'SHOW_MAP'})
-  }, 3000);
+  }, 6000);
 }
 
 export const select = (marker: Object) => ({
@@ -54,8 +51,8 @@ function deg2rad(deg) {
   return deg * (Math.PI/180)
 }
 
-const findNearestIndex = (lat, long) => {
-  const distances = markers.map(({coords}) => getDistanceFromLatLonInKm(lat, long, coords.latitude, coords.longitude));
+const findNearestIndex = (lat: number, long: number): number => {
+  const distances = markers.map(({ coords }) => getDistanceFromLatLonInKm(lat, long, coords.latitude, coords.longitude));
   const min = Math.min(...distances);
   return distances.indexOf(min);
 };

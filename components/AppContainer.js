@@ -4,7 +4,7 @@ import App from './App';
 import configureStore from '../redux/store';
 
 export default class AppContainer extends Component {
-    render() {
+    render(): React.Element<any> {
         return (
             <Provider store={configureStore()}>
               <App />

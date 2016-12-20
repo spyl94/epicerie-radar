@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 
 export default class SelectedEpicerie extends Component {
 
-  render() {
+  render(): React.Element<any> {
     const { epicerie } = this.props;
     return (
         <View style={styles.selectedEpicerie}>
