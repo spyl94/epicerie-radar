@@ -20,7 +20,7 @@ const initialState = {
 export const firstScreenLoader = (dispatch: Function) => {
   setTimeout(() => {
     dispatch({type: 'SHOW_MAP'})
-  }, 2000);
+  }, 3000);
 }
 
 export const select = (marker: Object) => ({
@@ -63,7 +63,7 @@ const findNearestIndex = (lat, long) => {
 function epiceries(state = initialState, action) {
     switch (action.type) {
         case 'SET_INITIAL_LOCATION':
-          return {...state, 'currentSelected': findNearestIndex(action.location.latitude, action.location.longitude)  };
+          return {...state, 'showMap': true, 'currentSelected': findNearestIndex(action.location.latitude, action.location.longitude)  };
         case 'SHOW_MAP':
           return {...state, 'showMap': true };
         case SELECT:

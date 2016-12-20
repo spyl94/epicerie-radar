@@ -101,7 +101,8 @@ class InformationModal extends Component {
 
 const styles = StyleSheet.create({
  modal: {
-   width: 320,
+   width: width - 30,
+   marginTop: 20,
    justifyContent: 'center',
    alignItems: 'center',
    backgroundColor: 'rgba(255, 255, 255, 0.9)',

@@ -26,7 +26,7 @@ class App extends Component {
       PermissionsAndroid
         .requestPermission(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
         .then(granted => {
-          if (granted) getAndSetCurrentLocation(dispatch);
+          getAndSetCurrentLocation(dispatch);
         });
     } else {
       getAndSetCurrentLocation(dispatch);
@@ -35,7 +35,7 @@ class App extends Component {
 
   render() {
     const { showMap, locationEnabled, currentIndex } = this.props;
-    if (showMap || locationEnabled) {
+    if (showMap) {
       return (
         <View style={styles.container}>
           <NavBar />
