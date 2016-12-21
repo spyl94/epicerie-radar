@@ -69,7 +69,6 @@ class InformationModal extends Component {
                 />
               </View>
             </Touchable>
-            {/* <Text style={{ margin: 10, fontWeight: 'bold' }}>Vous souhaitez rajouter une épicerie ou indiquer qu'un emplacement n'est pas correct ?</Text> */}
             <TextInput
               multiline
               autoFocus

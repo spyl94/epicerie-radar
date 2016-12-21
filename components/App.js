@@ -39,8 +39,8 @@ class App extends Component {
     if (showMap) {
       return (
         <View style={styles.container}>
-          <LocationInfo enabled={locationEnabled} />
           <NavBar />
+          <LocationInfo enabled={locationEnabled} />
           <InformationModal />
           <Map />
           {
