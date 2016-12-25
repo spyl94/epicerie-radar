@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
   Platform,
   Dimensions,
+  Button,
   Alert,
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -18,19 +19,20 @@ import Config from 'react-native-config';
 import MapView, { Marker } from 'react-native-maps';
 import FirstScreen from './FirstScreen';
 import NavBar from './NavBar';
-import { hideModal } from '../redux/reducers';
-import Modal from 'react-native-root-modal';
+import { hideModal } from '../redux/modules/application';
+import Modal from 'react-native-simple-modal';
 
-const cancel = require('../img/cancel.png');
 const { width, height } = Dimensions.get('window');
 
 class InformationModal extends Component {
   state = {
     text: null,
+    isLoading: false,
   };
 
   createIssue = () => {
     const { position, hideModal } = this.props;
+    this.setState({ isLoading: true });
     fetch('https://api.github.com/repos/spyl94/epicerie-radar/issues', {
       method: 'POST',
       headers: {
@@ -46,7 +48,7 @@ class InformationModal extends Component {
     })
     .then(() => {
       Alert.alert('Merci de nous aider!', 'Nous traitons votre message, on ajoute les données à la prochaine mise à jour!');
-      this.setState({ text: null });
+      this.setState({ text: null, isLoading: false });
       hideModal();
     })
     .catch(console.error);
@@ -54,43 +56,39 @@ class InformationModal extends Component {
 
   render(): React.Element<any> {
     const { visible, hideModal } = this.props;
-    const Touchable = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
     return (
       <Modal
-        visible={visible}
+        open={visible}
+        closeOnTouchOutside
+        offset={0}
+        containerStyle={{
+          justifyContent: 'center'
+        }}
+        modalStyle={{
+          borderRadius: 2,
+          margin: 20,
+          padding: 10,
+          backgroundColor: '#F5F5F5'
+        }}
+        modalDidClose={() => hideModal()}
+        overlayBackground={'rgba(0, 0, 0, 0.75)'}
       >
         <KeyboardAwareScrollView>
-          <View style={styles.modal}>
-            <Touchable onPress={() => { hideModal() }}>
-              <View>
-                <Image
-                  style={styles.image}
-                  source={cancel}
-                />
-              </View>
-            </Touchable>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <TextInput
               multiline
-              autoFocus
               value={this.state.text}
-              style={{height: 200, width: Math.ceil(width/2), padding: 10 }}
               onChangeText={text => this.setState({text})}
               placeholder={`Exemple:\nAlimentation générale, \n9 rue Voltaire\nOuvert du lundi au dimanche de 9h à 2h\n\nou\n\nCette épicerie n\'existe pas!`}
               numberOfLines={10}
             />
-            <Touchable
-              accessibilityComponentType="button"
-              disabled={this.state.text === null}
+            <Button
+              disabled={this.state.text === null ||  this.state.isLoading}
               onPress={() => {this.createIssue(); }}
-              style={styles.modalButton}
-              underlayColor="#a9d9d4"
-            >
-              <View style={styles.modalButton}>
-                <Text style={{ textAlign: 'center', padding: 8, fontWeight: '500' }}>
-                  Envoyer les informations à ma position
-                </Text>
-              </View>
-            </Touchable>
+              // underlayColor="#a9d9d4"
+              color="#178c80"
+              title="Envoyer les informations à ma position"
+            />
           </View>
         </KeyboardAwareScrollView>
       </Modal>
@@ -98,32 +96,9 @@ class InformationModal extends Component {
     }
 }
 
-const styles = StyleSheet.create({
- modal: {
-   width: width - 30,
-   marginTop: 20,
-   justifyContent: 'center',
-   alignItems: 'center',
-   backgroundColor: 'rgba(255, 255, 255, 0.9)',
-   borderRadius: 10,
-   overflow: 'hidden'
- },
- image: {
-   width: 30,
-   height: 30,
-   resizeMode: 'contain'
- },
- modalButton: {
-   margin: 15,
-   backgroundColor: '#178c80',
-   borderRadius: 10,
-   padding: 15
- },
-});
-
 export default connect(
   state => ({
-    visible: state.default.modalVisible,
+    visible: state.application.modalVisible,
     position: state.location.location
   }),
   ({ hideModal })

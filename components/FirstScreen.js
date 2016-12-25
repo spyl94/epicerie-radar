@@ -8,14 +8,12 @@ import {
 } from 'react-native';
 import NavBar from './NavBar';
 
-const logo = require('../android/app/src/main/res/playstore-icon.png');
-
 export default class FirstScreen extends Component {
 
   render(): React.Element<any> {
     return (
         <View style={styles.loadingScreen}>
-          <Image style={styles.logo} source={logo} />
+          <Image style={styles.logo} source={require('../img/logo.png')} />
           <Text style={{ marginTop: 15 }}>
             Récupération de votre position...
           </Text>
@@ -37,5 +35,6 @@ const styles = StyleSheet.create({
  logo: {
    width: 150,
    height: 150,
+   resizeMode: 'contain'
  },
 });

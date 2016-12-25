@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
 export default connect(
   state => ({
     initialRegion: state.location.initialRegion,
-    currentIndex: state.default.currentSelected,
+    currentIndex: state.epicerie.currentSelected,
   }),
   ({ select })
 )(Map);
