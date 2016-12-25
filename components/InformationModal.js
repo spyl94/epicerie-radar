@@ -2,11 +2,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
+  Text,
   TextInput,
   View,
-  Button,
   Alert,
 } from 'react-native';
+import Button from 'react-native-button';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Config from 'react-native-config';
 import { hideModal } from '../redux/modules/application';
@@ -35,7 +36,7 @@ class InformationModal extends Component {
       })
     })
     .then(() => {
-      Alert.alert('Merci de nous aider!', 'Nous traitons votre message, on ajoute les données à la prochaine mise à jour!');
+      Alert.alert('Merci pour votre aide!', 'Nous traitons votre message et on ajoute les données à la prochaine mise à jour!');
       this.setState({ text: null, isLoading: false });
       hideModal();
     })
@@ -62,21 +63,39 @@ class InformationModal extends Component {
         overlayBackground={'rgba(0, 0, 0, 0.75)'}
       >
         <KeyboardAwareScrollView>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View>
+            <Text style={{ padding: 10, fontWeight: 'bold' }}>
+              Aidez nous!
+            </Text>
             <TextInput
               multiline
               value={this.state.text}
               onChangeText={text => this.setState({text})}
-              placeholder={`Exemple:\nAlimentation générale, \n9 rue Voltaire\nOuvert du lundi au dimanche de 9h à 2h\n\nou\n\nCette épicerie n\'existe pas!`}
+              placeholder={`Exemple:\n\nAlimentation générale, \n9 rue Voltaire\nOuvert du lundi au dimanche de 9h à 2h\n\nou\n\nCette épicerie n\'existe pas!`}
               numberOfLines={10}
             />
-            <Button
-              disabled={this.state.text === null ||  this.state.isLoading}
-              onPress={() => {this.createIssue(); }}
-              // underlayColor="#a9d9d4"
-              color="#178c80"
-              title="Envoyer les informations à ma position"
-            />
+            {
+              this.state.text &&
+                <Button
+                  containerStyle={{
+                    padding: 12,
+                    height: 45,
+                    marginTop: 15,
+                    overflow: 'hidden',
+                    borderRadius: 4,
+                    backgroundColor: this.state.isLoading ? '#31A69A': '#178c80'
+                  }}
+                  style={{ fontSize: 14, color: 'black' }}
+                  disabled={this.state.text === null ||  this.state.isLoading}
+                  onPress={() => {this.createIssue(); }}
+                >
+                  {
+                    this.state.isLoading
+                    ? "Envoi en cours..."
+                    : "Envoyer les informations à ma position"
+                  }
+                </Button>
+            }
           </View>
         </KeyboardAwareScrollView>
       </Modal>
