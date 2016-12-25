@@ -1,8 +1,8 @@
 /* @flow */
 import React, { Component } from 'react';
-import NavBar, { NavTitle, NavGroup, NavButton } from 'react-native-nav';
+import NavBar, { NavTitle, NavButton } from 'react-native-nav';
 import { Image, StyleSheet } from 'react-native';
-import { showModal } from '../redux/reducers';
+import { showModal } from '../redux/modules/application';
 import { connect } from 'react-redux';
 
 const plus = require('../img/plus.png');
@@ -53,6 +53,6 @@ class Nav extends Component {
         </NavBar>
     );
   }
-};
+}
 
 export default connect(undefined, ({ showModal }))(Nav);

@@ -1,7 +1,4 @@
-/**
- * @flow
- */
-import React from 'react';
+// @flow
 import { AppRegistry } from 'react-native';
 import AppContainer from './components/AppContainer';
 

@@ -7,13 +7,12 @@ import {
   PermissionsAndroid,
   Platform,
 } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
 import FirstScreen from './FirstScreen';
 import NavBar from './NavBar';
 import Map from './Map';
 import LocationInfo from './LocationInfo';
-import { firstScreenLoader } from '../redux/reducers';
-import { getAndSetCurrentLocation } from '../redux/reducers/location';
+import { startShowMapScreenTimer } from '../redux/modules/application';
+import { getAndSetCurrentLocation } from '../redux/modules/location';
 import InformationModal from './InformationModal';
 import SelectedEpicerie from './SelectedEpicerie';
 import markers from '../data.json';
@@ -22,11 +21,11 @@ class App extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    firstScreenLoader(dispatch);
+    startShowMapScreenTimer(dispatch);
     if (Platform.OS === 'android') {
       PermissionsAndroid
         .requestPermission(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
-        .then(granted => {
+        .then(() => {
           getAndSetCurrentLocation(dispatch);
         });
     } else {
@@ -41,12 +40,12 @@ class App extends Component {
         <View style={styles.container}>
           <NavBar />
           <LocationInfo enabled={locationEnabled} />
-          <InformationModal />
           <Map />
           {
             currentIndex &&
               <SelectedEpicerie epicerie={markers[currentIndex]} />
           }
+          <InformationModal />
         </View>
       );
     }
@@ -67,7 +66,7 @@ const styles = StyleSheet.create({
 export default connect(
   state => ({
     locationEnabled: state.location.enabled,
-    currentIndex: state.default.currentSelected,
-    showMap: state.default.showMap,
+    currentIndex: state.epicerie.currentSelected,
+    showMap: state.application.showMap,
   })
 )(App);

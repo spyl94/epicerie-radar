@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "lint": "node ./node_modules/eslint/bin/eslint.js .",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "postinstall": "rndebugger-open",
     "test": "jest"
@@ -12,12 +13,14 @@
     "immutable": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",
     "react": "15.3.2",
-    "react-native": "^0.36.1",
+    "react-native": "0.36.1",
+    "react-native-button": "^1.7.1",
     "react-native-config": "^0.2.0",
     "react-native-keyboard-aware-scroll-view": "^0.2.5",
     "react-native-maps": "^0.11.0",
     "react-native-nav": "^1.1.4",
     "react-native-root-modal": "^1.0.7",
+    "react-native-simple-modal": "^4.0.1",
     "react-redux": "^4.4.6",
     "redux": "^3.6.0",
     "redux-devtools-extension": "^1.0.0",
@@ -30,8 +33,12 @@
     "preset": "jest-react-native"
   },
   "devDependencies": {
+    "babel-eslint": "^7.1.1",
     "babel-jest": "16.0.0",
     "babel-preset-react-native": "1.9.0",
+    "eslint": "^3.12.2",
+    "eslint-plugin-react": "^6.8.0",
+    "eslint-plugin-react-native": "^2.2.1",
     "jest-react-native": "^16.1.0",
     "react-native-debugger-open": "^0.3.2",
     "react-test-renderer": "15.3.2",
