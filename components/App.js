@@ -55,10 +55,9 @@ class App extends Component {
 
 const styles = StyleSheet.create({
  container: {
-   flex: 1,
+   ...StyleSheet.absoluteFillObject,
    margin: 0,
    padding: 0,
-   flexDirection: 'column',
    backgroundColor: '#F5FCFF',
  },
 });
