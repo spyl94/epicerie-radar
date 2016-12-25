@@ -3151,6 +3151,23 @@
       "longitude": 2.392823
     }
   },
+  {
+      "name": "Alimentation générale",
+      "address":"28 av Gambetta, 75020 PARIS",
+      "coords":  {
+        "latitude": 48.8648923,
+        "longitude": 2.3964366,
+      },
+      "hours": {
+        "mon_close": "02:00",
+        "tue_close": "02:00",
+        "wed_close": "02:00",
+        "thu_close": "02:00",
+        "fri_close": "02:00",
+        "sat_close": "02:00",
+        "sun_close": "02:00",
+      }
+    },
 {
     "name": "CocciMarket",
     "address":"93 r Roquette, 75011 PARIS",
