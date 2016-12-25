@@ -38,7 +38,7 @@ const openingStatus = epicerie => {
   ) {
     return {
       color: '#fa3e3e',
-      text: currentHour + "Actuellement fermé" + closingHour,
+      text: 'Actuellement fermé',
     };
   }
   return {
@@ -63,7 +63,6 @@ export default class SelectedEpicerie extends Component {
             {
               openingStatus(epicerie).text
             }
-            {/* Horaire non disponible... */}
           </Text>
         </View>
       );

@@ -9,6 +9,7 @@ const plus = require('../img/plus.png');
 const logo = require('../android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png');
 const styles = StyleSheet.create({
  statusBar: {
+    zIndex: 9999,
     backgroundColor: '#fff',
  },
  navBar: {
