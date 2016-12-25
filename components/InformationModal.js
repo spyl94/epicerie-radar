@@ -2,27 +2,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  StyleSheet,
-  Text,
   TextInput,
   View,
-  Image,
-  TouchableNativeFeedback,
-  TouchableOpacity,
-  Platform,
-  Dimensions,
   Button,
   Alert,
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Config from 'react-native-config';
-import MapView, { Marker } from 'react-native-maps';
-import FirstScreen from './FirstScreen';
-import NavBar from './NavBar';
 import { hideModal } from '../redux/modules/application';
 import Modal from 'react-native-simple-modal';
-
-const { width, height } = Dimensions.get('window');
 
 class InformationModal extends Component {
   state = {

@@ -1,15 +1,9 @@
 /* @flow */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  StyleSheet,
-  Text,
-  Image,
-  View,
-  TouchableHighlight,
-} from 'react-native';
+import { StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import { select } from '../redux/reducers';
+import { select } from '../redux/modules/epicerie';
 import markers from '../data.json';
 
 const markerSelected = undefined;

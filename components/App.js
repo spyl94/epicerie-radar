@@ -7,7 +7,6 @@ import {
   PermissionsAndroid,
   Platform,
 } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
 import FirstScreen from './FirstScreen';
 import NavBar from './NavBar';
 import Map from './Map';
@@ -26,7 +25,7 @@ class App extends Component {
     if (Platform.OS === 'android') {
       PermissionsAndroid
         .requestPermission(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
-        .then(granted => {
+        .then(() => {
           getAndSetCurrentLocation(dispatch);
         });
     } else {

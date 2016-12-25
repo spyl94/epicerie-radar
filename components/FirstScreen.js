@@ -6,7 +6,6 @@ import {
   Image,
   View
 } from 'react-native';
-import NavBar from './NavBar';
 
 export default class FirstScreen extends Component {
 
@@ -20,7 +19,7 @@ export default class FirstScreen extends Component {
         </View>
     );
   }
-};
+}
 
 const styles = StyleSheet.create({
  container: {

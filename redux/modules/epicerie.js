@@ -1,6 +1,12 @@
 /* @flow */
 import markers from '../../data.json';
 
+type State = {
+  initialState: ?number,
+}
+
+type Action = Object;
+
 const initialState = {
     currentSelected: null,
 };
