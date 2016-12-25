@@ -3157,6 +3157,15 @@
     "coords":  {
       "latitude": 48.85739,
       "longitude": 2.378999
+    },
+    "hours": {
+      "mon_close": "01:00",
+      "tue_close": "01:00",
+      "wed_close": "01:00",
+      "thu_close": "01:00",
+      "fri_close": "02:00",
+      "sat_close": "02:00",
+      "sun_close": "01:00",
     }
   },
 {
