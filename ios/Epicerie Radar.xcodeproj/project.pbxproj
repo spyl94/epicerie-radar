@@ -24,6 +24,7 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		178B2729A49E4CE0A6BF2531 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 702865FF1CB244668237B223 /* libReactNativeConfig.a */; };
 		276B4863DDB248D29F3C02B5 /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EE4192D7FC4610983C0370 /* libAirMaps.a */; };
+		74D5CB511E1EC51D00106520 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB61A68108700A75B9A /* Info.plist */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 /* End PBXBuildFile section */
 
@@ -681,6 +682,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				74D5CB511E1EC51D00106520 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

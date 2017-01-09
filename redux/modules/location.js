@@ -39,20 +39,34 @@ const setLocationError = (message: string) => ({
 })
 
 export const getAndSetCurrentLocation = (dispatch: Function) => {
-    const options = {
-      enableHighAccuracy: true,
-      timeout: 5000,
-    };
 		navigator.geolocation.getCurrentPosition(
       ({ coords }) => dispatch(setInitialLocation(coords)),
       ({ message }) => dispatch(setLocationError(message)),
-      options
+      {
+        enableHighAccuracy: true,
+        timeout: 5000,
+      }
    );
-   navigator.geolocation.watchPosition(
-     ({ coords }) => dispatch(updateLocation(coords)),
-     console.log,
-     options
-   );
+   setTimeout(() => {
+     watchPosition(dispatch);
+   }, 2000);
+}
+
+let watchId = null;
+export const watchPosition = (dispatch: Function) => {
+  if (watchId) {
+    navigator.geolocation.clearWatch(watchId);
+  }
+  watchId = navigator.geolocation.watchPosition(
+    ({ coords }) => dispatch(updateLocation(coords)),
+    ({ message }) => dispatch(setLocationError(message)),
+    {
+      enableHighAccuracy: true,
+      timeout: 10000,
+      distanceFilter: 10,
+      maximumAge: 500,
+    }
+  );
 }
 
 export default function location (state: State = initialState, action: Action) {

@@ -49,7 +49,7 @@ class InformationModal extends Component {
       <Modal
         open={visible}
         closeOnTouchOutside
-        offset={0}
+        offset={-300}
         containerStyle={{
           justifyContent: 'center'
         }}
@@ -64,38 +64,36 @@ class InformationModal extends Component {
       >
         <KeyboardAwareScrollView>
           <View>
-            <Text style={{ padding: 10, fontWeight: 'bold' }}>
-              Aidez nous!
+            <Text style={{ paddingBottom: 10, fontWeight: 'bold' }}>
+              Aidez nous à améliorer l'app!
             </Text>
             <TextInput
               multiline
+              autoFocus
+              style={{ height: 300, borderColor: '#178c80', borderWidth: 1 }}
               value={this.state.text}
               onChangeText={text => this.setState({text})}
-              placeholder={`Exemple:\n\nAlimentation générale, \n9 rue Voltaire\nOuvert du lundi au dimanche de 9h à 2h\n\nou\n\nCette épicerie n\'existe pas!`}
+              placeholder={`Exemple d'infos:\n\nVoici une épicerie non référencée: Alimentation générale, \n9 rue Voltaire\nOuverte du lundi au dimanche de 9h à 2h\n\nou\n\nL'épicerie indiquée n\'existe pas!`}
               numberOfLines={10}
             />
-            {
-              this.state.text &&
-                <Button
-                  containerStyle={{
+            <Button
+              containerStyle={{
                     padding: 12,
-                    height: 45,
-                    marginTop: 15,
+                    marginTop: 10,
                     overflow: 'hidden',
                     borderRadius: 4,
                     backgroundColor: this.state.isLoading ? '#31A69A': '#178c80'
-                  }}
-                  style={{ fontSize: 14, color: 'black' }}
-                  disabled={this.state.text === null ||  this.state.isLoading}
-                  onPress={() => {this.createIssue(); }}
-                >
-                  {
-                    this.state.isLoading
-                    ? "Envoi en cours..."
-                    : "Envoyer les informations à ma position"
-                  }
-                </Button>
-            }
+              }}
+              style={{ fontSize: 12, color: 'white' }}
+              disabled={this.state.text === null ||  this.state.isLoading}
+              onPress={() => {this.createIssue(); }}
+            >
+              {
+                this.state.isLoading
+                ? "Envoi en cours..."
+                : "Envoyer avec ma position"
+              }
+            </Button>
           </View>
         </KeyboardAwareScrollView>
       </Modal>

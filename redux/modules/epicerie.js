@@ -1,5 +1,6 @@
 /* @flow */
 import markers from '../../data.json';
+import moment from 'moment';
 
 type State = {
   initialState: ?number,
@@ -15,6 +16,38 @@ export const select = (marker: Object) => ({
   type: 'SELECT',
   marker,
 })
+
+export const openingStatus = epicerie => {
+  const date = moment();
+  const currentHour = date.hours();
+  let checkingHoursOfPrevDay = false;
+  if (currentHour < 6) {
+    date.subtract(1, 'day');
+    checkingHoursOfPrevDay = true;
+  }
+  const currentDay = date.format('dddd').slice(0, 3).toLowerCase();
+  if (typeof epicerie.hours == "undefined" || !epicerie.hours[currentDay + '_close']) {
+    return {
+      color: "grey",
+      text: "Horaire non disponible..."
+    };
+  }
+  const closingHour = parseInt(epicerie.hours[currentDay + '_close'].slice(0, 2), 10);
+  if (
+       (checkingHoursOfPrevDay && currentHour > closingHour)
+    || (!checkingHoursOfPrevDay && currentHour < closingHour)
+  ) {
+    return {
+      color: '#fa3e3e',
+      text: 'Actuellement fermé',
+    };
+  }
+  return {
+    color: '#42b72a',
+    text: "Ouvert jusqu'à " + epicerie.hours[currentDay + '_close']
+  };
+}
+
 
 function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
   var R = 6371; // Radius of the earth in km
@@ -40,8 +73,13 @@ const findNearestIndex = (lat: number, long: number): number => {
   return distances.indexOf(min);
 };
 
+const INITIAL_LATITUDE = 48.853;
+const INITIAL_LONGITUDE = 2.35;
+
 export default function epiceries(state: State = initialState, action: Action) {
     switch (action.type) {
+      case 'SET_LOCATION_ERROR':
+          return {...state, 'currentSelected': findNearestIndex(INITIAL_LATITUDE, INITIAL_LONGITUDE) };
         case 'SET_INITIAL_LOCATION':
           return {...state, 'currentSelected': findNearestIndex(action.location.latitude, action.location.longitude)  };
         case 'SELECT':
