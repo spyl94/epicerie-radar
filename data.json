@@ -1,5 +1,158 @@
 [
-{
+  {
+      "name": "Kugan",
+      "address":"68 Rue du chemin vert, 75011 Paris",
+      "coords":  {
+        "latitude": 48.859894,
+        "longitude": 2.377643,
+      },
+      "hours": {
+        "mon_close": "02:00",
+        "tue_close": "02:00",
+        "wed_close": "02:00",
+        "thu_close": "02:00",
+        "fri_close": "02:00",
+        "sat_close": "02:00",
+        "sun_close": "02:00",
+      },
+  },
+  {
+      "name": "Supérette Beaumarchais",
+      "address":"61 Boulevard Beaumarchais, 75003 Paris",
+      "coords":  {
+        "latitude": 48.857791,
+        "longitude": 2.367778,
+      },
+      "hours": {
+        "mon_close": "05:00",
+        "tue_close": "05:00",
+        "wed_close": "05:00",
+        "thu_close": "05:00",
+        "fri_close": "05:00",
+        "sat_close": "05:00",
+        "sun_close": "03:00",
+      },
+  },
+  {
+      "name": "Supérette des Archives",
+      "address":"75 Rue des Archives, 75003 Paris",
+      "coords":  {
+        "latitude": 48.862969,
+        "longitude": 2.359745,
+      },
+      "hours": {
+        "mon_close": "01:00",
+        "tue_close": "01:00",
+        "wed_close": "01:00",
+        "thu_close": "01:00",
+        "fri_close": "01:00",
+        "sat_close": "01:00",
+        "sun_close": "01:00",
+      },
+  },
+  {
+      "name": "Super Market",
+      "address":"24 Rue du Faubourg du Temple, 75011 Paris",
+      "coords":  {
+        "latitude": 48.8685133,
+        "longitude": 2.366729,
+      },
+      "hours": {
+        "mon_close": "02:00",
+        "tue_close": "02:00",
+        "wed_close": "02:00",
+        "thu_close": "02:00",
+        "fri_close": "02:00",
+        "sat_close": "02:00",
+        "sun_close": "02:00",
+     },
+  },
+  {
+      "name": "Alimentation",
+      "address":"77 Rue Oberkampf, 75011 Paris",
+      "coords":  {
+        "latitude": 48.8650317,
+        "longitude": 2.3744815,
+      },
+      "hours": {
+        "mon_close": "01:00",
+        "tue_close": "01:00",
+        "wed_close": "01:00",
+        "thu_close": "02:00",
+        "fri_close": "02:00",
+        "sat_close": "02:00",
+        "sun_close": "01:00",
+     },
+  },
+  {
+      "name": "Rapid'Market",
+      "address":"65 Rue du Faubourg du Temple, 75011 Paris",
+      "coords":  {
+        "latitude": 48.8698765,
+        "longitude": 2.3705954,
+      },
+      "hours": {
+        "mon_close": "02:00",
+        "tue_close": "02:00",
+        "wed_close": "02:00",
+        "thu_close": "02:00",
+        "fri_close": "02:00",
+        "sat_close": "02:00",
+        "sun_close": "02:00",
+     },
+  },
+  {
+      "name": "Epicerie du Faubourg",
+      "address":"52 Rue du Faubourg du Temple, 75011 Paris",
+      "coords":  {
+        "latitude": 48.8698765,
+        "longitude": 2.3705954,
+      },
+      "hours": {
+        "mon_close": "02:00",
+        "tue_close": "02:00",
+        "wed_close": "02:00",
+        "thu_close": "02:00",
+        "fri_close": "02:00",
+        "sat_close": "02:00",
+        "sun_close": "02:00",
+     },
+  },
+  {
+      "name": "Casa del gelato",
+      "address":"34 Rue du Faubourg du Temple, 75011 Paris",
+      "coords":  {
+        "latitude": 48.8690439,
+        "longitude": 2.3682023,
+      },
+      "hours": {
+        "mon_close": "02:00",
+        "tue_close": "02:00",
+        "wed_close": "02:00",
+        "thu_close": "05:00",
+        "fri_close": "05:00",
+        "sat_close": "05:00",
+        "sun_close": "02:00",
+     },
+  },
+  {
+      "name": "Selah",
+      "address":"108 Avenue Parmentier, 75011 Paris",
+      "coords":  {
+        "latitude": 48.867077,
+        "longitude": 2.373396,
+      },
+      "hours": {
+        "mon_close": "02:00",
+        "tue_close": "02:00",
+        "wed_close": "02:00",
+        "thu_close": "02:00",
+        "fri_close": "02:00",
+        "sat_close": "02:00",
+        "sun_close": "02:00",
+     },
+  },
+  {
     "name": "BELLEVILLE DAS PAVAL ALIMENTATION GÉNÉRALE",
     "address":" 71 r Belleville, 75019 PARIS",
     "coords":  {
@@ -1776,11 +1929,20 @@
     }
   },
 {
-    "name": "Proxi Carthage",
-    "address":"20 r St Ambroise, 75011 PARIS",
+    "name": "Proxi",
+    "address":"20 Rue Saint-Ambroise, 75011 Paris",
     "coords":  {
       "latitude": 48.862444,
       "longitude": 2.378293
+    },
+    "hours": {
+      "mon_close": "00:00",
+      "tue_close": "00:00",
+      "wed_close": "00:00",
+      "thu_close": "00:00",
+      "fri_close": "00:00",
+      "sat_close": "00:00",
+      "sun_close": "00:00",
     }
   },
 {
@@ -2871,12 +3033,55 @@
       "longitude": 2.372419
     }
   },
-{
+  {
+      "name": "Epicerie Fine - Cave à vins",
+      "address":"5 rue Pétion, 75011 Paris",
+      "coords":  {
+        "latitude": 48.8585103,
+        "longitude": 2.3817135,
+      },
+      "hours": {
+        "mon_close": "00:00",
+        "tue_close": "00:00",
+        "wed_close": "00:00",
+        "thu_close": "00:00",
+        "fri_close": "00:00",
+        "sat_close": "00:00",
+        "sun_close": "00:00",
+      }
+    },
+    {
+      "name": "Epicerie",
+      "address": "108 Avenue Parmentier, 75011 Paris",
+      "coords":  {
+        "latitude": 48.8669694,
+        "longitude": 2.3732784,
+      },
+      "hours": {
+        "mon_close": "02:00",
+        "tue_close": "02:00",
+        "wed_close": "02:00",
+        "thu_close": "02:00",
+        "fri_close": "02:00",
+        "sat_close": "02:00",
+        "sun_close": "02:00",
+      },
+    },
+    {
     "name": "Balbali Jemmal",
-    "address":"44 av Parmentier, 75011 PARIS",
+    "address":"44 Avenue Parmentier, 75011 Paris",
     "coords":  {
       "latitude": 48.861655,
       "longitude": 2.377628
+    },
+    "hours": {
+      "mon_close": "00:00",
+      "tue_close": "00:00",
+      "wed_close": "00:00",
+      "thu_close": "00:00",
+      "fri_close": "00:00",
+      "sat_close": "00:00",
+      "sun_close": "00:00",
     }
   },
 {
@@ -2928,11 +3133,20 @@
     }
   },
 {
-    "name": "BALA (SARL)",
-    "address":"47 r St Maur, 75011 PARIS",
-    "coords":  {
+    "name": "Alimentation generale",
+    "address":"47 Rue Saint-Maur, 75011 PARIS",
+    "coords": {
       "latitude": 48.861858,
       "longitude": 2.380278
+    },
+    "hours": {
+      "mon_close": "01:00",
+      "tue_close": "01:00",
+      "wed_close": "01:00",
+      "thu_close": "01:00",
+      "fri_close": "02:00",
+      "sat_close": "02:00",
+      "sun_close": "01:00",
     }
   },
 {
