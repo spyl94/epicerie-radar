@@ -40,7 +40,11 @@ class InformationModal extends Component {
       this.setState({ text: null, isLoading: false });
       hideModal();
     })
-    .catch(console.error);
+    .catch(() => {
+      Alert.alert('Un problème est survenu', 'Essayez à nouveau.');
+      this.setState({ isLoading: false });
+      hideModal();
+    });
   }
 
   render(): React.Element<any> {
