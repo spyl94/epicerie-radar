@@ -12,6 +12,32 @@ const initialState = {
     currentSelected: null,
 };
 
+const markerUnknown = require('../../img/marker_unknown_full.png');
+const markerOpen = require('../../img/marker_open_full.png');
+const markerClose = require('../../img/marker_close_full.png');
+const markerUnknownSelected = require('../../img/marker_unknown.png');
+const markerOpenSelected = require('../../img/marker_open.png');
+const markerCloseSelected = require('../../img/marker_close.png');
+
+export const getMarkerImage = (type: string, isSelected: boolean) => {
+  if (type === "open") {
+    if (isSelected) {
+      return markerOpenSelected;
+    }
+    return markerOpen;
+  }
+  if (type === "close") {
+    if (isSelected) {
+      return markerCloseSelected;
+    }
+    return markerClose;
+  }
+  if (isSelected) {
+    return markerUnknownSelected;
+  }
+  return markerUnknown;
+};
+
 export const select = (marker: Object) => ({
   type: 'SELECT',
   marker,
@@ -29,6 +55,7 @@ export const openingStatus = epicerie => {
   if (typeof epicerie.hours == "undefined" || !epicerie.hours[currentDay + '_close']) {
     return {
       color: "grey",
+      type: "unknown",
       text: "Horaire non disponible..."
     };
   }
@@ -39,11 +66,13 @@ export const openingStatus = epicerie => {
   ) {
     return {
       color: '#fa3e3e',
+      type: "close",
       text: 'Actuellement fermé',
     };
   }
   return {
     color: '#42b72a',
+    type: "open",
     text: "Ouvert jusqu'à " + epicerie.hours[currentDay + '_close']
   };
 }

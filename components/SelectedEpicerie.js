@@ -4,8 +4,9 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
 } from 'react-native';
-import { openingStatus } from '../redux/modules/epicerie';
+import { openingStatus, getMarkerImage } from '../redux/modules/epicerie';
 const styles = StyleSheet.create({
   selectedEpicerie: {
      margin: 0,
@@ -19,6 +20,7 @@ export default class SelectedEpicerie extends Component {
 
   render(): React.Element<any> {
     const { epicerie } = this.props;
+    const status = openingStatus(epicerie);
     return (
         <View style={styles.selectedEpicerie}>
           <Text style={{ fontWeight: 'bold' }}>
@@ -27,9 +29,10 @@ export default class SelectedEpicerie extends Component {
           <Text>
             {epicerie.address}
           </Text>
-          <Text style={{ paddingTop: 10, color: openingStatus(epicerie).color }}>
+          <Text style={{ paddingTop: 10, color: status.color }}>
+            {/* <Image style={{ margin: -10 }} source={getMarkerImage(status.type, true)} /> */}
             {
-              openingStatus(epicerie).text
+              status.text
             }
           </Text>
         </View>

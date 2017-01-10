@@ -47,9 +47,7 @@ export const getAndSetCurrentLocation = (dispatch: Function) => {
         timeout: 5000,
       }
    );
-   setTimeout(() => {
-     watchPosition(dispatch);
-   }, 2000);
+   watchPosition(dispatch);
 }
 
 let watchId = null;
