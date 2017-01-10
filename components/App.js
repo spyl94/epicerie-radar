@@ -24,7 +24,7 @@ class App extends Component {
     startShowMapScreenTimer(dispatch);
     if (Platform.OS === 'android') {
       PermissionsAndroid
-        .requestPermission(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
+        .request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
         .then(() => {
           getAndSetCurrentLocation(dispatch);
         });

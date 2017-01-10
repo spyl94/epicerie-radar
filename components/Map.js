@@ -5,10 +5,7 @@ import { StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { select } from '../redux/modules/epicerie';
 import markers from '../data.json';
-import { openingStatus } from '../redux/modules/epicerie';
-
-// const markerSelected = undefined;
-// const markerImage = require('../img/beer-marker.png');
+import { openingStatus, getMarkerImage } from '../redux/modules/epicerie';
 
 class Map extends Component {
 
@@ -20,24 +17,19 @@ class Map extends Component {
           showsUserLocation
           followsUserLocation
           moveOnMarkerPress
+          pitchEnabled={false}
           initialRegion={initialRegion}
         >
           {
             markers.map((marker, key) =>
               <Marker
                 key={key}
-                onPress={() => { select(key); }}
+                onPress={() => { select(key) }}
                 coordinate={marker.coords}
-                pinColor={
+                image={getMarkerImage(
+                  openingStatus(marker).type,
                   currentIndex === key
-                  ? '#178c80'
-                  : openingStatus(marker).color
-                }
-                // image={
-                //   currentIndex === key
-                //   ? markerSelected
-                //   : markerImage
-                // }
+                )}
               />
             )
           }
