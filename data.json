@@ -3438,5 +3438,117 @@
       "latitude": 48.825751,
       "longitude": 2.357055
     }
+  },
+{
+    "name": "Alimentation Parisienne",
+    "address":"7 rue du Dr Tuffier, 75013 Paris",
+    "coords":  {
+      "latitude": 48.82227833333333,
+      "longitude": 2.3543133333333337,
+    }
+  },
+{
+    "name": "Alimentation générale",
+    "address":"270 Rue du Maréchal Leclerc, 94410 Saint-Maurice",
+    "coords":  {
+      "latitude": 48.815257,
+      "longitude": 2.461020
+    }
+  },
+{
+    "name": "Le Verger Du Marais",
+    "address":"3 Rue de Bretagne, 75003 Paris",
+    "coords":  {
+      "latitude": 48.862053,
+      "longitude": 2.364008
+    }
+  },
+{
+    "name": "Epicerie De La Rue De Bretagne",
+    "address":"63 Rue de Bretagne, 75003 Paris",
+    "coords":  {
+      "latitude": 48.864147,
+      "longitude": 2.360313
+    }
+  },
+{
+    "name": "Epicerie Turbigo",
+    "address":"60 rue Turbigo, 75003 Paris",
+    "coords":  {
+      "latitude": 48.865955,
+      "longitude": 2.358489
+    }
+  },
+{
+    "name": "Alimentation Générale",
+    "address":"44 Rue Madeleine Michelis, 92200 Neuilly-sur-Seine",
+    "coords":  {
+      "latitude": 48.883862,
+      "longitude": 2.278052
+    }
+  }, 
+{
+    "name": "Alimentation Générale",
+    "address":"31 Boulevard Garibaldi, 75015 Paris",
+    "coords":  {
+      "latitude": 48.846990,
+      "longitude": 2.305625
+    }
+  },
+{
+    "name": "Les Halles de Minuit",
+    "address":"17 Boulevard Maurice Berteaux, 94100 Saint-Maur-des-Fossése",
+    "coords":  {
+      "latitude": 48.810255,
+      "longitude": 2.470870
+    }
+  },
+{
+    "name": "Alimentation Générale",
+    "address":"6 Rue de Paris, 94340 Joinville-le-Pont",
+    "coords":  {
+      "latitude": 48.819461,
+      "longitude": 2.464485
+    }
+  },
+{
+    "name": "Epicerie Fine Guerfal",
+    "address":"2 Rue Jacques Cœur, 75004 Paris",
+    "coords":  {
+      "latitude": 48.851969,
+      "longitude": 2.367190
+    }
+  },
+{
+    "name": "Primeurs du Louvre",
+    "address":"58 Rue de l'Arbre Sec, 75001 Paris",
+    "coords":  {
+      "latitude": 48.861131,
+      "longitude": 2.342600
+    }
+  },  
+{
+    "name": "Bomo",
+    "address":"82 Rue Saint Honoré, 75001 Paris",
+    "coords":  {
+      "latitude": 48.861438,
+      "longitude": 2.342856
+    }
+  }, 
+{
+    "name": "Alimentation Gle Julien",
+    "address":"59 Rue du Faubourg Saint-Denis, 75010 Paris",
+    "coords":  {
+      "latitude": 48.872016,
+      "longitude": 2.353775
+    }
+  }, 
+{
+    "name": "Alimentation Générale",
+    "address":"66 Rue du Faubourg Saint-Denis, 75010 Paris",
+    "coords":  {
+      "latitude": 48.872621,
+      "longitude": 2.354402
+    }
   }
 ]
