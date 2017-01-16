@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
 export default connect(
   state => ({
     locationEnabled: state.location.enabled,
-    currentIndex: state.epicerie.currentSelected,
     showMap: state.application.showMap,
   })
 )(App);
