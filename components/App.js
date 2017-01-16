@@ -15,7 +15,6 @@ import { startShowMapScreenTimer } from '../redux/modules/application';
 import { getAndSetCurrentLocation } from '../redux/modules/location';
 import InformationModal from './InformationModal';
 import SelectedEpicerie from './SelectedEpicerie';
-import markers from '../data.json';
 
 class App extends Component {
 
@@ -34,17 +33,14 @@ class App extends Component {
   }
 
   render(): React.Element<any> {
-    const { showMap, locationEnabled, currentIndex } = this.props;
+    const { showMap, locationEnabled } = this.props;
     if (showMap) {
       return (
         <View style={styles.container}>
           <NavBar />
           <LocationInfo enabled={locationEnabled} />
           <Map />
-          {
-            currentIndex &&
-              <SelectedEpicerie epicerie={markers[currentIndex]} />
-          }
+          <SelectedEpicerie />
           <InformationModal />
         </View>
       );

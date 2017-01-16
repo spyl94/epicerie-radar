@@ -1,47 +1,6 @@
 /* @flow */
-import markers from '../../data.json';
+import data from '../../data.json';
 import moment from 'moment';
-
-type State = {
-  initialState: ?number,
-}
-
-type Action = Object;
-
-const initialState = {
-    currentSelected: null,
-};
-
-const markerUnknown = require('../../img/marker_unknown_full.png');
-const markerOpen = require('../../img/marker_open_full.png');
-const markerClose = require('../../img/marker_close_full.png');
-const markerUnknownSelected = require('../../img/marker_unknown.png');
-const markerOpenSelected = require('../../img/marker_open.png');
-const markerCloseSelected = require('../../img/marker_close.png');
-
-export const getMarkerImage = (type: string, isSelected: boolean) => {
-  if (type === "open") {
-    if (isSelected) {
-      return markerOpenSelected;
-    }
-    return markerOpen;
-  }
-  if (type === "close") {
-    if (isSelected) {
-      return markerCloseSelected;
-    }
-    return markerClose;
-  }
-  if (isSelected) {
-    return markerUnknownSelected;
-  }
-  return markerUnknown;
-};
-
-export const select = (marker: Object) => ({
-  type: 'SELECT',
-  marker,
-})
 
 export const openingStatus = epicerie => {
   const date = moment();
@@ -76,6 +35,55 @@ export const openingStatus = epicerie => {
     text: "Ouvert jusqu'à " + epicerie.hours[currentDay + '_close']
   };
 }
+
+type State = {
+  currentSelected: Object,
+}
+
+type Action = Object;
+
+const markers = [];
+for (const epicerie of data) {
+  markers.push({ ...epicerie, ...openingStatus(epicerie) });
+}
+
+const initialState = {
+    currentSelected: null,
+    markers: markers,
+};
+
+const markerUnknown = require('../../img/marker_unknown_full.png');
+const markerOpen = require('../../img/marker_open_full.png');
+const markerClose = require('../../img/marker_close_full.png');
+const markerUnknownSelected = require('../../img/marker_unknown.png');
+const markerOpenSelected = require('../../img/marker_open.png');
+const markerCloseSelected = require('../../img/marker_close.png');
+
+export const getMarkerImage = (type: string, isSelected: boolean) => {
+  if (type === "open") {
+    if (isSelected) {
+      return markerOpenSelected;
+    }
+    return markerOpen;
+  }
+  if (type === "close") {
+    if (isSelected) {
+      return markerCloseSelected;
+    }
+    return markerClose;
+  }
+  if (isSelected) {
+    return markerUnknownSelected;
+  }
+  return markerUnknown;
+};
+
+export const select = (marker: Object) => ({
+  type: 'SELECT',
+  marker,
+})
+
+
 
 
 function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
