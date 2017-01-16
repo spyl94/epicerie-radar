@@ -26,6 +26,7 @@ class Map extends Component {
                 key={key}
                 onPress={() => { select(key) }}
                 coordinate={marker.coords}
+                anchor={{x: 0.5, y: 0.5}}
                 image={getMarkerImage(
                   openingStatus(marker).type,
                   currentIndex === key
