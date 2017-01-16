@@ -4,13 +4,12 @@ import { connect } from 'react-redux';
 import { StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { select } from '../redux/modules/epicerie';
-import markers from '../data.json';
-import { openingStatus, getMarkerImage } from '../redux/modules/epicerie';
+import { getMarkerImage } from '../redux/modules/epicerie';
 
 class Map extends Component {
 
   render(): React.Element<any> {
-    const { initialRegion, currentIndex, select } = this.props;
+    const { markers, initialRegion, currentIndex, select } = this.props;
     return (
         <MapView
           style={styles.map}
@@ -26,10 +25,8 @@ class Map extends Component {
                 key={key}
                 onPress={() => { select(key) }}
                 coordinate={marker.coords}
-                image={getMarkerImage(
-                  openingStatus(marker).type,
-                  currentIndex === key
-                )}
+                anchor={{x: 0.5, y: 0.5}}
+                image={getMarkerImage(marker.type, currentIndex === key)}
               />
             )
           }
@@ -49,6 +46,7 @@ export default connect(
   state => ({
     initialRegion: state.location.initialRegion,
     currentIndex: state.epicerie.currentSelected,
+    markers: state.epicerie.markers,
   }),
   ({ select })
 )(Map);
