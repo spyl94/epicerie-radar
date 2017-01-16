@@ -79,6 +79,8 @@ class InformationModal extends Component {
               onChangeText={text => this.setState({text})}
               placeholder={`Exemple d'infos:\n\nVoici une épicerie non référencée: Alimentation générale, \n9 rue Voltaire\nOuverte du lundi au dimanche de 9h à 2h\n\nou\n\nL'épicerie indiquée n\'existe pas!`}
               numberOfLines={10}
+              blurOnSubmit={false}
+              returnKeyType="done"
             />
             <Button
               containerStyle={{
