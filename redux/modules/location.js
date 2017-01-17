@@ -1,24 +1,26 @@
 /* @flow */
+type Region = {
+  latitude: Number,
+  longitude: Number,
+  latitudeDelta: Number,
+  longitudeDelta: Number,
+}
+
 type State = {
   location: Object,
   enabled: ?boolean,
-  initialRegion: Object,
+  region: Region,
 }
 
 type Action = Object;
 
-const INITIAL_LATITUDE = 48.853;
-const INITIAL_LONGITUDE = 2.35;
-const LATITUDE_DELTA = 0.015;
-const LONGITUDE_DELTA = 0.0121;
-
 const initialState: State = {
   location: {},
-  initialRegion: {
-    latitude: INITIAL_LATITUDE,
-    longitude: INITIAL_LONGITUDE,
-    latitudeDelta: LATITUDE_DELTA,
-    longitudeDelta: LONGITUDE_DELTA,
+  region: {
+    latitude: 48.853,
+    longitude: 2.35,
+    latitudeDelta: 0.015,
+    longitudeDelta: 0.0121,
   },
   enabled: undefined,
 }
@@ -27,6 +29,11 @@ const setInitialLocation = (location: Object) => ({
   type: 'SET_INITIAL_LOCATION',
   location,
 })
+
+export const updateRegion = (region: Region) => ({
+  type: 'UPDATE_REGION',
+  region,
+});
 
 const updateLocation = (location: Object) => ({
   type: 'UPDATE_LOCATION',
@@ -50,34 +57,30 @@ export const getAndSetCurrentLocation = (dispatch: Function) => {
    watchPosition(dispatch);
 }
 
-let watchId = null;
 export const watchPosition = (dispatch: Function) => {
-  if (watchId) {
-    navigator.geolocation.clearWatch(watchId);
-  }
-  watchId = navigator.geolocation.watchPosition(
+  navigator.geolocation.watchPosition(
     ({ coords }) => dispatch(updateLocation(coords)),
     ({ message }) => dispatch(setLocationError(message)),
     {
       enableHighAccuracy: true,
       timeout: 10000,
-      distanceFilter: 10,
-      maximumAge: 500,
+      // distanceFilter: 10,
+      // maximumAge: 500,
     }
   );
 }
 
 export default function location (state: State = initialState, action: Action) {
   switch (action.type) {
-    case 'SET_REGION':
+    case 'UPDATE_REGION':
       return { ...state, region: action.region };
     case 'SET_INITIAL_LOCATION':
-      const initialRegion = {
-        ...state.initialRegion,
+      const region = {
+        ...state.region,
         longitude: action.location.longitude,
         latitude: action.location.latitude,
       };
-      return { ...state, location: action.location, enabled: true, initialRegion };
+      return { ...state, location: action.location, enabled: true, region };
     case 'UPDATE_LOCATION':
       return { ...state, location: action.location, enabled: true };
     case 'SET_LOCATION_ERROR':

@@ -1,5 +1,10 @@
 /* @flow */
-const initialState = {
+type State = {
+  modalVisible: boolean,
+  showMap: boolean,
+};
+
+const initialState : State = {
     modalVisible: false,
     showMap: false,
 };
@@ -18,7 +23,7 @@ export const hideModal = () => ({
   type: 'HIDE_MODAL',
 })
 
-export default function application(state = initialState, action) {
+export default function application(state : State = initialState, action : Object) {
     switch (action.type) {
         case 'SET_INITIAL_LOCATION':
           return {...state, 'showMap': true };
