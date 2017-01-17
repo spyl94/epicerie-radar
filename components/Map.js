@@ -3,13 +3,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import { select } from '../redux/modules/epicerie';
-import { getMarkerImage } from '../redux/modules/epicerie';
+import { select, getMarkerImage } from '../redux/modules/epicerie';
+import { updateRegion } from '../redux/modules/location';
 
 class Map extends Component {
 
   render(): React.Element<any> {
-    const { markers, initialRegion, currentIndex, select } = this.props;
+    const { markers, updateRegion, region, currentIndex, select } = this.props;
     return (
         <MapView
           style={styles.map}
@@ -17,7 +17,11 @@ class Map extends Component {
           followsUserLocation
           moveOnMarkerPress
           pitchEnabled={false}
-          initialRegion={initialRegion}
+          rotateEnabled={false}
+          region={region}
+          onRegionChangeComplete={region => {
+            updateRegion(region)
+          }}
         >
           {
             markers.map((marker, key) =>
@@ -44,9 +48,9 @@ const styles = StyleSheet.create({
 
 export default connect(
   state => ({
-    initialRegion: state.location.initialRegion,
+    region: state.location.region,
     currentIndex: state.epicerie.currentSelected,
     markers: state.epicerie.markers,
   }),
-  ({ select })
+  ({ select, updateRegion })
 )(Map);
