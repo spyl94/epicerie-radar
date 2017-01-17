@@ -3482,7 +3482,7 @@
       "latitude": 48.883862,
       "longitude": 2.278052
     }
-  }, 
+  },
 {
     "name": "Alimentation Générale",
     "address":"31 Boulevard Garibaldi, 75015 Paris",
@@ -3531,7 +3531,7 @@
       "sat_close": "01:00",
       "sun_close": "01:00",
     }
-  },  
+  },
 {
     "name": "Bomo",
     "address":"82 Rue Saint Honoré, 75001 Paris",
@@ -3548,7 +3548,7 @@
       "sat_close": "00:00",
       "sun_close": "00:00",
     }
-  }, 
+  },
 {
     "name": "Alimentation Gle Julien",
     "address":"59 Rue du Faubourg Saint-Denis, 75010 Paris",
@@ -3556,7 +3556,7 @@
       "latitude": 48.872016,
       "longitude": 2.353775
     }
-  }, 
+  },
 {
     "name": "Alimentation Générale",
     "address":"66 Rue du Faubourg Saint-Denis, 75010 Paris",
