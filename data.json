@@ -470,6 +470,15 @@
     "coords":  {
       "latitude": 48.859741,
       "longitude": 2.346473
+    },
+    "hours": {
+      "mon_close": "00:00",
+      "tue_close": "00:00",
+      "wed_close": "00:00",
+      "thu_close": "00:00",
+      "fri_close": "00:00",
+      "sat_close": "00:00",
+      "sun_close": "00:00",
     }
   },
 {
@@ -897,14 +906,6 @@
     }
   },
 {
-    "name": "Tieu Seng Meng",
-    "address":"13 r Rameau, 75002 PARIS",
-    "coords":  {
-      "latitude": 48.867939,
-      "longitude": 2.336533
-    }
-  },
-{
     "name": "Bakla Elhoucen",
     "address":"13 r Rochechouart, 75009 PARIS",
     "coords":  {
@@ -958,6 +959,15 @@
     "coords":  {
       "latitude": 48.864984,
       "longitude": 2.350454
+    },
+    "hours": {
+      "mon_close": "02:00",
+      "tue_close": "02:00",
+      "wed_close": "02:00",
+      "thu_close": "02:00",
+      "fri_close": "02:00",
+      "sat_close": "02:00",
+      "sun_close": "02:00",
     }
   },
 {
@@ -1062,14 +1072,6 @@
     "coords":  {
       "latitude": 48.866553,
       "longitude": 2.383955
-    }
-  },
-{
-    "name": "Hadji Constantinou",
-    "address":"142 r St Honoré, 75001 PARIS",
-    "coords":  {
-      "latitude": 48.86192,
-      "longitude": 2.340549
     }
   },
 {
@@ -2922,14 +2924,6 @@
     }
   },
 {
-    "name": "Cocci Market Au P'tit Marché Commerçant Indépendant",
-    "address":"39 r Coquillière, 75001 PARIS",
-    "coords":  {
-      "latitude": 48.864428,
-      "longitude": 2.340749
-    }
-  },
-{
     "name": "Eurolanka",
     "address":"39 r Crimée, 75019 PARIS",
     "coords":  {
@@ -3117,14 +3111,6 @@
     }
   },
 {
-    "name": "Richelieu Alimentation (SARL)",
-    "address":"46 r Richelieu, 75001 PARIS",
-    "coords":  {
-      "latitude": 48.866441,
-      "longitude": 2.337112
-    }
-  },
-{
     "name": "Adam",
     "address":"47 r Monsieur le Prince, 75006 PARIS",
     "coords":  {
@@ -3251,14 +3237,6 @@
     "coords":  {
       "latitude": 48.859674,
       "longitude": 2.368261
-    }
-  },
-{
-    "name": "Cocci Market",
-    "address":"59 r Montmartre, 75002PARIS",
-    "coords":  {
-      "latitude": 48.866148,
-      "longitude": 2.34438
     }
   },
 {
@@ -3416,11 +3394,20 @@
     }
   },
 {
-    "name": "Teisseire (SARL)",
+    "name": "Super Market",
     "address":"141 r St Denis, 75002 PARIS",
     "coords":  {
       "latitude": 48.864486,
       "longitude": 2.350097
+    },
+    "hours": {
+      "mon_close": "01:00",
+      "tue_close": "01:00",
+      "wed_close": "01:00",
+      "thu_close": "01:00",
+      "fri_close": "01:00",
+      "sat_close": "02:00",
+      "sun_close": "02:00",
     }
   },
 {
@@ -3445,6 +3432,15 @@
     "coords":  {
       "latitude": 48.82227833333333,
       "longitude": 2.3543133333333337,
+    },
+    "hours": {
+      "mon_close": "23:00",
+      "tue_close": "23:00",
+      "wed_close": "23:00",
+      "thu_close": "23:00",
+      "fri_close": "23:00",
+      "sat_close": "23:00",
+      "sun_close": "23:00",
     }
   },
 {
@@ -3525,6 +3521,15 @@
     "coords":  {
       "latitude": 48.861131,
       "longitude": 2.342600
+    },
+    "hours": {
+      "mon_close": "01:00",
+      "tue_close": "01:00",
+      "wed_close": "01:00",
+      "thu_close": "01:00",
+      "fri_close": "01:00",
+      "sat_close": "01:00",
+      "sun_close": "01:00",
     }
   },  
 {
@@ -3533,6 +3538,15 @@
     "coords":  {
       "latitude": 48.861438,
       "longitude": 2.342856
+    },
+    "hours": {
+      "mon_close": "00:00",
+      "tue_close": "00:00",
+      "wed_close": "00:00",
+      "thu_close": "00:00",
+      "fri_close": "00:00",
+      "sat_close": "00:00",
+      "sun_close": "00:00",
     }
   }, 
 {
@@ -3557,6 +3571,64 @@
     "coords":  {
       "latitude": 48.860934,
       "longitude": 2.354073,
+    }
+  },
+{
+    "name": "Êpi",
+    "address":"63 Boulevards des Maréchaux, 75013 Paris",
+    "coords":  {
+      "latitude": 48.820725,
+      "longitude": 2.350665
+    }
+  },
+{
+    "name": "Fruits et légumes",
+    "address":"2 Rue de Malte, 75011 Paris",
+    "coords":  {
+      "latitude": 48.863524,
+      "longitude": 2.369252
+    }
+  },
+{
+    "name": "Proxi",
+    "address":"88 Rue de Turenne, 75003 Paris",
+    "coords":  {
+      "latitude": 48.861415,
+      "longitude": 2.364709
+    }
+  },
+{
+    "name": "Opéra Market",
+    "address":"29 Rue des Petits Champs, 75001 PARIS",
+    "coords": {
+      "latitude": 48.866710,
+      "longitude": 2.336924
+    },
+    "hours": {
+      "mon_close": "00:00",
+      "tue_close": "00:00",
+      "wed_close": "00:00",
+      "thu_close": "00:00",
+      "fri_close": "00:00",
+      "sat_close": "00:00",
+      "sun_close": "00:00",
+    }
+  },
+{
+    "name": "Le petit marché superette",
+    "address":"171 Rue St Denis, 75002 Paris",
+    "coords": {
+      "latitude": 48.865377,
+      "longitude": 2.350377
+    },
+    "hours": {
+      "mon_close": "01:00",
+      "tue_close": "01:00",
+      "wed_close": "01:00",
+      "thu_close": "01:00",
+      "fri_close": "01:00",
+      "sat_close": "02:00",
+      "sun_close": "02:00",
     }
   }
 ]
