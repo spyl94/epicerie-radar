@@ -1,7 +1,7 @@
 # Epicerie Radar
 
 Une application open-source qui référence les épiceries ouvertes autour de toi!
-Elle est disponible sur [Android](epicerie-radar.fr/android) et [iOS](epicerie-radar.fr/ios).
+Elle est disponible sur [Android](https://epicerie-radar.fr/android) et [iOS](https://epicerie-radar.fr/ios).
 
 ### For developers/contributors
 
