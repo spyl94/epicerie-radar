@@ -1,24 +1,25 @@
-/* @flow */
 import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
   View,
+  Button,
 } from 'react-native';
 import { connect } from 'react-redux';
+import { reportNotExisting } from '../redux/modules/epicerie'
+
 const styles = StyleSheet.create({
   selectedEpicerie: {
      margin: 0,
-     height: 100,
-     paddingTop: 15,
-     paddingLeft: 15,
+     height: 120,
+     padding: 10,
   },
 });
 
 class SelectedEpicerie extends Component {
 
   render(): React.Element<any> {
-    const { epicerie } = this.props;
+    const { isReporting, epicerie, dispatch } = this.props;
     if (!epicerie) {
       return <View />;
     }
@@ -32,9 +33,16 @@ class SelectedEpicerie extends Component {
           </Text>
           <Text style={{ paddingTop: 10, color: epicerie.color }}>
             {
-              epicerie.text
+                epicerie.text
             }
           </Text>
+          <Button
+            onPress={() => { reportNotExisting(dispatch, epicerie) }}
+            title={isReporting ? 'Signalement en cours...' : 'Signaler fermeture définitive'}
+            color={isReporting ? '#31A69A': '#178c80'}
+            style={{ marginTop: 10 }}
+          />
+
         </View>
       );
     }
@@ -43,5 +51,6 @@ class SelectedEpicerie extends Component {
 export default connect(
   state => ({
     epicerie: state.epicerie.markers[state.epicerie.currentSelected],
+    isReporting: state.epicerie.isReporting,
   })
 )(SelectedEpicerie);

@@ -1,6 +1,25 @@
-/* @flow */
 import data from '../../data.json';
 import moment from 'moment';
+import Fetcher from '../../services/Fetcher'
+import { Alert } from 'react-native'
+
+export const reportNotExisting = (dispatch, epicerie) => {
+    const body = {
+      title: 'Un utilisateur vient de signaler une fermeture définitive.',
+      body: `Epicerie: ${JSON.stringify(epicerie)}`,
+    };
+    dispatch({type: 'REPORTING'});
+    Fetcher
+    .post('/issues', body)
+    .then(() => {
+      Alert.alert('Merci pour votre aide!', 'Nous traitons votre message et on ajoute les données à la prochaine mise à jour!');
+      dispatch({type: 'STOP_REPORTING'});
+    })
+    .catch(() => {
+      dispatch({type: 'STOP_REPORTING'});
+      Alert.alert('Un problème est survenu', 'Essayez à nouveau.');
+    });
+}
 
 export const openingStatus = epicerie => {
   const date = moment();
@@ -50,6 +69,7 @@ for (const epicerie of data) {
 const initialState = {
     currentSelected: null,
     markers: markers,
+    isReporting: false,
 };
 
 const markerUnknown = require('../../img/marker_unknown_full.png');
@@ -121,6 +141,10 @@ export default function epiceries(state: State = initialState, action: Action) {
           return {...state, 'currentSelected': findNearestIndex(action.location.latitude, action.location.longitude)  };
         case 'SELECT':
           return {...state, 'currentSelected': action.marker };
+        case  'REPORTING':
+          return {...state, isReporting: true };
+        case  'STOP_REPORTING':
+          return {...state, isReporting: false };
         default:
             return state;
     }

@@ -73,7 +73,10 @@ export const watchPosition = (dispatch: Function) => {
 export default function location (state: State = initialState, action: Action) {
   switch (action.type) {
     case 'UPDATE_REGION':
-      return { ...state, region: action.region };
+        if (action.region.longitudeDelta < 100 && action.region.latitudeDelta && action.region.longitude != 0) {
+          return { ...state, region: action.region };
+        }
+        return state;
     case 'SET_INITIAL_LOCATION':
       const region = {
         ...state.region,
