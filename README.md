@@ -6,8 +6,15 @@ Elle est disponible sur [Android](https://epicerie-radar.fr/android) et [iOS](ht
 ### For developers/contributors
 
 Feel free to contribute!
-
 For developing I'm using an Android emulator: [Genymotion](https://www.genymotion.com/).
+
+### Installation
+```
+git clone git@github.com:spyl94/epicerie-radar.git
+cd epicerie-radar
+yarn install # Install deps 
+react-native run-android # Launch the app on the emulator
+```
 
 ### How to release a new version
 
