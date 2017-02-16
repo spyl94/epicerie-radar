@@ -1,6 +1,7 @@
 /* @flow */
 import React, { Component } from 'react';
-// import { startShowMapScreenTimer } from '../redux/modules/application';
+import { connect } from 'react-redux';
+import { startShowMapScreenTimer } from '../redux/modules/application';
 import {
   StyleSheet,
   Text,
@@ -8,9 +9,10 @@ import {
   View
 } from 'react-native';
 
-export default class LaunchScreen extends Component {
+class LaunchScreen extends Component {
 
   render() {
+    startShowMapScreenTimer(this.props.dispatch);
     return (
         <View style={styles.loadingScreen}>
           <Image style={styles.logo} source={require('../img/logo.png')} />
@@ -21,6 +23,8 @@ export default class LaunchScreen extends Component {
     );
   }
 }
+
+export default connect()(LaunchScreen)
 
 const styles = StyleSheet.create({
  container: {
