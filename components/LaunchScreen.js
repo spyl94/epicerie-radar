@@ -1,5 +1,6 @@
 /* @flow */
 import React, { Component } from 'react';
+// import { startShowMapScreenTimer } from '../redux/modules/application';
 import {
   StyleSheet,
   Text,
@@ -7,9 +8,9 @@ import {
   View
 } from 'react-native';
 
-export default class FirstScreen extends Component {
+export default class LaunchScreen extends Component {
 
-  render(): React.Element<any> {
+  render() {
     return (
         <View style={styles.loadingScreen}>
           <Image style={styles.logo} source={require('../img/logo.png')} />

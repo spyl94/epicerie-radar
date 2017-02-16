@@ -1,66 +1,24 @@
-/* @flow */
+// @flow
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import {
-  StyleSheet,
-  View,
-  PermissionsAndroid,
-  Platform,
-} from 'react-native';
-import FirstScreen from './FirstScreen';
-import NavBar from './NavBar';
-import Map from './Map';
-import LocationInfo from './LocationInfo';
-import { startShowMapScreenTimer } from '../redux/modules/application';
-import { getAndSetCurrentLocation } from '../redux/modules/location';
-import InformationModal from './InformationModal';
-import SelectedEpicerie from './SelectedEpicerie';
+import { connect, Provider } from 'react-redux';
+import { addNavigationHelpers } from 'react-navigation';
+import configureStore from '../redux/store';
+import AppNavigator from './AppNavigator';
 
-class App extends Component {
+const AppWithNavigationState = connect(state => ({
+  nav: state.nav,
+}))(({ dispatch, nav }) => (
+  <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />
+));
 
-  componentDidMount() {
-    const { dispatch } = this.props;
-    startShowMapScreenTimer(dispatch);
-    if (Platform.OS === 'android') {
-      PermissionsAndroid
-        .request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
-        .then(() => {
-          getAndSetCurrentLocation(dispatch);
-        });
-    } else {
-      getAndSetCurrentLocation(dispatch);
+export default class App extends Component {
+    store = configureStore();
+
+    render() {
+        return (
+            <Provider store={this.store}>
+              <AppWithNavigationState />
+            </Provider>
+        );
     }
-  }
-
-  render(): React.Element<any> {
-    const { showMap, locationEnabled } = this.props;
-    if (showMap) {
-      return (
-        <View style={styles.container}>
-          <NavBar />
-          <LocationInfo enabled={locationEnabled} />
-          <Map />
-          <SelectedEpicerie />
-          <InformationModal />
-        </View>
-      );
-    }
-    return <FirstScreen />
-  }
 }
-
-const styles = StyleSheet.create({
- container: {
-   ...StyleSheet.absoluteFillObject,
-   margin: 0,
-   padding: 0,
-   backgroundColor: '#F5FCFF',
- },
-});
-
-export default connect(
-  state => ({
-    locationEnabled: state.location.enabled,
-    showMap: state.application.showMap,
-  })
-)(App);

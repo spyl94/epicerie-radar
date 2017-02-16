@@ -1,13 +1,17 @@
 /* @flow */
+
+type Location = {
+  latitude: Number,
+  longitude: Number,
+}
 type Region = {
   latitude: Number,
   longitude: Number,
   latitudeDelta: Number,
   longitudeDelta: Number,
 }
-
 type State = {
-  location: Object,
+  location: Location,
   enabled: ?boolean,
   region: Region,
 }
@@ -15,7 +19,10 @@ type State = {
 type Action = Object;
 
 const initialState: State = {
-  location: {},
+  location: {
+    latitude: 0,
+    longitude: 0,
+  },
   region: {
     latitude: 48.853,
     longitude: 2.35,
@@ -25,7 +32,7 @@ const initialState: State = {
   enabled: undefined,
 }
 
-const setInitialLocation = (location: Object) => ({
+const setInitialLocation = (location: Location) => ({
   type: 'SET_INITIAL_LOCATION',
   location,
 })
@@ -35,10 +42,16 @@ export const updateRegion = (region: Region) => ({
   region,
 });
 
-const updateLocation = (location: Object) => ({
+const updateLocation = (location: Location) => ({
   type: 'UPDATE_LOCATION',
   location,
 })
+
+const locationError = (message: string, dispatch: Function) => {
+  if (message === 'Location request timed out' || message === 'No available location provider.') {
+    dispatch(setLocationError(message))
+  }
+}
 
 const setLocationError = (message: string) => ({
   type: 'SET_LOCATION_ERROR',
@@ -48,7 +61,7 @@ const setLocationError = (message: string) => ({
 export const getAndSetCurrentLocation = (dispatch: Function) => {
 		navigator.geolocation.getCurrentPosition(
       ({ coords }) => dispatch(setInitialLocation(coords)),
-      ({ message }) => dispatch(setLocationError(message)),
+      ({ message }) => locationError(message, dispatch),
       {
         enableHighAccuracy: true,
         timeout: 5000,
@@ -60,7 +73,7 @@ export const getAndSetCurrentLocation = (dispatch: Function) => {
 export const watchPosition = (dispatch: Function) => {
   navigator.geolocation.watchPosition(
     ({ coords }) => dispatch(updateLocation(coords)),
-    ({ message }) => dispatch(setLocationError(message)),
+    ({ message }) => locationError(message, dispatch),
     {
       enableHighAccuracy: true,
       timeout: 10000,
