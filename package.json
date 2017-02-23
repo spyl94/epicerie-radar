@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "lint": "node node_modules/eslint/bin/eslint.js .",
+    "lint": "node node_modules/eslint/bin/eslint.js js data.json",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "typecheck": "node node_modules/flow ."
+    "typecheck": "node node_modules/flow-bin/cli.js check"
   },
   "dependencies": {
     "es6-promise": "^4.0.5",

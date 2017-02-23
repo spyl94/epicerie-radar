@@ -5,8 +5,8 @@ import { Image, StyleSheet } from 'react-native';
 import { showModal } from '../redux/modules/application';
 import { connect } from 'react-redux';
 
-const plus = require('../img/plus.png');
-const logo = require('../android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png');
+const plus = require('../../img/plus.png');
+const logo = require('../../android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png');
 const styles = StyleSheet.create({
  statusBar: {
     zIndex: 9999,
