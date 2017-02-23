@@ -1,13 +1,13 @@
 // @flow
 type Location = {
-  latitude: Number,
-  longitude: Number,
+  latitude: number,
+  longitude: number,
 }
 type Region = {
-  latitude: Number,
-  longitude: Number,
-  latitudeDelta: Number,
-  longitudeDelta: Number,
+  latitude: number,
+  longitude: number,
+  latitudeDelta: number,
+  longitudeDelta: number,
 }
 type State = {
   location: Location,
@@ -76,8 +76,6 @@ export const watchPosition = (dispatch: Function) => {
     {
       enableHighAccuracy: true,
       timeout: 10000,
-      // distanceFilter: 10,
-      // maximumAge: 500,
     }
   );
 }

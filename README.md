@@ -13,7 +13,7 @@ For developing I'm using an Android emulator: [Genymotion](https://www.genymotio
 ```
 git clone git@github.com:spyl94/epicerie-radar.git
 cd epicerie-radar
-yarn install # Install deps 
+yarn install # Install deps
 react-native run-android # Launch the app on the emulator
 ```
 

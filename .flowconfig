@@ -23,14 +23,14 @@
 .*/Libraries/react-native/React.js
 .*/Libraries/react-native/ReactNative.js
 .*/node_modules/jest-runtime/build/__tests__/.*
+.*/node_modules/.*
 
 [include]
 
 [libs]
 node_modules/react-native/Libraries/react-native/react-native-interface.js
 node_modules/react-native/flow
-flow/
-node_modules/
+flow-typed/
 
 [options]
 module.system=haste
