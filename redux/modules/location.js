@@ -1,5 +1,4 @@
-/* @flow */
-
+// @flow
 type Location = {
   latitude: Number,
   longitude: Number,
@@ -83,7 +82,7 @@ export const watchPosition = (dispatch: Function) => {
   );
 }
 
-export default function location (state: State = initialState, action: Action) {
+export default function location (state: State = initialState, action: Action): State {
   switch (action.type) {
     case 'UPDATE_REGION':
         if (action.region.longitudeDelta < 100 && action.region.latitudeDelta && action.region.longitude != 0) {

@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 import { combineReducers } from 'redux';
 import { NavigationActions } from 'react-navigation';
 import location from './modules/location';

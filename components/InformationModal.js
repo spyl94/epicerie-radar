@@ -12,9 +12,17 @@ import { hideModal } from '../redux/modules/application';
 import Modal from 'react-native-simple-modal';
 import Fetcher from '../services/Fetcher';
 
-class InformationModal extends Component {
+type Props = {
+  visible: boolean,
+  position: Object,
+  hideModal: () => void,
+}
+
+class InformationModal extends Component<{}, Props> {
   state = {
-    text: null,
+    name: null,
+    address: null,
+    description: null,
     isLoading: false,
   };
 
@@ -23,13 +31,31 @@ class InformationModal extends Component {
     this.setState({ isLoading: true });
     const body = {
       title: 'Un utilisateur vient d\'ajouter des informations.',
-      body: `Position: ${JSON.stringify(position)} ([Streetview](http://maps.google.com/maps?q=&layer=c&cbll=${position.latitude},${position.longitude}&cbp=11,0,0,0,0))\nInformations: ${this.state.text || ''}`,
-    };
+      body: `
+Position: ${JSON.stringify(position)} ([Streetview](http://maps.google.com/maps?q=&layer=c&cbll=${position.latitude},${position.longitude}&cbp=11,0,0,0,0))
+\n\n${JSON.stringify({
+  name: this.state.name,
+  address: this.state.address,
+  coords: {
+    latitude: position.latitude,
+    longitude: position.longitude,
+  },
+  description: this.state.description,
+  hours: {
+    mon_close: "00:00",
+    tue_close: "00:00",
+    wed_close: "00:00",
+    thu_close: "00:00",
+    fri_close: "00:00",
+    sat_close: "00:00",
+    sun_close: "00:00",
+  },
+})}`};
     Fetcher
     .post('/issues', body)
     .then(() => {
       Alert.alert('Merci pour votre aide!', 'Nous traitons votre message et on ajoute les données à la prochaine mise à jour!');
-      this.setState({ text: null, isLoading: false });
+      this.setState({ description: null, name: null, address: null, isLoading: false });
       hideModal();
     })
     .catch(() => {
@@ -39,7 +65,7 @@ class InformationModal extends Component {
     });
   }
 
-  render(): React.Element<any> {
+  render() {
     const { visible, hideModal } = this.props;
     return (
       <Modal
@@ -64,12 +90,25 @@ class InformationModal extends Component {
               Aidez nous à améliorer l'app!
             </Text>
             <TextInput
-              multiline
               autoFocus
+              style={{ height: 100, borderColor: '#178c80', borderWidth: 1 }}
+              value={this.state.name}
+              placeholder="Nom"
+              onChangeText={name => this.setState({name})}
+            />
+            <TextInput
+              autoFocus
+              style={{ height: 100, borderColor: '#178c80', borderWidth: 1 }}
+              value={this.state.address}
+              placeholder="Adresse"
+              onChangeText={address => this.setState({address})}
+            />
+            <TextInput
+              multiline
               style={{ height: 300, borderColor: '#178c80', borderWidth: 1 }}
-              value={this.state.text}
-              onChangeText={text => this.setState({text})}
-              placeholder={`Exemple d'infos:\n\nVoici une épicerie non référencée: Alimentation générale, \n9 rue Voltaire\nOuverte du lundi au dimanche de 9h à 2h\n\nou\n\nL'épicerie indiquée n\'existe pas!`}
+              value={this.state.description}
+              onChangeText={description => this.setState({description})}
+              placeholder={`Ouverte en semaine jusqu'à 2h, 5h le week-end`}
               numberOfLines={10}
               blurOnSubmit={false}
               returnKeyType="done"
@@ -77,9 +116,9 @@ class InformationModal extends Component {
             <Button
               color={this.state.isLoading ? '#31A69A': '#178c80'}
               style={{ marginTop: 10 }}
-              disabled={this.state.text === null ||  this.state.isLoading}
+              disabled={this.state.name === null ||  this.state.isLoading}
               onPress={() => {this.createIssue(); }}
-              title={this.state.isLoading ? "Envoi en cours..." : "Envoyer avec ma position"}
+              title={this.state.isLoading ? "Envoi en cours..." : "Envoyer"}
             />
           </View>
           </KeyboardAwareScrollView>

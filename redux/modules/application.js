@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 type State = {
   modalVisible: boolean,
 };
@@ -21,7 +21,7 @@ export const hideModal = () => ({
   type: 'HIDE_MODAL',
 })
 
-export default function application(state : State = initialState, action : Object) {
+export default function application(state : State = initialState, action : Object): State {
     switch (action.type) {
         case 'SET_INITIAL_LOCATION':
           return {...state, 'showMap': true };

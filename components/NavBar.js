@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
 });
 
 class Nav extends Component {
-  render(): React.Element<any> {
+  render() {
     return (
         <NavBar style={styles}>
           <NavButton style={styles.navButton}>

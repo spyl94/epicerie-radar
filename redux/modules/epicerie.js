@@ -1,3 +1,4 @@
+// @flow
 import data from '../../data.json';
 import moment from 'moment';
 import Fetcher from '../../services/Fetcher'
@@ -79,6 +80,14 @@ const markerUnknownSelected = require('../../img/marker_unknown.png');
 const markerOpenSelected = require('../../img/marker_open.png');
 const markerCloseSelected = require('../../img/marker_close.png');
 
+export const loadUpToDateMarkers = (dispatch: Function) => {
+  Fetcher
+    .get('https://raw.githubusercontent.com/spyl94/epicerie-radar/master/data.json')
+    .then(markers => {
+      dispatch({type: 'LOAD_MARKERS', markers})
+    });
+}
+
 export const getMarkerImage = (type: string, isSelected: boolean) => {
   if (type === "open") {
     if (isSelected) {
@@ -102,9 +111,6 @@ export const select = (marker: Object) => ({
   type: 'SELECT',
   marker,
 })
-
-
-
 
 function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
   var R = 6371; // Radius of the earth in km
@@ -135,6 +141,8 @@ const INITIAL_LONGITUDE = 2.35;
 
 export default function epiceries(state: State = initialState, action: Action) {
     switch (action.type) {
+      case 'LOAD_MARKERS':
+          return {...state, markers: action.markers}
       case 'SET_LOCATION_ERROR':
           return {...state, 'currentSelected': findNearestIndex(INITIAL_LATITUDE, INITIAL_LONGITUDE) };
         case 'SET_INITIAL_LOCATION':
