@@ -87,29 +87,29 @@ Position: ${JSON.stringify(position)} ([Streetview](http://maps.google.com/maps?
         <KeyboardAwareScrollView>
           <View>
             <Text style={{ paddingBottom: 10, fontWeight: 'bold' }}>
-              Aidez nous à améliorer l'app!
+              Ajouter une épicerie sur l'app!
             </Text>
             <TextInput
               autoFocus
-              style={{ height: 100, borderColor: '#178c80', borderWidth: 1 }}
+              style={{ height: 50, marginBottom: 10, borderColor: '#178c80', borderWidth: 1 }}
               value={this.state.name}
               placeholder="Nom"
               onChangeText={name => this.setState({name})}
             />
             <TextInput
               autoFocus
-              style={{ height: 100, borderColor: '#178c80', borderWidth: 1 }}
+              style={{ height: 50, marginBottom: 10, borderColor: '#178c80', borderWidth: 1 }}
               value={this.state.address}
               placeholder="Adresse"
               onChangeText={address => this.setState({address})}
             />
             <TextInput
               multiline
-              style={{ height: 300, borderColor: '#178c80', borderWidth: 1 }}
+              style={{ height: 100, marginBottom: 10, borderColor: '#178c80', borderWidth: 1 }}
               value={this.state.description}
               onChangeText={description => this.setState({description})}
               placeholder={`Ouverte en semaine jusqu'à 2h, 5h le week-end`}
-              numberOfLines={10}
+              numberOfLines={3}
               blurOnSubmit={false}
               returnKeyType="done"
             />

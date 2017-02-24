@@ -20,10 +20,10 @@ const styles = StyleSheet.create({
 
 class SelectedEpicerie extends Component {
 
-  render(): React.Element<any> {
+  render() {
     const { isReporting, epicerie, dispatch } = this.props;
     if (!epicerie) {
-      return <View />;
+      return null;
     }
     return (
         <View style={styles.selectedEpicerie}>
@@ -54,7 +54,6 @@ class SelectedEpicerie extends Component {
             color={isReporting ? '#31A69A': '#178c80'}
             style={{ marginTop: 10 }}
           />
-
         </View>
       );
     }

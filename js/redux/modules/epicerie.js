@@ -58,11 +58,13 @@ export const openingStatus = epicerie => {
 
 type State = {
   currentSelected: Object,
+  markers: Array<Object>,
+  isReporting: boolean
 }
 
 type Action = Object;
 
-const initialState = {
+const initialState: State = {
     currentSelected: null,
     markers: [],
     isReporting: false,
@@ -81,7 +83,7 @@ export const loadUpToDateMarkers = (dispatch: Function) => {
     .then(markers => {
       dispatch({ type: 'LOAD_MARKERS', markers});
     })
-    .catch(error => {
+    .catch(() => {
       dispatch({ type: 'LOAD_MARKERS', markers: data });
     });
 }
@@ -128,7 +130,7 @@ function deg2rad(deg) {
   return deg * (Math.PI/180)
 }
 
-const findNearestIndex = (lat: number, long: number): number => {
+const findNearestIndex = (markers: Array<Object>, lat: number, long: number): number => {
   const distances = markers.map(({ coords }) => getDistanceFromLatLonInKm(lat, long, coords.latitude, coords.longitude));
   const min = Math.min(...distances);
   return distances.indexOf(min);
@@ -146,9 +148,9 @@ export default function epiceries(state: State = initialState, action: Action) {
           }
           return {...state, markers: markers };
       case 'SET_LOCATION_ERROR':
-          return {...state, 'currentSelected': findNearestIndex(INITIAL_LATITUDE, INITIAL_LONGITUDE) };
+          return {...state, 'currentSelected': findNearestIndex(state.markers, INITIAL_LATITUDE, INITIAL_LONGITUDE) };
         case 'SET_INITIAL_LOCATION':
-          return {...state, 'currentSelected': findNearestIndex(action.location.latitude, action.location.longitude)  };
+          return {...state, 'currentSelected': findNearestIndex(state.markers, action.location.latitude, action.location.longitude)  };
         case 'SELECT':
           return {...state, 'currentSelected': action.marker };
         case  'REPORTING':
