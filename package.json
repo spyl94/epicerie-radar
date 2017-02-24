@@ -36,6 +36,7 @@
     "babel-jest": "^19.0.0",
     "babel-preset-react-native": "^1.9.1",
     "eslint": "^3.16.1",
+    "eslint-plugin-json": "^1.2.0",
     "eslint-plugin-react": "^6.10.0",
     "eslint-plugin-react-native": "^2.2.1",
     "flow-bin": "^0.39.0",
