@@ -23,7 +23,7 @@ class LaunchScreen extends Component {
         <View style={styles.container}>
           <NavBar />
           <View style={styles.loadingScreen}>
-            <Image style={styles.logo} source={require('../img/logo.png')} />
+            <Image style={styles.logo} source={require('../../img/logo.png')} />
             <Text style={{ marginTop: 15 }}>
               Récupération de votre position...
             </Text>

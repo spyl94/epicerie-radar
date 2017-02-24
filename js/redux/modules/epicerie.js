@@ -1,5 +1,5 @@
 // @flow
-import data from '../../data.json';
+import data from '../../../data.json';
 import moment from 'moment';
 import Fetcher from '../../services/Fetcher'
 import { Alert } from 'react-native'
@@ -62,14 +62,9 @@ type State = {
 
 type Action = Object;
 
-const markers = [];
-for (const epicerie of data) {
-  markers.push({ ...epicerie, ...openingStatus(epicerie) });
-}
-
 const initialState = {
     currentSelected: null,
-    markers: markers,
+    markers: [],
     isReporting: false,
 };
 
@@ -84,7 +79,10 @@ export const loadUpToDateMarkers = (dispatch: Function) => {
   Fetcher
     .get('https://raw.githubusercontent.com/spyl94/epicerie-radar/master/data.json')
     .then(markers => {
-      dispatch({type: 'LOAD_MARKERS', markers})
+      dispatch({ type: 'LOAD_MARKERS', markers});
+    })
+    .catch(error => {
+      dispatch({ type: 'LOAD_MARKERS', markers: data });
     });
 }
 
@@ -142,7 +140,11 @@ const INITIAL_LONGITUDE = 2.35;
 export default function epiceries(state: State = initialState, action: Action) {
     switch (action.type) {
       case 'LOAD_MARKERS':
-          return {...state, markers: action.markers}
+          const markers = [];
+          for (const epicerie of action.markers) {
+            markers.push({ ...epicerie, ...openingStatus(epicerie) });
+          }
+          return {...state, markers: markers };
       case 'SET_LOCATION_ERROR':
           return {...state, 'currentSelected': findNearestIndex(INITIAL_LATITUDE, INITIAL_LONGITUDE) };
         case 'SET_INITIAL_LOCATION':
