@@ -3,9 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "lint": "node ./node_modules/eslint/bin/eslint.js .",
+    "lint": "node node_modules/eslint/bin/eslint.js js data.json",
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "typecheck": "node node_modules/flow-bin/cli.js check"
   },
   "dependencies": {
     "es6-promise": "^4.0.5",
@@ -20,24 +21,25 @@
     "react-native-nav": "^1.1.4",
     "react-native-root-modal": "^1.0.7",
     "react-native-simple-modal": "^4.0.1",
+    "react-navigation": "^1.0.0-beta.5",
     "react-redux": "^5.0.1",
     "redux": "^3.6.0",
     "redux-devtools-extension": "^2.13.0",
     "redux-immutable": "^3.0.8",
-    "redux-saga": "^0.14.2",
-    "remote-redux-devtools": "^0.5.5",
-    "sqlite3": "^3.1.8"
+    "redux-saga": "^0.14.2"
   },
   "jest": {
     "preset": "jest-react-native"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
-    "babel-jest": "^18.0.0",
+    "babel-jest": "^19.0.0",
     "babel-preset-react-native": "^1.9.1",
-    "eslint": "^3.15.0",
-    "eslint-plugin-react": "^6.9.0",
+    "eslint": "^3.16.1",
+    "eslint-plugin-json": "^1.2.0",
+    "eslint-plugin-react": "^6.10.0",
     "eslint-plugin-react-native": "^2.2.1",
+    "flow-bin": "^0.39.0",
     "jest-react-native": "^18.0.0",
     "react-native-debugger-open": "^0.3.2",
     "react-test-renderer": "^15.4.2",

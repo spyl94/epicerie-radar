@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet } from 'react-native';
@@ -8,7 +8,7 @@ import { updateRegion } from '../redux/modules/location';
 
 class Map extends Component {
 
-  render(): React.Element<any> {
+  render() {
     const { markers, updateRegion, region, currentIndex, select } = this.props;
     return (
         <MapView

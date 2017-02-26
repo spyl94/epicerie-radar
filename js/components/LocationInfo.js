@@ -1,7 +1,9 @@
+// @flow
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-export default function LocationInfo ({ enabled }) {
+type Props = { enabled: ?boolean };
+export default function LocationInfo ({ enabled }: Props) {
   if (enabled === false) {
     return (
       <View>

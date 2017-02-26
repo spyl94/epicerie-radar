@@ -1,4 +1,5 @@
-import data from '../../data.json';
+// @flow
+import data from '../../../data.json';
 import moment from 'moment';
 import Fetcher from '../../services/Fetcher'
 import { Alert } from 'react-native'
@@ -57,27 +58,35 @@ export const openingStatus = epicerie => {
 
 type State = {
   currentSelected: Object,
+  markers: Array<Object>,
+  isReporting: boolean
 }
 
 type Action = Object;
 
-const markers = [];
-for (const epicerie of data) {
-  markers.push({ ...epicerie, ...openingStatus(epicerie) });
-}
-
-const initialState = {
+const initialState: State = {
     currentSelected: null,
-    markers: markers,
+    markers: [],
     isReporting: false,
 };
 
-const markerUnknown = require('../../img/marker_unknown_full.png');
-const markerOpen = require('../../img/marker_open_full.png');
-const markerClose = require('../../img/marker_close_full.png');
-const markerUnknownSelected = require('../../img/marker_unknown.png');
-const markerOpenSelected = require('../../img/marker_open.png');
-const markerCloseSelected = require('../../img/marker_close.png');
+const markerUnknown = require('../../../img/marker_unknown_full.png');
+const markerOpen = require('../../../img/marker_open_full.png');
+const markerClose = require('../../../img/marker_close_full.png');
+const markerUnknownSelected = require('../../../img/marker_unknown.png');
+const markerOpenSelected = require('../../../img/marker_open.png');
+const markerCloseSelected = require('../../../img/marker_close.png');
+
+export const loadUpToDateMarkers = (dispatch: Function) => {
+  Fetcher
+    .get('https://raw.githubusercontent.com/spyl94/epicerie-radar/master/data.json')
+    .then(markers => {
+      dispatch({ type: 'LOAD_MARKERS', markers});
+    })
+    .catch(() => {
+      dispatch({ type: 'LOAD_MARKERS', markers: data });
+    });
+}
 
 export const getMarkerImage = (type: string, isSelected: boolean) => {
   if (type === "open") {
@@ -103,9 +112,6 @@ export const select = (marker: Object) => ({
   marker,
 })
 
-
-
-
 function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
   var R = 6371; // Radius of the earth in km
   var dLat = deg2rad(lat2-lat1);  // deg2rad below
@@ -124,7 +130,7 @@ function deg2rad(deg) {
   return deg * (Math.PI/180)
 }
 
-const findNearestIndex = (lat: number, long: number): number => {
+const findNearestIndex = (markers: Array<Object>, lat: number, long: number): number => {
   const distances = markers.map(({ coords }) => getDistanceFromLatLonInKm(lat, long, coords.latitude, coords.longitude));
   const min = Math.min(...distances);
   return distances.indexOf(min);
@@ -135,10 +141,16 @@ const INITIAL_LONGITUDE = 2.35;
 
 export default function epiceries(state: State = initialState, action: Action) {
     switch (action.type) {
+      case 'LOAD_MARKERS':
+          const markers = [];
+          for (const epicerie of action.markers) {
+            markers.push({ ...epicerie, ...openingStatus(epicerie) });
+          }
+          return {...state, markers: markers };
       case 'SET_LOCATION_ERROR':
-          return {...state, 'currentSelected': findNearestIndex(INITIAL_LATITUDE, INITIAL_LONGITUDE) };
+          return {...state, 'currentSelected': findNearestIndex(state.markers, INITIAL_LATITUDE, INITIAL_LONGITUDE) };
         case 'SET_INITIAL_LOCATION':
-          return {...state, 'currentSelected': findNearestIndex(action.location.latitude, action.location.longitude)  };
+          return {...state, 'currentSelected': findNearestIndex(state.markers, action.location.latitude, action.location.longitude)  };
         case 'SELECT':
           return {...state, 'currentSelected': action.marker };
         case  'REPORTING':

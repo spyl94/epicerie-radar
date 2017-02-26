@@ -6,7 +6,8 @@ module.exports = {
   "globals": { "require": true },
   "plugins": [
       "react",
-      "react-native"
+      "react-native",
+      "json"
   ],
   "extends": [
       "eslint:recommended",
