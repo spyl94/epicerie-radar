@@ -8,7 +8,7 @@ dependencies:
         - ~/.yarn-cache
         - node_modules
         - vendor
-    pre:
+    override:
       - yarn install
 
 test:
