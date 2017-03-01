@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View,
+  ScrollView,
   Alert,
   Button,
 } from 'react-native';
@@ -26,14 +26,14 @@ class SelectedEpicerie extends Component {
       return null;
     }
     return (
-        <View style={styles.selectedEpicerie}>
+        <ScrollView style={styles.selectedEpicerie}>
           <Text style={{ fontWeight: 'bold' }}>
             {epicerie.name}
           </Text>
           <Text>
             {epicerie.address}
           </Text>
-          <Text style={{ paddingTop: 10, color: epicerie.color }}>
+          <Text style={{ color: epicerie.color }}>
             {
                 epicerie.text
             }
@@ -54,7 +54,7 @@ class SelectedEpicerie extends Component {
             color={isReporting ? '#31A69A': '#178c80'}
             style={{ marginTop: 10 }}
           />
-        </View>
+        </ScrollView>
       );
     }
 }

@@ -4,36 +4,41 @@ import { connect } from 'react-redux';
 import {
   StyleSheet,
   View,
-  PermissionsAndroid,
-  Platform,
+  Image,
+  TouchableHighlight,
 } from 'react-native';
-import NavBar from './NavBar';
 import Map from './Map';
 import LocationInfo from './LocationInfo';
-import { getAndSetCurrentLocation } from '../redux/modules/location';
 import InformationModal from './InformationModal';
 import SelectedEpicerie from './SelectedEpicerie';
+import { showModal } from '../redux/modules/application';
 
-class App extends Component {
+const plus = require('../../img/plus.png');
+const logo = require('../../android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png');
 
-  componentDidMount() {
-    const { dispatch } = this.props;
-    if (Platform.OS === 'android') {
-      PermissionsAndroid
-        .request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
-        .then(() => {
-          getAndSetCurrentLocation(dispatch);
-        });
-    } else {
-      getAndSetCurrentLocation(dispatch);
-    }
-  }
+class MapScreen extends Component {
+  static navigationOptions = {
+    title: 'Epicerie Radar',
+    header: ({ dispatch }) => ({
+      left: (<Image
+        style={[styles.image, {marginLeft: 10}]}
+        source={logo}
+             />),
+      right: (
+        <TouchableHighlight onPress={() => { dispatch(showModal()) }}>
+          <Image
+            style={[styles.image, {marginRight: 10}]}
+            source={plus}
+          />
+        </TouchableHighlight>
+      ),
+    }),
+  };
 
   render() {
     const { locationEnabled } = this.props;
     return (
       <View style={styles.container}>
-        <NavBar />
         <LocationInfo enabled={locationEnabled} />
         <Map />
         <SelectedEpicerie />
@@ -45,10 +50,18 @@ class App extends Component {
 
 const styles = StyleSheet.create({
  container: {
-   ...StyleSheet.absoluteFillObject,
-   margin: 0,
-   padding: 0,
+   flex: 1,
    backgroundColor: '#F5FCFF',
+ },
+ image: {
+   flex: 1,
+   width: 30,
+   height: 30,
+   resizeMode: 'contain'
+ },
+ title: {
+   flex: 1,
+   color: '#rgba(0, 0, 0, 0.65)',
  },
 });
 
@@ -56,4 +69,4 @@ export default connect(
   state => ({
     locationEnabled: state.location.enabled,
   })
-)(App);
+)(MapScreen);
