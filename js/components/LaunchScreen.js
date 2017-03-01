@@ -47,7 +47,6 @@ class LaunchScreen extends Component {
     })
     return (
         <View style={styles.container}>
-          {/* <NavBar /> */}
           <View style={styles.loadingScreen}>
             <Animated.Image
               style={[styles.logo, { transform: [{rotate: spin}] }]}
