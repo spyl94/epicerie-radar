@@ -78,13 +78,14 @@ const markerOpenSelected = require('../../../img/marker_open.png');
 const markerCloseSelected = require('../../../img/marker_close.png');
 
 export const loadUpToDateMarkers = (dispatch: Function) => {
+  dispatch({ type: 'LOAD_MARKERS', markers: data });
   Fetcher
-    .get('https://raw.githubusercontent.com/spyl94/epicerie-radar/master/data.json')
-    .then(markers => {
-      dispatch({ type: 'LOAD_MARKERS', markers});
+    .get('/contents/data.json')
+    .then(file => {
+      dispatch({ type: 'LOAD_MARKERS', markers: JSON.parse(file.content)});
     })
-    .catch(() => {
-      dispatch({ type: 'LOAD_MARKERS', markers: data });
+    .catch((error) => {
+      Alert.alert(JSON.stringify(error));
     });
 }
 
@@ -146,7 +147,7 @@ export default function epiceries(state: State = initialState, action: Action) {
           for (const epicerie of action.markers) {
             markers.push({ ...epicerie, ...openingStatus(epicerie) });
           }
-          return {...state, markers: markers };
+          return {...state, markers: markers, currentSelected: findNearestIndex(markers, INITIAL_LATITUDE, INITIAL_LONGITUDE) };
       case 'SET_LOCATION_ERROR':
           return {...state, 'currentSelected': findNearestIndex(state.markers, INITIAL_LATITUDE, INITIAL_LONGITUDE) };
         case 'SET_INITIAL_LOCATION':
