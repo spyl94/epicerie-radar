@@ -28,7 +28,7 @@ const createHeaders = (): {[string]: string} => {
 class Fetcher {
 
   get(url: string) {
-      return fetch(config.api + url, {
+      return fetch(url, {
         method: 'GET',
         headers: createHeaders(),
       })

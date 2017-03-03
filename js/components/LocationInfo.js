@@ -1,9 +1,10 @@
 // @flow
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { connect } from 'react-redux';
+import { View, Text, StyleSheet } from 'react-native';
 
 type Props = { enabled: ?boolean };
-export default function LocationInfo ({ enabled }: Props) {
+function LocationInfo ({ enabled }: Props) {
   if (enabled === false) {
     return (
       <View>
@@ -13,6 +14,12 @@ export default function LocationInfo ({ enabled }: Props) {
   }
 	return <View></View>;
 }
+
+export default connect(
+  state => ({
+    locationEnabled: state.location.enabled,
+  })
+)(LocationInfo);
 
 var styles = StyleSheet.create({
 	errorMsg : {

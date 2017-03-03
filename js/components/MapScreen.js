@@ -36,10 +36,9 @@ class MapScreen extends Component {
   };
 
   render() {
-    const { locationEnabled } = this.props;
     return (
       <View style={styles.container}>
-        <LocationInfo enabled={locationEnabled} />
+        <LocationInfo />
         <Map />
         <SelectedEpicerie />
         <InformationModal />
@@ -65,8 +64,4 @@ const styles = StyleSheet.create({
  },
 });
 
-export default connect(
-  state => ({
-    locationEnabled: state.location.enabled,
-  })
-)(MapScreen);
+export default connect()(MapScreen);
