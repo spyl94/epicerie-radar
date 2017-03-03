@@ -81,11 +81,11 @@ export const loadUpToDateMarkers = (dispatch: Function) => {
   dispatch({ type: 'LOAD_MARKERS', markers: data });
   Fetcher
     .get('/contents/data.json')
-    .then(file => {
-      dispatch({ type: 'LOAD_MARKERS', markers: JSON.parse(file.content)});
+    .then(json => {
+      dispatch({ type: 'LOAD_MARKERS', markers: JSON.parse(json.content)});
     })
     .catch((error) => {
-      Alert.alert(JSON.stringify(error));
+      Alert.alert('Soucis', JSON.stringify(error));
     });
 }
 
@@ -147,11 +147,14 @@ export default function epiceries(state: State = initialState, action: Action) {
           for (const epicerie of action.markers) {
             markers.push({ ...epicerie, ...openingStatus(epicerie) });
           }
-          return {...state, markers: markers, currentSelected: findNearestIndex(markers, INITIAL_LATITUDE, INITIAL_LONGITUDE) };
-      case 'SET_LOCATION_ERROR':
-          return {...state, 'currentSelected': findNearestIndex(state.markers, INITIAL_LATITUDE, INITIAL_LONGITUDE) };
-        case 'SET_INITIAL_LOCATION':
-          return {...state, 'currentSelected': findNearestIndex(state.markers, action.location.latitude, action.location.longitude)  };
+          const currentSelected = findNearestIndex(markers, INITIAL_LATITUDE, INITIAL_LONGITUDE);
+          return {...state, markers: markers, currentSelected  };
+          case 'SET_LOCATION_ERROR':
+          return {...state };
+        case 'SET_INITIAL_LOCATION': {
+          const currentSelected = findNearestIndex(state.markers, action.location.latitude, action.location.longitude);
+          return {...state, currentSelected   };
+        }
         case 'SELECT':
           return {...state, 'currentSelected': action.marker };
         case  'REPORTING':

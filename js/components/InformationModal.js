@@ -91,26 +91,33 @@ Position: ${JSON.stringify(position)} ([Streetview](http://maps.google.com/maps?
             </Text>
             <TextInput
               autoFocus
-              style={{ height: 50, marginBottom: 10, borderColor: '#178c80', borderWidth: 1 }}
+              style={{ height: 26, marginBottom: 10, padding: 4, borderColor: '#178c80', borderWidth: 0.5 }}
               value={this.state.name}
               placeholder="Nom"
+              returnKeyType="next"
+              blurOnSubmit={false}
+              onSubmitEditing={() => { this.refs._addressField.focus() }}
               onChangeText={name => this.setState({name})}
             />
             <TextInput
-              autoFocus
-              style={{ height: 50, marginBottom: 10, borderColor: '#178c80', borderWidth: 1 }}
+              ref={(c) => { this.refs._addressField = c }}
+              style={{ height: 26, marginBottom: 10, padding: 4, borderColor: '#178c80', borderWidth: 0.5 }}
               value={this.state.address}
               placeholder="Adresse"
+              returnKeyType="next"
+              blurOnSubmit={false}
+              onSubmitEditing={() => { this.refs._descriptionField.focus() }}
               onChangeText={address => this.setState({address})}
             />
             <TextInput
+              ref={(c) => { this.refs._descriptionField = c }}
               multiline
-              style={{ height: 100, marginBottom: 10, borderColor: '#178c80', borderWidth: 1 }}
+              style={{ height: 100, marginBottom: 10, padding: 4, borderColor: '#178c80', borderWidth: 0.5 }}
               value={this.state.description}
               onChangeText={description => this.setState({description})}
               placeholder={`Ouverte en semaine jusqu'à 2h, 5h le week-end`}
               numberOfLines={3}
-              blurOnSubmit={false}
+              onSubmitEditing={() => {this.createIssue(); }}
               returnKeyType="done"
             />
             <Button

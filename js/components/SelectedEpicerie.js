@@ -46,6 +46,7 @@ class SelectedEpicerie extends Component {
           }}>
             <Text>{ ' '}</Text>
             <Button
+              onPress={() => {}}
               disabled
               title="Modifier les horraires"
             />

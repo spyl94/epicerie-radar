@@ -7,9 +7,10 @@ const initialState : State = {
     modalVisible: false,
 };
 
+export const navigateToMapScreen = () => ({type: 'SHOW_MAP_SCREEN'});
 export const startShowMapScreenTimer = (dispatch: Function) => {
   setTimeout(() => {
-    dispatch({type: 'SHOW_MAP_SCREEN'})
+    dispatch(navigateToMapScreen())
   }, 6000);
 }
 
@@ -23,8 +24,6 @@ export const hideModal = () => ({
 
 export default function application(state : State = initialState, action : Object): State {
     switch (action.type) {
-        case 'SET_INITIAL_LOCATION':
-          return {...state, 'showMap': true };
         case 'SHOW_MODAL':
           return {...state, 'modalVisible': true };
         case 'HIDE_MODAL':
