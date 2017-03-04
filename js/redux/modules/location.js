@@ -1,3 +1,5 @@
+import { navigateToMapScreen } from './application'
+
 // @flow
 type Location = {
   latitude: number,
@@ -59,7 +61,10 @@ const setLocationError = (message: string) => ({
 
 export const getAndSetCurrentLocation = (dispatch: Function) => {
 		navigator.geolocation.getCurrentPosition(
-      ({ coords }) => dispatch(setInitialLocation(coords)),
+      ({ coords }) => {
+        dispatch(setInitialLocation(coords))
+        dispatch(navigateToMapScreen())
+      },
       ({ message }) => locationError(message, dispatch),
       {
         enableHighAccuracy: true,

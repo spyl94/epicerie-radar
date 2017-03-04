@@ -81,10 +81,11 @@ export const loadUpToDateMarkers = (dispatch: Function) => {
   Fetcher
     .get('https://raw.githubusercontent.com/spyl94/epicerie-radar/master/data.json')
     .then(markers => {
-      dispatch({ type: 'LOAD_MARKERS', markers});
+      dispatch({ type: 'LOAD_MARKERS', markers });
     })
     .catch(() => {
       dispatch({ type: 'LOAD_MARKERS', markers: data });
+      Alert.alert('Un problème est survenu', 'Impossible de récupèrer la liste des épiceries à jour...');
     });
 }
 
@@ -130,10 +131,13 @@ function deg2rad(deg) {
   return deg * (Math.PI/180)
 }
 
-const findNearestIndex = (markers: Array<Object>, lat: number, long: number): number => {
+const findNearestIndex = (markers: Array<Object>, lat: number, long: number): ?number => {
+  if (markers.length === 0) {
+    return null;
+  }
   const distances = markers.map(({ coords }) => getDistanceFromLatLonInKm(lat, long, coords.latitude, coords.longitude));
   const min = Math.min(...distances);
-  return distances.indexOf(min);
+  return markers[distances.indexOf(min)].id;
 };
 
 const INITIAL_LATITUDE = 48.853;
@@ -141,16 +145,24 @@ const INITIAL_LONGITUDE = 2.35;
 
 export default function epiceries(state: State = initialState, action: Action) {
     switch (action.type) {
-      case 'LOAD_MARKERS':
+      case 'LOAD_MARKERS': {
           const markers = [];
+          let i = 0;
           for (const epicerie of action.markers) {
-            markers.push({ ...epicerie, ...openingStatus(epicerie) });
+            markers.push({
+              ...epicerie,
+              ...openingStatus(epicerie),
+              id: i
+            });
+            i++;
           }
-          return {...state, markers: markers };
-      case 'SET_LOCATION_ERROR':
-          return {...state, 'currentSelected': findNearestIndex(state.markers, INITIAL_LATITUDE, INITIAL_LONGITUDE) };
-        case 'SET_INITIAL_LOCATION':
-          return {...state, 'currentSelected': findNearestIndex(state.markers, action.location.latitude, action.location.longitude)  };
+          const currentSelected = findNearestIndex(markers, INITIAL_LATITUDE, INITIAL_LONGITUDE);
+          return {...state, markers: markers, currentSelected  };
+        }
+        case 'SET_INITIAL_LOCATION': {
+          const currentSelected = findNearestIndex(state.markers, action.location.latitude, action.location.longitude);
+          return {...state, currentSelected };
+        }
         case 'SELECT':
           return {...state, 'currentSelected': action.marker };
         case  'REPORTING':

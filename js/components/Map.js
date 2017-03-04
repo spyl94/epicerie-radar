@@ -24,13 +24,13 @@ class Map extends Component {
           }}
         >
           {
-            markers.map((marker, key) =>
+            markers.map((marker, index) =>
               <Marker
-                key={key}
-                onPress={() => { select(key) }}
+                key={index}
+                onPress={() => { select(index) }}
                 coordinate={marker.coords}
                 anchor={{x: 0.5, y: 0.5}}
-                image={getMarkerImage(marker.type, currentIndex === key)}
+                image={getMarkerImage(marker.type, currentIndex === index)}
               />
             )
           }
