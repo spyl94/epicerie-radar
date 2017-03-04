@@ -10,6 +10,7 @@ import {
 import Map from './Map';
 import LocationInfo from './LocationInfo';
 import InformationModal from './InformationModal';
+import EditModal from './EditModal';
 import SelectedEpicerie from './SelectedEpicerie';
 import { showModal } from '../redux/modules/application';
 
@@ -20,10 +21,12 @@ class MapScreen extends Component {
   static navigationOptions = {
     title: 'Epicerie Radar',
     header: ({ dispatch }) => ({
-      left: (<Image
-        style={[styles.image, {marginLeft: 10}]}
-        source={logo}
-             />),
+      left: (
+        <Image
+          style={[styles.image, {marginLeft: 10}]}
+          source={logo}
+        />
+      ),
       right: (
         <TouchableHighlight onPress={() => { dispatch(showModal()) }}>
           <Image
@@ -42,6 +45,7 @@ class MapScreen extends Component {
         <Map />
         <SelectedEpicerie />
         <InformationModal />
+        <EditModal />
       </View>
     );
   }

@@ -10,11 +10,12 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { reportNotExisting } from '../redux/modules/epicerie'
+import { showEditModal } from '../redux/modules/application'
 
 const styles = StyleSheet.create({
   selectedEpicerie: {
      margin: 0,
-     flex: 0.5,
+     flex: 0.3,
      padding: 10,
   },
 });
@@ -46,8 +47,7 @@ class SelectedEpicerie extends Component {
           }}>
             <Text>{ ' '}</Text>
             <Button
-              onPress={() => {}}
-              disabled
+              onPress={() => { dispatch(showEditModal())} }
               title="Modifier les horraires"
             />
             <Text>{ ' '}</Text>

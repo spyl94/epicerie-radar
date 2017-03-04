@@ -10,54 +10,34 @@ import {
   Platform,
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { hideModal } from '../redux/modules/application';
+import { hideEditModal as hideModal } from '../redux/modules/application';
 import Modal from 'react-native-simple-modal';
 import Fetcher from '../services/Fetcher';
 
 type Props = {
   visible: boolean,
-  position: Object,
+  epicerie: Object,
   hideModal: () => void,
 }
 
-class InformationModal extends Component<{}, Props> {
+class EditModal extends Component<{}, Props> {
   state = {
-    name: null,
-    address: null,
     description: null,
     isLoading: false,
   };
 
   createIssue = () => {
-    const { position, hideModal } = this.props;
+    const { hideModal, epicerie } = this.props;
     this.setState({ isLoading: true });
     const body = {
-      title: 'Un utilisateur vient d\'ajouter des informations.',
-      body: `
-Position: ${JSON.stringify(position)} ([Streetview](http://maps.google.com/maps?q=&layer=c&cbll=${position.latitude},${position.longitude}&cbp=11,0,0,0,0))
-\n\n${JSON.stringify({
-  name: this.state.name,
-  address: this.state.address,
-  coords: {
-    latitude: position.latitude,
-    longitude: position.longitude,
-  },
-  description: this.state.description,
-  hours: {
-    mon_close: "00:00",
-    tue_close: "00:00",
-    wed_close: "00:00",
-    thu_close: "00:00",
-    fri_close: "00:00",
-    sat_close: "00:00",
-    sun_close: "00:00",
-  },
-})}`};
+      title: 'Un utilisateur vient de modifier les horraires.',
+      body: `Epicerie à modifier: ${JSON.stringify(epicerie)} => ${this.state.description}`,
+    };
     Fetcher
     .post('/issues', body)
     .then(() => {
-      Alert.alert('Merci pour votre aide!', 'Nous traitons votre message et on ajoute les données à la prochaine mise à jour!');
-      this.setState({ description: null, name: null, address: null, isLoading: false });
+      Alert.alert('Merci pour votre aide!', 'Nous traitons votre message aussi vite que possible!');
+      this.setState({ description: null, isLoading: false });
       hideModal();
     })
     .catch(() => {
@@ -89,28 +69,8 @@ Position: ${JSON.stringify(position)} ([Streetview](http://maps.google.com/maps?
         <KeyboardAwareScrollView>
           <View>
             <Text style={{ paddingBottom: 10, fontWeight: 'bold' }}>
-              Ajouter une épicerie sur l'app!
+              Modifier les horraires de cette épicerie
             </Text>
-            <TextInput
-              autoFocus
-              style={styles.input}
-              value={this.state.name}
-              placeholder="Nom"
-              returnKeyType="next"
-              blurOnSubmit={false}
-              onSubmitEditing={() => { this.refs._addressField.focus() }}
-              onChangeText={name => this.setState({name})}
-            />
-            <TextInput
-              ref={(c) => { this.refs._addressField = c }}
-              style={styles.input}
-              value={this.state.address}
-              placeholder="Adresse"
-              returnKeyType="next"
-              blurOnSubmit={false}
-              onSubmitEditing={() => { this.refs._descriptionField.focus() }}
-              onChangeText={address => this.setState({address})}
-            />
             <TextInput
               ref={(c) => { this.refs._descriptionField = c }}
               multiline
@@ -137,17 +97,6 @@ Position: ${JSON.stringify(position)} ([Streetview](http://maps.google.com/maps?
 }
 
 const styles = StyleSheet.create({
-  input: {
-    height: 26,
-    marginBottom: 10,
-    padding: 4,
-    ...Platform.select({
-      ios: {
-        borderColor: '#178c80',
-        borderWidth: 0.5,
-      },
-    }),
-  },
   inputMultiline: {
     height: 100,
     marginBottom: 10,
@@ -163,8 +112,8 @@ const styles = StyleSheet.create({
 
 export default connect(
   state => ({
-    visible: state.application.modalVisible,
-    position: state.location.location
+    visible: state.application.editModalVisible,
+    epicerie: state.epicerie.currentSelected && state.epicerie.markers[state.epicerie.currentSelected],
   }),
   ({ hideModal })
-)(InformationModal);
+)(EditModal);

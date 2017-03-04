@@ -131,10 +131,13 @@ function deg2rad(deg) {
   return deg * (Math.PI/180)
 }
 
-const findNearestIndex = (markers: Array<Object>, lat: number, long: number): number => {
+const findNearestIndex = (markers: Array<Object>, lat: number, long: number): ?number => {
+  if (markers.length === 0) {
+    return null;
+  }
   const distances = markers.map(({ coords }) => getDistanceFromLatLonInKm(lat, long, coords.latitude, coords.longitude));
   const min = Math.min(...distances);
-  return distances.indexOf(min);
+  return markers[distances.indexOf(min)].id;
 };
 
 const INITIAL_LATITUDE = 48.853;
@@ -144,8 +147,14 @@ export default function epiceries(state: State = initialState, action: Action) {
     switch (action.type) {
       case 'LOAD_MARKERS': {
           const markers = [];
+          let i = 0;
           for (const epicerie of action.markers) {
-            markers.push({ ...epicerie, ...openingStatus(epicerie) });
+            markers.push({
+              ...epicerie,
+              ...openingStatus(epicerie),
+              id: i
+            });
+            i++;
           }
           const currentSelected = findNearestIndex(markers, INITIAL_LATITUDE, INITIAL_LONGITUDE);
           return {...state, markers: markers, currentSelected  };

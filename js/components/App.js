@@ -1,15 +1,9 @@
 // @flow
 import React, { Component } from 'react';
-import { connect, Provider } from 'react-redux';
+import { Provider } from 'react-redux';
 import { addNavigationHelpers } from 'react-navigation';
 import configureStore from '../redux/store';
-import AppNavigator from './AppNavigator';
-
-const AppWithNavigationState = connect(state => ({
-  nav: state.nav,
-}))(({ dispatch, nav }) => (
-  <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />
-));
+import EntryPoint from './EntryPoint';
 
 export default class App extends Component {
     store = configureStore();
@@ -17,7 +11,7 @@ export default class App extends Component {
     render() {
         return (
             <Provider store={this.store}>
-              <AppWithNavigationState />
+              <EntryPoint />
             </Provider>
         );
     }

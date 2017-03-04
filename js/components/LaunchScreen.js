@@ -1,15 +1,10 @@
 // @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { startShowMapScreenTimer } from '../redux/modules/application';
-import { loadUpToDateMarkers } from '../redux/modules/epicerie';
-import { getAndSetCurrentLocation } from '../redux/modules/location';
 import {
   StyleSheet,
   Text,
   Animated,
-  PermissionsAndroid,
-  Platform,
   View
 } from 'react-native';
 
@@ -23,20 +18,7 @@ class LaunchScreen extends Component {
   }
 
   componentDidMount() {
-    const { dispatch } = this.props;
-    startShowMapScreenTimer(dispatch);
-    loadUpToDateMarkers(dispatch);
-    // First set up animation
     Animated.timing(this._spin, { toValue: 1, duration: 6000 }).start();
-    if (Platform.OS === 'android') {
-      PermissionsAndroid
-        .request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
-        .then(() => {
-          getAndSetCurrentLocation(dispatch);
-        });
-    } else {
-      getAndSetCurrentLocation(dispatch);
-    }
   }
 
   render() {
