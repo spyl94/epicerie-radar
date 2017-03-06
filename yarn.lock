@@ -3724,10 +3724,6 @@ react-native-maps@^0.13.0:
   version "0.13.0"
   resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.13.0.tgz#f3d791a06d36d553bcc177514ee52fdea45474c0"
 
-react-native-simple-modal@^4.0.1:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/react-native-simple-modal/-/react-native-simple-modal-4.0.2.tgz#e3968cb4d7001d2012c7d179c038b07e7d2dcdbd"
-
 react-native-tab-view@^0.0.56:
   version "0.0.56"
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-0.0.56.tgz#7417a1f6502deef49abf58ba76a1cde213abbbf1"
