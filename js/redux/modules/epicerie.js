@@ -33,7 +33,7 @@ export const openingStatus = epicerie => {
   const currentDay = date.format('dddd').slice(0, 3).toLowerCase();
   if (typeof epicerie.hours == "undefined" || !epicerie.hours[currentDay + '_close']) {
     return {
-      color: "grey",
+      color: "#F9B254",
       type: "unknown",
       text: "Horaire non disponible..."
     };

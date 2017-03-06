@@ -1,6 +1,6 @@
+// @flow
 import { navigateToMapScreen } from './nav';
 
-// @flow
 type Location = {
   latitude: number,
   longitude: number,

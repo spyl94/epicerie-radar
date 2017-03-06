@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addNavigationHelpers } from 'react-navigation';
+import { NavigationActions, addNavigationHelpers } from 'react-navigation';
 import AppNavigator from './AppNavigator';
 import { startShowMapScreenTimer } from '../redux/modules/nav';
 import { loadUpToDateMarkers } from '../redux/modules/epicerie';
@@ -9,6 +9,7 @@ import { getAndSetCurrentLocation } from '../redux/modules/location';
 import {
   PermissionsAndroid,
   Platform,
+  BackAndroid,
 } from 'react-native';
 
 class EntryPoint extends Component {
@@ -26,6 +27,9 @@ class EntryPoint extends Component {
     } else {
       getAndSetCurrentLocation(dispatch);
     }
+    BackAndroid.addEventListener('backPress', () =>
+        dispatch(NavigationActions.back())
+    );
   }
 
     render() {
