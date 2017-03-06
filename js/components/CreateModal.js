@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {
   Text,
@@ -6,21 +6,25 @@ import {
   View,
   Button,
   Alert,
+  ScrollView,
+  TouchableOpacity,
   StyleSheet,
   Platform,
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { hideModal } from '../redux/modules/application';
-import Modal from 'react-native-simple-modal';
 import Fetcher from '../services/Fetcher';
 
 type Props = {
-  visible: boolean,
   position: Object,
-  hideModal: () => void,
 }
 
-class InformationModal extends Component<{}, Props> {
+class CreateModal extends Component<{}, Props> {
+  static navigationOptions = {
+    header: {
+      title: 'Ajouter une épicerie',
+    },
+  };
+
   state = {
     name: null,
     address: null,
@@ -29,7 +33,7 @@ class InformationModal extends Component<{}, Props> {
   };
 
   createIssue = () => {
-    const { position, hideModal } = this.props;
+    const { position } = this.props;
     this.setState({ isLoading: true });
     const body = {
       title: 'Un utilisateur vient d\'ajouter des informations.',
@@ -58,39 +62,20 @@ Position: ${JSON.stringify(position)} ([Streetview](http://maps.google.com/maps?
     .then(() => {
       Alert.alert('Merci pour votre aide!', 'Nous traitons votre message et on ajoute les données à la prochaine mise à jour!');
       this.setState({ description: null, name: null, address: null, isLoading: false });
-      hideModal();
+      this.props.dispatch({ type: 'BACK' })
     })
     .catch(() => {
       Alert.alert('Un problème est survenu', 'Essayez à nouveau.');
       this.setState({ isLoading: false });
-      hideModal();
+      this.props.dispatch({ type: 'BACK' })
     });
   }
 
   render() {
-    const { visible, hideModal } = this.props;
     return (
-      <Modal
-        open={visible}
-        closeOnTouchOutside
-        offset={-300}
-        containerStyle={{
-          justifyContent: 'center'
-        }}
-        modalStyle={{
-          borderRadius: 2,
-          margin: 20,
-          padding: 10,
-          backgroundColor: '#F5F5F5'
-        }}
-        modalDidClose={() => hideModal()}
-        overlayBackground={'rgba(0, 0, 0, 0.75)'}
-      >
+      <View style={styles.container}>
         <KeyboardAwareScrollView>
-          <View>
-            <Text style={{ paddingBottom: 10, fontWeight: 'bold' }}>
-              Ajouter une épicerie sur l'app!
-            </Text>
+          <View style={{ marginLeft: 10, marginRight: 10 }}>
             <TextInput
               autoFocus
               style={styles.input}
@@ -111,36 +96,43 @@ Position: ${JSON.stringify(position)} ([Streetview](http://maps.google.com/maps?
               onSubmitEditing={() => { this.refs._descriptionField.focus() }}
               onChangeText={address => this.setState({address})}
             />
+            <Text style={{ marginTop: 10, color: 'black', fontWeight: 'bold' }}>
+              Horaires
+            </Text>
             <TextInput
               ref={(c) => { this.refs._descriptionField = c }}
               multiline
               style={styles.inputMultiline}
               value={this.state.description}
               onChangeText={description => this.setState({description})}
-              placeholder={`Ouverte en semaine jusqu'à 2h, 5h le week-end`}
+              placeholder={`Exemple: Ouverte en semaine jusqu'à 2h, 5h le week-end`}
               numberOfLines={3}
               onSubmitEditing={() => {this.createIssue(); }}
               returnKeyType="done"
             />
+            <Text style={{ marginTop: 15 }}></Text>
             <Button
               color={this.state.isLoading ? '#31A69A': '#178c80'}
-              style={{ marginTop: 10 }}
               disabled={this.state.name === null ||  this.state.isLoading}
               onPress={() => {this.createIssue(); }}
               title={this.state.isLoading ? "Envoi en cours..." : "Envoyer"}
             />
           </View>
         </KeyboardAwareScrollView>
-      </Modal>
-        );
-    }
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+    padding: 20
+  },
   input: {
-    height: 26,
+    height: 40,
     marginBottom: 10,
-    padding: 4,
     ...Platform.select({
       ios: {
         borderColor: '#178c80',
@@ -162,9 +154,5 @@ const styles = StyleSheet.create({
 });
 
 export default connect(
-  state => ({
-    visible: state.application.modalVisible,
-    position: state.location.location
-  }),
-  ({ hideModal })
-)(InformationModal);
+  state => ({ position: state.location.location }),
+)(CreateModal);

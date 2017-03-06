@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Text,
   TextInput,
   View,
   Button,
@@ -10,27 +9,28 @@ import {
   Platform,
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { hideEditModal as hideModal } from '../redux/modules/application';
-import Modal from 'react-native-simple-modal';
 import Fetcher from '../services/Fetcher';
 
 type Props = {
-  visible: boolean,
   epicerie: Object,
-  hideModal: () => void,
 }
 
 class EditModal extends Component<{}, Props> {
+  static navigationOptions = {
+    header: {
+      title: 'Modifier les horaires',
+    },
+  };
   state = {
     description: null,
     isLoading: false,
   };
 
   createIssue = () => {
-    const { hideModal, epicerie } = this.props;
+    const { epicerie } = this.props;
     this.setState({ isLoading: true });
     const body = {
-      title: 'Un utilisateur vient de modifier les horraires.',
+      title: 'Un utilisateur vient de modifier les horaires.',
       body: `Epicerie à modifier: ${JSON.stringify(epicerie)} => ${this.state.description}`,
     };
     Fetcher
@@ -38,39 +38,20 @@ class EditModal extends Component<{}, Props> {
     .then(() => {
       Alert.alert('Merci pour votre aide!', 'Nous traitons votre message aussi vite que possible!');
       this.setState({ description: null, isLoading: false });
-      hideModal();
+      this.props.dispatch({type: 'BACK'});
     })
     .catch(() => {
       Alert.alert('Un problème est survenu', 'Essayez à nouveau.');
       this.setState({ isLoading: false });
-      hideModal();
+      this.props.dispatch({type: 'BACK'});
     });
   }
 
   render() {
-    const { visible, hideModal } = this.props;
     return (
-      <Modal
-        open={visible}
-        closeOnTouchOutside
-        offset={-300}
-        containerStyle={{
-          justifyContent: 'center'
-        }}
-        modalStyle={{
-          borderRadius: 2,
-          margin: 20,
-          padding: 10,
-          backgroundColor: '#F5F5F5'
-        }}
-        modalDidClose={() => hideModal()}
-        overlayBackground={'rgba(0, 0, 0, 0.75)'}
-      >
+      <View style={styles.container}>
         <KeyboardAwareScrollView>
           <View>
-            <Text style={{ paddingBottom: 10, fontWeight: 'bold' }}>
-              Modifier les horraires de cette épicerie
-            </Text>
             <TextInput
               ref={(c) => { this.refs._descriptionField = c }}
               multiline
@@ -91,12 +72,17 @@ class EditModal extends Component<{}, Props> {
             />
           </View>
         </KeyboardAwareScrollView>
-      </Modal>
-        );
+      </View>
+      );
     }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+    padding: 20
+  },
   inputMultiline: {
     height: 100,
     marginBottom: 10,
@@ -112,8 +98,6 @@ const styles = StyleSheet.create({
 
 export default connect(
   state => ({
-    visible: state.application.editModalVisible,
     epicerie: state.epicerie.currentSelected && state.epicerie.markers[state.epicerie.currentSelected],
   }),
-  ({ hideModal })
 )(EditModal);

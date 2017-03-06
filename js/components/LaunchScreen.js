@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   Animated,
+  Easing,
   View
 } from 'react-native';
 
@@ -13,12 +14,20 @@ class LaunchScreen extends Component {
     header: { visible: false }
   };
 
-  componentWillMount() {
+  constructor(props) {
+    super(props);
     this._spin = new Animated.Value(0);
   }
 
+  rotateImage() {
+    this._spin.setValue(0);
+    Animated.timing(this._spin, { toValue: 1, duration: 2000, easing: Easing.linear }).start(() => {
+      this.rotateImage();
+    });
+  }
+
   componentDidMount() {
-    Animated.timing(this._spin, { toValue: 1, duration: 6000 }).start();
+    this.rotateImage();
   }
 
   render() {
@@ -30,11 +39,14 @@ class LaunchScreen extends Component {
     return (
         <View style={styles.container}>
           <View style={styles.loadingScreen}>
+            <Text style={{ fontSize: 24, color: 'black', fontWeight: '500', marginBottom: 15 }}>
+              Epicerie Radar
+            </Text>
             <Animated.Image
               style={[styles.logo, { transform: [{rotate: spin}] }]}
               source={require('../../img/logo.png')}
             />
-            <Text style={{ marginTop: 15 }}>
+            <Text style={{ fontSize: 18, marginTop: 15 }}>
               Récupération de votre position...
             </Text>
           </View>
