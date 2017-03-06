@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addNavigationHelpers } from 'react-navigation';
 import AppNavigator from './AppNavigator';
-import { startShowMapScreenTimer } from '../redux/modules/application';
+import { startShowMapScreenTimer } from '../redux/modules/nav';
 import { loadUpToDateMarkers } from '../redux/modules/epicerie';
 import { getAndSetCurrentLocation } from '../redux/modules/location';
 import {

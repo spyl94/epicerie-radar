@@ -9,10 +9,8 @@ import {
 } from 'react-native';
 import Map from './Map';
 import LocationInfo from './LocationInfo';
-import InformationModal from './InformationModal';
-import EditModal from './EditModal';
 import SelectedEpicerie from './SelectedEpicerie';
-import { showModal } from '../redux/modules/application';
+import { navigateToCreateModal } from '../redux/modules/nav';
 
 const plus = require('../../img/plus.png');
 const logo = require('../../android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png');
@@ -28,7 +26,7 @@ class MapScreen extends Component {
         />
       ),
       right: (
-        <TouchableHighlight onPress={() => { dispatch(showModal()) }}>
+        <TouchableHighlight onPress={() => { dispatch(navigateToCreateModal()) }}>
           <Image
             style={[styles.image, {marginRight: 10}]}
             source={plus}
@@ -44,8 +42,6 @@ class MapScreen extends Component {
         <LocationInfo />
         <Map />
         <SelectedEpicerie />
-        <InformationModal />
-        <EditModal />
       </View>
     );
   }

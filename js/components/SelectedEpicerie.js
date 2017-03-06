@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { reportNotExisting } from '../redux/modules/epicerie'
-import { showEditModal } from '../redux/modules/application'
+import { navigateToEditModal } from '../redux/modules/nav';
 
 const styles = StyleSheet.create({
   selectedEpicerie: {
@@ -29,13 +29,13 @@ class SelectedEpicerie extends Component {
     }
     return (
         <View style={styles.selectedEpicerie}>
-          <Text style={{ fontWeight: 'bold' }}>
+          <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
             {epicerie.name}
           </Text>
-          <Text>
+          <Text style={{ fontSize: 16 }}>
             {epicerie.address}
           </Text>
-          <Text style={{ color: epicerie.color }}>
+          <Text style={{ fontSize: 16, color: epicerie.color }}>
             {
                 epicerie.text
             }
@@ -47,8 +47,8 @@ class SelectedEpicerie extends Component {
           }}>
             <Text>{ ' '}</Text>
             <Button
-              onPress={() => { dispatch(showEditModal())} }
-              title="Modifier les horraires"
+              onPress={() => { dispatch(navigateToEditModal())} }
+              title="Modifier les horaires"
             />
             <Text>{ ' '}</Text>
             <Button
