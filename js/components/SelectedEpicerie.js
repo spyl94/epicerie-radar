@@ -13,7 +13,7 @@ import { reportNotExisting } from '../redux/modules/epicerie'
 import { navigateToEditModal } from '../redux/modules/nav';
 
 const styles = StyleSheet.create({
-  selectedEpicerie: {
+  container: {
      margin: 0,
      flex: 0.3,
      padding: 10,
@@ -28,7 +28,7 @@ class SelectedEpicerie extends Component {
       return null;
     }
     return (
-        <View style={styles.selectedEpicerie}>
+        <View style={styles.container}>
           <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
             {epicerie.name}
           </Text>
@@ -41,13 +41,13 @@ class SelectedEpicerie extends Component {
             }
           </Text>
           <View style={{
-            flex: 1,
             flexDirection: 'column',
             justifyContent: 'space-between',
           }}>
-            <Text>{ ' '}</Text>
+            <Text>{ ' ' }</Text>
             <Button
               onPress={() => { dispatch(navigateToEditModal())} }
+              color={'#178c80'}
               title="Modifier les horaires"
             />
             <Text>{ ' '}</Text>
@@ -66,6 +66,7 @@ class SelectedEpicerie extends Component {
               title={isReporting ? 'Signalement en cours...' : 'Signaler fermeture définitive'}
               color={isReporting ? '#31A69A': '#178c80'}
             />
+            <Text style={{ minHeight: 10, marginBottom: 10 }}>{ ' ' }</Text>
           </View>
         </View>
       );
