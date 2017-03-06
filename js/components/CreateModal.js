@@ -96,7 +96,7 @@ Position: ${JSON.stringify(position)} ([Streetview](http://maps.google.com/maps?
               onSubmitEditing={() => { this.refs._descriptionField.focus() }}
               onChangeText={address => this.setState({address})}
             />
-            <Text style={{ marginTop: 10, color: 'black', fontWeight: 'bold' }}>
+            <Text style={{ marginTop: 10, marginLeft: 5, color: 'black', fontWeight: 'bold' }}>
               Horaires
             </Text>
             <TextInput

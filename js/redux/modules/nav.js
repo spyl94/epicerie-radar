@@ -2,8 +2,8 @@ import { NavigationActions } from 'react-navigation';
 import AppNavigator from '../../components/AppNavigator';
 
 export const navigateToMapScreen = () => ({type: 'SHOW_MAP_SCREEN'});
-export const navigateToEditModal = () => ({ type: 'SHOW_EDIT_MODAL' })
-export const navigateToCreateModal = () => ({ type: 'SHOW_CREATE_MODAL' })
+export const navigateToEditModal = () => ({ type: 'SHOW_EDIT_MODAL' });
+export const navigateToCreateModal = () => ({ type: 'SHOW_CREATE_MODAL' });
 export const startShowMapScreenTimer = (dispatch: Function) => {
   setTimeout(() => {
     dispatch(navigateToMapScreen())

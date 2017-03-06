@@ -1,4 +1,4 @@
-import { navigateToMapScreen } from './application'
+import { navigateToMapScreen } from './nav';
 
 // @flow
 type Location = {

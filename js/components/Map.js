@@ -9,7 +9,7 @@ import { updateRegion } from '../redux/modules/location';
 class Map extends Component {
 
   render() {
-    const { markers, updateRegion, region, currentIndex, select } = this.props;
+    const { markers, update, region, currentIndex, select } = this.props;
     return (
         <MapView
           style={styles.map}
@@ -20,7 +20,7 @@ class Map extends Component {
           rotateEnabled={false}
           region={region}
           onRegionChangeComplete={region => {
-            updateRegion(region)
+            update(region);
           }}
         >
           {
@@ -46,11 +46,20 @@ const styles = StyleSheet.create({
  },
 });
 
+const mapDispatchToProps = (dispatch: Function) => ({
+    select: (id) => {
+      dispatch(select(id));
+    },
+    update: (region) => {
+      dispatch(updateRegion(region));
+    }
+});
+
 export default connect(
   state => ({
     region: state.location.region,
     currentIndex: state.epicerie.currentSelected,
     markers: state.epicerie.markers,
   }),
-  ({ select, updateRegion })
+  mapDispatchToProps
 )(Map);
