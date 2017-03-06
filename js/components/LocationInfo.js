@@ -17,7 +17,7 @@ function LocationInfo ({ enabled }: Props) {
 
 export default connect(
   state => ({
-    locationEnabled: state.location.enabled,
+    enabled: state.location.enabled,
   })
 )(LocationInfo);
 
