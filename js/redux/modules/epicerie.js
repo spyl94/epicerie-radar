@@ -22,7 +22,7 @@ export const reportNotExisting = (dispatch, epicerie) => {
     });
 }
 
-export const openingStatus = epicerie => {
+export const openingStatus = (epicerie: Object) => {
   const date = moment();
   const currentHour = date.hours();
   let checkingHoursOfPrevDay = false;
@@ -57,7 +57,7 @@ export const openingStatus = epicerie => {
 }
 
 type State = {
-  currentSelected: Object,
+  currentSelected: ?Object,
   markers: Array<Object>,
   isReporting: boolean
 }
@@ -140,8 +140,23 @@ const findNearestIndex = (markers: Array<Object>, lat: number, long: number): ?n
   return markers[distances.indexOf(min)].id;
 };
 
-const INITIAL_LATITUDE = 48.853;
-const INITIAL_LONGITUDE = 2.35;
+const INITIAL_LOCATION = {
+  latitule: 48.853,
+  longitude: 2.35,
+};
+
+let hasSettedNearestEpicerie = false;
+const setNearestEpicerie = (state: State, location: Object) => {
+  if (hasSettedNearestEpicerie) {
+    return state;
+  }
+  const currentSelected = findNearestIndex(state.markers, location.latitude, location.longitude);
+  if (currentSelected === null) {
+    return state;
+  }
+  hasSettedNearestEpicerie = true;
+  return {...state, currentSelected };
+}
 
 export default function epiceries(state: State = initialState, action: Action) {
     switch (action.type) {
@@ -156,12 +171,10 @@ export default function epiceries(state: State = initialState, action: Action) {
             });
             i++;
           }
-          const currentSelected = findNearestIndex(markers, INITIAL_LATITUDE, INITIAL_LONGITUDE);
-          return {...state, markers: markers, currentSelected  };
+          return {...setNearestEpicerie(state, INITIAL_LOCATION), markers };
         }
         case 'SET_INITIAL_LOCATION': {
-          const currentSelected = findNearestIndex(state.markers, action.location.latitude, action.location.longitude);
-          return {...state, currentSelected };
+          return setNearestEpicerie(state, action.location);
         }
         case 'SELECT':
           return {...state, 'currentSelected': action.marker };
