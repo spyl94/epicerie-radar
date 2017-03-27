@@ -11,7 +11,15 @@ export const startShowMapScreenTimer = (dispatch: Function) => {
   }, 6000);
 }
 
-export default (state: Object, action: Object): Object => {
+const initialState = {
+    index: 0,
+    routes: [
+        { key: 'launch', routeName: 'Launch' }
+    ],
+};
+
+
+export default (state: Object = initialState, action: Object): Object => {
   if (action.type === 'BACK') {
     return AppNavigator.router.getStateForAction(NavigationActions.back(), state);
   }
