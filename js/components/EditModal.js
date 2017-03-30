@@ -58,21 +58,26 @@ class EditModal extends Component<{}, Props> {
     isDateTimePickerVisible: false,
   };
 
-  _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
   _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
 
   createIssue = () => {
     const { epicerie } = this.props;
     this.setState({ isLoading: true });
+    const hours = { ...this.state.hours };
+    for (let hour in hours) {
+      if (hours.hasOwnProperty(hour) && hours[hour]) {
+        hours[hour] = moment(hours[hour]).format('HH:MM');
+      }
+    }
     const body = {
       title: 'Un utilisateur vient de modifier les horaires.',
-      body: `Epicerie à modifier: ${JSON.stringify(epicerie)} => ${this.state.description}`,
+      body: `Epicerie à modifier: ${JSON.stringify(epicerie)} => ${JSON.stringify(hours)}`,
     };
     Fetcher
     .post('/issues', body)
     .then(() => {
       Alert.alert('Merci pour votre aide!', 'Nous traitons votre message aussi vite que possible!');
-      this.setState({ description: null, isLoading: false });
+      this.setState({ isLoading: false });
       this.props.dispatch({type: 'BACK'});
     })
     .catch(() => {
@@ -87,63 +92,64 @@ class EditModal extends Component<{}, Props> {
       <View style={styles.container}>
         <KeyboardAwareScrollView>
           <View>
-            <TextInput
-              ref={(c) => { this.refs._descriptionField = c }}
-              multiline
-              style={styles.inputMultiline}
-              value={this.state.description}
-              onChangeText={description => this.setState({description})}
-              placeholder={`Ouverte en semaine jusqu'à 2h, 5h le week-end`}
-              numberOfLines={3}
-              onSubmitEditing={() => {this.createIssue(); }}
-              returnKeyType="done"
-            />
             <DateTimePicker
               mode="time"
               isVisible={this.state.isDateTimePickerVisible}
               onConfirm={(date) => {
                 this._hideDateTimePicker();
-                this.setState({ hours: { ...this.state.hours, [this.state.focus]: date }});
+                this.setState({
+                  hours: {
+                    ...this.state.hours,
+                    [this.state.focus]: date
+                  }
+                });
               }}
               onCancel={this._hideDateTimePicker}
             />
             {
               days.map(({day, code}) => (
-                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', marginBottom: 5}}>
-                  <Text>{day}</Text>
-                  <Text
-                    style={styles.textinput}
-                    onPress={() => {
-                      this.setState({ focus: code +'_open'});
-                      this._showDateTimePicker();
-                    }}
-                  >
-                    {
-                      !this.state.time ? 'Heure' : moment(this.state.hours[code +'_open']).format('HH:MM')
-                    }
-                  </Text>
-                  <Text>-</Text>
-                  <Text
-                    style={styles.textinput}
-                    onPress={() => {
-                      this.setState({ focus: code+'_close'});
-                      this._showDateTimePicker();
-                    }}
-                  >
-                    {
-                      !this.state.time ? 'Heure' : moment(this.state.hours[code + '_close']).format('HH:MM')
-                    }
-                  </Text>
+                <View key={code} style={{flex: 1, flexDirection: 'row', marginTop: 5, marginBottom: 5 }}>
+                  <Text style={{ flex: 0.5 }}>{day}</Text>
+                  <View style={{ flex: 0.5, flexDirection: 'row' }}>
+                    <Text
+                      style={styles.textinput}
+                      onPress={() => {
+                        this.setState({
+                          focus: code +'_open',
+                          isDateTimePickerVisible: true
+                        });
+                      }}
+                    >
+                      {
+                        !this.state.hours[code +'_open'] ? 'Heure' : moment(this.state.hours[code +'_open']).format('HH:MM')
+                      }
+                    </Text>
+                    <Text>{' '}-{' '}</Text>
+                    <Text
+                      style={styles.textinput}
+                      onPress={() => {
+                        this.setState({
+                          focus: code+'_close',
+                          isDateTimePickerVisible: true
+                        });
+                      }}
+                    >
+                      {
+                        !this.state.hours[code + '_close'] ? 'Heure' : moment(this.state.hours[code + '_close']).format('HH:MM')
+                      }
+                    </Text>
+                  </View>
                 </View>
               ))
             }
-            <Button
-              color={this.state.isLoading ? '#31A69A': '#178c80'}
-              style={{ marginTop: 20 }}
-              disabled={this.state.name === null ||  this.state.isLoading}
-              onPress={() => {this.createIssue(); }}
-              title={this.state.isLoading ? "Envoi en cours..." : "Envoyer"}
-            />
+            <View style={{ marginTop: 20 }}>
+              <Button
+                color={this.state.isLoading ? '#31A69A': '#178c80'}
+                disabled={this.state.name === null ||  this.state.isLoading}
+                onPress={() => {this.createIssue(); }}
+                title={this.state.isLoading ? "Envoi en cours..." : "Envoyer"}
+              />
+            </View>
           </View>
         </KeyboardAwareScrollView>
       </View>
