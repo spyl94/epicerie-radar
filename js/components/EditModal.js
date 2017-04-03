@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  TextInput,
   View,
   Button,
   Alert,
   Text,
+  Switch,
   StyleSheet,
-  Platform,
 } from 'react-native';
 import moment from 'moment';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Fetcher from '../services/Fetcher';
 // import { Field, reduxForm } from 'redux-form';
 import DateTimePicker from 'react-native-modal-datetime-picker';
@@ -32,126 +30,173 @@ const days = [
 class EditModal extends Component<{}, Props> {
   static navigationOptions = {
     header: {
-      title: 'Modifier les horaires',
+      title: 'Modifier les horaires d\'ouverture',
     },
   };
-  state = {
-    description: null,
-    isLoading: false,
-    hours: {
-      fri_close : null,
-      mon_close : null,
-      sat_close : null,
-      sun_close : null,
-      thu_close : null,
-      tue_close : null,
-      wed_close : null,
-      fri_open : null,
-      mon_open : null,
-      sat_open : null,
-      sun_open : null,
-      thu_open : null,
-      tue_open : null,
-      wed_open : null,
-    },
-    focus: null,
-    isDateTimePickerVisible: false,
-  };
+
+  constructor(props) {
+    super(props);
+    const { epicerie } = props;
+    this.state = {
+      description: null,
+      isLoading: false,
+      daysOpen: {
+        mon: epicerie && epicerie.hours && (epicerie.hours.mon_close !== null || epicerie.hours.mon_open !== null),
+        thu: epicerie && epicerie.hours && (epicerie.hours.thu_close !== null || epicerie.hours.thu_open !== null),
+        tue: epicerie && epicerie.hours && (epicerie.hours.tue_close !== null || epicerie.hours.tue_open !== null),
+        wed: epicerie && epicerie.hours && (epicerie.hours.wed_close !== null || epicerie.hours.wed_open !== null),
+        fri: epicerie && epicerie.hours && (epicerie.hours.fri_close !== null || epicerie.hours.fri_open !== null),
+        sat: epicerie && epicerie.hours && (epicerie.hours.sat_close !== null || epicerie.hours.sat_open !== null),
+        sun: epicerie && epicerie.hours && (epicerie.hours.sun_close !== null || epicerie.hours.sun_open !== null),
+      },
+      hours: epicerie ? epicerie.hours : {},
+      focus: null,
+      isDateTimePickerVisible: false,
+    };
+  }
+
 
   _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
 
   createIssue = () => {
-    const { epicerie } = this.props;
+    const { epicerie, dispatch } = this.props;
+    const { hours } = this.state;
     this.setState({ isLoading: true });
-    const hours = { ...this.state.hours };
-    for (let hour in hours) {
-      if (hours.hasOwnProperty(hour) && hours[hour]) {
-        hours[hour] = moment(hours[hour]).format('HH:MM');
-      }
-    }
     const body = {
       title: 'Un utilisateur vient de modifier les horaires.',
-      body: `Epicerie à modifier: ${JSON.stringify(epicerie)} => ${JSON.stringify(hours)}`,
+      body: `**Epicerie à modifier**
+\`\`\`json
+${JSON.stringify(epicerie, undefined, 2)}
+\`\`\`
+**Nouveaux horaires**
+\`\`\`json
+${JSON.stringify(hours, undefined, 2)}
+\`\`\`
+`
     };
     Fetcher
     .post('/issues', body)
     .then(() => {
-      Alert.alert('Merci pour votre aide!', 'Nous traitons votre message aussi vite que possible!');
+      Alert.alert(
+        'Merci pour votre aide !',
+        'Nous traitons votre message aussi vite que possible !'
+      );
       this.setState({ isLoading: false });
-      this.props.dispatch({type: 'BACK'});
+      dispatch({type: 'BACK'});
     })
     .catch(() => {
-      Alert.alert('Un problème est survenu', 'Essayez à nouveau.');
+      Alert.alert(
+        'Un problème est survenu',
+        'Essayez à nouveau.'
+      );
       this.setState({ isLoading: false });
-      this.props.dispatch({type: 'BACK'});
+      dispatch({type: 'BACK'});
     });
   }
 
   render() {
+    const {
+      name,
+      focus,
+      isDateTimePickerVisible,
+      hours,
+      isLoading,
+    } = this.state;
     return (
       <View style={styles.container}>
-        <KeyboardAwareScrollView>
-          <View>
-            <DateTimePicker
-              mode="time"
-              isVisible={this.state.isDateTimePickerVisible}
-              onConfirm={(date) => {
-                this._hideDateTimePicker();
-                this.setState({
-                  hours: {
-                    ...this.state.hours,
-                    [this.state.focus]: date
-                  }
-                });
-              }}
-              onCancel={this._hideDateTimePicker}
-            />
-            {
-              days.map(({day, code}) => (
-                <View key={code} style={{flex: 1, flexDirection: 'row', marginTop: 5, marginBottom: 5 }}>
-                  <Text style={{ flex: 0.5 }}>{day}</Text>
-                  <View style={{ flex: 0.5, flexDirection: 'row' }}>
-                    <Text
-                      style={styles.textinput}
-                      onPress={() => {
-                        this.setState({
-                          focus: code +'_open',
-                          isDateTimePickerVisible: true
-                        });
-                      }}
-                    >
-                      {
-                        !this.state.hours[code +'_open'] ? 'Heure' : moment(this.state.hours[code +'_open']).format('HH:MM')
-                      }
-                    </Text>
-                    <Text>{' '}-{' '}</Text>
-                    <Text
-                      style={styles.textinput}
-                      onPress={() => {
-                        this.setState({
-                          focus: code+'_close',
-                          isDateTimePickerVisible: true
-                        });
-                      }}
-                    >
-                      {
-                        !this.state.hours[code + '_close'] ? 'Heure' : moment(this.state.hours[code + '_close']).format('HH:MM')
-                      }
-                    </Text>
-                  </View>
+        <View>
+          <DateTimePicker
+            mode="time"
+            isVisible={isDateTimePickerVisible}
+            onConfirm={(date: Date) => {
+              this._hideDateTimePicker();
+              this.setState({
+                hours: {
+                    ...hours,
+                  [focus]: moment(date).format('HH:MM')
+                }
+              });
+            }}
+            onCancel={this._hideDateTimePicker}
+          />
+          {
+            days.map(({day, code}) => (
+              <View
+                key={code}
+                style={{flex: 1, flexDirection: 'row', marginBottom: 30 }}
+              >
+                <View style={{ flex: 0.4, flexDirection: 'row' }}>
+                  <Switch
+                    style={{ height: 26 }}
+                    value={this.state.daysOpen[code]}
+                    onValueChange={(value: boolean) => {
+                      this.setState({
+                        daysOpen: {
+                          ...this.state.daysOpen, [code]: value,
+                        },
+                        hours: {
+                          ...this.state.hours,
+                          [code +'_open']: value ? '10:00' : null,
+                          [code +'_close']: value ? '00:00' : null,
+                        },
+                      });
+                    }}
+                  />
+                  <Text style={{ height: 26 }}>{day}</Text>
                 </View>
-              ))
-            }
-            <View style={{ marginTop: 20 }}>
-              <Button
-                color={this.state.isLoading ? '#31A69A': '#178c80'}
-                disabled={this.state.name === null ||  this.state.isLoading}
-                onPress={() => {this.createIssue(); }}
-                title={this.state.isLoading ? "Envoi en cours..." : "Envoyer"}
-              />
-            </View>
+                {
+                  this.state.daysOpen[code] &&
+                    <View style={{ flex: 0.6, flexDirection: 'row', justifyContent: 'space-between' }}>
+                      <Text style={{ height: 26, width: 50, textAlign: 'center' }}>
+                        {"de"}
+                      </Text>
+                      <Text
+                        style={styles.textinput}
+                        onPress={() => {
+                          this.setState({
+                            focus: code +'_open',
+                            isDateTimePickerVisible: true
+                          });
+                        }}
+                      >
+                        {
+                          !hours[code +'_open']
+                          ? 'Heure'
+                          : hours[code +'_open']
+                        }
+                      </Text>
+                      <Text style={{ height: 26, width: 50, textAlign: 'center' }}>{" à "}</Text>
+                      <Text
+                        style={styles.textinput}
+                        onPress={() => {
+                          this.setState({
+                            focus: code+'_close',
+                            isDateTimePickerVisible: true
+                          });
+                        }}
+                      >
+                        {
+                          !hours[code + '_close']
+                          ? 'Heure'
+                          : hours[code + '_close']
+                        }
+                      </Text>
+                    </View>
+                }
+              </View>
+            ))
+          }
+          <View style={{ marginTop: 20 }}>
+            <Button
+              color={isLoading ? '#31A69A': '#178c80'}
+              disabled={name === null ||  isLoading}
+              onPress={() => {
+                this.createIssue();
+              }}
+              title={isLoading ? "Envoi en cours..." : "Envoyer"}
+            />
           </View>
-        </KeyboardAwareScrollView>
+        </View>
       </View>
       );
     }
@@ -172,17 +217,6 @@ const styles = StyleSheet.create({
     padding: 4,
     fontSize: 13,
   },
-  inputMultiline: {
-    height: 100,
-    marginBottom: 10,
-    padding: 4,
-    ...Platform.select({
-      ios: {
-        borderColor: '#178c80',
-        borderWidth: 0.5
-      }
-    }),
-  }
 });
 
 export default connect(
