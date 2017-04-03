@@ -6,8 +6,6 @@ import {
   View,
   Button,
   Alert,
-  ScrollView,
-  TouchableOpacity,
   StyleSheet,
   Platform,
 } from 'react-native';
@@ -16,6 +14,10 @@ import Fetcher from '../services/Fetcher';
 
 type Props = {
   position: Object,
+}
+
+const isValid= (state) => {
+  return state.name && state.address;
 }
 
 class CreateModal extends Component<{}, Props> {
@@ -34,29 +36,27 @@ class CreateModal extends Component<{}, Props> {
 
   createIssue = () => {
     const { position } = this.props;
+    const { name, address, description } = this.state;
     this.setState({ isLoading: true });
     const body = {
       title: 'Un utilisateur vient d\'ajouter des informations.',
       body: `
-Position: ${JSON.stringify(position)} ([Streetview](http://maps.google.com/maps?q=&layer=c&cbll=${position.latitude},${position.longitude}&cbp=11,0,0,0,0))
-\n\n${JSON.stringify({
-  name: this.state.name,
-  address: this.state.address,
+**Nouvelle épicerie**
+\`\`\`json
+${JSON.stringify({
+  name,
+  address,
   coords: {
-    latitude: position.latitude,
-    longitude: position.longitude,
+    latitude: null,
+    longitude: null,
   },
-  description: this.state.description,
-  hours: {
-    mon_close: "00:00",
-    tue_close: "00:00",
-    wed_close: "00:00",
-    thu_close: "00:00",
-    fri_close: "00:00",
-    sat_close: "00:00",
-    sun_close: "00:00",
-  },
-})}`};
+  description,
+}, undefined, 2)}
+\`\`\`
+**Position de l'utilisateur**
+\n\n
+\`${JSON.stringify(position, undefined, 2)}\` ([Streetview](http://maps.google.com/maps?q=&layer=c&cbll=${position.latitude},${position.longitude}&cbp=11,0,0,0,0))
+`};
     Fetcher
     .post('/issues', body)
     .then(() => {
@@ -96,16 +96,13 @@ Position: ${JSON.stringify(position)} ([Streetview](http://maps.google.com/maps?
               onSubmitEditing={() => { this.refs._descriptionField.focus() }}
               onChangeText={address => this.setState({address})}
             />
-            <Text style={{ marginTop: 10, marginLeft: 5, color: 'black', fontWeight: 'bold' }}>
-              Horaires
-            </Text>
             <TextInput
               ref={(c) => { this.refs._descriptionField = c }}
               multiline
               style={styles.inputMultiline}
               value={this.state.description}
               onChangeText={description => this.setState({description})}
-              placeholder={`Exemple: Ouverte en semaine jusqu'à 2h, 5h le week-end`}
+              placeholder={`Description (facultatif)`}
               numberOfLines={3}
               onSubmitEditing={() => {this.createIssue(); }}
               returnKeyType="done"
@@ -113,7 +110,7 @@ Position: ${JSON.stringify(position)} ([Streetview](http://maps.google.com/maps?
             <Text style={{ marginTop: 15 }}></Text>
             <Button
               color={this.state.isLoading ? '#31A69A': '#178c80'}
-              disabled={this.state.name === null ||  this.state.isLoading}
+              disabled={!isValid(this.state) ||  this.state.isLoading}
               onPress={() => {this.createIssue(); }}
               title={this.state.isLoading ? "Envoi en cours..." : "Envoyer"}
             />

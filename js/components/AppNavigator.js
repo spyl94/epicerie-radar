@@ -10,4 +10,6 @@ export default StackNavigator({
   Map: { screen: MapScreen },
   CreateModal: { screen: CreateModal },
   EditModal: { screen: EditModal },
+}, {
+    headerMode: 'screen',
 });
