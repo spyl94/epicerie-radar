@@ -1,0 +1,5 @@
+Nouvelle semaine, nouvelle mise à jour!
+
+Vous l'avez sans doute remarqué, il arrivait que la carte freeze lorsque l'on sélectionnait une épicerie, le bug est désormais résolu. Ce n'est pas tout, comme on vous sait flemmard on a décidé de sélectionner automatiquement au lancement de l'application l'épicerie la plus proche de vous!
+
+On attends plus que vos participations :) Vous êtes devant une épicerie non répertoriée ? Cela ne prend qu'une poignée de secondes de nous en informer!

@@ -1,0 +1,1 @@
+Correction du bug de fluidité de la carte.

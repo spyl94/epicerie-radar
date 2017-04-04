@@ -24,11 +24,10 @@ react-native run-android # Launch the app on the emulator
 Update `versionCode` (and maybe `versionName`) in `android/app/build.gradle`
 
 ```
-cd android && ./gradlew clean
-cd android && ./gradlew assembleRelease
+cd android
+fastlane beta # Beta release
+fastlane deploy # Production release
 ```
-
-Upload: `android/app/build/outputs/apk/app-release.apk` to the [play store](https://play.google.com/apps/publish).
 
 #### iOS
 

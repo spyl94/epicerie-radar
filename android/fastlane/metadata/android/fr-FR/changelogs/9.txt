@@ -1,0 +1,6 @@
+Perte de contrôle totale, épicerie radar prend son envole, on ne la retient plus !
+Dans cette nouvelle mise à jour vous trouverez:
+- 400 Epiceries référencés en tout et c'est pas fini
+- Une navbar du tonnerre qui surplombe la map
+
+Epicerie Radar, l'application qui vous suit partout jusqu'au bout de la nuit
