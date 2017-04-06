@@ -123,7 +123,7 @@ ${JSON.stringify(hours, undefined, 2)}
             days.map(({day, code}) => (
               <View
                 key={code}
-                style={{flex: 1, flexDirection: 'row', marginBottom: 30 }}
+                style={{flex: 1, flexDirection: 'row', marginBottom: 40 }}
               >
                 <View style={{ flex: 0.4, flexDirection: 'row' }}>
                   <Switch

@@ -1,9 +1,9 @@
+certificates
 .env
 # OSX
 #
 .DS_Store
 
-ios/epicerie.xcodeproj
 # Xcode
 #
 build/

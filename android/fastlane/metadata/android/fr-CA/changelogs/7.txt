@@ -1,0 +1,4 @@
+Et hop:
+- un nouveau logo
+- un écran de chargement 
+- un fix sur la géo-localisation
