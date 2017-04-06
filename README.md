@@ -31,5 +31,8 @@ fastlane deploy # Production release
 
 #### iOS
 
-Update `CFBundleShortVersionString` in `ios/epicerie/Info.plist`.
-Build with XCode, make an archive, then upload to itunes connect.
+```
+cd ios
+fastlane beta # Beta release
+fastlane deploy # Production release
+```
