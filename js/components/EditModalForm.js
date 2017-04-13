@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {
   View,
   Button,
+  ActivityIndicator,
   Alert,
   StyleSheet,
 } from 'react-native';
@@ -71,6 +72,7 @@ class EditModalForm extends Component<{}, Props> {
             dispatch,
             invalid,
             loading,
+            submitting,
             handleSubmit,
             isDateTimePickerVisible,
             currentFocus,
@@ -81,7 +83,7 @@ class EditModalForm extends Component<{}, Props> {
             <View style={styles.container}>
               <View>
                 {
-                  days.map((day) => <PickOpeningHoursRow day={day} />)
+                  days.map((day, index) => <PickOpeningHoursRow day={day} key={index} />)
                 }
                 <DateTimePicker
                   mode="time"
@@ -96,12 +98,17 @@ class EditModalForm extends Component<{}, Props> {
                 />
               </View>
               <View style={{ marginTop: 20 }}>
-                <Button
-                  color={disabled ? '#31A69A': '#178c80'}
-                  disabled={disabled}
-                  onPress={handleSubmit(onSubmit)}
-                  title={loading ? "Envoi en cours..." : "Envoyer"}
-                />
+                {
+                  submitting
+                    ? <ActivityIndicator />
+                  :  <Button
+                    color={disabled ? '#31A69A': '#178c80'}
+                    disabled={disabled}
+                    onPress={handleSubmit(onSubmit)}
+                    title="Envoyer"
+                     />
+                }
+
               </View>
             </View>
           );

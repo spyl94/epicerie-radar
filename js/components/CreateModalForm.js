@@ -5,6 +5,7 @@ import {
   View,
   Button,
   Alert,
+  ActivityIndicator,
 } from 'react-native';
 import { change, Field, reduxForm } from 'redux-form';
 import Input from './Input';
@@ -111,7 +112,7 @@ class CreateModalForm extends Component<{}, Props> {
             />
             <Text style={{ marginBottom: 15, marginTop: 30 }}>Horaires d'ouverture (facultatif)</Text>
             {
-              days.map((day) => <CreatePickOpeningHoursRow day={day} />)
+              days.map((day, index) => <CreatePickOpeningHoursRow day={day} key={index} />)
             }
             <Text style={{ marginTop: 15 }}></Text>
             <DateTimePicker
@@ -125,12 +126,16 @@ class CreateModalForm extends Component<{}, Props> {
                 dispatch(hideDateTimePicker());
               }}
             />
-            <Button
-              color={disabled ? '#31A69A': '#178c80'}
-              disabled={disabled}
-              onPress={!disabled ? handleSubmit(onSubmit) : () => {}}
-              title={submitting ? "Envoi en cours..." : "Envoyer"}
-            />
+            {
+                submitting
+                  ? <ActivityIndicator />
+              : <Button
+                color={disabled ? '#31A69A': '#178c80'}
+                disabled={disabled}
+                onPress={!disabled ? handleSubmit(onSubmit) : () => {}}
+                title="Envoyer"
+                />
+            }
           </View>
     );
   }
