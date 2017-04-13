@@ -28,7 +28,7 @@ class EntryPoint extends Component {
       getAndSetCurrentLocation(dispatch);
     }
     BackAndroid.addEventListener('backPress', () =>
-        dispatch(NavigationActions.back())
+        dispatch({type: 'BACK'})
     );
   }
 
