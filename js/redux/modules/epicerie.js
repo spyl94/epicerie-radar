@@ -70,12 +70,7 @@ const initialState: State = {
     currentSelected: null,
     markers: [],
     isReporting: false,
-    focus: null,
-    isDateTimePickerVisible: false,
 };
-
-export const hideDateTimePicker = () => ({ type: 'HIDE_DATETIME_PICKER' });
-export const showTimePicker = (focus: string) => ({ type: 'FOCUS_DATETIME_PICKER', focus });
 
 const markerUnknown = require('../../../img/marker_unknown_full.png');
 const markerOpen = require('../../../img/marker_open_full.png');
@@ -170,10 +165,6 @@ export default function epiceries(state: State = initialState, action: Action) {
           const currentSelected = findNearestIndex(state.markers, action.location.latitude, action.location.longitude);
           return {...state, currentSelected };
         }
-        case 'FOCUS_DATETIME_PICKER':
-          return {...state, isDateTimePickerVisible: true, focus: action.focus };
-        case 'HIDE_DATETIME_PICKER':
-          return {...state, isDateTimePickerVisible: false, focus: null };
         case 'SELECT':
           return {...state, 'currentSelected': action.marker };
         case  'REPORTING':

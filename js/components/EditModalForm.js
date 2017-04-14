@@ -5,14 +5,10 @@ import {
   Button,
   ActivityIndicator,
   Alert,
-  StyleSheet,
 } from 'react-native';
-import moment from 'moment';
-import { reduxForm, change } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import Fetcher from '../services/Fetcher';
-import DateTimePicker from 'react-native-modal-datetime-picker';
 import PickOpeningHoursRow from './PickOpeningHoursRow';
-import { hideDateTimePicker } from '../redux/modules/epicerie';
 
 type Props = {
   epicerie: Object,
@@ -69,33 +65,27 @@ class EditModalForm extends Component<{}, Props> {
 
         render() {
           const {
-            dispatch,
             invalid,
             loading,
             submitting,
             handleSubmit,
-            isDateTimePickerVisible,
-            currentFocus,
-            pristine
+            pristine,
+            form
           } = this.props;
           const disabled = pristine || invalid ||  loading;
           return (
-            <View style={styles.container}>
+            <View>
               <View>
                 {
-                  days.map((day, index) => <PickOpeningHoursRow day={day} key={index} />)
+                  days.map((day, index) => (
+                    <PickOpeningHoursRow
+                      style={{flex: 1, flexDirection: 'row', marginBottom: 50 }}
+                      form={form}
+                      day={day}
+                      key={index}
+                    />
+                  ))
                 }
-                <DateTimePicker
-                  mode="time"
-                  isVisible={isDateTimePickerVisible}
-                  onConfirm={(date: Date) => {
-                    dispatch(change('update-horaires', 'hours.'+ currentFocus, moment(date).format('HH:MM')));
-                    dispatch(hideDateTimePicker());
-                  }}
-                  onCancel={() => {
-                    dispatch(hideDateTimePicker());
-                  }}
-                />
               </View>
               <View style={{ marginTop: 20 }}>
                 {
@@ -115,36 +105,23 @@ class EditModalForm extends Component<{}, Props> {
     }
 }
 
-const styles = StyleSheet.create({
-  textinput: {
-    height: 26,
-    width: 50,
-    marginTop: -5,
-    borderWidth: 0.5,
-    borderColor: '#0f0f0f',
-    padding: 4,
-    fontSize: 13,
-  },
-});
-
 const mapStateToProps = (state: Object) => {
   const epicerie = state.epicerie.currentSelected && state.epicerie.markers[state.epicerie.currentSelected];
   if (!epicerie) return {};
+  const hours = epicerie.hours;
   return {
     epicerie,
-    currentFocus: state.epicerie.focus,
-    isDateTimePickerVisible: state.epicerie.isDateTimePickerVisible,
     initialValues: {
       daysOpen: {
-        mon: !!(epicerie.hours && (epicerie.hours.mon_close !== null || epicerie.hours.mon_open !== null)),
-        thu: !!(epicerie.hours && (epicerie.hours.thu_close !== null || epicerie.hours.thu_open !== null)),
-        tue: !!(epicerie.hours && (epicerie.hours.tue_close !== null || epicerie.hours.tue_open !== null)),
-        wed: !!(epicerie.hours && (epicerie.hours.wed_close !== null || epicerie.hours.wed_open !== null)),
-        fri: !!(epicerie.hours && (epicerie.hours.fri_close !== null || epicerie.hours.fri_open !== null)),
-        sat: !!(epicerie.hours && (epicerie.hours.sat_close !== null || epicerie.hours.sat_open !== null)),
-        sun: !!(epicerie.hours && (epicerie.hours.sun_close !== null || epicerie.hours.sun_open !== null)),
+        mon: !!(hours && (hours.mon_close !== null || hours.mon_open !== null)),
+        thu: !!(hours && (hours.thu_close !== null || hours.thu_open !== null)),
+        tue: !!(hours && (hours.tue_close !== null || hours.tue_open !== null)),
+        wed: !!(hours && (hours.wed_close !== null || hours.wed_open !== null)),
+        fri: !!(hours && (hours.fri_close !== null || hours.fri_open !== null)),
+        sat: !!(hours && (hours.sat_close !== null || hours.sat_open !== null)),
+        sun: !!(hours && (hours.sun_close !== null || hours.sun_open !== null)),
       },
-      hours: epicerie.hours,
+      hours: hours,
     },
   };
 };

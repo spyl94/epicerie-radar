@@ -17,7 +17,9 @@ class EditModal extends Component<{}, {}> {
   render() {
     return (
       <View style={styles.container}>
-        <EditModalForm />
+        <View style={{ marginLeft: 10, marginRight: 10 }}>
+          <EditModalForm />
+        </View>
       </View>
     );
   }

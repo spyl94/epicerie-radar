@@ -7,14 +7,12 @@ import {
   Alert,
   ActivityIndicator,
 } from 'react-native';
-import { formValueSelector, change, Field, reduxForm } from 'redux-form';
+import { formValueSelector, Field, reduxForm } from 'redux-form';
 import Input from './Input';
 import Fetcher from '../services/Fetcher';
-import { CreatePickOpeningHoursRow } from './PickOpeningHoursRow';
-import { hideDateTimePicker } from '../redux/modules/epicerie';
-import DateTimePicker from 'react-native-modal-datetime-picker';
-import moment from 'moment';
+import PickOpeningHoursRow from './PickOpeningHoursRow';
 import RadioButton from './RadioButton';
+import { Container, Content, Form } from 'native-base';
 
 type Props = {
   position: Object,
@@ -75,13 +73,19 @@ const days = [
 ]
 
 class CreateModalForm extends Component<{}, Props> {
+  focusNextField = (nextField) => {
+    const intance = this.refs[nextField].getRenderedComponent();
+    intance.focus();
+  };
 
   render() {
-    const { horairesAreKnown, currentFocus, isDateTimePickerVisible, dispatch, invalid, submitting, handleSubmit } = this.props;
+    const { form, horairesAreKnown, invalid, submitting, handleSubmit } = this.props;
     const disabled = invalid || submitting;
     return (
-          <View>
+          <Form>
             <Field
+              ref="2"
+              withRef
               autoFocus
               component={Input}
               label={'Nom'}
@@ -89,25 +93,22 @@ class CreateModalForm extends Component<{}, Props> {
               highlightColor={'#00BCD4'}
               returnKeyType="next"
               blurOnSubmit={false}
-              // getInputRef={(e) => this.nameInput = e}
-              // onSubmitEditing={() => {
-              //   this.adressInput.focus()
-              // }}
+              onSubmitEditing={() => this.focusNextField('2')}
             />
             <Field
-              // getInputRef={(e) => this.addressInput = e}
+              ref="2"
+              withRef
               component={Input}
               name="address"
               label="Adresse"
               highlightColor={'#00BCD4'}
               returnKeyType="next"
               blurOnSubmit={false}
-              // onSubmitEditing={() => {
-              //   this.descriptionInput.focus()
-              // }}
+              onSubmitEditing={() => this.focusNextField('3')}
             />
             <Field
-              // getInputRef={(e) => this.descriptionInput = e}
+              ref="3"
+              withRef
               multiline
               component={Input}
               name="description"
@@ -125,18 +126,17 @@ class CreateModalForm extends Component<{}, Props> {
             />
             <Text style={{ marginTop: 15 }}></Text>
             {
-              horairesAreKnown === 'Horaires connus' && days.map((day, index) => <CreatePickOpeningHoursRow day={day} key={index} />)
+              horairesAreKnown === 'Horaires connus' &&
+              days.map((day, index) => (
+                <PickOpeningHoursRow
+                  style={{flex: 1, flexDirection: 'row', marginBottom: 30 }}
+                  form={form}
+                  day={day}
+                  key={index}
+                />
+              ))
             }
-            <Text style={{ marginTop: 15 }}></Text>
-            <DateTimePicker
-              mode="time"
-              isVisible={isDateTimePickerVisible}
-              onConfirm={(date: Date) => {
-                dispatch(change('create', 'hours.'+ currentFocus, moment(date).format('HH:MM')));
-                dispatch(hideDateTimePicker());
-              }}
-              onCancel={() => { dispatch(hideDateTimePicker()); }}
-            />
+            <Text style={{ marginTop: 20 }}></Text>
             {
                 submitting
                   ? <ActivityIndicator />
@@ -147,16 +147,14 @@ class CreateModalForm extends Component<{}, Props> {
                 title="Envoyer"
                 />
             }
-          </View>
+          </Form>
     );
   }
 }
 
 const connector = connect(state => ({
   position: state.location.location,
-  currentFocus: state.epicerie.focus,
   horairesAreKnown : formValueSelector('create')(state, 'horairesAreKnown'),
-  isDateTimePickerVisible: state.epicerie.isDateTimePickerVisible,
   initialValues: {
     hours: {},
     horairesAreKnown: 'Horaires inconnus',

@@ -1,20 +1,34 @@
 import React, { Component } from 'react';
-import TextField from 'react-native-md-textinput';
+import { Item, Input, Label } from 'native-base';
 
-class Input extends Component<{}, {}> {
+class InputComponent extends Component<{}, {}> {
+
+    focus() {
+      this.refs.children.focus();
+    }
+
     render() {
-      const { input: { onChange, onFocus, value }, getInputRef, ...otherProps } = this.props;
-      const getRef = getInputRef ? (element) => getInputRef(element) : null;
+      const { input: { onChange, onFocus, value }, label, ...otherProps } = this.props;
       return (
-        <TextField
-          {...otherProps}
-          onChangeText={onChange}
-          onFocus={onFocus}
-          value={value}
-          ref={getRef}
-        />
+        <Item floatingLabel>
+          <Label>{label}</Label>
+          <Input
+            ref="children"
+            {...otherProps}
+            onChangeText={onChange}
+            onFocus={onFocus}
+            value={value}
+          />
+        </Item>
       )
     }
 }
 
-export default Input;
+// {/* <TextField
+//   ref="children"
+//   {...otherProps}
+//   onChangeText={onChange}
+//   onFocus={onFocus}
+//   value={value}
+// /> */}
+export default InputComponent;
