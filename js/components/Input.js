@@ -4,7 +4,7 @@ import { Item, Input, Label } from 'native-base';
 class InputComponent extends Component<{}, {}> {
 
     focus() {
-      this.refs.children.focus();
+      this.textInput._root.focus();
     }
 
     render() {
@@ -13,7 +13,7 @@ class InputComponent extends Component<{}, {}> {
         <Item floatingLabel>
           <Label>{label}</Label>
           <Input
-            ref="children"
+            getRef={(input) => { this.textInput = input; }}
             {...otherProps}
             onChangeText={onChange}
             onFocus={onFocus}
