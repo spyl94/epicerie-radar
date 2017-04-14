@@ -3168,6 +3168,10 @@ react-native-modal@^2.0.2:
   dependencies:
     react-native-animatable "^1.1.1"
 
+react-native-radio-buttons@^0.14.0:
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/react-native-radio-buttons/-/react-native-radio-buttons-0.14.0.tgz#df8b2417eecc63f65704acd20144fdd169b2c4a4"
+
 react-native-tab-view@^0.0.57:
   version "0.0.57"
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-0.0.57.tgz#715e2ea4100fa50168e134df3947dd76ebd55743"

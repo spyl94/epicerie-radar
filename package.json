@@ -20,6 +20,7 @@
     "react-native-maps": "^0.14.0",
     "react-native-md-textinput": "https://github.com/evblurbs/react-native-md-textinput",
     "react-native-modal-datetime-picker": "^4.2.1",
+    "react-native-radio-buttons": "^0.14.0",
     "react-native-vector-icons": "^4.0.1",
     "react-navigation": "https://github.com/react-community/react-navigation/tarball/d211492a4c0d66b9a6c8b3e027e220079851362d",
     "react-redux": "^5.0.4",

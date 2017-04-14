@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import TextField from 'react-native-md-textinput';
-// import { TextInput } from 'react-native';
 
-const Input = ({ input: { onChange, onFocus, value }, ...otherProps }) => (
-    <TextField
-      {...otherProps}
-      onChangeText={onChange}
-      onFocus={onFocus}
-      value={value}
-    />
-);
+class Input extends Component<{}, {}> {
+    render() {
+      const { input: { onChange, onFocus, value }, getInputRef, ...otherProps } = this.props;
+      const getRef = getInputRef ? (element) => getInputRef(element) : null;
+      return (
+        <TextField
+          {...otherProps}
+          onChangeText={onChange}
+          onFocus={onFocus}
+          value={value}
+          ref={getRef}
+        />
+      )
+    }
+}
 
 export default Input;

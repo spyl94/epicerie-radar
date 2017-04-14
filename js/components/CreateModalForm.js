@@ -7,13 +7,14 @@ import {
   Alert,
   ActivityIndicator,
 } from 'react-native';
-import { change, Field, reduxForm } from 'redux-form';
+import { formValueSelector, change, Field, reduxForm } from 'redux-form';
 import Input from './Input';
 import Fetcher from '../services/Fetcher';
 import { CreatePickOpeningHoursRow } from './PickOpeningHoursRow';
 import { hideDateTimePicker } from '../redux/modules/epicerie';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment';
+import RadioButton from './RadioButton';
 
 type Props = {
   position: Object,
@@ -29,7 +30,7 @@ const validate = (values: Object) => {
   return errors;
 }
 
-const onSubmit = ({ name, address, description, hours }: Object, dispatch, { position }) => {
+const onSubmit = ({ name, address, description, hours, horairesAreKnown }: Object, dispatch, { position }) => {
   const body = {
     title: 'Un utilisateur vient d\'ajouter des informations.',
     body: `
@@ -43,6 +44,7 @@ coords: {
   longitude: null,
 },
 description,
+horairesAreKnown,
 hours,
 }, undefined, 2)}
 \`\`\`
@@ -75,7 +77,7 @@ const days = [
 class CreateModalForm extends Component<{}, Props> {
 
   render() {
-    const { currentFocus, isDateTimePickerVisible, dispatch, invalid, submitting, handleSubmit } = this.props;
+    const { horairesAreKnown, currentFocus, isDateTimePickerVisible, dispatch, invalid, submitting, handleSubmit } = this.props;
     const disabled = invalid || submitting;
     return (
           <View>
@@ -87,32 +89,43 @@ class CreateModalForm extends Component<{}, Props> {
               highlightColor={'#00BCD4'}
               returnKeyType="next"
               blurOnSubmit={false}
-              onSubmitEditing={() => { this.refs._addressField.focus() }}
+              // getInputRef={(e) => this.nameInput = e}
+              // onSubmitEditing={() => {
+              //   this.adressInput.focus()
+              // }}
             />
             <Field
-              ref={(c) => { this.refs._addressField = c }}
+              // getInputRef={(e) => this.addressInput = e}
               component={Input}
               name="address"
               label="Adresse"
               highlightColor={'#00BCD4'}
               returnKeyType="next"
               blurOnSubmit={false}
-              onSubmitEditing={() => { this.refs._descriptionField.focus() }}
+              // onSubmitEditing={() => {
+              //   this.descriptionInput.focus()
+              // }}
             />
             <Field
-              ref={(c) => { this.refs._descriptionField = c }}
+              // getInputRef={(e) => this.descriptionInput = e}
               multiline
               component={Input}
               name="description"
               label={`Description (facultatif)`}
               numberOfLines={3}
               highlightColor={'#00BCD4'}
-              onSubmitEditing={handleSubmit(onSubmit)}
+              // onSubmitEditing={handleSubmit(onSubmit)}
               returnKeyType="done"
             />
-            <Text style={{ marginBottom: 15, marginTop: 30 }}>Horaires d'ouverture (facultatif)</Text>
+            <Text style={{ marginTop: 15 }}></Text>
+            <Field
+              name="horairesAreKnown"
+              options={['Horaires connus', 'Horaires inconnus']}
+              component={RadioButton}
+            />
+            <Text style={{ marginTop: 15 }}></Text>
             {
-              days.map((day, index) => <CreatePickOpeningHoursRow day={day} key={index} />)
+              horairesAreKnown === 'Horaires connus' && days.map((day, index) => <CreatePickOpeningHoursRow day={day} key={index} />)
             }
             <Text style={{ marginTop: 15 }}></Text>
             <DateTimePicker
@@ -122,9 +135,7 @@ class CreateModalForm extends Component<{}, Props> {
                 dispatch(change('create', 'hours.'+ currentFocus, moment(date).format('HH:MM')));
                 dispatch(hideDateTimePicker());
               }}
-              onCancel={() => {
-                dispatch(hideDateTimePicker());
-              }}
+              onCancel={() => { dispatch(hideDateTimePicker()); }}
             />
             {
                 submitting
@@ -144,9 +155,11 @@ class CreateModalForm extends Component<{}, Props> {
 const connector = connect(state => ({
   position: state.location.location,
   currentFocus: state.epicerie.focus,
+  horairesAreKnown : formValueSelector('create')(state, 'horairesAreKnown'),
   isDateTimePickerVisible: state.epicerie.isDateTimePickerVisible,
   initialValues: {
     hours: {},
+    horairesAreKnown: 'Horaires inconnus',
     daysOpen: {
       mon: false,
       thu: false,
