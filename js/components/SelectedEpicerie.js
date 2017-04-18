@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  // ScrollView,
   View,
   Alert,
   Button,
@@ -15,7 +14,7 @@ import { navigateToEditModal } from '../redux/modules/nav';
 const styles = StyleSheet.create({
   container: {
      margin: 0,
-     flex: 0.3,
+     flex: 0.35,
      padding: 10,
   },
 });
@@ -50,7 +49,7 @@ class SelectedEpicerie extends Component {
               color={'#178c80'}
               title="Modifier les horaires"
             />
-            <Text>{ ' '}</Text>
+            <Text>{' '}</Text>
             <Button
               onPress={() => {
                 Alert.alert(

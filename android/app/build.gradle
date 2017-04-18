@@ -91,7 +91,7 @@ android {
         applicationId "com.epicerie"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 40
+        versionCode 45
         versionName "2.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
@@ -138,6 +138,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-vector-icons')
     compile project(':react-native-config')
     compile project(':react-native-maps')
     compile fileTree(dir: "libs", include: ["*.jar"])
