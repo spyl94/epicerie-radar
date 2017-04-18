@@ -18,6 +18,7 @@
     "react-native": "^0.43.3",
     "react-native-config": "^0.3.1",
     "react-native-datepicker": "^1.4.7",
+    "react-native-google-analytics-bridge": "^5.0.1",
     "react-native-keyboard-aware-scroll-view": "^0.2.8",
     "react-native-maps": "^0.14.0",
     "react-native-radio-buttons": "^0.14.0",
