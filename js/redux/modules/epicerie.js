@@ -87,7 +87,6 @@ export const loadUpToDateMarkers = (dispatch: Function) => {
     })
     .catch(() => {
       dispatch({ type: 'LOAD_MARKERS', markers: data });
-      // Alert.alert('Un problème est survenu', 'Impossible de récupèrer la liste des épiceries à jour...');
     });
 }
 

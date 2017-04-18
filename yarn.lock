@@ -9,9 +9,9 @@
     hoist-non-react-statics "^1.2.0"
     lodash "^4.15.0"
 
-"@shoutem/theme@git+https://github.com/GeekyAnts/theme.git#caching":
+"@shoutem/theme@https://github.com/GeekyAnts/theme#caching":
   version "0.8.8"
-  resolved "git+https://github.com/GeekyAnts/theme.git#23ce8703cbebe948cb507a12e462242fac9da497"
+  resolved "https://github.com/GeekyAnts/theme#23ce8703cbebe948cb507a12e462242fac9da497"
   dependencies:
     hoist-non-react-statics "^1.0.5"
     lodash "^4.10.1"
@@ -3265,10 +3265,6 @@ react-native-keyboard-aware-scroll-view@^0.2.8:
 react-native-maps@^0.14.0:
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.14.0.tgz#f0b928f0bef5036472dcd8175f14838884962cad"
-
-"react-native-md-textinput@https://github.com/evblurbs/react-native-md-textinput":
-  version "2.0.4"
-  resolved "https://github.com/evblurbs/react-native-md-textinput#d7918218de38318071835748f94144a616c705fd"
 
 react-native-radio-buttons@^0.14.0:
   version "0.14.0"

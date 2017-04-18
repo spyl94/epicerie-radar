@@ -24,11 +24,4 @@ class InputComponent extends Component<{}, {}> {
     }
 }
 
-// {/* <TextField
-//   ref="children"
-//   {...otherProps}
-//   onChangeText={onChange}
-//   onFocus={onFocus}
-//   value={value}
-// /> */}
 export default InputComponent;
