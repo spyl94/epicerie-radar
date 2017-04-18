@@ -1,4 +1,54 @@
-[ { "address" : "68 Rue du chemin vert, 75011 Paris",
+[ 
+{
+  "name": "Mini market alimentation générale",
+  "address": "73 boulevard de Clichy",
+  "coords": {
+    "latitude": 48.883937,
+    "longitude": 2.331098
+  },
+  "hours": {
+    "mon_open": "10:00",
+    "mon_close": "06:00",
+    "thu_open": "10:00",
+    "tue_open": "10:00",
+    "thu_close": "06:00",
+    "tue_close": "06:00",
+    "wed_open": "10:00",
+    "wed_close": "06:00",
+    "fri_open": "10:00",
+    "fri_close": "06:00",
+    "sat_open": "10:00",
+    "sat_close": "06:00",
+    "sun_open": "10:00",
+    "sun_close": "06:00"
+  }
+},
+    {
+  "name": "Alimentation générale",
+  "address": "75 bis boulevard de Clichy",
+  "coords": {
+    "latitude": 48.883921,
+    "longitude": 2.330885
+  },
+  "hours": {
+    "mon_close": "06:00",
+    "mon_open": "10:00",
+    "thu_open": "10:00",
+    "thu_close": "06:00",
+    "tue_open": "10:00",
+    "tue_close": "06:00",
+    "wed_close": "06:00",
+    "wed_open": "10:00",
+    "fri_open": "10:00",
+    "sat_open": "10:00",
+    "fri_close": "06:00",
+    "sat_close": "06:00",
+    "sun_open": "10:00",
+    "sun_close": "06:00"
+  }
+},
+{ 
+    "address" : "68 Rue du chemin vert, 75011 Paris",
     "coords" : { "latitude" : 48.859893999999997,
         "longitude" : 2.377643
       },
