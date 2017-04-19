@@ -1,4 +1,29 @@
-[ 
+[
+ {
+  "name": "Salma Alimentation",
+  "address": "56 rue Richard Lenoir",
+  "coords": {
+    "latitude": 48.856988,
+    "longitude": 2.380985
+  },
+  "description": "",
+  "phone": "01 43 71 78 04",
+  "horairesAreKnown": "Horaires connus",
+  "hours": {
+    "thu_open": "10:00",
+    "thu_close": "03:00",
+    "tue_open": "10:00",
+    "tue_close": "03:00",
+    "wed_open": "10:00",
+    "wed_close": "03:00",
+    "fri_open": "10:00",
+    "fri_close": "03:00",
+    "sat_open": "10:00",
+    "sat_close": "03:00",
+    "sun_open": "10:00",
+    "sun_close": "03:00"
+  }
+},
 {
   "name": "Mini market alimentation générale",
   "address": "73 boulevard de Clichy",
