@@ -4,6 +4,8 @@ certificates
 #
 .DS_Store
 
+ios/Pods
+
 # Xcode
 #
 build/
