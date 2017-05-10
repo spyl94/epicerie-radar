@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {
   Text,
+  ListView,
   View,
   Button,
   Alert,
+  TouchableHighlight,
   ActivityIndicator,
 } from 'react-native';
 import { formValueSelector, Field, reduxForm } from 'redux-form';
@@ -13,6 +15,7 @@ import Fetcher from '../services/Fetcher';
 import PickOpeningHoursRow from './PickOpeningHoursRow';
 import RadioButton from './RadioButton';
 import { Container, Content, Form } from 'native-base';
+import { getGoogleAutocompleteUrl } from '../services/geolocation';
 
 type Props = {
   position: Object,
@@ -78,6 +81,55 @@ class CreateModalForm extends Component<{}, Props> {
     intance.focus();
   };
 
+  state = {
+    loading: false,
+    dataSource: null,
+  }
+
+  dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
+  autocompleteRequestTokens = []
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.term && nextProps.term != this.props.term) {
+      this.setState({loading: true})
+      // Stop all previous requests
+      // this.autocompleteRequestTokens.forEach((requestToken) => requestToken.cancel());
+
+      // Init new autocomplete requests
+      // const cancelTokenSource = axios.CancelToken.source();
+      // this.autocompleteRequestTokens.push(cancelTokenSource)
+
+      const url = getGoogleAutocompleteUrl(nextProps.term, nextProps.position);
+      Fetcher
+        .get(url)
+        .then((response) => {
+          this.setState({
+            dataSource: this.dataSource.cloneWithRows(response.data.predictions),
+            loading: false
+          })
+        }).catch(() => {
+          this.setState({loading: false})
+        })
+      ;
+    }
+    // else if (!nextProps.term || nextProps.term === '') {
+    //   this.setState({
+    //     dataSource: this.dataSource.cloneWithRows([])
+    //   })
+    // }
+    //
+    // if (this.props.validatingAddress != nextProps.validatingAddress && nextProps.validatingAddress === true) {
+    //   this.setState({
+    //     shouldFocusField: false
+    //   })
+    // }
+  }
+
+  onAddressSelected(rowData) {
+    console.log(rowData);
+    // this.props.onAddressSelected(rowData)
+  }
+
   render() {
     const { form, horairesAreKnown, invalid, submitting, handleSubmit } = this.props;
     const disabled = invalid || submitting;
@@ -103,9 +155,38 @@ class CreateModalForm extends Component<{}, Props> {
               label="Adresse"
               highlightColor={'#00BCD4'}
               returnKeyType="next"
+              autoCapitalize="none"
+              autoCorrect={false}
               blurOnSubmit={false}
+              clearButtonMode={'always'}
               onSubmitEditing={() => this.focusNextField('3')}
             />
+            {
+              <View style={{ position: 'relative', alignSelf: 'stretch' }}>
+                <View style={{ position: 'absolute', top: 0, left: 0, right: 0 }}>
+                  {
+                    this.state.dataSource &&
+                      <ListView
+                        dataSource={this.state.dataSource}
+                        keyboardShouldPersistTaps={'always'}
+                        enableEmptySections
+                        renderRow={(rowData, sectionID, rowID, highlightRow) =>
+                          <TouchableHighlight onPress={() => {
+                            this.onAddressSelected(rowData);
+                            highlightRow(sectionID, rowID);
+                          }}>
+                            <View style={styles.row}>
+                              <Text>{rowData.description}</Text>
+                            </View>
+                          </TouchableHighlight>
+                        }
+                        renderSeparator={(sectionID, rowID) =>
+                          <View key={`${sectionID}-${rowID}`} style={{backgroundColor: '#FFF', height: 1}} />
+                        }
+                      />
+                  }
+                </View>
+              </View>}
             <Field
               ref="3"
               withRef
@@ -154,6 +235,7 @@ class CreateModalForm extends Component<{}, Props> {
 
 const connector = connect(state => ({
   position: state.location.location,
+  term: formValueSelector('create')(state, 'address'),
   horairesAreKnown : formValueSelector('create')(state, 'horairesAreKnown'),
   initialValues: {
     hours: {},
@@ -169,6 +251,15 @@ const connector = connect(state => ({
     },
   }
 }));
+
+const styles = StyleSheet.create({
+  row: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: '#FFF',
+    padding: 10
+  },
+});
 
 export default connector(reduxForm({
   form: 'create',

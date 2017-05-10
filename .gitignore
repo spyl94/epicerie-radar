@@ -1,5 +1,5 @@
 certificates
-.env
+.env.prod
 # OSX
 #
 .DS_Store
