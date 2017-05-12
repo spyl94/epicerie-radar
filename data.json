@@ -1,5 +1,83 @@
 [
  {
+  "name": "Space Market",
+  "address": "48 rue du Colisée",
+  "coords": {
+    "latitude": 48.871811,
+    "longitude": 2.311617
+  },
+  "horairesAreKnown": "Horaires connus",
+  "hours": {
+    "mon_close": "01:00",
+    "mon_open": "10:00",
+    "fri_close": "02:30",
+    "sat_close": "02:30",
+    "thu_open": "10:00",
+    "thu_close": "01:00",
+    "tue_close": "01:00",
+    "tue_open": "10:00",
+    "fri_open": "10:00",
+    "sat_open": "10:00",
+    "sun_open": "10:00",
+    "sun_close": "01:30",
+    "wed_open": "10:00",
+    "wed_close": "01:00"
+  }
+ },
+ {
+  "name": "Alimentation générale bienvenue cremerie",
+  "address": "70 rue leon frot",
+  "coords": {
+    "latitude": 48.857007,
+    "longitude": 2.385389
+  },
+  "horairesAreKnown": "Horaires connus",
+  "hours": {
+    "mon_open": "10:00",
+    "mon_close": "20:00",
+    "tue_open": "10:00",
+    "tue_close": "20:00",
+    "wed_open": "10:00",
+    "wed_close": "20:00",
+    "fri_open": "10:00",
+    "fri_close": "20:00",
+    "sat_open": "10:00",
+    "sat_close": "00:00",
+    "sun_open": "10:00",
+    "sun_close": "00:00"
+  }
+ },
+ {
+  "name": "America exotica",
+  "address": "57 rue leon frot",
+  "coords": {
+    "latitude": 48.856406,
+    "longitude": 2.385701
+  },
+  "hours": {
+    "mon_open": "10:00",
+    "mon_close": "20:00",
+    "tue_open": "10:00",
+    "tue_close": "20:00",
+    "wed_open": "10:00",
+    "wed_close": "20:00",
+    "fri_open": "10:00",
+    "fri_close": "20:00",
+    "sat_open": "10:00",
+    "sat_close": "20:00",
+  }
+ },
+ {
+  "name": "Supérette des Martyrs",
+  "address": "58 rue des Martyrs",
+  "coords": {
+    "latitude": 48.880237,
+    "longitude": 2.340571
+  },
+  "horairesAreKnown": "Horaires inconnus",
+  "hours": {}
+ },
+ {
   "name": "Salma Alimentation",
   "address": "56 rue Richard Lenoir",
   "coords": {
