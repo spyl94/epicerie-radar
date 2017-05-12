@@ -25,6 +25,7 @@ platform :ios do
   lane :release do
     # match(type: "appstore")
     # snapshot
+    #increment_build_number
     gym # Build your app - more options available
     deliver(force: true)
     # frameit
