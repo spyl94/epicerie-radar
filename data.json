@@ -652,12 +652,6 @@
       },
     "name" : "Addadis"
   },
-  { "address" : "114 r de Belleville, 75020 PARIS",
-    "coords" : { "latitude" : 48.874557000000003,
-        "longitude" : 2.3877109999999999
-      },
-    "name" : "L'Annexe Cadet"
-  },
   { "address" : "114 r Convention, 75015 PARIS",
     "coords" : { "latitude" : 48.840843,
         "longitude" : 2.2880410000000002
