@@ -1,5 +1,30 @@
 [
  {
+  "name": "Alimentation générale chemin vert",
+  "address": "144 bis rue du chemin vert",
+  "coords": {
+    "latitude": 48.862421,
+    "longitude": 2.386486
+  },
+  "horairesAreKnown": "Horaires connus",
+  "hours": {
+    "mon_open": "10:00",
+    "mon_close": "02:00",
+    "thu_open": "10:00",
+    "thu_close": "02:00",
+    "tue_open": "10:00",
+    "tue_close": "02:00",
+    "wed_open": "10:00",
+    "fri_open": "10:00",
+    "sat_open": "10:00",
+    "sun_open": "10:00",
+    "wed_close": "02:00",
+    "fri_close": "02:00",
+    "sat_close": "02:00",
+    "sun_close": "02:00"
+  }
+ },
+ {
   "name": "Space Market",
   "address": "48 rue du Colisée",
   "coords": {
@@ -1089,7 +1114,23 @@
     "coords" : { "latitude" : 48.846376999999997,
         "longitude" : 2.3434629999999999
       },
-    "name" : "Chawki Mohamed"
+    "name" : "Chawki Mohamed",
+   "hours": {
+  "mon_open": "10:00",
+  "mon_close": "00:00",
+  "thu_open": "10:00",
+  "thu_close": "00:00",
+  "tue_open": "10:00",
+  "tue_close": "00:00",
+  "wed_open": "10:00",
+  "wed_close": "00:00",
+  "fri_open": "10:00",
+  "fri_close": "00:00",
+  "sat_open": "10:00",
+  "sat_close": "00:00",
+  "sun_open": "10:00",
+  "sun_close": "00:00"
+}
   },
   { "address" : "155 r Fbg St Denis, 75010 PARIS",
     "coords" : { "latitude" : 48.878678999999998,
@@ -2539,7 +2580,23 @@
     "coords" : { "latitude" : 48.863492999999998,
         "longitude" : 2.3890989999999999
       },
-    "name" : "ALIMENTATION GÉNÉRALE AOLOUZE"
+    "name" : "ALIMENTATION GÉNÉRALE AOLOUZE",
+   "hours": {
+  "mon_open": "10:00",
+  "mon_close": "22:00",
+  "thu_open": "10:00",
+  "thu_close": "10:00",
+  "tue_open": "10:00",
+  "tue_close": "12:00",
+  "wed_open": "10:00",
+  "wed_close": "12:00",
+  "fri_open": "10:00",
+  "fri_close": "12:00",
+  "sat_open": "10:00",
+  "sat_close": "12:00",
+  "sun_open": "10:00",
+  "sun_close": "12:00"
+   }
   },
   { "address" : "5 bd Garibaldi, 75015 PARIS",
     "coords" : { "latitude" : 48.847715000000001,
