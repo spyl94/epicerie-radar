@@ -1,5 +1,5 @@
-// @flow
 import { navigateToMapScreen } from './nav';
+import type { Dispatch } from '../../types';
 
 type Location = {
   latitude: number,
@@ -11,13 +11,18 @@ type Region = {
   latitudeDelta: number,
   longitudeDelta: number,
 }
-type State = {
+export type State = {
   location: Location,
   enabled: ?boolean,
   region: Region,
 }
 
-type Action = Object;
+export type LocationAction =
+  { type: 'SET_LOCATION_ERROR' } |
+  { type: 'UPDATE_LOCATION', location: Location } |
+  { type: 'UPDATE_REGION', region: Region } |
+  { type: 'SET_INITIAL_LOCATION', location: Location }
+;
 
 const initialState: State = {
   location: {
@@ -48,7 +53,7 @@ const updateLocation = (location: Location) => ({
   location,
 })
 
-const locationError = (message: string, dispatch: Function) => {
+const locationError = (message: string, dispatch: Dispatch) => {
   if (message === 'Location request timed out' || message === 'No available location provider.') {
     dispatch(setLocationError(message))
   }
@@ -59,7 +64,7 @@ const setLocationError = (message: string) => ({
   message,
 })
 
-export const getAndSetCurrentLocation = (dispatch: Function) => {
+export const getAndSetCurrentLocation = (dispatch: Dispatch) => {
 		navigator.geolocation.getCurrentPosition(
       ({ coords }) => {
         dispatch(setInitialLocation(coords))
@@ -74,7 +79,7 @@ export const getAndSetCurrentLocation = (dispatch: Function) => {
    watchPosition(dispatch);
 }
 
-export const watchPosition = (dispatch: Function) => {
+export const watchPosition = (dispatch: Dispatch) => {
   navigator.geolocation.watchPosition(
     ({ coords }) => dispatch(updateLocation(coords)),
     ({ message }) => locationError(message, dispatch),
@@ -85,7 +90,7 @@ export const watchPosition = (dispatch: Function) => {
   );
 }
 
-export default function location (state: State = initialState, action: Action): State {
+export default function location (state: State = initialState, action: LocationAction): State {
   switch (action.type) {
     case 'UPDATE_REGION':
         if (action.region.longitudeDelta < 100 && action.region.latitudeDelta && action.region.longitude != 0) {
