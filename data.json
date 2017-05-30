@@ -1,5 +1,265 @@
 [
  {
+  "name": "Alimentation générale",
+  "address": "5 boulevard Magenta, Paris",
+  "coords": {
+    "latitude": 48.869546,
+    "longitude": 2.361618
+  },
+  "horairesAreKnown": "Horaires inconnus",
+  "hours": {}
+ },
+ {
+  "name": "Épicerie du Maillard",
+  "address": "5 rue bali Franklin Roosevelt, Nantes",
+  "coords": {
+    "latitude": 47.214081,
+    "longitude": -1.554319
+  },
+  "horairesAreKnown": "Horaires inconnus",
+  "hours": {}
+ },
+ {
+  "name": "Fruits primeurs Alimentation",
+  "address": "71 rue Maréchal Joffre, Nantes",
+  "coords": {
+    "latitude": 47.220642,
+    "longitude": -1.548425
+  },
+  "horairesAreKnown": "Horaires connus",
+  "hours": {
+    "mon_open": "10:00",
+    "mon_close": "02:00",
+    "thu_open": "10:00",
+    "thu_close": "02:00",
+    "tue_open": "10:00",
+    "wed_open": "10:00",
+    "fri_open": "10:00",
+    "sat_open": "10:00",
+    "tue_close": "02:00",
+    "wed_close": "02:00",
+    "fri_close": "02:00",
+    "sat_close": "02:00"
+  }
+ },
+ {
+  "name": "épicerie noctambule",
+  "address": "91 rue du Maréchal Joffre, Nantes",
+  "coords": {
+    "latitude": 47.220133,
+    "longitude": -1.549042
+  },
+  "horairesAreKnown": "Horaires inconnus",
+  "hours": {}
+ },
+ {
+  "name": "Alimentation générale ",
+  "address": "21 rue de la comète",
+  "coords": {
+    "latitude": 48.858410,
+    "longitude": 2.309290
+  },
+  "horairesAreKnown": "Horaires connus",
+  "hours": {
+    "mon_open": "09:00",
+    "mon_close": "03:00",
+    "thu_open": "09:00",
+    "thu_close": "03:00",
+    "tue_open": "09:00",
+    "wed_open": "09:00",
+    "fri_open": "09:00",
+    "sat_open": "09:00",
+    "tue_close": "03:00",
+    "wed_close": "03:00",
+    "fri_close": "03:00",
+    "sat_close": "03:00"
+  }
+ },
+ {
+  "name": "Monoprix",
+  "address": "23 Avenue de l'Opéra",
+  "coords": {
+    "latitude": 48.866408,
+    "longitude": 2.333876
+  },
+  "horairesAreKnown": "Horaires connus",
+  "hours": {
+    "mon_open": "09:00",
+    "mon_close": "22:00",
+    "thu_open": "09:00",
+    "thu_close": "22:00",
+    "tue_open": "09:00",
+    "wed_open": "09:00",
+    "fri_open": "09:00",
+    "sat_open": "09:00",
+    "tue_close": "22:00",
+    "wed_close": "22:00",
+    "fri_close": "22:00",
+    "sat_close": "22:00"
+  }
+ },
+ {
+  "name": "Alimentation chemin vert",
+  "address": "144 rue du chemin vert",
+  "coords": {
+    "latitude": 48.862421,
+    "longitude": 2.386486
+  },
+  "horairesAreKnown": "Horaires connus",
+  "hours": {
+    "mon_close": "02:00",
+    "mon_open": "09:00",
+    "thu_open": "09:00",
+    "thu_close": "02:00",
+    "tue_open": "09:00",
+    "tue_close": "02:00",
+    "wed_open": "09:00",
+    "wed_close": "02:00",
+    "fri_open": "09:00",
+    "fri_close": "02:00",
+    "sat_open": "09:00",
+    "sat_close": "02:00",
+    "sun_open": "09:00",
+    "sun_close": "02:00"
+  }
+ },
+ {
+  "name": "Alimentation générale",
+  "address": "3 rue Tanger",
+  "coords": {
+    "latitude": 48.884583,
+    "longitude": 2.366889
+  },
+  "horairesAreKnown": "Horaires connus",
+  "hours": {
+    "mon_open": "09:00",
+    "mon_close": "00:30",
+    "thu_open": "09:00",
+    "thu_close": "00:30",
+    "tue_open": "09:00",
+    "tue_close": "00:30",
+    "wed_open": "09:00",
+    "wed_close": "00:30",
+    "sun_open": "09:00",
+    "sun_close": "00:30",
+    "fri_open": "09:00",
+    "sat_open": "09:00",
+    "fri_close": "00:30",
+    "sat_close": "00:30"
+  }
+ },
+ {
+  "name": "Opera Market",
+  "address": "29 rue des petits champs",
+  "coords": {
+    "latitude": 48.866645,
+    "longitude": 2.336931
+  },
+  "phone": "01 49 26 03 09",
+  "horairesAreKnown": "Horaires inconnus",
+  "hours": {}
+ },
+ {
+  "name": "Alimentation générale",
+  "address": "83 rue maubeuge",
+  "coords": {
+    "latitude": 48.880441,
+    "longitude": 2.351785
+  },
+  "horairesAreKnown": "Horaires inconnus",
+  "hours": {}
+ },
+ {
+  "name": "Chez Karim",
+  "address": "13 rue Condorcet",
+  "coords": {
+    "latitude": 48.879506,
+    "longitude": 2.346866
+  },
+  "horairesAreKnown": "Horaires inconnus",
+  "hours": {}
+ },
+ {
+  "name": "Super Market ",
+  "address": "23 rue Victor Massé",
+  "coords": {
+    "latitude": 48.880643,
+    "longitude": 2.338093
+  },
+  "horairesAreKnown": "Horaires inconnus",
+  "hours": {}
+ },
+ {
+  "name": "Supermarché Diagonale",
+  "address": "84 rue de Charonne",
+  "coords": {
+    "latitude": 48.853594,
+    "longitude": 2.381199
+  },
+  "horairesAreKnown": "Horaires connus",
+  "hours": {
+    "mon_open": "09:00",
+    "mon_close": "22:00",
+    "thu_open": "09:00",
+    "thu_close": "22:00",
+    "tue_open": "09:00",
+    "tue_close": "22:00",
+    "wed_open": "09:00",
+    "wed_close": "22:00",
+    "sun_open": "09:00",
+    "sun_close": "22:00",
+    "fri_open": "09:00",
+    "sat_open": "09:00",
+    "fri_close": "23:00",
+    "sat_close": "23:00"
+  }
+ },
+ {
+  "name": "Alimentation générale",
+  "address": "73 rue de Charenton",
+  "coords": {
+    "latitude": 48.849877,
+    "longitude": 2.374115
+  },
+  "horairesAreKnown": "Horaires inconnus",
+  "hours": {}
+ },
+ {
+  "name": "La coulée verte",
+  "address": "2 rue Emilio Castelar",
+  "coords": {
+    "latitude": 48.849116,
+    "longitude": 2.375031
+  },
+  "horairesAreKnown": "Horaires connus",
+  "hours": {
+    "mon_close": "23:00",
+    "thu_close": "23:00",
+    "tue_close": "23:00",
+    "mon_open": "12:00",
+    "thu_open": "12:00",
+    "wed_close": "23:00",
+    "fri_close": "23:00",
+    "sat_close": "23:00",
+    "sun_close": "23:00",
+    "tue_open": "12:00",
+    "wed_open": "12:00",
+    "fri_open": "12:00",
+    "sat_open": "12:00",
+    "sun_open": "12:00"
+  }
+ },
+ {
+  "name": "Épicerie du Monde",
+  "address": "105 rue de Charenton",
+  "coords": {
+    "latitude": 48.847337,
+    "longitude": 2.378172
+  },
+  "horairesAreKnown": "Horaires inconnus",
+  "hours": {}
+ },
+ {
   "name": "Alimentation générale chemin vert",
   "address": "144 bis rue du chemin vert",
   "coords": {
@@ -1086,11 +1346,29 @@
       },
     "name" : "Soussi Bachir"
   },
-  { "address" : "151 r Roquette, 75011 PARIS",
-    "coords" : { "latitude" : 48.859499999999997,
-        "longitude" : 2.3861949999999998
-      },
-    "name" : "Belkas Idder"
+  { 
+   "address" : "151 r Roquette, 75011 PARIS",
+    "coords" : { 
+      "latitude" : 48.859499999999997,
+      "longitude" : 2.3861949999999998
+    },
+    "name" : "Belkas Idder",
+    "hours": {
+     "mon_open": "10:00",
+     "mon_close": "00:00",
+  "thu_open": "10:00",
+  "thu_close": "00:00",
+  "tue_open": "10:00",
+  "tue_close": "00:00",
+  "wed_open": "10:00",
+  "wed_close": "00:00",
+  "fri_open": "10:00",
+  "fri_close": "00:00",
+  "sat_open": "10:00",
+  "sat_close": "00:00",
+  "sun_open": "10:00",
+  "sun_close": "00:00"
+   }
   },
   { "address" : "152 av Jean Jaurès, 75019 PARIS",
     "coords" : { "latitude" : 48.886960000000002,
@@ -1848,11 +2126,29 @@
       },
     "name" : "Cheikh Boudaker"
   },
-  { "address" : "24 r St Antoine, 75004 PARIS",
-    "coords" : { "latitude" : 48.853760000000001,
-        "longitude" : 2.3660589999999999
-      },
-    "name" : "Ben Rhouma"
+  { 
+    "address" : "24 r St Antoine, 75004 PARIS",
+    "coords" : { 
+      "latitude" : 48.853760000000001,
+      "longitude" : 2.3660589999999999
+     },
+    "name" : "Ben Rhouma",
+    "hours": {
+      "mon_close": "12:30",
+      "thu_close": "12:30",
+      "tue_close": "12:30",
+      "wed_close": "12:30",
+      "fri_close": "12:30",
+      "sat_close": "12:30",
+      "sun_close": "12:30",
+      "mon_open": "22:00",
+      "thu_open": "22:00",
+      "tue_open": "22:00",
+      "wed_open": "22:00",
+      "fri_open": "22:00",
+      "sat_open": "22:00",
+      "sun_open": "22:00"
+   }
   },
   { "address" : "24 r Villiers de l'Isle Adam, 75020 PARIS",
     "coords" : { "latitude" : 48.866047000000002,
