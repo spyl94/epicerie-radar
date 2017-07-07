@@ -1,10 +1,29 @@
-// @flow
 import data from '../../../data.json';
-import moment from 'moment';
 import Fetcher from '../../services/Fetcher'
 import { Alert } from 'react-native'
+import { findNearestIndex, openingStatus } from '../../services/markerHelper';
+import type { Marker, Markers, Dispatch } from '../../types';
 
-export const reportNotExisting = (dispatch, epicerie) => {
+type State = {
+  currentSelected: ?Marker,
+  markers: Markers,
+  isReporting: boolean,
+}
+export type EpicerieAction =
+  { type: 'LOAD_MARKERS', markers: Markers } |
+  { type: 'SELECT', marker: Marker } |
+  { type: 'REPORTING' } |
+  { type: 'STOP_REPORTING' } |
+  { type: 'SET_INITIAL_LOCATION' }
+;
+
+const initialState: State = {
+    currentSelected: null,
+    markers: [],
+    isReporting: false,
+};
+
+export const reportNotExisting = (dispatch: Dispatch, epicerie: Marker) => {
     const body = {
       title: 'Un utilisateur vient de signaler une fermeture définitive.',
       body: `Epicerie: ${JSON.stringify(epicerie)}`,
@@ -22,67 +41,10 @@ export const reportNotExisting = (dispatch, epicerie) => {
     });
 }
 
-export const openingStatus = epicerie => {
-  const date = moment();
-  const currentHour = date.hours();
-  let checkingHoursOfPrevDay = false;
-  if (currentHour < 6) {
-    date.subtract(1, 'day');
-    checkingHoursOfPrevDay = true;
-  }
-  const currentDay = date.format('dddd').slice(0, 3).toLowerCase();
-  if (typeof epicerie.hours == "undefined" || !epicerie.hours[currentDay + '_close']) {
-    return {
-      color: "#F9B254",
-      type: "unknown",
-      text: "Horaire non disponible..."
-    };
-  }
-  const closingHour = parseInt(epicerie.hours[currentDay + '_close'].slice(0, 2), 10);
-  if (
-       (checkingHoursOfPrevDay && currentHour > closingHour)
-    || (!checkingHoursOfPrevDay && currentHour < closingHour)
-  ) {
-    return {
-      color: '#fa3e3e',
-      type: "close",
-      text: 'Actuellement fermé',
-    };
-  }
-  return {
-    color: '#42b72a',
-    type: "open",
-    text: "Ouvert jusqu'à " + epicerie.hours[currentDay + '_close']
-  };
-}
-
-type State = {
-  currentSelected: Object,
-  markers: Array<Object>,
-  isReporting: boolean,
-  focus: ?string,
-  isDateTimePickerVisible: boolean
-}
-
-type Action = Object;
-
-const initialState: State = {
-    currentSelected: null,
-    markers: [],
-    isReporting: false,
-};
-
-const markerUnknown = require('../../../img/marker_unknown_full.png');
-const markerOpen = require('../../../img/marker_open_full.png');
-const markerClose = require('../../../img/marker_close_full.png');
-const markerUnknownSelected = require('../../../img/marker_unknown.png');
-const markerOpenSelected = require('../../../img/marker_open.png');
-const markerCloseSelected = require('../../../img/marker_close.png');
-
-export const loadUpToDateMarkers = (dispatch: Function) => {
+export const loadUpToDateMarkers = (dispatch: Dispatch) => {
   Fetcher
     .get('https://raw.githubusercontent.com/spyl94/epicerie-radar/master/data.json')
-    .then(markers => {
+    .then((markers: Markers) => {
       dispatch({ type: 'LOAD_MARKERS', markers });
     })
     .catch(() => {
@@ -90,61 +52,15 @@ export const loadUpToDateMarkers = (dispatch: Function) => {
     });
 }
 
-export const getMarkerImage = (type: string, isSelected: boolean) => {
-  if (type === "open") {
-    if (isSelected) {
-      return markerOpenSelected;
-    }
-    return markerOpen;
-  }
-  if (type === "close") {
-    if (isSelected) {
-      return markerCloseSelected;
-    }
-    return markerClose;
-  }
-  if (isSelected) {
-    return markerUnknownSelected;
-  }
-  return markerUnknown;
-};
-
-export const select = (marker: Object) => ({
+export const select = (marker: Marker) => ({
   type: 'SELECT',
   marker,
 })
 
-function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
-  var R = 6371; // Radius of the earth in km
-  var dLat = deg2rad(lat2-lat1);  // deg2rad below
-  var dLon = deg2rad(lon2-lon1);
-  var a =
-    Math.sin(dLat/2) * Math.sin(dLat/2) +
-    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-    Math.sin(dLon/2) * Math.sin(dLon/2)
-    ;
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-  var d = R * c; // Distance in km
-  return d;
-}
-
-function deg2rad(deg) {
-  return deg * (Math.PI/180)
-}
-
-const findNearestIndex = (markers: Array<Object>, lat: number, long: number): ?number => {
-  if (markers.length === 0) {
-    return null;
-  }
-  const distances = markers.map(({ coords }) => getDistanceFromLatLonInKm(lat, long, coords.latitude, coords.longitude));
-  const min = Math.min(...distances);
-  return markers[distances.indexOf(min)].id;
-};
-
 const INITIAL_LATITUDE = 48.853;
 const INITIAL_LONGITUDE = 2.35;
 
-export default function epiceries(state: State = initialState, action: Action) {
+export default function epiceries(state: State = initialState, action: EpicerieAction): State {
     switch (action.type) {
       case 'LOAD_MARKERS': {
           const markers = [];
