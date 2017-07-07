@@ -1,0 +1,1 @@
+Nouveau bouton pour signaler une épicerie qui a fermé définitivement (la pauvre!).

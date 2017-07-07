@@ -5,14 +5,13 @@ import {
   StyleSheet,
   View,
   Image,
-  TouchableHighlight,
 } from 'react-native';
 import Map from './Map';
 import LocationInfo from './LocationInfo';
 import SelectedEpicerie from './SelectedEpicerie';
 import { navigateToCreateModal } from '../redux/modules/nav';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
-const plus = require('../../img/plus.png');
 const logo = require('../../android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png');
 
 class MapScreen extends Component {
@@ -26,12 +25,13 @@ class MapScreen extends Component {
         />
       ),
       right: (
-        <TouchableHighlight onPress={() => { dispatch(navigateToCreateModal()) }}>
-          <Image
-            style={[styles.image, {marginRight: 10}]}
-            source={plus}
-          />
-        </TouchableHighlight>
+        <MaterialIcon
+          onPress={() => { dispatch(navigateToCreateModal()) }}
+          name="add"
+          size={24}
+          color="#178c80"
+          style={{ marginRight: 10 }}
+        />
       ),
     }),
   };

@@ -1,80 +1,28 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import {
-  TextInput,
   View,
-  Button,
-  Alert,
   StyleSheet,
-  Platform,
 } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import Fetcher from '../services/Fetcher';
+import EditModalNavbarRight from './EditModalNavbarRight';
+import EditModalForm from './EditModalForm';
 
-type Props = {
-  epicerie: Object,
-}
-
-class EditModal extends Component<{}, Props> {
+class EditModal extends Component<{}, {}> {
   static navigationOptions = {
     header: {
-      title: 'Modifier les horaires',
+      title: 'Modifier les horaires d\'ouverture',
+      right: (<EditModalNavbarRight />),
     },
   };
-  state = {
-    description: null,
-    isLoading: false,
-  };
-
-  createIssue = () => {
-    const { epicerie } = this.props;
-    this.setState({ isLoading: true });
-    const body = {
-      title: 'Un utilisateur vient de modifier les horaires.',
-      body: `Epicerie à modifier: ${JSON.stringify(epicerie)} => ${this.state.description}`,
-    };
-    Fetcher
-    .post('/issues', body)
-    .then(() => {
-      Alert.alert('Merci pour votre aide!', 'Nous traitons votre message aussi vite que possible!');
-      this.setState({ description: null, isLoading: false });
-      this.props.dispatch({type: 'BACK'});
-    })
-    .catch(() => {
-      Alert.alert('Un problème est survenu', 'Essayez à nouveau.');
-      this.setState({ isLoading: false });
-      this.props.dispatch({type: 'BACK'});
-    });
-  }
 
   render() {
     return (
       <View style={styles.container}>
-        <KeyboardAwareScrollView>
-          <View>
-            <TextInput
-              ref={(c) => { this.refs._descriptionField = c }}
-              multiline
-              style={styles.inputMultiline}
-              value={this.state.description}
-              onChangeText={description => this.setState({description})}
-              placeholder={`Ouverte en semaine jusqu'à 2h, 5h le week-end`}
-              numberOfLines={3}
-              onSubmitEditing={() => {this.createIssue(); }}
-              returnKeyType="done"
-            />
-            <Button
-              color={this.state.isLoading ? '#31A69A': '#178c80'}
-              style={{ marginTop: 10 }}
-              disabled={this.state.name === null ||  this.state.isLoading}
-              onPress={() => {this.createIssue(); }}
-              title={this.state.isLoading ? "Envoi en cours..." : "Envoyer"}
-            />
-          </View>
-        </KeyboardAwareScrollView>
+        <View style={{ marginLeft: 10, marginRight: 10 }}>
+          <EditModalForm />
+        </View>
       </View>
-      );
-    }
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -83,21 +31,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     padding: 20
   },
-  inputMultiline: {
-    height: 100,
-    marginBottom: 10,
-    padding: 4,
-    ...Platform.select({
-      ios: {
-        borderColor: '#178c80',
-        borderWidth: 0.5
-      }
-    }),
-  }
 });
 
-export default connect(
-  state => ({
-    epicerie: state.epicerie.currentSelected && state.epicerie.markers[state.epicerie.currentSelected],
-  }),
-)(EditModal);
+export default EditModal;

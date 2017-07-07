@@ -1,6 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
 import { NavigationActions, addNavigationHelpers } from 'react-navigation';
 import AppNavigator from './AppNavigator';
 import { startShowMapScreenTimer } from '../redux/modules/nav';
@@ -34,6 +35,8 @@ class EntryPoint extends Component {
 
     render() {
         const { dispatch, nav } = this.props;
+        let tracker = new GoogleAnalyticsTracker('UA-87371140-1');
+ +      tracker.setTrackUncaughtExceptions(true);
         return (
           <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />
         );

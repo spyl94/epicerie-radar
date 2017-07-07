@@ -59,7 +59,9 @@ export const openingStatus = (epicerie: Object) => {
 type State = {
   currentSelected: ?Object,
   markers: Array<Object>,
-  isReporting: boolean
+  isReporting: boolean,
+  focus: ?string,
+  isDateTimePickerVisible: boolean
 }
 
 type Action = Object;
@@ -85,7 +87,6 @@ export const loadUpToDateMarkers = (dispatch: Function) => {
     })
     .catch(() => {
       dispatch({ type: 'LOAD_MARKERS', markers: data });
-      Alert.alert('Un problème est survenu', 'Impossible de récupèrer la liste des épiceries à jour...');
     });
 }
 
