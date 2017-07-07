@@ -20,31 +20,31 @@
     "react-native-datepicker": "^1.4.7",
     "react-native-google-analytics-bridge": "^5.0.1",
     "react-native-keyboard-aware-scroll-view": "^0.2.8",
-    "react-native-maps": "0.13.1",
+    "react-native-maps": "^0.15.0",
     "react-native-radio-buttons": "^0.14.0",
-    "react-native-vector-icons": "^4.0.1",
+    "react-native-vector-icons": "^4.1.1",
     "react-navigation": "https://github.com/react-community/react-navigation/tarball/d211492a4c0d66b9a6c8b3e027e220079851362d",
     "react-redux": "^5.0.4",
     "redux": "^3.6.0",
-    "redux-form": "^6.6.3",
-    "redux-saga": "^0.14.8"
+    "redux-form": "^6.7.0",
+    "redux-saga": "^0.15.3"
   },
   "jest": {
     "preset": "jest-react-native"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
-    "babel-jest": "^19.0.0",
+    "babel-jest": "^20.0.0",
     "babel-preset-react-native": "^1.9.1",
     "eslint": "^3.19.0",
     "eslint-plugin-json": "^1.2.0",
-    "eslint-plugin-react": "^6.10.3",
+    "eslint-plugin-react": "^7.0.0",
     "eslint-plugin-react-native": "^2.3.2",
-    "flow-bin": "^0.45.0",
+    "flow-bin": "^0.46.0",
     "jest-react-native": "^18.0.0",
-    "react-native-debugger-open": "^0.3.5",
+    "react-native-debugger-open": "^0.3.8",
     "react-test-renderer": "^15.5.4",
-    "redux-devtools-extension": "^2.13.0",
-    "remote-redux-devtools": "^0.5.7"
+    "redux-devtools-extension": "^2.13.2",
+    "remote-redux-devtools": "^0.5.10"
   }
 }

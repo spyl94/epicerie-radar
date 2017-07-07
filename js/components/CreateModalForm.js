@@ -16,11 +16,17 @@ import PickOpeningHoursRow from './PickOpeningHoursRow';
 import RadioButton from './RadioButton';
 import { Container, Content, Form } from 'native-base';
 import { getGoogleAutocompleteUrl } from '../services/geolocation';
+import type { Marker, Dispatch } from '../types';
 
 type Props = {
   position: Object,
 }
-const validate = (values: Object) => {
+type RequiredFormValues = {
+  name: String,
+  address: String,
+}
+
+const validate = (values: RequiredFormValues) => {
   const errors = {};
   if (!values.name || values.name.length < 2) {
       errors.name = 'Required';
@@ -31,7 +37,7 @@ const validate = (values: Object) => {
   return errors;
 }
 
-const onSubmit = ({ name, address, description, hours, horairesAreKnown }: Object, dispatch, { position }) => {
+const onSubmit = ({ name, address, description, hours, horairesAreKnown }: Marker, dispatch: Dispatch, { position }) => {
   const body = {
     title: 'Un utilisateur vient d\'ajouter des informations.',
     body: `
@@ -76,7 +82,7 @@ const days = [
 ]
 
 class CreateModalForm extends Component<{}, Props> {
-  focusNextField = (nextField) => {
+  focusNextField = (nextField: string) => {
     const intance = this.refs[nextField].getRenderedComponent();
     intance.focus();
   };
@@ -233,7 +239,7 @@ class CreateModalForm extends Component<{}, Props> {
   }
 }
 
-const connector = connect(state => ({
+const connector = connect((state: State) => ({
   position: state.location.location,
   term: formValueSelector('create')(state, 'address'),
   horairesAreKnown : formValueSelector('create')(state, 'horairesAreKnown'),
