@@ -3,10 +3,27 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import { select, getMarkerImage } from '../redux/modules/epicerie';
+import { select } from '../redux/modules/epicerie';
+import { getMarkerImage } from '../services/markerHelper';
 import { updateRegion } from '../redux/modules/location';
+import { getLineCoords } from '../services/geolocation';
 
 class Map extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      lineCoords: [],
+    };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.currentIndex != this.props.currentIndex) {
+      this.setState({ lineCoords: [] });
+      const currentMarker = this.props.markers[this.props.currentIndex];
+      const lineCoords = getLineCoords(location.coords , currentMarker.coords);
+      this.setState({ lineCoords });
+    }
+  }
 
   render() {
     const { markers, update, region, currentIndex, select } = this.props;
@@ -34,6 +51,11 @@ class Map extends Component {
               />
             )
           }
+          <MapView.Polyline
+            coordinates={this.state.lineCoords}
+            strokeWidth={2}
+            strokeColor="red"
+          />
         </MapView>
     );
   }
@@ -58,6 +80,7 @@ const mapDispatchToProps = (dispatch: Function) => ({
 export default connect(
   state => ({
     region: state.location.region,
+    location: state.location.location,
     currentIndex: state.epicerie.currentSelected,
     markers: state.epicerie.markers,
   }),

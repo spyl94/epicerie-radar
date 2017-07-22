@@ -1,7 +1,8 @@
 import data from '../../../data.json';
 import Fetcher from '../../services/Fetcher'
 import { Alert } from 'react-native'
-import { findNearestIndex, openingStatus } from '../../services/markerHelper';
+import { openingStatus } from '../../services/markerHelper';
+import { findNearestIndex } from '../../services/distance';
 import type { Marker, Markers, Dispatch } from '../../types';
 
 type State = {

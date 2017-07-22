@@ -1,11 +1,11 @@
 import moment from 'moment';
 
-const markerUnknown = require('../../../img/marker_unknown_full.png');
-const markerOpen = require('../../../img/marker_open_full.png');
-const markerClose = require('../../../img/marker_close_full.png');
-const markerUnknownSelected = require('../../../img/marker_unknown.png');
-const markerOpenSelected = require('../../../img/marker_open.png');
-const markerCloseSelected = require('../../../img/marker_close.png');
+const markerUnknown = require('../../img/marker_unknown_full.png');
+const markerOpen = require('../../img/marker_open_full.png');
+const markerClose = require('../../img/marker_close_full.png');
+const markerUnknownSelected = require('../../img/marker_unknown.png');
+const markerOpenSelected = require('../../img/marker_open.png');
+const markerCloseSelected = require('../../img/marker_close.png');
 
 export const openingStatus = (epicerie: Marker) => {
   const date = moment();

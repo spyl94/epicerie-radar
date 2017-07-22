@@ -2,6 +2,11 @@ import type { Store as ReduxStore, Dispatch as ReduxDispatch } from 'redux';
 import type { State as EpicerieState, EpicerieAction } from './redux/modules/epicerie';
 import type { State as LocationState, LocationAction } from './redux/modules/location';
 
+export type Location = {
+  latitude: number,
+  longitude: number,
+};
+
 export type Marker = {
   name: String,
   address: String,

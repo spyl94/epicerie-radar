@@ -8,6 +8,7 @@ import {
   Alert,
   TouchableHighlight,
   ActivityIndicator,
+  StyleSheet,
 } from 'react-native';
 import { formValueSelector, Field, reduxForm } from 'redux-form';
 import Input from './Input';
@@ -91,7 +92,6 @@ class CreateModalForm extends Component<{}, Props> {
     loading: false,
     dataSource: null,
   }
-
   dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
   autocompleteRequestTokens = []
 

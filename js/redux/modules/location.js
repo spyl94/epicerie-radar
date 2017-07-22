@@ -1,10 +1,6 @@
 import { navigateToMapScreen } from './nav';
-import type { Dispatch } from '../../types';
+import type { Dispatch, Location } from '../../types';
 
-type Location = {
-  latitude: number,
-  longitude: number,
-}
 type Region = {
   latitude: number,
   longitude: number,
