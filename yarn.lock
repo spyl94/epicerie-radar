@@ -3122,9 +3122,9 @@ react-devtools-core@^2.0.8:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
-react-native-config@^0.4.0:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.4.2.tgz#42ee30835c6aa293a91f4487c85a3e9f15204f56"
+react-native-config@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.5.0.tgz#109aaee511b81851b22e1fd3372d86c9d6c797d4"
 
 react-native-datepicker@^1.4.7:
   version "1.6.0"
@@ -3178,7 +3178,7 @@ react-native-keyboard-aware-scroll-view@0.2.9, react-native-keyboard-aware-scrol
   dependencies:
     react-timer-mixin "^0.13.3"
 
-react-native-maps@^0.15.0:
+react-native-maps@^0.15.3:
   version "0.15.3"
   resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.15.3.tgz#5d9e0a8e30ecc51dc755b7a3b9d6b6ed5e2dd08c"
 
