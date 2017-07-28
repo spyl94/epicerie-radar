@@ -3209,10 +3209,6 @@ react-native-easy-grid@0.1.14:
   dependencies:
     lodash "^4.11.1"
 
-react-native-google-analytics-bridge@^5.0.1:
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/react-native-google-analytics-bridge/-/react-native-google-analytics-bridge-5.2.1.tgz#95bc953660170716f8a70a577b35634a8ec936f3"
-
 react-native-keyboard-aware-scroll-view@0.2.9, react-native-keyboard-aware-scroll-view@^0.2.8:
   version "0.2.9"
   resolved "https://registry.yarnpkg.com/react-native-keyboard-aware-scroll-view/-/react-native-keyboard-aware-scroll-view-0.2.9.tgz#2a1ae49cfae90a9665b21763c1f8bd03ed5fb92c"

@@ -145,11 +145,26 @@ android {
     }
 }
 
+configurations.all {
+  resolutionStrategy {
+    force "com.google.android.gms:play-services-ads:10.2.0+"
+    force "com.google.android.gms:play-services:10.2.0+"
+    force "com.google.android.gms:play-services-location:10.2.0+"
+    force "com.google.android.gms:play-services-maps:10.2.0+"
+    force "com.google.android.gms:play-services-gcm:10.2.0+"
+    force "com.google.android.gms:play-services-analytics:10.2.0+"
+  }
+}
+
 dependencies {
-    compile project(':react-native-google-analytics-bridge')
+    compile(project(':react-native-maps')){
+      exclude group: 'com.google.android.gms', module: 'play-services-base'
+      exclude group: 'com.google.android.gms', module: 'play-services-maps'
+    }
+    compile "com.google.android.gms:play-services-base:10.2.0"
+    compile "com.google.android.gms:play-services-maps:10.2.0"
     compile project(':react-native-vector-icons')
     compile project(':react-native-config')
-    compile project(':react-native-maps')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
