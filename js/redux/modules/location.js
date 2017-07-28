@@ -22,8 +22,8 @@ export type LocationAction =
 
 const initialState: State = {
   location: {
-    latitude: 0,
-    longitude: 0,
+    latitude: 48.853,
+    longitude: 2.35,
   },
   region: {
     latitude: 48.853,

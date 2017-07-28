@@ -1,9 +1,9 @@
 // @flow
 import Config from 'react-native-config';
 import Polyline from '@mapbox/polyline';
-import type { Location } from '../types';
+import type { LatLng } from '../types';
 
-export const getGoogleAutocompleteUrl = (term: string, position: ?Location) => {
+export const getGoogleAutocompleteUrl = (term: string, position: ?LatLng) => {
   let url = `https://maps.googleapis.com/maps/api/place/autocomplete/json?key=${Config.GOOGLE_MAPS_API_KEY}&input=${term}`;
   url += '&types=address&components=country:uk|country:fr';
   if (position.hasOwnProperty('latitude') && position.hasOwnProperty('longitude')) {
@@ -12,8 +12,14 @@ export const getGoogleAutocompleteUrl = (term: string, position: ?Location) => {
   return url;
 }
 
-export const getDistanceBetweenPlaces = (position1: Location, position2: Location) => {
-  return fetch(`https://maps.google.com/maps/api/directions/json?key=${Config.GOOGLE_MAPS_API_KEY}&origin=${position1.latitude},${position1.longitude}&destination=${position2.latitude},${position2.longitude}&sensor=false&units=metric`)
+export const getDistanceBetweenPlaces = (position1: LatLng, position2: LatLng) => {
+  return fetch(`https://maps.google.com/maps/api/directions/json?key=${Config.GOOGLE_MAPS_API_KEY}&origin=${position1.latitude},${position1.longitude}&destination=${position2.latitude},${position2.longitude}&sensor=false&units=metric`, {
+    headers:{
+       'Access-Control-Allow-Origin': '*',
+       'Access-Control-Allow-Credentials':true,
+       'Access-Control-Allow-Methods':'POST, GET'
+     }
+  })
     .then((response) => response.json())
     .then((json) => {
       if (json.routes.length > 0) {
@@ -24,9 +30,9 @@ export const getDistanceBetweenPlaces = (position1: Location, position2: Locatio
     })
 }
 
-export const getLineCoords = async (startLoc: Location, destinationLoc: Location) => {
+export const getLineCoords = async (startLoc: LatLng, destinationLoc: LatLng): Array<LatLng> => {
         try {
-            let resp = await fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${ startLoc.latitude }, ${startLoc.lontitude}&destination=${ destinationLoc.latitude }, ${ destinationLoc.longitude}`)
+            let resp = await fetch(`https://maps.google.com/maps/api/directions/json?origin=${startLoc.latitude},${startLoc.longitude}&destination=${destinationLoc.latitude},${destinationLoc.longitude}&sensor=false&units=metric&key=${Config.GOOGLE_MAPS_API_KEY}`);
             let respJson = await resp.json();
             let points = Polyline.decode(respJson.routes[0].overview_polyline.points);
             let coords = points.map(point => {
@@ -35,9 +41,10 @@ export const getLineCoords = async (startLoc: Location, destinationLoc: Location
                     longitude : point[1]
                 }
             });
+            console.log(coords);
             return coords;
         } catch(error) {
-            alert(error);
+            console.log(error);
             return error;
         }
 };

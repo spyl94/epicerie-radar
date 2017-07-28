@@ -1,5 +1,5 @@
 // @flow
-import { BackAndroid } from 'react-native';
+import { BackHandler } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import AppNavigator from '../../components/AppNavigator';
 
@@ -23,7 +23,7 @@ const initialState = {
 export default (state: Object = initialState, action: Object): Object => {
   if (action.type === 'BACK') {
     if (state.routes[state.index] && state.routes[state.index].routeName === 'Map') {
-      BackAndroid.exitApp();
+      BackHandler.exitApp();
     }
     return AppNavigator.router.getStateForAction(NavigationActions.back(), state);
   }

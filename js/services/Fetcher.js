@@ -20,7 +20,7 @@ const createHeaders = (): {[string]: string} => {
   return {
     'Accept': 'application/json',
     'Authorization': 'token ' + config.GH_TOKEN,
-    'User-Agent': 'Epicerie Radar',
+    'User-Agent': 'Mozilla/5.0 (Linux; U; Android 2.1-update1; fr-fr; GTI9000 Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
     'Content-Type': 'application/json',
   };
 };

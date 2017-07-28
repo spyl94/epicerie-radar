@@ -3,6 +3,7 @@
   "version": "2.0",
   "private": true,
   "scripts": {
+    "postinstall": "rndebugger-open",
     "lint": "node node_modules/eslint/bin/eslint.js js data.json",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",

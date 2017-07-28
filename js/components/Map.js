@@ -20,13 +20,14 @@ class Map extends Component {
     if (prevProps.currentIndex != this.props.currentIndex) {
       this.setState({ lineCoords: [] });
       const currentMarker = this.props.markers[this.props.currentIndex];
-      const lineCoords = getLineCoords(location.coords , currentMarker.coords);
+      const lineCoords = getLineCoords(this.props.location , currentMarker.coords);
       this.setState({ lineCoords });
     }
   }
 
   render() {
     const { markers, update, region, currentIndex, select } = this.props;
+    const { lineCoords } = this.state;
     return (
         <MapView
           style={styles.map}
@@ -52,7 +53,7 @@ class Map extends Component {
             )
           }
           <MapView.Polyline
-            coordinates={this.state.lineCoords}
+            coordinates={lineCoords}
             strokeWidth={2}
             strokeColor="red"
           />
@@ -77,12 +78,11 @@ const mapDispatchToProps = (dispatch: Function) => ({
     }
 });
 
-export default connect(
-  state => ({
-    region: state.location.region,
-    location: state.location.location,
-    currentIndex: state.epicerie.currentSelected,
-    markers: state.epicerie.markers,
-  }),
-  mapDispatchToProps
-)(Map);
+const mapStateToProps = (state) => ({
+  region: state.location.region,
+  location: state.location.location,
+  currentIndex: state.epicerie.currentSelected,
+  markers: state.epicerie.markers,
+});
+
+export default connect(mapStateToProps,  mapDispatchToProps)(Map);

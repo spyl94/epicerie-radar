@@ -10,7 +10,7 @@ import { getAndSetCurrentLocation } from '../redux/modules/location';
 import {
   PermissionsAndroid,
   Platform,
-  BackAndroid,
+  BackHandler,
 } from 'react-native';
 
 class EntryPoint extends Component {
@@ -28,7 +28,7 @@ class EntryPoint extends Component {
     } else {
       getAndSetCurrentLocation(dispatch);
     }
-    BackAndroid.addEventListener('backPress', () =>
+    BackHandler.addEventListener('backPress', () =>
         dispatch({type: 'BACK'})
     );
   }
