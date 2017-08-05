@@ -1,31 +1,31 @@
 // @flow
-import React from 'react'
+import React from 'react';
 import { connect } from 'react-redux';
 import { View, Text, StyleSheet } from 'react-native';
 
 type Props = { enabled: ?boolean };
-function LocationInfo ({ enabled }: Props) {
+function LocationInfo({ enabled }: Props) {
   if (enabled === false) {
     return (
       <View>
-        <Text style={styles.errorMsg}>Service de localisation GPS désactivé</Text>
+        <Text style={styles.errorMsg}>
+          Service de localisation GPS désactivé
+        </Text>
       </View>
-		);
+    );
   }
-	return <View></View>;
+  return <View />;
 }
 
-export default connect(
-  state => ({
-    enabled: state.location.enabled,
-  })
-)(LocationInfo);
+export default connect(state => ({
+  enabled: state.location.enabled,
+}))(LocationInfo);
 
 var styles = StyleSheet.create({
-	errorMsg : {
+  errorMsg: {
     color: 'white',
     padding: 12,
     backgroundColor: '#178c80',
-		textAlign: "center",
-	},
-})
+    textAlign: 'center',
+  },
+});

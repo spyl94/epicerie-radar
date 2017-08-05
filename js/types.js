@@ -1,6 +1,12 @@
 import type { Store as ReduxStore, Dispatch as ReduxDispatch } from 'redux';
-import type { State as EpicerieState, EpicerieAction } from './redux/modules/epicerie';
-import type { State as LocationState, LocationAction } from './redux/modules/location';
+import type {
+  State as EpicerieState,
+  EpicerieAction,
+} from './redux/modules/epicerie';
+import type {
+  State as LocationState,
+  LocationAction,
+} from './redux/modules/location';
 
 export type LatLng = {
   latitude: number,
@@ -12,25 +18,25 @@ export type Marker = {
   address: String,
   coords: {
     latitude: number,
-    longitude: number
+    longitude: number,
   },
   horairesAreKnown: ?String,
   hours: {
     mon_open: ?String,
     mon_close: ?String,
     thu_open: ?String,
-  thu_close: ?String,
-  tue_open: ?String,
-  tue_close: ?String,
-  wed_open: ?String,
-  fri_open: ?String,
-  sat_open: ?String,
-  sun_open: ?String,
-  wed_close: ?String,
-  fri_close: ?String,
-  sat_close: ?String,
-  sun_close: ?String
-}
+    thu_close: ?String,
+    tue_open: ?String,
+    tue_close: ?String,
+    wed_open: ?String,
+    fri_open: ?String,
+    sat_open: ?String,
+    sun_open: ?String,
+    wed_close: ?String,
+    fri_close: ?String,
+    sat_close: ?String,
+    sun_close: ?String,
+  },
 };
 export type Markers = Array<Marker>;
 

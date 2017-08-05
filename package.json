@@ -7,6 +7,7 @@
     "lint": "node node_modules/eslint/bin/eslint.js js data.json",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
+    "prettier": "prettier --write --bracket-spacing --single-quote --jsx-bracket-same-line --trailing-comma all --print-width 80 \"js/**/*.js\"",
     "typecheck": "node node_modules/flow-bin/cli.js check"
   },
   "dependencies": {
@@ -43,6 +44,7 @@
     "eslint-plugin-react-native": "^3.0.1",
     "flow-bin": "^0.51.0",
     "jest-react-native": "^18.0.0",
+    "prettier": "^1.5.3",
     "react-native-debugger-open": "^0.3.12",
     "react-test-renderer": "^15.5.4",
     "redux-devtools-extension": "^2.13.2",

@@ -1,33 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  View,
-  Button,
-  ActivityIndicator,
-  Alert,
-} from 'react-native';
+import { View, Button, ActivityIndicator, Alert } from 'react-native';
 import { reduxForm } from 'redux-form';
 import Fetcher from '../services/Fetcher';
 import PickOpeningHoursRow from './PickOpeningHoursRow';
 
 type Props = {
   epicerie: Object,
-}
+};
 
 const validate = () => {
   const errors = {};
   return errors;
-}
+};
 
 const days = [
-  { day: "Lundi", code: 'mon' },
-  { day: "Mardi", code: 'thu' },
-  { day: "Mercredi", code: 'tue' },
-  { day: "Jeudi", code: 'wed' },
-  { day: "Vendredi", code: 'fri' },
-  { day: "Samedi", code: 'sat' },
-  { day: "Dimanche", code: 'sun' },
-]
+  { day: 'Lundi', code: 'mon' },
+  { day: 'Mardi', code: 'thu' },
+  { day: 'Mercredi', code: 'tue' },
+  { day: 'Jeudi', code: 'wed' },
+  { day: 'Vendredi', code: 'fri' },
+  { day: 'Samedi', code: 'sat' },
+  { day: 'Dimanche', code: 'sun' },
+];
 
 const onSubmit = (values, dispatch, { epicerie }) => {
   const { hours } = values;
@@ -41,72 +36,64 @@ ${JSON.stringify(epicerie, undefined, 2)}
 \`\`\`json
 ${JSON.stringify(hours, undefined, 2)}
 \`\`\`
-`
+`,
   };
-  return Fetcher
-  .post('/issues', body)
-  .then(() => {
-    Alert.alert(
-      'Merci pour votre aide !',
-      'Nous traitons votre message aussi vite que possible !'
-    );
-    dispatch({type: 'BACK'});
-  })
-  .catch(() => {
-    Alert.alert(
-      'Un problème est survenu',
-      'Essayez à nouveau.'
-    );
-    dispatch({type: 'BACK'});
-  });
-}
+  return Fetcher.post('/issues', body)
+    .then(() => {
+      Alert.alert(
+        'Merci pour votre aide !',
+        'Nous traitons votre message aussi vite que possible !',
+      );
+      dispatch({ type: 'BACK' });
+    })
+    .catch(() => {
+      Alert.alert('Un problème est survenu', 'Essayez à nouveau.');
+      dispatch({ type: 'BACK' });
+    });
+};
 
 class EditModalForm extends Component<{}, Props> {
-
-        render() {
-          const {
-            invalid,
-            loading,
-            submitting,
-            handleSubmit,
-            pristine,
-            form
-          } = this.props;
-          const disabled = pristine || invalid ||  loading;
-          return (
-            <View>
-              <View>
-                {
-                  days.map((day, index) => (
-                    <PickOpeningHoursRow
-                      style={{flex: 1, flexDirection: 'row', marginBottom: 50 }}
-                      form={form}
-                      day={day}
-                      key={index}
-                    />
-                  ))
-                }
-              </View>
-              <View style={{ marginTop: 20 }}>
-                {
-                  submitting
-                    ? <ActivityIndicator />
-                  :  <Button
-                    color={disabled ? '#31A69A': '#178c80'}
-                    disabled={disabled}
-                    onPress={handleSubmit(onSubmit)}
-                    title="Envoyer"
-                     />
-                }
-
-              </View>
-            </View>
-          );
-    }
+  render() {
+    const {
+      invalid,
+      loading,
+      submitting,
+      handleSubmit,
+      pristine,
+      form,
+    } = this.props;
+    const disabled = pristine || invalid || loading;
+    return (
+      <View>
+        <View>
+          {days.map((day, index) =>
+            <PickOpeningHoursRow
+              style={{ flex: 1, flexDirection: 'row', marginBottom: 50 }}
+              form={form}
+              day={day}
+              key={index}
+            />,
+          )}
+        </View>
+        <View style={{ marginTop: 20 }}>
+          {submitting
+            ? <ActivityIndicator />
+            : <Button
+                color={disabled ? '#31A69A' : '#178c80'}
+                disabled={disabled}
+                onPress={handleSubmit(onSubmit)}
+                title="Envoyer"
+              />}
+        </View>
+      </View>
+    );
+  }
 }
 
 const mapStateToProps = (state: Object) => {
-  const epicerie = state.epicerie.currentSelected && state.epicerie.markers[state.epicerie.currentSelected];
+  const epicerie =
+    state.epicerie.currentSelected &&
+    state.epicerie.markers[state.epicerie.currentSelected];
   if (!epicerie) return {};
   const hours = epicerie.hours;
   return {
@@ -131,5 +118,5 @@ export default connect(mapStateToProps)(
     form: 'update-horaires',
     validate,
     onSubmit,
-  }
-)(EditModalForm));
+  })(EditModalForm),
+);

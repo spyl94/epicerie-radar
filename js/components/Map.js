@@ -6,83 +6,85 @@ import MapView, { Marker } from 'react-native-maps';
 import { select } from '../redux/modules/epicerie';
 import { getMarkerImage } from '../services/markerHelper';
 import { updateRegion } from '../redux/modules/location';
-import { getLineCoords } from '../services/geolocation';
+import { updateMarkerWithLocationData } from '../redux/modules/epicerie';
 
 class Map extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      lineCoords: [],
+      coordinates: [],
     };
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.currentIndex != this.props.currentIndex) {
-      this.setState({ lineCoords: [] });
-      const currentMarker = this.props.markers[this.props.currentIndex];
-      const lineCoords = getLineCoords(this.props.location , currentMarker.coords);
-      this.setState({ lineCoords });
+      const { location, markers, currentIndex, updateMarker } = this.props;
+      updateMarker(location, markers[currentIndex]);
     }
   }
 
   render() {
     const { markers, update, region, currentIndex, select } = this.props;
-    const { lineCoords } = this.state;
     return (
-        <MapView
-          style={styles.map}
-          showsUserLocation
-          followsUserLocation
-          moveOnMarkerPress
-          pitchEnabled={false}
-          rotateEnabled={false}
-          region={region}
-          onRegionChangeComplete={region => {
-            update(region);
-          }}
-        >
-          {
-            markers.map((marker, index) =>
-              <Marker
-                key={index}
-                onPress={() => { select(index) }}
-                coordinate={marker.coords}
-                anchor={{x: 0.5, y: 0.5}}
-                image={getMarkerImage(marker.type, currentIndex === index)}
-              />
-            )
-          }
+      <MapView
+        style={styles.map}
+        showsUserLocation
+        followsUserLocation
+        moveOnMarkerPress
+        pitchEnabled={false}
+        rotateEnabled={false}
+        region={region}
+        onRegionChangeComplete={region => {
+          update(region);
+        }}>
+        {markers.map((marker, index) =>
+          <Marker
+            key={marker.id}
+            onPress={() => {
+              select(index);
+            }}
+            coordinate={marker.coords}
+            anchor={{ x: 0.5, y: 0.5 }}
+            image={getMarkerImage(marker.type, currentIndex === index)}
+          />,
+        )}
+        {
+          markers[currentIndex].lineCoordinates &&
           <MapView.Polyline
-            coordinates={lineCoords}
+            coordinates={markers[currentIndex].lineCoordinates}
             strokeWidth={2}
             strokeColor="red"
           />
-        </MapView>
+        }
+      </MapView>
     );
   }
 }
 
 const styles = StyleSheet.create({
- map: {
-   flex: 0.6,
-   margin: 0,
- },
+  map: {
+    flex: 0.6,
+    margin: 0,
+  },
 });
 
 const mapDispatchToProps = (dispatch: Function) => ({
-    select: (id) => {
-      dispatch(select(id));
-    },
-    update: (region) => {
-      dispatch(updateRegion(region));
-    }
+  select: id => {
+    dispatch(select(id));
+  },
+  update: region => {
+    dispatch(updateRegion(region));
+  },
+  updateMarker: (location, marker) => {
+    updateMarkerWithLocationData(location, marker, dispatch);
+  }
 });
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   region: state.location.region,
   location: state.location.location,
   currentIndex: state.epicerie.currentSelected,
-  markers: state.epicerie.markers,
+  markers: Object.keys(state.epicerie.markers).map(key => state.epicerie.markers[key]),
 });
 
-export default connect(mapStateToProps,  mapDispatchToProps)(Map);
+export default connect(mapStateToProps, mapDispatchToProps)(Map);

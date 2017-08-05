@@ -6,8 +6,8 @@ import epicerie from './modules/epicerie';
 import nav from './modules/nav';
 
 export default combineReducers({
-    nav,
-    epicerie,
-    location,
-    form,
+  nav,
+  epicerie,
+  location,
+  form,
 });

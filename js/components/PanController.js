@@ -1,20 +1,15 @@
 /* eslint-disable */
 
 import React, { PropTypes } from 'react';
-import {
-  View,
-  Animated,
-  PanResponder,
-} from 'react-native';
+import { View, Animated, PanResponder } from 'react-native';
 
 const ModePropType = PropTypes.oneOf(['decay', 'snap', 'spring-origin']);
 const OvershootPropType = PropTypes.oneOf(['spring', 'clamp']);
 const AnimatedPropType = PropTypes.any;
 
 const PanController = React.createClass({
-
   propTypes: {
-      // Component Config
+    // Component Config
     lockDirection: PropTypes.bool,
     horizontal: PropTypes.bool,
     vertical: PropTypes.bool,
@@ -27,25 +22,25 @@ const PanController = React.createClass({
     snapSpacingX: PropTypes.number, // TODO: also allow an array of values?
     snapSpacingY: PropTypes.number,
 
-      // Animated Values
+    // Animated Values
     panX: AnimatedPropType,
     panY: AnimatedPropType,
 
-      // Animation Config
+    // Animation Config
     overshootSpringConfig: PropTypes.any,
     momentumDecayConfig: PropTypes.any,
     springOriginConfig: PropTypes.any,
     directionLockDistance: PropTypes.number,
     overshootReductionFactor: PropTypes.number,
 
-      // Events
+    // Events
     onOvershoot: PropTypes.func,
     onDirectionChange: PropTypes.func,
     onReleaseX: PropTypes.func,
     onReleaseY: PropTypes.func,
     onRelease: PropTypes.func,
 
-      //...PanResponderPropTypes,
+    //...PanResponderPropTypes,
   },
 
   getDefaultProps() {
@@ -71,18 +66,18 @@ const PanController = React.createClass({
     };
   },
 
-    // getInitialState() {
-    //     //TODO:
-    //     // it's possible we want to move some props over to state.
-    //     // For example, xBounds/yBounds might need to be
-    //     // calculated/updated automatically
-    //     //
-    //     // This could also be done with a higher-order component
-    //     // that just massages props passed in...
-    //     return {
-    //
-    //     };
-    // },
+  // getInitialState() {
+  //     //TODO:
+  //     // it's possible we want to move some props over to state.
+  //     // For example, xBounds/yBounds might need to be
+  //     // calculated/updated automatically
+  //     //
+  //     // This could also be done with a higher-order component
+  //     // that just massages props passed in...
+  //     return {
+  //
+  //     };
+  // },
 
   _responder: null,
   _listener: null,
@@ -101,22 +96,23 @@ const PanController = React.createClass({
         this.handleResponderGrant(panX, xMode);
         this.handleResponderGrant(panY, yMode);
 
-        this._direction = horizontal && !vertical ? 'x' : (vertical && !horizontal ? 'y' : null);
+        this._direction =
+          horizontal && !vertical ? 'x' : vertical && !horizontal ? 'y' : null;
       },
 
       onPanResponderMove: (_, { dx, dy, x0, y0 }) => {
         let {
-            panX,
-            panY,
-            xBounds,
-            yBounds,
-            overshootX,
-            overshootY,
-            horizontal,
-            vertical,
-            lockDirection,
-            directionLockDistance,
-            } = this.props;
+          panX,
+          panY,
+          xBounds,
+          yBounds,
+          overshootX,
+          overshootY,
+          horizontal,
+          vertical,
+          lockDirection,
+          directionLockDistance,
+        } = this.props;
 
         if (!this._direction) {
           const dx2 = dx * dx;
@@ -150,20 +146,20 @@ const PanController = React.createClass({
 
       onPanResponderRelease: (_, { vx, vy, dx, dy }) => {
         let {
-            panX,
-            panY,
-            xBounds,
-            yBounds,
-            overshootX,
-            overshootY,
-            horizontal,
-            vertical,
-            lockDirection,
-            xMode,
-            yMode,
-            snapSpacingX,
-            snapSpacingY,
-            } = this.props;
+          panX,
+          panY,
+          xBounds,
+          yBounds,
+          overshootX,
+          overshootY,
+          horizontal,
+          vertical,
+          lockDirection,
+          xMode,
+          yMode,
+          snapSpacingX,
+          snapSpacingY,
+        } = this.props;
 
         let cancel = false;
 
@@ -178,7 +174,16 @@ const PanController = React.createClass({
           if (this.props.onReleaseX) {
             cancel = false === this.props.onReleaseX({ vx, vy, dx, dy });
           }
-          !cancel && this.handleResponderRelease(panX, xMin, xMax, vx, overshootX, xMode, snapSpacingX);
+          !cancel &&
+            this.handleResponderRelease(
+              panX,
+              xMin,
+              xMax,
+              vx,
+              overshootX,
+              xMode,
+              snapSpacingX,
+            );
         }
 
         if (!cancel && vertical && (!lockDirection || dir === 'y')) {
@@ -186,10 +191,20 @@ const PanController = React.createClass({
           if (this.props.onReleaseY) {
             cancel = false === this.props.onReleaseY({ vx, vy, dx, dy });
           }
-          !cancel && this.handleResponderRelease(panY, yMin, yMax, vy, overshootY, yMode, snapSpacingY);
+          !cancel &&
+            this.handleResponderRelease(
+              panY,
+              yMin,
+              yMax,
+              vy,
+              overshootY,
+              yMode,
+              snapSpacingY,
+            );
         }
 
-        this._direction = horizontal && !vertical ? 'x' : (vertical && !horizontal ? 'y' : null);
+        this._direction =
+          horizontal && !vertical ? 'x' : vertical && !horizontal ? 'y' : null;
       },
     });
   },
@@ -221,9 +236,16 @@ const PanController = React.createClass({
     anim.setValue(val);
   },
 
-  handleResponderRelease(anim, min, max, velocity, overshoot, mode, snapSpacing) {
+  handleResponderRelease(
+    anim,
+    min,
+    max,
+    velocity,
+    overshoot,
+    mode,
+    snapSpacing,
+  ) {
     anim.flattenOffset();
-
 
     if (anim._value < min) {
       if (this.props.onOvershoot) {
@@ -260,7 +282,14 @@ const PanController = React.createClass({
     } else {
       switch (mode) {
         case 'snap':
-          this.handleSnappedScroll(anim, min, max, velocity, snapSpacing, overshoot);
+          this.handleSnappedScroll(
+            anim,
+            min,
+            max,
+            velocity,
+            snapSpacing,
+            overshoot,
+          );
           break;
 
         case 'decay':
@@ -363,7 +392,7 @@ const PanController = React.createClass({
   },
 
   closestCenter(x, spacing) {
-    const plus = (x % spacing) < spacing / 2 ? 0 : spacing;
+    const plus = x % spacing < spacing / 2 ? 0 : spacing;
     return Math.round(x / spacing) * spacing + plus;
   },
 
@@ -375,8 +404,8 @@ const PanController = React.createClass({
 
     while (true) {
       t += 16;
-      x = x0 + (vx / (1 - deceleration)) *
-      (1 - Math.exp(-(1 - deceleration) * t));
+      x =
+        x0 + vx / (1 - deceleration) * (1 - Math.exp(-(1 - deceleration) * t));
       if (Math.abs(x - x1) < 0.1) {
         x1 = x;
         break;
@@ -394,8 +423,8 @@ const PanController = React.createClass({
     let vf;
     while (true) {
       t += 16;
-      x = x0 + (vx / (1 - deceleration)) *
-      (1 - Math.exp(-(1 - deceleration) * t));
+      x =
+        x0 + vx / (1 - deceleration) * (1 - Math.exp(-(1 - deceleration) * t));
       vf = (x - x1) / 16;
       if (x > bounds[0] && x < bounds[1]) {
         break;
@@ -408,17 +437,17 @@ const PanController = React.createClass({
     return vf;
   },
 
-// componentDidMount() {
-//    //TODO: we may need to measure the children width/height here?
-// },
-//
-// componentWillUnmount() {
-//
-// },
-//
-// componentDidUnmount() {
-//
-// },
+  // componentDidMount() {
+  //    //TODO: we may need to measure the children width/height here?
+  // },
+  //
+  // componentWillUnmount() {
+  //
+  // },
+  //
+  // componentDidUnmount() {
+  //
+  // },
 
   render() {
     return <View {...this.props} {...this._responder.panHandlers} />;
