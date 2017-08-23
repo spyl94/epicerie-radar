@@ -22,7 +22,10 @@ class SelectedEpicerie extends Component {
     return (
       <View style={styles.container}>
         <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-          {epicerie.name} {epicerie.distance && `(${epicerie.distance.text} - ${epicerie.duration.text})`}
+          {epicerie.name}
+        </Text>
+        <Text style={{ fontSize: 18 }}>
+        {epicerie.distance && `${epicerie.duration.text} (${epicerie.distance.text})`}
         </Text>
         <Text style={{ fontSize: 16 }}>
           {epicerie.address}

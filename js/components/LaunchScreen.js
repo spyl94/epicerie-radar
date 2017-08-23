@@ -1,7 +1,8 @@
 // @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, Animated, Easing, View } from 'react-native';
+import { Image, StyleSheet, Text, Animated, Easing, View } from 'react-native';
+import Animation from 'lottie-react-native';
 
 class LaunchScreen extends Component {
   static navigationOptions = {
@@ -29,11 +30,6 @@ class LaunchScreen extends Component {
   }
 
   render() {
-    // Second interpolate beginning and end values (in this case 0 and 1)
-    const spin = this._spin.interpolate({
-      inputRange: [0, 1],
-      outputRange: ['0deg', '360deg'],
-    });
     return (
       <View style={styles.container}>
         <View style={styles.loadingScreen}>
@@ -46,13 +42,21 @@ class LaunchScreen extends Component {
             }}>
             Epicerie Radar
           </Text>
-          <Animated.Image
-            style={[styles.logo, { transform: [{ rotate: spin }] }]}
+          <Image
+            style={styles.logo}
             source={require('../../img/logo.png')}
           />
-          <Text style={{ fontSize: 18, marginTop: 15 }}>
-            Récupération de votre position...
-          </Text>
+          <Animation
+  style={{
+    width: 200,
+    height: 200,
+  }}
+  source={require('../animations/pin.json')}
+  progress={this._spin}
+/>
+<Text style={{ fontSize: 18, marginTop: 15 }}>
+  Récupération de votre position...
+</Text>
         </View>
       </View>
     );

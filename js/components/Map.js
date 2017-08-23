@@ -52,8 +52,8 @@ class Map extends Component {
           markers[currentIndex].lineCoordinates &&
           <MapView.Polyline
             coordinates={markers[currentIndex].lineCoordinates}
-            strokeWidth={2}
-            strokeColor="red"
+            strokeWidth={3}
+            strokeColor="#178c80"
           />
         }
       </MapView>
