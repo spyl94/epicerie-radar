@@ -16,15 +16,26 @@ class MapScreen extends Component {
     header: ({ dispatch }) => ({
       left: <Image style={[styles.image, { marginLeft: 10 }]} source={logo} />,
       right: (
-        <MaterialIcon
-          onPress={() => {
-            dispatch(navigateToCreateModal());
-          }}
-          name="add"
-          size={24}
-          color="#178c80"
-          style={{ marginRight: 10 }}
-        />
+        <View style={{flexDirection: 'row'}}>
+          {/* <MaterialIcon
+            onPress={() => {
+              dispatch(navigateToEditModal());
+            }}
+            name="edit"
+            size={24}
+            color="#178c80"
+            style={{ marginRight: 10 }}
+          /> */}
+          <MaterialIcon
+            onPress={() => {
+              dispatch(navigateToCreateModal());
+            }}
+            name="add"
+            size={24}
+            color="#178c80"
+            style={{ marginRight: 10 }}
+          />
+        </View>
       ),
     }),
   };

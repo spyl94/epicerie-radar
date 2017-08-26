@@ -33,15 +33,15 @@ class LaunchScreen extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.loadingScreen}>
-          <Text
+          {/* <Text
             style={{
               fontSize: 24,
               color: 'black',
               fontWeight: '500',
-              marginBottom: 15,
+              marginBottom: 25,
             }}>
             Epicerie Radar
-          </Text>
+          </Text> */}
           <Image
             style={styles.logo}
             source={require('../../img/logo.png')}
@@ -50,13 +50,14 @@ class LaunchScreen extends Component {
   style={{
     width: 200,
     height: 200,
+    marginTop: 50,
   }}
   source={require('../animations/pin.json')}
   progress={this._spin}
 />
-<Text style={{ fontSize: 18, marginTop: 15 }}>
-  Récupération de votre position...
-</Text>
+{/* <Text style={{ fontSize: 18, fontWeight: '200' }}>
+  Récupération des épiceries...
+</Text> */}
         </View>
       </View>
     );
@@ -74,6 +75,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'white',
   },
   logo: {
     width: 150,

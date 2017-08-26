@@ -9,7 +9,7 @@ export const navigateToCreateModal = () => ({ type: 'SHOW_CREATE_MODAL' });
 export const startShowMapScreenTimer = (dispatch: Function) => {
   setTimeout(() => {
     dispatch(navigateToMapScreen());
-  }, 6000);
+  }, 3000);
 };
 
 const initialState = {

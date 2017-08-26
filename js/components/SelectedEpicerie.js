@@ -8,7 +8,7 @@ import { navigateToEditModal } from '../redux/modules/nav';
 const styles = StyleSheet.create({
   container: {
     margin: 0,
-    flex: 0.35,
+    flex: 0.15,
     padding: 10,
   },
 });
@@ -38,7 +38,7 @@ class SelectedEpicerie extends Component {
             flexDirection: 'column',
             justifyContent: 'space-between',
           }}>
-          <Text> </Text>
+          {/* <Text> </Text>
           <Button
             onPress={() => {
               dispatch(navigateToEditModal());
@@ -68,8 +68,8 @@ class SelectedEpicerie extends Component {
                 : 'Signaler fermeture définitive'
             }
             color={isReporting ? '#31A69A' : '#178c80'}
-          />
-          <Text style={{ minHeight: 10, marginBottom: 10 }}> </Text>
+          /> */}
+          {/* <Text style={{ minHeight: 10, marginBottom: 10 }}> </Text> */}
         </View>
       </View>
     );
