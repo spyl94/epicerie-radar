@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { Dimensions, StyleSheet, View } from 'react-native';
+import { Platform, Dimensions, StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { select } from '../redux/modules/epicerie';
 import { updateRegion } from '../redux/modules/location';
@@ -38,35 +38,6 @@ const styles = StyleSheet.create({
 
 class EpicerieScrollView extends Component {
 
-  // componentWillMount() {
-  //   this.animation = new Animated.Value(0);
-  // }
-
-  componentDidMount() {
-  // We should detect when scrolling has stopped then animate
-  // We should just debounce the event listener here
-  // const { currentSelected, dispatch, markers } = this.props;
-  // this.animation.addListener(({ value }) => {
-  //   let index = Math.floor(value / CARD_WIDTH + 0.3); // animate 30% away from landing on the next item
-  //   console.log({value, index });
-  //   if (index >= markers.length) {
-  //     index = markers.length - 1;
-  //   }
-  //   if (index <= 0) {
-  //     index = 0;
-  //   }
-  //
-  //   clearTimeout(this.regionTimeout);
-  //   this.regionTimeout = setTimeout(() => {
-  //     if (currentSelected !== index) {
-  //       dispatch(select(index));
-  //       const { coords } = markers[index];
-  //       dispatch(updateRegion(coords));
-  //     }
-  //   }, 10);
-  // });
-}
-
   renderItem = ({item}) => {
     return (
       <View style={styles.card}>
@@ -82,31 +53,8 @@ class EpicerieScrollView extends Component {
   }
 
   render() {
-    const { dispatch, markers } = this.props;
+    const { currentSelected, dispatch, markers } = this.props;
     return (
-//       <Animated.ScrollView
-//   horizontal
-//   scrollEventThrottle={1}
-//   showsHorizontalScrollIndicator={false}
-//   snapToInterval={CARD_WIDTH}
-//   onScrollEndDrag={
-//
-//   }
-//   onScroll={Animated.event(
-//     [
-//       {
-//         nativeEvent: {
-//           contentOffset: {
-//             x: this.animation,
-//           },
-//         },
-//       },
-//     ],
-//     { useNativeDriver: true }
-//   )}
-//   style={styles.scrollView}
-//   contentContainerStyle={styles.endPadding}
-// >
 <View style={styles.scrollView}>
   <Carousel
   data={markers}
@@ -115,13 +63,11 @@ class EpicerieScrollView extends Component {
   itemWidth={CARD_WIDTH}
   ref={(c) => { this._carousel = c; }}
   // hasParallaxImages={true}
-  // firstItem={SLIDER_1_FIRST_ITEM}
-  // inactiveSlideScale={0.94}
-  // inactiveSlideOpacity={0.6}
+  firstItem={currentSelected}
+  inactiveSlideScale={0.94}
+  inactiveSlideOpacity={0.6}
   // enableMomentum={false}
-  // containerCustomStyle={styles.slider}
-  // contentContainerCustomStyle={styles.sliderContentContainer}
-  // scrollEndDragDebounceValue={Platform.OS === 'ios' ? 0 : 100}
+  scrollEndDragDebounceValue={Platform.OS === 'ios' ? 0 : 100}
   onSnapToItem={(index) => {
     dispatch(select(index));
     const { coords } = markers[index];
@@ -129,12 +75,6 @@ class EpicerieScrollView extends Component {
   }}
 />
 </View>
-  /* {markers.map((marker, key) => (
-    <View style={styles.card} key={key}>
-      <Epicerie epicerie={marker} />
-    </View>
-  ))} */
-// </Animated.ScrollView>
     );
   }
 }
