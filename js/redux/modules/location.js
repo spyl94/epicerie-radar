@@ -4,8 +4,8 @@ import type { Dispatch, Location } from '../../types';
 type Region = {
   latitude: number,
   longitude: number,
-  latitudeDelta: number,
-  longitudeDelta: number,
+  latitudeDelta?: number,
+  longitudeDelta?: number,
 };
 export type State = {
   location: Location,
@@ -95,11 +95,11 @@ export default function location(
   switch (action.type) {
     case 'UPDATE_REGION':
       if (
-        action.region.longitudeDelta < 100 &&
-        action.region.latitudeDelta &&
+        // action.region.longitudeDelta < 100 &&
+        // action.region.latitudeDelta &&
         action.region.longitude != 0
       ) {
-        return { ...state, region: action.region };
+        return { ...state, region: {...state.region, ...action.region } };
       }
       return state;
     case 'SET_INITIAL_LOCATION':

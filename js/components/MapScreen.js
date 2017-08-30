@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { StyleSheet, View, Image } from 'react-native';
 import Map from './Map';
 import LocationInfo from './LocationInfo';
-import SelectedEpicerie from './SelectedEpicerie';
+import EpicerieScrollView from './EpicerieScrollView';
 import { navigateToCreateModal } from '../redux/modules/nav';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
@@ -45,7 +45,7 @@ class MapScreen extends Component {
       <View style={styles.container}>
         <LocationInfo />
         <Map />
-        <SelectedEpicerie />
+        <EpicerieScrollView />
       </View>
     );
   }

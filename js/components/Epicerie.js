@@ -5,22 +5,11 @@ import { connect } from 'react-redux';
 import { reportNotExisting } from '../redux/modules/epicerie';
 import { navigateToEditModal } from '../redux/modules/nav';
 
-const styles = StyleSheet.create({
-  container: {
-    margin: 0,
-    flex: 0.15,
-    padding: 10,
-  },
-});
-
-class SelectedEpicerie extends Component {
+class Epicerie extends Component {
   render() {
-    const { isReporting, epicerie, dispatch } = this.props;
-    if (!epicerie) {
-      return null;
-    }
+    const { epicerie } = this.props;
     return (
-      <View style={styles.container}>
+      <View>
         <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
           {epicerie.name}
         </Text>
@@ -76,7 +65,8 @@ class SelectedEpicerie extends Component {
   }
 }
 
-export default connect(state => ({
-  epicerie: state.epicerie.markers[state.epicerie.currentSelected],
-  isReporting: state.epicerie.isReporting,
-}))(SelectedEpicerie);
+export default Epicerie;
+// export default connect(state => ({
+//   epicerie: state.epicerie.markers[state.epicerie.currentSelected],
+//   isReporting: state.epicerie.isReporting,
+// }))(SelectedEpicerie);
