@@ -4,7 +4,7 @@ import { Alert } from 'react-native';
 import { openingStatus } from '../../services/markerHelper';
 import { findNearestIndex } from '../../services/distance';
 import { getGeocationData } from '../../services/geolocation';
-import type { Marker, Markers, Dispatch } from '../../types';
+import type { LatLng, Marker, Markers, Dispatch } from '../../types';
 
 type State = {
   currentSelected: ?Marker,
