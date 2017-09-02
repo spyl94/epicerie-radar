@@ -428,6 +428,49 @@
       },
     "name" : "Happy Home"
   },
+  {
+  "name": "Alimentation Générale",
+  "address": "62 rue Bobillot",
+  "coords": {
+    "latitude": 48.825305,
+    "longitude": 2.349509
+  }
+},
+{
+  "name": "Dinusha Alimentation",
+  "address": "3 rue de l'Orillon",
+  "coords": {
+    "latitude": 48.869643,
+    "longitude": 2.374152
+  },
+  "openingHours": "12:00-03:00"
+},
+{
+  "name": "Alimentation générale",
+  "address": "196 rue de paris Montreuil",
+  "coords": {
+    "latitude": 48.855706,
+    "longitude": 2.422131
+  },
+},
+{
+  "name": "La Mascotte",
+  "address": "11 boulevard de la gare",
+  "coords": {
+    "latitude": 48.752279,
+    "longitude": 2.505775
+  },
+  "phone": "0145696040"
+},
+{
+  "name": "Sisara",
+  "address": "70 rue louis blanc",
+  "coords": {
+    "latitude": 48.884018,
+    "longitude": 2.360143
+  },
+  "phone": "0142093301"
+},
   { "address" : "103 r Bobillot, 75013 PARIS",
     "coords" : { "latitude" : 48.824114000000002,
         "longitude" : 2.348913
@@ -675,6 +718,47 @@
       },
     "name" : "El Kamel Mouez"
   },
+  {
+    "name":"superette morland",
+    "address":"6 rue quai des Célestins",
+    "coords":{
+      "latitude": 48.852027,
+      "longitude": 2.361755
+    }
+  },
+  {
+    "name":"alimentation général",
+    "address":"42 rue de Richelieu",
+    "coords":{"latitude": 48.865913,
+      "longitude": 2.337145
+    }
+  },
+  {
+    "name":"alimentation generale ",
+    "address":"48 avenue de la grande armée",
+    "coords":{"latitude": 48.876599,"longitude": 2.288085}
+  },
+  {
+    "name":"supérette de Jaurès",
+    "address":"7 avenue Jean-Jaurès",
+    "coords":{"latitude": 48.883349,"longitude": 2.371605}
+  },
+  {
+    "name":"alimentation général ",
+    "address":"2 avenue simon bolivar",
+    "coords":{"latitude": 48.874037,"longitude": 2.385333}
+  },
+  {
+    "name":"baba alimentation général",
+    "address":"346 bis rue des Pyrénées",
+    "coords": {
+      "latitude": 48.873891,"longitude": 2.388224}
+  },
+  {
+    "name":"supérette avenue laumiere",
+    "address":"11 avenue laumiere",
+    "coords":{"latitude": 48.883200,"longitude": 2.380741}
+  },
   { "address" : "12 bd Morland, 75004 PARIS",
     "coords" : { "latitude" : 48.849122000000001,
         "longitude" : 2.3646479999999999
@@ -854,6 +938,46 @@
         "longitude" : 2.3783919999999998
       },
     "name" : "Super Toni"
+  },
+  { "address" : "12 rue Marc Séguin, 75018 Paris, City Entreprise",
+    "coords" : { "latitude" : 48.892125,
+        "longitude" : 2.360068
+      },
+    "name" : "Alimentation générale"
+  },
+  {
+  "name": "Votre marché",
+  "address": "98 boulevard Poniatowski",
+  "coords": {
+    "latitude": 48.834347,
+    "longitude": 2.405497
+  }
+},
+{
+"name": "Market Express chez Mirinda",
+"address": "24 boulevard de l'Hôpital",
+"coords": {
+  "latitude": 48.841367,
+  "longitude": 2.362507
+},
+"openingHours": "10:00-00:00"
+},
+{
+"name": "Marché du 46",
+"address": "46 rue poliveau",
+"coords": {
+  "latitude": 48.839851,
+  "longitude": 2.356767
+},
+"openingHours": "10:00-00:00"
+},
+  { "address" : "114 rue de Bercy",
+    "coords" : { "latitude" : 48.839595,
+        "longitude" : 2.380173
+      },
+    "description": "Ferme plus tard les soirs de concerts",
+    "openingHours": "10:00-00:00",
+    "name" : "Alimentation générale"
   },
   { "address" : "134 r Fbg St Martin, 75010 PARIS",
     "coords" : { "latitude" : 48.874605000000003,
@@ -1147,12 +1271,6 @@
         "longitude" : 2.3543219999999998
       },
     "name" : "TRANQUILLITE"
-  },
-  { "address" : "16 r Chanoinesse, 75004 PARIS",
-    "coords" : { "latitude" : 48.853841000000003,
-        "longitude" : 2.3509389999999999
-      },
-    "name" : "Mireis Aphitchaya"
   },
   { "address" : "16 r Clignancourt, 75018 PARIS",
     "coords" : { "latitude" : 48.884864,
@@ -1779,12 +1897,6 @@
       },
     "name" : "Crémerie Du Trocadéro"
   },
-  { "address" : "24 r Seine, 75006 PARIS",
-    "coords" : { "latitude" : 48.855787999999997,
-        "longitude" : 2.3363529999999999
-      },
-    "name" : "Cheikh Boudaker"
-  },
   {
     "address" : "24 r St Antoine, 75004 PARIS",
     "coords" : {
@@ -1948,8 +2060,53 @@
     "coords" : { "latitude" : 48.819223999999998,
         "longitude" : 2.365113
       },
+      "openingHours": "15:00-05:00",
     "name" : "Mg Distribution"
   },
+  {
+  "name": "Alimentation générale produits exotiques",
+  "address": "Place Maurice de Fontenay",
+  "coords": {
+    "latitude": 48.844715,
+    "longitude": 2.388430
+  }
+},
+{
+  "name": "S&K Market",
+  "address": "2 rue Édouard Robert",
+  "coords": {
+    "latitude": 48.836377,
+    "longitude": 2.400330
+  },
+  "phone": "01 44 68 33 87"
+},
+{
+  "name": "Alimentation générale",
+  "address": "105 rue du chevaleret",
+  "coords": {
+    "latitude": 48.830735,
+    "longitude": 2.374339
+  },
+  "openingHours": "10:00-23:00",
+},
+{
+  "name": "Monoprix",
+  "address": "18 Rue Olivier messailen",
+  "coords": {
+    "latitude": 48.830577,
+    "longitude": 2.378165
+  },
+  "openingHours": "10:00-22:00"
+},
+{
+  "name": "Supérette du Timbaud",
+  "address": "75 rue jean Pierre Timbaud",
+  "coords": {
+    "latitude": 48.867657,
+    "longitude": 2.376855
+  },
+  "phone": "01 48 07 04 17"
+},
   { "address" : "29 pl Maubert, 75005 PARIS",
     "coords" : { "latitude" : 48.850354000000003,
         "longitude" : 2.3489710000000001
@@ -2702,12 +2859,6 @@
         "longitude" : 2.3584890000000001
       },
     "name" : "Epicerie Turbigo"
-  },
-  { "address" : "44 Rue Madeleine Michelis, 92200 Neuilly-sur-Seine",
-    "coords" : { "latitude" : 48.883862000000001,
-        "longitude" : 2.2780520000000002
-      },
-    "name" : "Alimentation Générale"
   },
   { "address" : "31 Boulevard Garibaldi, 75015 Paris",
     "coords" : { "latitude" : 48.846989999999998,

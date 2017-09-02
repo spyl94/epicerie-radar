@@ -65,7 +65,7 @@ class EpicerieScrollView extends Component {
   // hasParallaxImages={true}
   firstItem={currentSelected}
   inactiveSlideScale={0.94}
-  inactiveSlideOpacity={0.6}
+  inactiveSlideOpacity={1}
   // enableMomentum={false}
   scrollEndDragDebounceValue={Platform.OS === 'ios' ? 0 : 100}
   onSnapToItem={(index) => {
