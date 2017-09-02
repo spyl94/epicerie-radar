@@ -71,3 +71,4 @@
 
 # Custom
 -keep class com.epicerie.BuildConfig { *; }
+-dontwarn com.google.android.**

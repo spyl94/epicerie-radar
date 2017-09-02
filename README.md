@@ -8,6 +8,7 @@ Elle est disponible sur [Android](https://epicerie-radar.fr/android) et [iOS](ht
 
 Feel free to contribute!
 For developing I'm using an Android emulator: [Genymotion](https://www.genymotion.com/).
+Logs (~/.Genymobile/Genymotion/deployed)
 
 ### Installation
 ```

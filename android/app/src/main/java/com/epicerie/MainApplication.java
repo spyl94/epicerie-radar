@@ -4,10 +4,11 @@ import android.app.Application;
 import android.util.Log;
 
 import com.facebook.react.ReactApplication;
+import com.airbnb.android.react.maps.MapsPackage;
 import com.airbnb.android.react.lottie.LottiePackage;
-import com.airbnb.android.react.maps.MapsPackage;
+
+import com.bugsnag.BugsnagReactNative;
 import com.oblador.vectoricons.VectorIconsPackage;
-import com.airbnb.android.react.maps.MapsPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
@@ -29,9 +30,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new LottiePackage(),
-          new VectorIconsPackage(),
           new MapsPackage(),
+          BugsnagReactNative.getPackage(),
+          new LottiePackage(),
+          new VectorIconsPackage(),
           new ReactNativeConfigPackage()
       );
     }
