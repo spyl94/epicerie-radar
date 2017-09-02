@@ -2,26 +2,33 @@ import React, { Component } from 'react';
 import { Item, Input, Label } from 'native-base';
 
 class InputComponent extends Component<{}, {}> {
+  focus() {
+    this.textInput._root.focus();
+  }
 
-    focus() {
-      this.textInput._root.focus();
-    }
-
-    render() {
-      const { input: { onChange, onFocus, value }, label, ...otherProps } = this.props;
-      return (
-        <Item floatingLabel>
-          <Label>{label}</Label>
-          <Input
-            getRef={(input) => { this.textInput = input; }}
-            {...otherProps}
-            onChangeText={onChange}
-            onFocus={onFocus}
-            value={value}
-          />
-        </Item>
-      )
-    }
+  render() {
+    const {
+      input: { onChange, onFocus, value },
+      label,
+      ...otherProps
+    } = this.props;
+    return (
+      <Item floatingLabel>
+        <Label>
+          {label}
+        </Label>
+        <Input
+          getRef={input => {
+            this.textInput = input;
+          }}
+          {...otherProps}
+          onChangeText={onChange}
+          onFocus={onFocus}
+          value={value}
+        />
+      </Item>
+    );
+  }
 }
 
 export default InputComponent;

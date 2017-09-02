@@ -8,10 +8,16 @@ class EditModalNavbarRight extends Component<{}, {}> {
     const { valid, dispatch } = this.props;
     return (
       <Icon
-        onPress={valid ? () => { dispatch(submit('update-horaires'))} : null}
+        onPress={
+          valid
+            ? () => {
+                dispatch(submit('update-horaires'));
+              }
+            : null
+        }
         name="check"
         size={24}
-        color={valid ? "#178c80" : "#d3d3d3"}
+        color={valid ? '#178c80' : '#d3d3d3'}
         style={{ marginRight: 10 }}
       />
     );

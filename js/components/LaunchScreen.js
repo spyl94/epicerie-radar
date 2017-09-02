@@ -1,17 +1,12 @@
 // @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  StyleSheet,
-  Text,
-  Animated,
-  Easing,
-  View
-} from 'react-native';
+import { Image, StyleSheet, Text, Animated, Easing, View } from 'react-native';
+import Animation from 'lottie-react-native';
 
 class LaunchScreen extends Component {
   static navigationOptions = {
-    header: { visible: false }
+    header: { visible: false },
   };
 
   constructor(props) {
@@ -21,7 +16,11 @@ class LaunchScreen extends Component {
 
   rotateImage() {
     this._spin.setValue(0);
-    Animated.timing(this._spin, { toValue: 1, duration: 2000, easing: Easing.linear }).start(() => {
+    Animated.timing(this._spin, {
+      toValue: 1,
+      duration: 2000,
+      easing: Easing.linear,
+    }).start(() => {
       this.rotateImage();
     });
   }
@@ -31,45 +30,56 @@ class LaunchScreen extends Component {
   }
 
   render() {
-    // Second interpolate beginning and end values (in this case 0 and 1)
-    const spin = this._spin.interpolate({
-      inputRange: [0, 1],
-      outputRange: ['0deg', '360deg']
-    })
     return (
-        <View style={styles.container}>
-          <View style={styles.loadingScreen}>
-            <Text style={{ fontSize: 24, color: 'black', fontWeight: '500', marginBottom: 15 }}>
-              Epicerie Radar
-            </Text>
-            <Animated.Image
-              style={[styles.logo, { transform: [{rotate: spin}] }]}
-              source={require('../../img/logo.png')}
-            />
-            <Text style={{ fontSize: 18, marginTop: 15 }}>
-              Récupération de votre position...
-            </Text>
-          </View>
+      <View style={styles.container}>
+        <View style={styles.loadingScreen}>
+          {/* <Text
+            style={{
+              fontSize: 24,
+              color: 'black',
+              fontWeight: '500',
+              marginBottom: 25,
+            }}>
+            Epicerie Radar
+          </Text> */}
+          <Image
+            style={styles.logo}
+            source={require('../../img/logo.png')}
+          />
+          <Animation
+  style={{
+    width: 200,
+    height: 200,
+    marginTop: 50,
+  }}
+  source={require('../animations/pin.json')}
+  progress={this._spin}
+/>
+{/* <Text style={{ fontSize: 18, fontWeight: '200' }}>
+  Récupération des épiceries...
+</Text> */}
         </View>
+      </View>
     );
   }
 }
 
-export default connect()(LaunchScreen)
+export default connect()(LaunchScreen);
 
 const styles = StyleSheet.create({
- container: {
-   ...StyleSheet.absoluteFillObject,
- },
- loadingScreen: {
-   flex: 1,
-   flexDirection: 'column',
-   justifyContent: 'center',
-   alignItems: 'center',
- },
- logo: {
-   width: 150,
-   height: 150,
-   resizeMode: 'contain'
- },
+  container: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  loadingScreen: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+  },
+  logo: {
+    width: 150,
+    height: 150,
+    resizeMode: 'contain',
+  },
 });

@@ -18,10 +18,14 @@
       android:icon="@mipmap/ic_launcher"
       android:theme="@style/AppTheme">
 
+      <meta-data
+        android:name="com.bugsnag.android.API_KEY"
+        android:value="@string/BUGSNAG_API_KEY"
+      />
 
     	<meta-data
       android:name="com.google.android.geo.API_KEY"
-      android:value="AIzaSyAxqW-gj-PXd1tclq4bjhzJlb_QJWdiwCs"/>
+      android:value="@string/API_KEY"/>
 
 
       <activity

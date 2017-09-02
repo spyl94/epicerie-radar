@@ -1,4 +1,10 @@
 apply plugin: "com.android.application"
+
+/*project.ext.envConfigFiles = [
+    debug: ".env",
+    release: ".env",
+    anycustombuildlowercase: ".env",
+]*/
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 import com.android.build.OutputFile
@@ -34,6 +40,13 @@ import com.android.build.OutputFile
  *   // bundleInPaidRelease: true,
  *   // bundleInBeta: true,
  *
+ *   // whether to disable dev mode in custom build variants (by default only disabled in release)
+ *   // for example: to disable dev mode in the staging build type (if configured)
+ *   devDisabledInStaging: true,
+ *   // The configuration property can be in the following formats
+ *   //         'devDisabledIn${productFlavor}${buildType}'
+ *   //         'devDisabledIn${buildType}'
+ *
  *   // the root of your project, i.e. where "package.json" lives
  *   root: "../../",
  *
@@ -59,7 +72,7 @@ import com.android.build.OutputFile
  *   inputExcludes: ["android/**", "ios/**"],
  *
  *   // override which node gets called and with what additional arguments
- *   nodeExecutableAndArgs: ["node"]
+ *   nodeExecutableAndArgs: ["node"],
  *
  *   // supply additional arguments to the packager
  *   extraPackagerArgs: []
@@ -76,23 +89,23 @@ apply from: "../../node_modules/react-native/react.gradle"
  * Upload all the APKs to the Play Store and people will download
  * the correct one based on the CPU architecture of their device.
  */
-def enableSeparateBuildPerCPUArchitecture = false
+def enableSeparateBuildPerCPUArchitecture = true
 
 /**
  * Run Proguard to shrink the Java bytecode in release builds.
  */
-def enableProguardInReleaseBuilds = false
+def enableProguardInReleaseBuilds = true
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
 
     defaultConfig {
         applicationId "com.epicerie"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 51
-        versionName "2.0"
+        versionCode 104
+        versionName "3.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -100,10 +113,10 @@ android {
 
     signingConfigs {
         release {
-            storeFile file(MYAPP_RELEASE_STORE_FILE)
-            storePassword MYAPP_RELEASE_STORE_PASSWORD
-            keyAlias MYAPP_RELEASE_KEY_ALIAS
-            keyPassword MYAPP_RELEASE_KEY_PASSWORD
+            storeFile file(ER_RELEASE_STORE_FILE)
+            storePassword ER_RELEASE_STORE_PASSWORD
+            keyAlias ER_RELEASE_KEY_ALIAS
+            keyPassword ER_RELEASE_KEY_PASSWORD
         }
     }
 
@@ -137,11 +150,29 @@ android {
     }
 }
 
+configurations.all {
+  resolutionStrategy {
+    force "com.google.android.gms:play-services-ads:10.2.0+"
+    force "com.google.android.gms:play-services:10.2.0+"
+    force "com.google.android.gms:play-services-location:10.2.0+"
+    force "com.google.android.gms:play-services-maps:10.2.0+"
+    force "com.google.android.gms:play-services-gcm:10.2.0+"
+    force "com.google.android.gms:play-services-analytics:10.2.0+"
+  }
+}
+
 dependencies {
-    compile project(':react-native-google-analytics-bridge')
+    compile project(':bugsnag-react-native')
+    compile project(':lottie-react-native')
+    compile(project(':react-native-maps')){
+      exclude group: 'com.google.android.gms', module: 'play-services-base'
+      exclude group: 'com.google.android.gms', module: 'play-services-maps'
+    }
+    compile "com.google.android.gms:play-services-base:10.2.0"
+    compile "com.google.android.gms:play-services-location:10.2.0"
+    compile "com.google.android.gms:play-services-maps:10.2.0"
     compile project(':react-native-vector-icons')
     compile project(':react-native-config')
-    compile project(':react-native-maps')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
