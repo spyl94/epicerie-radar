@@ -57,7 +57,6 @@ ${JSON.stringify(
           longitude: null,
         },
         description,
-        horairesAreKnown,
         hours,
       },
       undefined,

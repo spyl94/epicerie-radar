@@ -6,8 +6,6 @@
     "latitude": 48.869546,
     "longitude": 2.361618
   },
-  "horairesAreKnown": "Horaires inconnus",
-  "hours": {}
  },
  {
   "name": "Épicerie du Maillard",
@@ -16,8 +14,6 @@
     "latitude": 47.214081,
     "longitude": -1.554319
   },
-  "horairesAreKnown": "Horaires inconnus",
-  "hours": {}
  },
  {
   "name": "Fruits primeurs Alimentation",
@@ -26,21 +22,7 @@
     "latitude": 47.220642,
     "longitude": -1.548425
   },
-  "horairesAreKnown": "Horaires connus",
-  "hours": {
-    "mon_open": "10:00",
-    "mon_close": "02:00",
-    "thu_open": "10:00",
-    "thu_close": "02:00",
-    "tue_open": "10:00",
-    "wed_open": "10:00",
-    "fri_open": "10:00",
-    "sat_open": "10:00",
-    "tue_close": "02:00",
-    "wed_close": "02:00",
-    "fri_close": "02:00",
-    "sat_close": "02:00"
-  }
+  "openingHours": "10:00-02:00"
  },
  {
   "name": "épicerie noctambule",
@@ -49,8 +31,6 @@
     "latitude": 47.220133,
     "longitude": -1.549042
   },
-  "horairesAreKnown": "Horaires inconnus",
-  "hours": {}
  },
  {
   "name": "Alimentation générale ",
@@ -59,21 +39,7 @@
     "latitude": 48.858410,
     "longitude": 2.309290
   },
-  "horairesAreKnown": "Horaires connus",
-  "hours": {
-    "mon_open": "09:00",
-    "mon_close": "03:00",
-    "thu_open": "09:00",
-    "thu_close": "03:00",
-    "tue_open": "09:00",
-    "wed_open": "09:00",
-    "fri_open": "09:00",
-    "sat_open": "09:00",
-    "tue_close": "03:00",
-    "wed_close": "03:00",
-    "fri_close": "03:00",
-    "sat_close": "03:00"
-  }
+  "openingHours": "09:00-03:00"
  },
  {
   "name": "Monoprix",
@@ -82,21 +48,7 @@
     "latitude": 48.866408,
     "longitude": 2.333876
   },
-  "horairesAreKnown": "Horaires connus",
-  "hours": {
-    "mon_open": "09:00",
-    "mon_close": "22:00",
-    "thu_open": "09:00",
-    "thu_close": "22:00",
-    "tue_open": "09:00",
-    "wed_open": "09:00",
-    "fri_open": "09:00",
-    "sat_open": "09:00",
-    "tue_close": "22:00",
-    "wed_close": "22:00",
-    "fri_close": "22:00",
-    "sat_close": "22:00"
-  }
+  "openingHours": "09:00-22:00"
  },
  {
   "name": "Alimentation chemin vert",
@@ -105,23 +57,7 @@
     "latitude": 48.862421,
     "longitude": 2.386486
   },
-  "horairesAreKnown": "Horaires connus",
-  "hours": {
-    "mon_close": "02:00",
-    "mon_open": "09:00",
-    "thu_open": "09:00",
-    "thu_close": "02:00",
-    "tue_open": "09:00",
-    "tue_close": "02:00",
-    "wed_open": "09:00",
-    "wed_close": "02:00",
-    "fri_open": "09:00",
-    "fri_close": "02:00",
-    "sat_open": "09:00",
-    "sat_close": "02:00",
-    "sun_open": "09:00",
-    "sun_close": "02:00"
-  }
+  "openingHours": "09:00-02:00"
  },
  {
   "name": "Alimentation générale",
@@ -130,23 +66,7 @@
     "latitude": 48.884583,
     "longitude": 2.366889
   },
-  "horairesAreKnown": "Horaires connus",
-  "hours": {
-    "mon_open": "09:00",
-    "mon_close": "00:30",
-    "thu_open": "09:00",
-    "thu_close": "00:30",
-    "tue_open": "09:00",
-    "tue_close": "00:30",
-    "wed_open": "09:00",
-    "wed_close": "00:30",
-    "sun_open": "09:00",
-    "sun_close": "00:30",
-    "fri_open": "09:00",
-    "sat_open": "09:00",
-    "fri_close": "00:30",
-    "sat_close": "00:30"
-  }
+  "openingHours": "09:00-00:30"
  },
  {
   "name": "Opera Market",
@@ -155,9 +75,7 @@
     "latitude": 48.866645,
     "longitude": 2.336931
   },
-  "phone": "01 49 26 03 09",
-  "horairesAreKnown": "Horaires inconnus",
-  "hours": {}
+  "phone": "01 49 26 03 09"
  },
  {
   "name": "Alimentation générale",
@@ -165,9 +83,7 @@
   "coords": {
     "latitude": 48.880441,
     "longitude": 2.351785
-  },
-  "horairesAreKnown": "Horaires inconnus",
-  "hours": {}
+  }
  },
  {
   "name": "Chez Karim",
@@ -175,9 +91,7 @@
   "coords": {
     "latitude": 48.879506,
     "longitude": 2.346866
-  },
-  "horairesAreKnown": "Horaires inconnus",
-  "hours": {}
+  }
  },
  {
   "name": "Super Market ",
@@ -185,9 +99,7 @@
   "coords": {
     "latitude": 48.880643,
     "longitude": 2.338093
-  },
-  "horairesAreKnown": "Horaires inconnus",
-  "hours": {}
+  }
  },
  {
   "name": "Supermarché Diagonale",
@@ -196,23 +108,7 @@
     "latitude": 48.853594,
     "longitude": 2.381199
   },
-  "horairesAreKnown": "Horaires connus",
-  "hours": {
-    "mon_open": "09:00",
-    "mon_close": "22:00",
-    "thu_open": "09:00",
-    "thu_close": "22:00",
-    "tue_open": "09:00",
-    "tue_close": "22:00",
-    "wed_open": "09:00",
-    "wed_close": "22:00",
-    "sun_open": "09:00",
-    "sun_close": "22:00",
-    "fri_open": "09:00",
-    "sat_open": "09:00",
-    "fri_close": "23:00",
-    "sat_close": "23:00"
-  }
+  "openingHours": "09:00-22:00; Fr,Sa 09:00-23:00"
  },
  {
   "name": "Alimentation générale",
@@ -220,9 +116,7 @@
   "coords": {
     "latitude": 48.849877,
     "longitude": 2.374115
-  },
-  "horairesAreKnown": "Horaires inconnus",
-  "hours": {}
+  }
  },
  {
   "name": "La coulée verte",
@@ -231,23 +125,7 @@
     "latitude": 48.849116,
     "longitude": 2.375031
   },
-  "horairesAreKnown": "Horaires connus",
-  "hours": {
-    "mon_close": "23:00",
-    "thu_close": "23:00",
-    "tue_close": "23:00",
-    "mon_open": "12:00",
-    "thu_open": "12:00",
-    "wed_close": "23:00",
-    "fri_close": "23:00",
-    "sat_close": "23:00",
-    "sun_close": "23:00",
-    "tue_open": "12:00",
-    "wed_open": "12:00",
-    "fri_open": "12:00",
-    "sat_open": "12:00",
-    "sun_open": "12:00"
-  }
+  "openingHours": "12:00-23:00"
  },
  {
   "name": "Épicerie du Monde",
@@ -255,9 +133,7 @@
   "coords": {
     "latitude": 48.847337,
     "longitude": 2.378172
-  },
-  "horairesAreKnown": "Horaires inconnus",
-  "hours": {}
+  }
  },
  {
   "name": "Alimentation générale chemin vert",
@@ -266,23 +142,7 @@
     "latitude": 48.862421,
     "longitude": 2.386486
   },
-  "horairesAreKnown": "Horaires connus",
-  "hours": {
-    "mon_open": "10:00",
-    "mon_close": "02:00",
-    "thu_open": "10:00",
-    "thu_close": "02:00",
-    "tue_open": "10:00",
-    "tue_close": "02:00",
-    "wed_open": "10:00",
-    "fri_open": "10:00",
-    "sat_open": "10:00",
-    "sun_open": "10:00",
-    "wed_close": "02:00",
-    "fri_close": "02:00",
-    "sat_close": "02:00",
-    "sun_close": "02:00"
-  }
+  "openingHours": "10:00-02:00"
  },
  {
   "name": "Space Market",
@@ -291,23 +151,7 @@
     "latitude": 48.871811,
     "longitude": 2.311617
   },
-  "horairesAreKnown": "Horaires connus",
-  "hours": {
-    "mon_close": "01:00",
-    "mon_open": "10:00",
-    "fri_close": "02:30",
-    "sat_close": "02:30",
-    "thu_open": "10:00",
-    "thu_close": "01:00",
-    "tue_close": "01:00",
-    "tue_open": "10:00",
-    "fri_open": "10:00",
-    "sat_open": "10:00",
-    "sun_open": "10:00",
-    "sun_close": "01:30",
-    "wed_open": "10:00",
-    "wed_close": "01:00"
-  }
+  "openingHours": "10:00-01:00; Fr,Sa 10:00-02:30"
  },
  {
   "name": "Alimentation générale bienvenue cremerie",
@@ -316,21 +160,7 @@
     "latitude": 48.857007,
     "longitude": 2.385389
   },
-  "horairesAreKnown": "Horaires connus",
-  "hours": {
-    "mon_open": "10:00",
-    "mon_close": "20:00",
-    "tue_open": "10:00",
-    "tue_close": "20:00",
-    "wed_open": "10:00",
-    "wed_close": "20:00",
-    "fri_open": "10:00",
-    "fri_close": "20:00",
-    "sat_open": "10:00",
-    "sat_close": "00:00",
-    "sun_open": "10:00",
-    "sun_close": "00:00"
-  }
+  "openingHours": "10:00-20:00; Fr,Sa 10:00-00:00"
  },
  {
   "name": "America exotica",
@@ -339,18 +169,7 @@
     "latitude": 48.856406,
     "longitude": 2.385701
   },
-  "hours": {
-    "mon_open": "10:00",
-    "mon_close": "20:00",
-    "tue_open": "10:00",
-    "tue_close": "20:00",
-    "wed_open": "10:00",
-    "wed_close": "20:00",
-    "fri_open": "10:00",
-    "fri_close": "20:00",
-    "sat_open": "10:00",
-    "sat_close": "20:00"
-  }
+  "openingHours": "10:00-20:00; Fr,Sa 10:00-00:00"
  },
  {
   "name": "Supérette des Martyrs",
@@ -358,9 +177,7 @@
   "coords": {
     "latitude": 48.880237,
     "longitude": 2.340571
-  },
-  "horairesAreKnown": "Horaires inconnus",
-  "hours": {}
+  }
  },
  {
   "name": "Salma Alimentation",
@@ -371,21 +188,7 @@
   },
   "description": "",
   "phone": "01 43 71 78 04",
-  "horairesAreKnown": "Horaires connus",
-  "hours": {
-    "thu_open": "10:00",
-    "thu_close": "03:00",
-    "tue_open": "10:00",
-    "tue_close": "03:00",
-    "wed_open": "10:00",
-    "wed_close": "03:00",
-    "fri_open": "10:00",
-    "fri_close": "03:00",
-    "sat_open": "10:00",
-    "sat_close": "03:00",
-    "sun_open": "10:00",
-    "sun_close": "03:00"
-  }
+  "openingHours": "10:00-03:00"
 },
 {
   "name": "Mini market alimentation générale",
@@ -394,172 +197,79 @@
     "latitude": 48.883937,
     "longitude": 2.331098
   },
-  "hours": {
-    "mon_open": "10:00",
-    "mon_close": "06:00",
-    "thu_open": "10:00",
-    "tue_open": "10:00",
-    "thu_close": "06:00",
-    "tue_close": "06:00",
-    "wed_open": "10:00",
-    "wed_close": "06:00",
-    "fri_open": "10:00",
-    "fri_close": "06:00",
-    "sat_open": "10:00",
-    "sat_close": "06:00",
-    "sun_open": "10:00",
-    "sun_close": "06:00"
-  }
+  "openingHours": "10:00-06:00"
 },
-    {
+{
   "name": "Alimentation générale",
   "address": "75 bis boulevard de Clichy",
   "coords": {
     "latitude": 48.883921,
     "longitude": 2.330885
   },
-  "hours": {
-    "mon_close": "06:00",
-    "mon_open": "10:00",
-    "thu_open": "10:00",
-    "thu_close": "06:00",
-    "tue_open": "10:00",
-    "tue_close": "06:00",
-    "wed_close": "06:00",
-    "wed_open": "10:00",
-    "fri_open": "10:00",
-    "sat_open": "10:00",
-    "fri_close": "06:00",
-    "sat_close": "06:00",
-    "sun_open": "10:00",
-    "sun_close": "06:00"
-  }
+  "openingHours": "10:00-06:00"
 },
-{ 
+{
     "address" : "68 Rue du chemin vert, 75011 Paris",
     "coords" : { "latitude" : 48.859893999999997,
         "longitude" : 2.377643
       },
-    "hours" : { "fri_close" : "02:00",
-        "mon_close" : "02:00",
-        "sat_close" : "02:00",
-        "sun_close" : "02:00",
-        "thu_close" : "02:00",
-        "tue_close" : "02:00",
-        "wed_close" : "02:00"
-      },
+      "openingHours": "10:00-02:00",
     "name" : "Kugan"
   },
   { "address" : "61 Boulevard Beaumarchais, 75003 Paris",
     "coords" : { "latitude" : 48.857790999999999,
         "longitude" : 2.3677779999999999
       },
-    "hours" : { "fri_close" : "05:00",
-        "mon_close" : "05:00",
-        "sat_close" : "05:00",
-        "sun_close" : "03:00",
-        "thu_close" : "05:00",
-        "tue_close" : "05:00",
-        "wed_close" : "05:00"
-      },
+      "openingHours": "10:00-05:00",
     "name" : "Supérette Beaumarchais"
   },
   { "address" : "75 Rue des Archives, 75003 Paris",
     "coords" : { "latitude" : 48.862969,
         "longitude" : 2.3597450000000002
       },
-    "hours" : { "fri_close" : "01:00",
-        "mon_close" : "01:00",
-        "sat_close" : "01:00",
-        "sun_close" : "01:00",
-        "thu_close" : "01:00",
-        "tue_close" : "01:00",
-        "wed_close" : "01:00"
-      },
+      "openingHours": "10:00-01:00",
     "name" : "Supérette des Archives"
   },
   { "address" : "24 Rue du Faubourg du Temple, 75011 Paris",
     "coords" : { "latitude" : 48.868513299999996,
         "longitude" : 2.3667289999999999
       },
-    "hours" : { "fri_close" : "02:00",
-        "mon_close" : "02:00",
-        "sat_close" : "02:00",
-        "sun_close" : "02:00",
-        "thu_close" : "02:00",
-        "tue_close" : "02:00",
-        "wed_close" : "02:00"
-      },
+      "openingHours": "10:00-02:00",
     "name" : "Super Market"
   },
   { "address" : "77 Rue Oberkampf, 75011 Paris",
     "coords" : { "latitude" : 48.865031700000003,
         "longitude" : 2.3744814999999999
       },
-    "hours" : { "fri_close" : "02:00",
-        "mon_close" : "01:00",
-        "sat_close" : "02:00",
-        "sun_close" : "01:00",
-        "thu_close" : "02:00",
-        "tue_close" : "01:00",
-        "wed_close" : "01:00"
-      },
+      "openingHours": "10:00-01:00; Fr,Sa 10:00-02:00",
     "name" : "Alimentation"
   },
   { "address" : "65 Rue du Faubourg du Temple, 75011 Paris",
     "coords" : { "latitude" : 48.869876499999997,
         "longitude" : 2.3705954
       },
-    "hours" : { "fri_close" : "02:00",
-        "mon_close" : "02:00",
-        "sat_close" : "02:00",
-        "sun_close" : "02:00",
-        "thu_close" : "02:00",
-        "tue_close" : "02:00",
-        "wed_close" : "02:00"
-      },
+      "openingHours": "10:00-01:00; Fr,Sa 10:00-02:00",
     "name" : "Rapid'Market"
   },
   { "address" : "52 Rue du Faubourg du Temple, 75011 Paris",
     "coords" : { "latitude" : 48.869876499999997,
         "longitude" : 2.3705954
       },
-    "hours" : { "fri_close" : "02:00",
-        "mon_close" : "02:00",
-        "sat_close" : "02:00",
-        "sun_close" : "02:00",
-        "thu_close" : "02:00",
-        "tue_close" : "02:00",
-        "wed_close" : "02:00"
-      },
+      "openingHours": "10:00-01:00; Fr,Sa 10:00-02:00",
     "name" : "Epicerie du Faubourg"
   },
   { "address" : "34 Rue du Faubourg du Temple, 75011 Paris",
     "coords" : { "latitude" : 48.869043900000001,
         "longitude" : 2.3682023000000001
       },
-    "hours" : { "fri_close" : "05:00",
-        "mon_close" : "02:00",
-        "sat_close" : "05:00",
-        "sun_close" : "02:00",
-        "thu_close" : "05:00",
-        "tue_close" : "02:00",
-        "wed_close" : "02:00"
-      },
+      "openingHours": "10:00-02:00; Fr,Sa 10:00-05:00",
     "name" : "Casa del gelato"
   },
   { "address" : "108 Avenue Parmentier, 75011 Paris",
     "coords" : { "latitude" : 48.867077000000002,
         "longitude" : 2.3733960000000001
       },
-    "hours" : { "fri_close" : "02:00",
-        "mon_close" : "02:00",
-        "sat_close" : "02:00",
-        "sun_close" : "02:00",
-        "thu_close" : "02:00",
-        "tue_close" : "02:00",
-        "wed_close" : "02:00"
-      },
+      "openingHours": "10:00-02:00",
     "name" : "Selah"
   },
   { "address" : " 71 r Belleville, 75019 PARIS",
@@ -800,14 +510,7 @@
     "coords" : { "latitude" : 48.859741,
         "longitude" : 2.346473
       },
-    "hours" : { "fri_close" : "00:00",
-        "mon_close" : "00:00",
-        "sat_close" : "00:00",
-        "sun_close" : "00:00",
-        "thu_close" : "00:00",
-        "tue_close" : "00:00",
-        "wed_close" : "00:00"
-      },
+      "openingHours": "10:00-00:00",
     "name" : "CMK Helen"
   },
   { "address" : "11 r Martyrs, 75009 PARIS",
@@ -1162,14 +865,7 @@
     "coords" : { "latitude" : 48.864984,
         "longitude" : 2.350454
       },
-    "hours" : { "fri_close" : "02:00",
-        "mon_close" : "02:00",
-        "sat_close" : "02:00",
-        "sun_close" : "02:00",
-        "thu_close" : "02:00",
-        "tue_close" : "02:00",
-        "wed_close" : "02:00"
-      },
+      "openingHours": "10:00-02:00",
     "name" : "Les Fruits De La Reine"
   },
   { "address" : "138 av d’Italie, 75013 PARIS",
@@ -1346,29 +1042,14 @@
       },
     "name" : "Soussi Bachir"
   },
-  { 
+  {
    "address" : "151 r Roquette, 75011 PARIS",
-    "coords" : { 
+    "coords" : {
       "latitude" : 48.859499999999997,
       "longitude" : 2.3861949999999998
     },
     "name" : "Belkas Idder",
-    "hours": {
-     "mon_open": "10:00",
-     "mon_close": "00:00",
-  "thu_open": "10:00",
-  "thu_close": "00:00",
-  "tue_open": "10:00",
-  "tue_close": "00:00",
-  "wed_open": "10:00",
-  "wed_close": "00:00",
-  "fri_open": "10:00",
-  "fri_close": "00:00",
-  "sat_open": "10:00",
-  "sat_close": "00:00",
-  "sun_open": "10:00",
-  "sun_close": "00:00"
-   }
+    "openingHours": "10:00-00:00"
   },
   { "address" : "152 av Jean Jaurès, 75019 PARIS",
     "coords" : { "latitude" : 48.886960000000002,
@@ -1387,22 +1068,7 @@
         "longitude" : 2.3434629999999999
       },
     "name" : "Chawki Mohamed",
-   "hours": {
-  "mon_open": "10:00",
-  "mon_close": "00:00",
-  "thu_open": "10:00",
-  "thu_close": "00:00",
-  "tue_open": "10:00",
-  "tue_close": "00:00",
-  "wed_open": "10:00",
-  "wed_close": "00:00",
-  "fri_open": "10:00",
-  "fri_close": "00:00",
-  "sat_open": "10:00",
-  "sat_close": "00:00",
-  "sun_open": "10:00",
-  "sun_close": "00:00"
-}
+    "openingHours": "10:00-00:00"
   },
   { "address" : "155 r Fbg St Denis, 75010 PARIS",
     "coords" : { "latitude" : 48.878678999999998,
@@ -1930,14 +1596,7 @@
     "coords" : { "latitude" : 48.862444000000004,
         "longitude" : 2.3782930000000002
       },
-    "hours" : { "fri_close" : "00:00",
-        "mon_close" : "00:00",
-        "sat_close" : "00:00",
-        "sun_close" : "00:00",
-        "thu_close" : "00:00",
-        "tue_close" : "00:00",
-        "wed_close" : "00:00"
-      },
+      "openingHours": "10:00-00:00",
     "name" : "Proxi"
   },
   { "address" : "200 r St Jacques, 75005 PARIS",
@@ -2126,29 +1785,14 @@
       },
     "name" : "Cheikh Boudaker"
   },
-  { 
+  {
     "address" : "24 r St Antoine, 75004 PARIS",
-    "coords" : { 
+    "coords" : {
       "latitude" : 48.853760000000001,
       "longitude" : 2.3660589999999999
      },
     "name" : "Ben Rhouma",
-    "hours": {
-      "mon_close": "12:30",
-      "thu_close": "12:30",
-      "tue_close": "12:30",
-      "wed_close": "12:30",
-      "fri_close": "12:30",
-      "sat_close": "12:30",
-      "sun_close": "12:30",
-      "mon_open": "22:00",
-      "thu_open": "22:00",
-      "tue_open": "22:00",
-      "wed_open": "22:00",
-      "fri_open": "22:00",
-      "sat_open": "22:00",
-      "sun_open": "22:00"
-   }
+    "openingHours": "10:00-00:30"
   },
   { "address" : "24 r Villiers de l'Isle Adam, 75020 PARIS",
     "coords" : { "latitude" : 48.866047000000002,
@@ -2772,42 +2416,21 @@
     "coords" : { "latitude" : 48.858510299999999,
         "longitude" : 2.3817135
       },
-    "hours" : { "fri_close" : "00:00",
-        "mon_close" : "00:00",
-        "sat_close" : "00:00",
-        "sun_close" : "00:00",
-        "thu_close" : "00:00",
-        "tue_close" : "00:00",
-        "wed_close" : "00:00"
-      },
+      "openingHours": "10:00-00:00",
     "name" : "Epicerie Fine - Cave à vins"
   },
   { "address" : "108 Avenue Parmentier, 75011 Paris",
     "coords" : { "latitude" : 48.866969400000002,
         "longitude" : 2.3732783999999998
       },
-    "hours" : { "fri_close" : "02:00",
-        "mon_close" : "02:00",
-        "sat_close" : "02:00",
-        "sun_close" : "02:00",
-        "thu_close" : "02:00",
-        "tue_close" : "02:00",
-        "wed_close" : "02:00"
-      },
+      "openingHours": "10:00-02:00",
     "name" : "Epicerie"
   },
   { "address" : "44 Avenue Parmentier, 75011 Paris",
     "coords" : { "latitude" : 48.861654999999999,
         "longitude" : 2.3776280000000001
       },
-    "hours" : { "fri_close" : "00:00",
-        "mon_close" : "00:00",
-        "sat_close" : "00:00",
-        "sun_close" : "00:00",
-        "thu_close" : "00:00",
-        "tue_close" : "00:00",
-        "wed_close" : "00:00"
-      },
+      "openingHours": "10:00-00:00",
     "name" : "Balbali Jemmal"
   },
   { "address" : "44 r Didot, 75014 PARIS",
@@ -2844,14 +2467,7 @@
     "coords" : { "latitude" : 48.861857999999998,
         "longitude" : 2.3802780000000001
       },
-    "hours" : { "fri_close" : "02:00",
-        "mon_close" : "01:00",
-        "sat_close" : "02:00",
-        "sun_close" : "01:00",
-        "thu_close" : "01:00",
-        "tue_close" : "01:00",
-        "wed_close" : "01:00"
-      },
+      "openingHours": "10:00-01:00",
     "name" : "Alimentation generale"
   },
   { "address" : "49 av St Ouen, 75017 PARIS",
@@ -2871,22 +2487,7 @@
         "longitude" : 2.3890989999999999
       },
     "name" : "ALIMENTATION GÉNÉRALE AOLOUZE",
-   "hours": {
-  "mon_open": "10:00",
-  "mon_close": "22:00",
-  "thu_open": "10:00",
-  "thu_close": "10:00",
-  "tue_open": "10:00",
-  "tue_close": "12:00",
-  "wed_open": "10:00",
-  "wed_close": "12:00",
-  "fri_open": "10:00",
-  "fri_close": "12:00",
-  "sat_open": "10:00",
-  "sat_close": "12:00",
-  "sun_open": "10:00",
-  "sun_close": "12:00"
-   }
+    "openingHours": "10:00-22:00; Fr,Sa 10:00-00:00"
   },
   { "address" : "5 bd Garibaldi, 75015 PARIS",
     "coords" : { "latitude" : 48.847715000000001,
@@ -3030,28 +2631,14 @@
     "coords" : { "latitude" : 48.864892300000001,
         "longitude" : 2.3964365999999999
       },
-    "hours" : { "fri_close" : "02:00",
-        "mon_close" : "02:00",
-        "sat_close" : "02:00",
-        "sun_close" : "02:00",
-        "thu_close" : "02:00",
-        "tue_close" : "02:00",
-        "wed_close" : "02:00"
-      },
+      "openingHours": "10:00-02:00",
     "name" : "Alimentation générale"
   },
   { "address" : "93 r Roquette, 75011 PARIS",
     "coords" : { "latitude" : 48.857390000000002,
         "longitude" : 2.3789989999999999
       },
-    "hours" : { "fri_close" : "02:00",
-        "mon_close" : "01:00",
-        "sat_close" : "02:00",
-        "sun_close" : "01:00",
-        "thu_close" : "01:00",
-        "tue_close" : "01:00",
-        "wed_close" : "01:00"
-      },
+      "openingHours": "10:00-01:00; Fr,Sa 10:00-02:00",
     "name" : "CocciMarket"
   },
   { "address" : "94 av Philippe Auguste, 75011 PARIS",
@@ -3070,14 +2657,7 @@
     "coords" : { "latitude" : 48.864485999999999,
         "longitude" : 2.3500969999999999
       },
-    "hours" : { "fri_close" : "01:00",
-        "mon_close" : "01:00",
-        "sat_close" : "02:00",
-        "sun_close" : "02:00",
-        "thu_close" : "01:00",
-        "tue_close" : "01:00",
-        "wed_close" : "01:00"
-      },
+      "openingHours": "10:00-01:00; Fr,Sa 10:00-02:00",
     "name" : "Super Market"
   },
   { "address" : "168 r de Belleville, 75019 PARIS",
@@ -3096,14 +2676,7 @@
     "coords" : { "latitude" : 48.82227833333333,
         "longitude" : 2.3543133333333337
       },
-    "hours" : { "fri_close" : "23:00",
-        "mon_close" : "23:00",
-        "sat_close" : "23:00",
-        "sun_close" : "23:00",
-        "thu_close" : "23:00",
-        "tue_close" : "23:00",
-        "wed_close" : "23:00"
-      },
+      "openingHours": "10:00-23:00",
     "name" : "Alimentation Parisienne"
   },
   { "address" : "270 Rue du Maréchal Leclerc, 94410 Saint-Maurice",
@@ -3164,28 +2737,14 @@
     "coords" : { "latitude" : 48.861131,
         "longitude" : 2.3426
       },
-    "hours" : { "fri_close" : "01:00",
-        "mon_close" : "01:00",
-        "sat_close" : "01:00",
-        "sun_close" : "01:00",
-        "thu_close" : "01:00",
-        "tue_close" : "01:00",
-        "wed_close" : "01:00"
-      },
+      "openingHours": "10:00-01:00",
     "name" : "Primeurs du Louvre"
   },
   { "address" : "82 Rue Saint Honoré, 75001 Paris",
     "coords" : { "latitude" : 48.861438,
         "longitude" : 2.3428559999999998
       },
-    "hours" : { "fri_close" : "00:00",
-        "mon_close" : "00:00",
-        "sat_close" : "00:00",
-        "sun_close" : "00:00",
-        "thu_close" : "00:00",
-        "tue_close" : "00:00",
-        "wed_close" : "00:00"
-      },
+      "openingHours": "10:00-00:00",
     "name" : "Bomo"
   },
   { "address" : "59 Rue du Faubourg Saint-Denis, 75010 Paris",
@@ -3228,28 +2787,14 @@
     "coords" : { "latitude" : 48.866709999999998,
         "longitude" : 2.3369239999999998
       },
-    "hours" : { "fri_close" : "00:00",
-        "mon_close" : "00:00",
-        "sat_close" : "00:00",
-        "sun_close" : "00:00",
-        "thu_close" : "00:00",
-        "tue_close" : "00:00",
-        "wed_close" : "00:00"
-      },
+      "openingHours": "10:00-00:00",
     "name" : "Opéra Market"
   },
   { "address" : "171 Rue St Denis, 75002 Paris",
     "coords" : { "latitude" : 48.865377000000002,
         "longitude" : 2.3503769999999999
       },
-    "hours" : { "fri_close" : "01:00",
-        "mon_close" : "01:00",
-        "sat_close" : "02:00",
-        "sun_close" : "02:00",
-        "thu_close" : "01:00",
-        "tue_close" : "01:00",
-        "wed_close" : "01:00"
-      },
+      "openingHours": "10:00-01:00; Fr,Sa 10:00-02:00",
     "name" : "Le petit marché superette"
   }
 ]
