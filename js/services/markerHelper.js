@@ -28,7 +28,7 @@ export const openingStatus = (epicerie: Marker) => {
   return {
     color: '#42b72a',
     type: 'open',
-    text: "Ouvert jusqu'à " + oh.getNextChange(),
+    text: "Ouvert jusqu'à " + moment(oh.getNextChange()).format('HH:mm'),
   };
 };
 
