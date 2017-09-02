@@ -16,6 +16,11 @@ class Map extends Component {
     };
   }
 
+  componentDidMount() {
+    const { location, markers, currentIndex, updateMarker } = this.props;
+    updateMarker(location, markers[currentIndex]);
+  }
+
   componentDidUpdate(prevProps) {
     if (prevProps.currentIndex != this.props.currentIndex) {
       const { location, markers, currentIndex, updateMarker } = this.props;
