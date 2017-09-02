@@ -1,5 +1,8 @@
 certificates
 .env.prod
+
+android/fastlane/report.xml
+
 # OSX
 #
 .DS_Store

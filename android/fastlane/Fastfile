@@ -23,6 +23,7 @@ platform :android do
     increment_version_code(
       gradle_file_path: "app/build.gradle",
     )
+    gradle(task: "clean")
     gradle(task: "assembleRelease")
     supply(
       track: "alpha",
@@ -35,6 +36,7 @@ platform :android do
     increment_version_code(
       gradle_file_path: "app/build.gradle",
     )
+    gradle(task: "clean")
     gradle(task: "assembleRelease")
     supply
   end

@@ -1,4 +1,10 @@
 apply plugin: "com.android.application"
+
+/*project.ext.envConfigFiles = [
+    debug: ".env",
+    release: ".env",
+    anycustombuildlowercase: ".env",
+]*/
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 import com.android.build.OutputFile
@@ -98,12 +104,11 @@ android {
         applicationId "com.epicerie"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 101
+        versionCode 103
         versionName "3.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
-        // multiDexEnabled true
     }
 
     signingConfigs {
