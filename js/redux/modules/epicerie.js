@@ -2,7 +2,7 @@ import data from '../../../data.json';
 import Fetcher from '../../services/Fetcher';
 import { Alert } from 'react-native';
 import { openingStatus } from '../../services/markerHelper';
-import { findNearestIndex } from '../../services/distance';
+import { findNearestIndex, orderByDistance } from '../../services/distance';
 import { getGeocationData } from '../../services/geolocation';
 import type { LatLng, Marker, Markers, Dispatch } from '../../types';
 
@@ -44,16 +44,19 @@ export const reportNotExisting = (dispatch: Dispatch, epicerie: Marker) => {
     });
 };
 
+const INITIAL_LATITUDE = 48.853;
+const INITIAL_LONGITUDE = 2.35;
+
 export const loadUpToDateMarkers = (dispatch: Dispatch) => {
   Fetcher.get(
     'https://raw.githubusercontent.com/spyl94/epicerie-radar/master/data.json',
     {referrer: "Trololo"}
   )
     .then((markers: Markers) => {
-      dispatch({ type: 'LOAD_MARKERS', markers });
+      dispatch({ type: 'LOAD_MARKERS', markers: orderByDistance(markers, INITIAL_LATITUDE, INITIAL_LONGITUDE) });
     })
     .catch(() => {
-      dispatch({ type: 'LOAD_MARKERS', markers: data });
+      dispatch({ type: 'LOAD_MARKERS', markers: orderByDistance(data, INITIAL_LATITUDE, INITIAL_LONGITUDE) });
     });
 };
 
@@ -66,9 +69,6 @@ export const select = (marker: Marker) => ({
   type: 'SELECT',
   marker,
 });
-
-const INITIAL_LATITUDE = 48.853;
-const INITIAL_LONGITUDE = 2.35;
 
 export default function epiceries(
   state: State = initialState,

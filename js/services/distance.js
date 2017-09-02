@@ -24,6 +24,16 @@ function deg2rad(deg: number) {
   return deg * (Math.PI / 180);
 }
 
+export const orderByDistance = (
+  markers: Markers,
+  lat: number,
+  long: number,
+): Markers => {
+  if (markers.length === 0) {
+    return [];
+  }
+  return Object.values(markers).sort((a, b) => getDistanceFromLatLonInKm(lat, long, a.coords.latitude, a.coords.longitude) > getDistanceFromLatLonInKm(lat, long, b.coords.latitude, b.coords.longitude));
+}
 export const findNearestIndex = (
   markers: Markers,
   lat: number,
