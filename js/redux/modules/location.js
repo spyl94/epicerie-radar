@@ -31,6 +31,7 @@ const initialState: State = {
     latitudeDelta: 0.015,
     longitudeDelta: 0.0121,
   },
+  ready: false,
   enabled: undefined,
 };
 
@@ -69,10 +70,8 @@ export const getAndSetCurrentLocation = (dispatch: Dispatch) => {
       // error(e);
     },
     {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0,
-      distanceFilter: 1,
+      enableHighAccuracy: false,
+      // timeout: 5000,
     },
   );
   watchPosition(dispatch);
@@ -110,9 +109,9 @@ export default function location(
         longitude: action.location.longitude,
         latitude: action.location.latitude,
       };
-      return { ...state, location: action.location, enabled: true, region };
+      return { ...state, location: action.location, enabled: true, region, ready: true };
     case 'UPDATE_LOCATION':
-      return { ...state, location: action.location, enabled: true };
+      return { ...state, location: action.location, enabled: true, ready: true };
     case 'SET_LOCATION_ERROR':
       return { ...state, enabled: false };
     default:

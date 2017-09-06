@@ -19,7 +19,7 @@ react-native run-android # Launch the app on the emulator
 ```
 ### Design
 
-Update logo `yo rn-toolbox:assets --icon logo.png`.
+Update logo `yo rn-toolbox:assets --icon logo.png --store`.
 
 ### How to release a new version
 

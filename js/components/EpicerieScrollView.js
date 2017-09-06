@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import { Platform, Dimensions, StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { select } from '../redux/modules/epicerie';
@@ -36,15 +36,15 @@ const styles = StyleSheet.create({
   },
 });
 
-class EpicerieScrollView extends Component {
-
-  renderItem = ({item}) => {
+const renderItem = ({item}) => {
     return (
       <View style={styles.card}>
         <Epicerie epicerie={item} />
       </View>
     );
-  }
+}
+
+class EpicerieScrollView extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.currentSelected != this.props.currentSelected) {
@@ -53,12 +53,15 @@ class EpicerieScrollView extends Component {
   }
 
   render() {
-    const { currentSelected, dispatch, markers } = this.props;
+    const { ready, currentSelected, dispatch, markers } = this.props;
+    if (!ready) {
+      return null;
+    }
     return (
 <View style={styles.scrollView}>
   <Carousel
   data={markers}
-  renderItem={this.renderItem}
+  renderItem={renderItem}
   sliderWidth={width}
   itemWidth={CARD_WIDTH}
   ref={(c) => { this._carousel = c; }}
@@ -82,4 +85,5 @@ class EpicerieScrollView extends Component {
 export default connect(state => ({
   markers: Object.values(state.epicerie.markers),
   currentSelected: state.epicerie.currentSelected,
+  ready: state.location.ready,
 }))(EpicerieScrollView);

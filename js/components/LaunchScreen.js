@@ -44,7 +44,7 @@ class LaunchScreen extends Component {
           </Text> */}
           <Image
             style={styles.logo}
-            source={require('../../img/logo.png')}
+            source={require('../../play-store-icon.png')}
           />
           <Animation
   style={{
