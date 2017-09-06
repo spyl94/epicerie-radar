@@ -1,3 +1,4 @@
+// import Config from "react-native-config";
 import { navigateToMapScreen } from './nav';
 import type { Dispatch, Location } from '../../types';
 
@@ -48,16 +49,11 @@ const updateLocation = (location: Location) => ({
   location,
 });
 
-const locationError = (message: string, dispatch: Dispatch) => {
-  if (
-    message === 'Location request timed out' ||
-    message === 'No available location provider.'
-  ) {
-    dispatch(setLocationError(message));
-  }
+export const locationError = (dispatch: Dispatch) => {
+    dispatch(setLocationError());
 };
 
-const setLocationError = (message: string) => ({
+const setLocationError = (message: ?string) => ({
   type: 'SET_LOCATION_ERROR',
   message,
 });
@@ -68,10 +64,15 @@ export const getAndSetCurrentLocation = (dispatch: Dispatch) => {
       dispatch(setInitialLocation(coords));
       dispatch(navigateToMapScreen());
     },
-    ({ message }) => locationError(message, dispatch),
+    e => {
+      console.log("geoloc error", e);
+      // error(e);
+    },
     {
       enableHighAccuracy: true,
       timeout: 5000,
+      maximumAge: 0,
+      distanceFilter: 1,
     },
   );
   watchPosition(dispatch);
@@ -80,10 +81,15 @@ export const getAndSetCurrentLocation = (dispatch: Dispatch) => {
 export const watchPosition = (dispatch: Dispatch) => {
   navigator.geolocation.watchPosition(
     ({ coords }) => dispatch(updateLocation(coords)),
-    ({ message }) => locationError(message, dispatch),
+    e => {
+      console.log("geoloc error", e);
+      // error(e);
+    },
     {
       enableHighAccuracy: true,
-      timeout: 10000,
+      timeout: 20000,
+      maximumAge: 0,
+      distanceFilter: 1,
     },
   );
 };
@@ -94,11 +100,7 @@ export default function location(
 ): State {
   switch (action.type) {
     case 'UPDATE_REGION':
-      if (
-        // action.region.longitudeDelta < 100 &&
-        // action.region.latitudeDelta &&
-        action.region.longitude != 0
-      ) {
+      if (action.region.longitude != 0) {
         return { ...state, region: {...state.region, ...action.region } };
       }
       return state;
