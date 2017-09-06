@@ -73,8 +73,8 @@ class EpicerieScrollView extends Component {
   scrollEndDragDebounceValue={Platform.OS === 'ios' ? 0 : 100}
   onSnapToItem={(index) => {
     dispatch(select(index));
-    const { coords } = markers[index];
-    dispatch(updateRegion(coords));
+    // const { coords } = markers[index];
+    // dispatch(updateRegion(coords));
   }}
 />
 </View>

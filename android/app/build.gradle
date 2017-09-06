@@ -104,7 +104,7 @@ android {
         applicationId "com.epicerie"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 115
+        versionCode 116
         versionName "3.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"

@@ -13,12 +13,18 @@ class Map extends Component {
   componentDidMount() {
     const { location, markers, currentIndex, updateMarker } = this.props;
     updateMarker(location, markers[currentIndex]);
+    if (this._map) {
+      this._map.animateToCoordinate(markers[currentIndex].coords);
+    }
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.currentIndex != this.props.currentIndex) {
       const { location, markers, currentIndex, updateMarker } = this.props;
       updateMarker(location, markers[currentIndex]);
+      if (this._map) {
+        this._map.animateToCoordinate(markers[currentIndex].coords);
+      }
     }
   }
 
@@ -28,6 +34,7 @@ class Map extends Component {
     return (
       <MapView
         style={styles.map}
+        ref={(c) => { this._map = c; }}
         showsUserLocation
         followsUserLocation
         moveOnMarkerPress
