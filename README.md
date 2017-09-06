@@ -17,6 +17,9 @@ cd epicerie-radar
 yarn install # Install deps
 react-native run-android # Launch the app on the emulator
 ```
+### Design
+
+Update logo `yo rn-toolbox:assets --icon logo.png`.
 
 ### How to release a new version
 
