@@ -47,7 +47,7 @@ const renderItem = ({item}) => {
 class EpicerieScrollView extends Component {
 
   componentDidUpdate(prevProps) {
-    if (prevProps.currentSelected != this.props.currentSelected) {
+    if (prevProps.currentSelected != this.props.currentSelected && this._carousel) {
       this._carousel.snapToItem(this.props.currentSelected);
     }
   }

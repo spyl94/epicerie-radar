@@ -21,7 +21,7 @@ export const getGeocationData = async (
 ): Array<LatLng> => {
   try {
     let resp = await fetch(
-      `https://maps.google.com/maps/api/directions/json?origin=${startLoc.latitude},${startLoc.longitude}&destination=${destinationLoc.latitude},${destinationLoc.longitude}&travelMode=WALKING&units=metric&key=${Config.GOOGLE_MAPS_API_KEY}`,
+      `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc.latitude},${startLoc.longitude}&destination=${destinationLoc.latitude},${destinationLoc.longitude}&mode=walking&units=metric&key=${Config.GOOGLE_MAPS_API_KEY}`,
     );
     let respJson = await resp.json();
     console.log(respJson);
