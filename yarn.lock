@@ -3216,6 +3216,10 @@ react-devtools-core@2.3.1:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
+react-native-android-location-services-dialog-box@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-android-location-services-dialog-box/-/react-native-android-location-services-dialog-box-2.2.1.tgz#093b2e1252c27bd04f8caf36f65b0f563430007d"
+
 react-native-config@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.5.0.tgz#109aaee511b81851b22e1fd3372d86c9d6c797d4"
@@ -3271,6 +3275,10 @@ react-native-keyboard-aware-scroll-view@0.2.9, react-native-keyboard-aware-scrol
 react-native-maps@^0.15.3:
   version "0.15.3"
   resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.15.3.tgz#5d9e0a8e30ecc51dc755b7a3b9d6b6ed5e2dd08c"
+
+react-native-permissions@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-1.0.0.tgz#96a79c8fe525d9d4813febdcbb3d35dc66268956"
 
 react-native-radio-buttons@^0.14.0:
   version "0.14.0"

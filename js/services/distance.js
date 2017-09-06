@@ -32,19 +32,15 @@ export const orderByDistance = (
   if (markers.length === 0) {
     return [];
   }
-  return Object.values(markers).sort((a, b) => getDistanceFromLatLonInKm(lat, long, a.coords.latitude, a.coords.longitude) > getDistanceFromLatLonInKm(lat, long, b.coords.latitude, b.coords.longitude));
+  return Object.values(markers).sort((a, b) => {
+    const distanceA = getDistanceFromLatLonInKm(lat, long, a.coords.latitude, a.coords.longitude);
+    const distanceB = getDistanceFromLatLonInKm(lat, long, b.coords.latitude, b.coords.longitude);
+    if ( distanceA < distanceB) {
+      return -1;
+    }
+    if (distanceA > distanceB) {
+      return 1;
+    }
+    return 0;
+  });
 }
-export const findNearestIndex = (
-  markers: Markers,
-  lat: number,
-  long: number,
-): ?number => {
-  if (markers.length === 0) {
-    return null;
-  }
-  const distances = Object.keys(markers).map(key => markers[key]).map(({ coords }) =>
-    getDistanceFromLatLonInKm(lat, long, coords.latitude, coords.longitude),
-  );
-  const min = Math.min(...distances);
-  return markers[distances.indexOf(min)].id;
-};

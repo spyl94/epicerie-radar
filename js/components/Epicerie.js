@@ -1,11 +1,11 @@
 // @flow
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { StyleSheet, Text, View, Alert, Button } from 'react-native';
 import { connect } from 'react-redux';
 import { reportNotExisting } from '../redux/modules/epicerie';
 import { navigateToEditModal } from '../redux/modules/nav';
 
-class Epicerie extends Component {
+class Epicerie extends PureComponent {
   render() {
     const { epicerie } = this.props;
     return (

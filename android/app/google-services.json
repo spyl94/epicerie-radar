@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "159133065100",
+    "firebase_url": "https://epicerie-radar-1493744632939.firebaseio.com",
+    "project_id": "epicerie-radar-1493744632939",
+    "storage_bucket": "epicerie-radar-1493744632939.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159133065100:android:5f6c545e4f4e0d75",
+        "android_client_info": {
+          "package_name": "com.epicerie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "159133065100-er7ubp90j9v651r93a8udghhumd40h8r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHka-8hrLYZ9WYBxGu-4CZctoF8LDB2gw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

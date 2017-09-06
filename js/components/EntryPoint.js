@@ -6,23 +6,48 @@ import { addNavigationHelpers } from 'react-navigation';
 import AppNavigator from './AppNavigator';
 import { startShowMapScreenTimer } from '../redux/modules/nav';
 import { loadUpToDateMarkers } from '../redux/modules/epicerie';
-import { getAndSetCurrentLocation } from '../redux/modules/location';
-import { PermissionsAndroid, Platform, BackHandler } from 'react-native';
+import { getAndSetCurrentLocation, locationError } from '../redux/modules/location';
+import { Platform, BackHandler } from 'react-native';
+import LocationServicesDialogBox from "react-native-android-location-services-dialog-box";
+import Permissions from "react-native-permissions";
+
+const checkLocationIsEnabled = async () => {
+  if (Platform.OS === "android") {
+    const checkLocation = await LocationServicesDialogBox.checkLocationServicesIsEnabled(
+      {
+        message:
+          "<h2>Activer la géolocalisation ?</h2>Epicerie Radar souhaite utiliser le service de géolocalisation.<br/><br/>Ouvrir les paramètres pour activer la géolocalisation ?<br/><br/>",
+        ok: "OUI",
+        cancel: "NON",
+        enableHighAccuracy: true,
+        showDialog: true
+      }
+    ).catch(error => error);
+    return checkLocation.enabled;
+  } else {
+    const checkLocation = await Permissions.check("location");
+    if (checkLocation === "denied" && Permissions.canOpenSettings()) {
+      Permissions.openSettings();
+    }
+
+    return checkLocation === "undetermined"
+      ? true
+      : checkLocation === "authorized"
+  }
+};
 
 class EntryPoint extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     startShowMapScreenTimer(dispatch);
     loadUpToDateMarkers(dispatch);
-    if (Platform.OS === 'android') {
-      PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-      ).then(() => {
-        getAndSetCurrentLocation(dispatch);
+    checkLocationIsEnabled().then(enabled => {
+        if (enabled) {
+          getAndSetCurrentLocation(dispatch);
+        } else {
+          locationError(dispatch);
+        }
       });
-    } else {
-      getAndSetCurrentLocation(dispatch);
-    }
     BackHandler.addEventListener('backPress', () => dispatch({ type: 'BACK' }));
   }
 

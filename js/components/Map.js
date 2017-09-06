@@ -9,30 +9,32 @@ import { updateRegion } from '../redux/modules/location';
 import { updateMarkerWithLocationData } from '../redux/modules/epicerie';
 
 class Map extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      coordinates: [],
-    };
-  }
 
   componentDidMount() {
     const { location, markers, currentIndex, updateMarker } = this.props;
     updateMarker(location, markers[currentIndex]);
+    if (this._map) {
+      this._map.animateToCoordinate(markers[currentIndex].coords);
+    }
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.currentIndex != this.props.currentIndex) {
       const { location, markers, currentIndex, updateMarker } = this.props;
       updateMarker(location, markers[currentIndex]);
+      if (this._map) {
+        this._map.animateToCoordinate(markers[currentIndex].coords);
+      }
     }
   }
 
   render() {
     const { markers, update, region, currentIndex, select } = this.props;
+    const currentMarker = markers[currentIndex];
     return (
       <MapView
         style={styles.map}
+        ref={(c) => { this._map = c; }}
         showsUserLocation
         followsUserLocation
         moveOnMarkerPress
@@ -54,9 +56,9 @@ class Map extends Component {
           />,
         )}
         {
-          markers[currentIndex].lineCoordinates &&
+          currentMarker && currentMarker.lineCoordinates &&
           <MapView.Polyline
-            coordinates={markers[currentIndex].lineCoordinates}
+            coordinates={currentMarker.lineCoordinates}
             strokeWidth={3}
             strokeColor="#178c80"
           />

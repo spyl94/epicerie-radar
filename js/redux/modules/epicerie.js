@@ -2,7 +2,7 @@ import data from '../../../data.json';
 import Fetcher from '../../services/Fetcher';
 import { Alert } from 'react-native';
 import { openingStatus } from '../../services/markerHelper';
-import { findNearestIndex, orderByDistance } from '../../services/distance';
+import { orderByDistance } from '../../services/distance';
 import { getGeocationData } from '../../services/geolocation';
 import type { LatLng, Marker, Markers, Dispatch } from '../../types';
 
@@ -53,10 +53,10 @@ export const loadUpToDateMarkers = (dispatch: Dispatch) => {
     {referrer: "Trololo"}
   )
     .then((markers: Markers) => {
-      dispatch({ type: 'LOAD_MARKERS', markers: orderByDistance(markers, INITIAL_LATITUDE, INITIAL_LONGITUDE) });
+      dispatch({ type: 'LOAD_MARKERS', markers });
     })
     .catch(() => {
-      dispatch({ type: 'LOAD_MARKERS', markers: orderByDistance(data, INITIAL_LATITUDE, INITIAL_LONGITUDE) });
+      dispatch({ type: 'LOAD_MARKERS', markers: data });
     });
 };
 
@@ -70,36 +70,50 @@ export const select = (marker: Marker) => ({
   marker,
 });
 
+let currentLatitude = INITIAL_LATITUDE;
+let currentLongitude = INITIAL_LONGITUDE;
+
+const updateMarkerAndSelected = (state, markersAsArray) => {
+  const markersOrdered = orderByDistance(markersAsArray, currentLatitude, currentLongitude);
+  const markers = {};
+  let i = 0;
+  for (const epicerie of markersOrdered) {
+    markers[i] = {
+      ...epicerie,
+      ...openingStatus(epicerie),
+      id: i,
+    };
+    i++;
+  }
+  const currentSelected = 0;
+  return { ...state, markers, currentSelected };
+}
+
 export default function epiceries(
   state: State = initialState,
   action: EpicerieAction,
 ): State {
   switch (action.type) {
     case 'LOAD_MARKERS': {
-      const markers = {};
-      let i = 0;
-      for (const epicerie of action.markers) {
-        markers[i] = {
-          ...epicerie,
-          ...openingStatus(epicerie),
-          id: i,
-        };
-        i++;
-      }
-      const currentSelected = findNearestIndex(
-        markers,
-        INITIAL_LATITUDE,
-        INITIAL_LONGITUDE,
-      );
-      return { ...state, markers: markers, currentSelected };
+      return updateMarkerAndSelected(state, action.markers);
     }
     case 'SET_INITIAL_LOCATION': {
-      const currentSelected = findNearestIndex(
-        state.markers,
-        action.location.latitude,
-        action.location.longitude,
-      );
-      return { ...state, currentSelected };
+      if (currentLatitude === INITIAL_LATITUDE) {
+        currentLatitude = action.location.latitude
+        currentLongitude = action.location.longitude;
+        const markersAsArray = orderByDistance(Object.values(state.markers), currentLatitude, currentLongitude);
+        return updateMarkerAndSelected(state, markersAsArray);
+      }
+      return state;
+    }
+    case 'UPDATE_LOCATION': {
+      if (currentLatitude === INITIAL_LATITUDE) {
+        currentLatitude = action.location.latitude
+        currentLongitude = action.location.longitude;
+        const markersAsArray = orderByDistance(Object.values(state.markers), currentLatitude, currentLongitude);
+        return updateMarkerAndSelected(state, markersAsArray);
+      }
+      return state;
     }
     case 'UPDATE_MARKER': {
       const markers = state.markers;
