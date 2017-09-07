@@ -43,7 +43,7 @@ class Map extends Component {
     // GPS has just been enabled
     if (!prevProps.geolocated && geolocated && locationToUpdate) {
       if (map) {
-        map.animateToRegion({...initialRegion, ...locationToUpdate});
+        map.animateToCoordinate(locationToUpdate);
         setGeolocated();
       }
     }
@@ -72,6 +72,7 @@ class Map extends Component {
         {markers.map((marker, index) =>
           <Marker
             key={marker.id}
+            identifier={marker.id.toString()}
             onPress={() => {
               select(index);
             }}
