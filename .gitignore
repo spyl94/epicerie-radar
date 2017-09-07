@@ -7,7 +7,10 @@ android/fastlane/report.xml
 #
 .DS_Store
 ios/Pods
-
+ios/AppStore_org.reactjs.epicerie-radar.mobileprovision
+ios/DXF6L4V5EM.cer
+ios/DXF6L4V5EM.certSigningRequest
+ios/DXF6L4V5EM.p12
 
 ios/Pods
 

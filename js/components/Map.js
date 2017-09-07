@@ -27,7 +27,7 @@ class Map extends Component {
 
   componentDidUpdate(prevProps) {
     const map = this._map;
-    const { location, locationToUpdate, geolocated, markers, currentIndex, updateMarker } = this.props;
+    const { setGeolocated, location, locationToUpdate, geolocated, markers, currentIndex, updateMarker } = this.props;
     const currentMarker = markers[currentIndex];
     // An epicerie has just been selected
     if (prevProps.currentIndex != currentIndex) {
@@ -44,19 +44,21 @@ class Map extends Component {
     if (!prevProps.geolocated && geolocated && locationToUpdate) {
       if (map) {
         map.animateToRegion({...initialRegion, ...locationToUpdate});
+        setGeolocated();
       }
     }
   }
 
   render() {
-    const { geolocated, locationToUpdate, markers, currentIndex, select } = this.props;
+    const { setGeolocated, geolocated, locationToUpdate, markers, currentIndex, select } = this.props;
     const currentMarker = markers[currentIndex];
     return (
       <MapView
         style={styles.map}
-        onLayout={() => {
-          if (geolocated && locationToUpdate && this._map) {
+        onMapReady={() => {
+          if (geolocated && locationToUpdate) {
             this._map.animateToRegion({...initialRegion, ...locationToUpdate});
+            setGeolocated();
           }
         }}
         ref={(c) => { this._map = c; }}
@@ -101,6 +103,9 @@ const styles = StyleSheet.create({
 const mapDispatchToProps = (dispatch: Function) => ({
   select: id => {
     dispatch(select(id));
+  },
+  setGeolocated: () => {
+    dispatch({ type: 'SET_GEOLOCATED'});
   },
   updateMarker: (location, marker) => {
     updateMarkerWithLocationData(location, marker, dispatch);

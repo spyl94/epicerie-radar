@@ -40,7 +40,6 @@
 		7453B54E1EC6308700C27D31 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7453B54D1EC6308700C27D31 /* libsqlite3.0.tbd */; };
 		7453B5501EC630D200C27D31 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7453B54F1EC630D200C27D31 /* CoreData.framework */; };
 		7453B5521EC630DC00C27D31 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7453B5511EC630DC00C27D31 /* SystemConfiguration.framework */; };
-		7700E4E73B4C4663A1F06559 /* libRCTGoogleAnalyticsBridge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D31B8E2546A4FF5B5975765 /* libRCTGoogleAnalyticsBridge.a */; };
 		770FA1B7894B4E1EA5657BE7 /* libLottieReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB43B4A8025D4954BB53272D /* libLottieReactNative.a */; };
 		7E39CE96E9DC44B88557F6D7 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2FBB0B2DF2FD439FB8D95954 /* MaterialCommunityIcons.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
@@ -403,7 +402,6 @@
 		961043173CB145BB914CAFB6 /* Rubik-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-LightItalic.ttf"; path = "../node_modules/native-base/Fonts/Rubik-LightItalic.ttf"; sourceTree = "<group>"; };
 		9A65A5A6537C4E9E82C69B24 /* Rubik-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-Italic.ttf"; path = "../node_modules/native-base/Fonts/Rubik-Italic.ttf"; sourceTree = "<group>"; };
 		9C212854CC6E4BE38EAB5607 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
-		9D31B8E2546A4FF5B5975765 /* libRCTGoogleAnalyticsBridge.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTGoogleAnalyticsBridge.a; sourceTree = "<group>"; };
 		9DF3305DF07547F18E761C67 /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		AA7642673C604B2585B41523 /* BugsnagReactNative.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BugsnagReactNative.xcodeproj; path = "../node_modules/bugsnag-react-native/cocoa/BugsnagReactNative.xcodeproj"; sourceTree = "<group>"; };
 		AB78BE120473474482D76984 /* Rubik-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-BoldItalic.ttf"; path = "../node_modules/native-base/Fonts/Rubik-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -461,7 +459,6 @@
 				276B4863DDB248D29F3C02B5 /* libAirMaps.a in Frameworks */,
 				178B2729A49E4CE0A6BF2531 /* libReactNativeConfig.a in Frameworks */,
 				AFE74B21445E4618A7F12376 /* libRNVectorIcons.a in Frameworks */,
-				7700E4E73B4C4663A1F06559 /* libRCTGoogleAnalyticsBridge.a in Frameworks */,
 				770FA1B7894B4E1EA5657BE7 /* libLottieReactNative.a in Frameworks */,
 				CE151F5309BC4D9FAE272389 /* libBugsnagReactNative.a in Frameworks */,
 				16E931358A63427590D69CD3 /* libLottie.a in Frameworks */,
@@ -1316,7 +1313,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 13;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = C5782C86FJ;
 				HEADER_SEARCH_PATHS = (
@@ -1351,7 +1348,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = C5782C86FJ;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

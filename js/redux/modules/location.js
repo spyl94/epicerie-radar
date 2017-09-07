@@ -90,8 +90,11 @@ export default function location(
       const location = { latitude: action.location.latitude, longitude: action.location.longitude };
       return { ...state, location, enabled: true, locationToUpdate: location, geolocated: true };
     }
+    case 'SET_GEOLOCATED': {
+      return { ...state, locationToUpdate: null };
+    }
     case 'UPDATE_LOCATION':{
-      let locationToUpdate = null;
+      let locationToUpdate = state.locationToUpdate;
       if (!state.geolocated) {
         locationToUpdate = action.location;
       }

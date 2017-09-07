@@ -92,7 +92,7 @@ android {
         applicationId "com.epicerie"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 124
+        versionCode 127
         versionName "3.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
