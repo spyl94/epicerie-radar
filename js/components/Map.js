@@ -22,9 +22,6 @@ class Map extends Component {
       if (geolocated) {
         updateMarker(location, markers[currentIndex]);
       }
-      if (this._map) {
-        this._map.animateToCoordinate(markers[currentIndex].coords);
-      }
     }
   }
 
@@ -52,18 +49,16 @@ class Map extends Component {
   }
 
   render() {
-    const { markers, currentIndex, select } = this.props;
+    const { geolocated, locationToUpdate, markers, currentIndex, select } = this.props;
     const currentMarker = markers[currentIndex];
     return (
       <MapView
         style={styles.map}
-        // onLayout={() => {
-        //   console.log('onMapReady');
-        //   if (this.props.locationToUpdate) {
-        //     console.log('animateToCoordinate');
-        //     this._map.animateToRegion({...initialRegion, ...this.props.locationToUpdate});
-        //   }
-        // }}
+        onLayout={() => {
+          if (geolocated && locationToUpdate && this._map) {
+            this._map.animateToRegion({...initialRegion, ...locationToUpdate});
+          }
+        }}
         ref={(c) => { this._map = c; }}
         initialRegion={initialRegion}
         showsUserLocation
