@@ -2,6 +2,7 @@ certificates
 .env.prod
 
 android/fastlane/report.xml
+ios/fastlane/report.xml
 
 # OSX
 #
