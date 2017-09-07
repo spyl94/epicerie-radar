@@ -21,28 +21,18 @@ export type LocationAction =
   | { type: 'SET_INITIAL_LOCATION', location: Location };
 
 const initialState: State = {
+  locationToUpdate: null,
   location: {
     latitude: 48.853,
     longitude: 2.35,
   },
-  region: {
-    latitude: 48.853,
-    longitude: 2.35,
-    latitudeDelta: 0.015,
-    longitudeDelta: 0.0121,
-  },
-  ready: false,
+  geolocated: false,
   enabled: undefined,
 };
 
 const setInitialLocation = (location: Location) => ({
   type: 'SET_INITIAL_LOCATION',
   location,
-});
-
-export const updateRegion = (region: Region) => ({
-  type: 'UPDATE_REGION',
-  region,
 });
 
 const updateLocation = (location: Location) => ({
@@ -67,7 +57,6 @@ export const getAndSetCurrentLocation = (dispatch: Dispatch) => {
     },
     e => {
       console.log("geoloc error", e);
-      // error(e);
     },
     {
       enableHighAccuracy: false,
@@ -82,7 +71,6 @@ export const watchPosition = (dispatch: Dispatch) => {
     ({ coords }) => dispatch(updateLocation(coords)),
     e => {
       console.log("geoloc error", e);
-      // error(e);
     },
     {
       enableHighAccuracy: true,
@@ -98,20 +86,20 @@ export default function location(
   action: LocationAction,
 ): State {
   switch (action.type) {
-    case 'UPDATE_REGION':
-      if (action.region.longitude != 0) {
-        return { ...state, region: {...state.region, ...action.region } };
+    case 'SET_INITIAL_LOCATION': {
+      const location = { latitude: action.location.latitude, longitude: action.location.longitude };
+      return { ...state, location, enabled: true, locationToUpdate: location, geolocated: true };
+    }
+    case 'SET_GEOLOCATED': {
+      return { ...state, locationToUpdate: null };
+    }
+    case 'UPDATE_LOCATION':{
+      let locationToUpdate = state.locationToUpdate;
+      if (!state.geolocated) {
+        locationToUpdate = action.location;
       }
-      return state;
-    case 'SET_INITIAL_LOCATION':
-      const region = {
-        ...state.region,
-        longitude: action.location.longitude,
-        latitude: action.location.latitude,
-      };
-      return { ...state, location: action.location, enabled: true, region, ready: true };
-    case 'UPDATE_LOCATION':
-      return { ...state, location: action.location, enabled: true, ready: true };
+      return { ...state, location: action.location, enabled: true, locationToUpdate, geolocated: true };
+    }
     case 'SET_LOCATION_ERROR':
       return { ...state, enabled: false };
     default:

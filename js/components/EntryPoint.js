@@ -1,7 +1,6 @@
 // @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
 import { addNavigationHelpers } from 'react-navigation';
 import AppNavigator from './AppNavigator';
 import { startShowMapScreenTimer } from '../redux/modules/nav';
@@ -24,7 +23,8 @@ const checkLocationIsEnabled = async () => {
       }
     ).catch(error => error);
     return checkLocation.enabled;
-  } else {
+  }
+  else {
     const checkLocation = await Permissions.check("location");
     if (checkLocation === "denied" && Permissions.canOpenSettings()) {
       Permissions.openSettings();
@@ -37,24 +37,23 @@ const checkLocationIsEnabled = async () => {
 };
 
 class EntryPoint extends Component {
+
   componentDidMount() {
     const { dispatch } = this.props;
     startShowMapScreenTimer(dispatch);
     loadUpToDateMarkers(dispatch);
     checkLocationIsEnabled().then(enabled => {
-        if (enabled) {
-          getAndSetCurrentLocation(dispatch);
-        } else {
+        if (!enabled) {
           locationError(dispatch);
         }
+        getAndSetCurrentLocation(dispatch);
       });
+
     BackHandler.addEventListener('backPress', () => dispatch({ type: 'BACK' }));
   }
 
   render() {
     const { dispatch, nav } = this.props;
-    // let tracker = new GoogleAnalyticsTracker('UA-87371140-1');
-    // +      tracker.setTrackUncaughtExceptions(true);
     return (
       <AppNavigator
         navigation={addNavigationHelpers({ dispatch, state: nav })}

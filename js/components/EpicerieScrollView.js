@@ -1,9 +1,8 @@
 // @flow
-import React, { Component, PureComponent } from 'react';
+import React, { Component } from 'react';
 import { Platform, Dimensions, StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { select } from '../redux/modules/epicerie';
-import { updateRegion } from '../redux/modules/location';
 import Epicerie from './Epicerie';
 import Carousel from 'react-native-snap-carousel';
 
@@ -53,10 +52,7 @@ class EpicerieScrollView extends Component {
   }
 
   render() {
-    const { ready, currentSelected, dispatch, markers } = this.props;
-    if (!ready) {
-      return null;
-    }
+    const { currentSelected, dispatch, markers } = this.props;
     return (
 <View style={styles.scrollView}>
   <Carousel
@@ -73,8 +69,6 @@ class EpicerieScrollView extends Component {
   scrollEndDragDebounceValue={Platform.OS === 'ios' ? 0 : 100}
   onSnapToItem={(index) => {
     dispatch(select(index));
-    // const { coords } = markers[index];
-    // dispatch(updateRegion(coords));
   }}
 />
 </View>
@@ -85,5 +79,4 @@ class EpicerieScrollView extends Component {
 export default connect(state => ({
   markers: Object.values(state.epicerie.markers),
   currentSelected: state.epicerie.currentSelected,
-  ready: state.location.ready,
 }))(EpicerieScrollView);

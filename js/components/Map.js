@@ -5,45 +5,70 @@ import { StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { select } from '../redux/modules/epicerie';
 import { getMarkerImage } from '../services/markerHelper';
-import { updateRegion } from '../redux/modules/location';
 import { updateMarkerWithLocationData } from '../redux/modules/epicerie';
+
+const initialRegion = {
+  latitude: 48.853,
+  longitude: 2.35,
+  latitudeDelta: 0.015,
+  longitudeDelta: 0.0121,
+};
 
 class Map extends Component {
 
   componentDidMount() {
-    const { location, markers, currentIndex, updateMarker } = this.props;
-    updateMarker(location, markers[currentIndex]);
-    if (this._map) {
-      this._map.animateToCoordinate(markers[currentIndex].coords);
+    const { geolocated, location, markers, currentIndex, updateMarker } = this.props;
+    if (markers[currentIndex]) {
+      if (geolocated) {
+        updateMarker(location, markers[currentIndex]);
+      }
     }
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.currentIndex != this.props.currentIndex) {
-      const { location, markers, currentIndex, updateMarker } = this.props;
-      updateMarker(location, markers[currentIndex]);
-      if (this._map) {
-        this._map.animateToCoordinate(markers[currentIndex].coords);
+    const map = this._map;
+    const { setGeolocated, location, locationToUpdate, geolocated, markers, currentIndex, updateMarker } = this.props;
+    const currentMarker = markers[currentIndex];
+    // An epicerie has just been selected
+    if (prevProps.currentIndex != currentIndex) {
+      if (currentMarker) {
+        if (geolocated) {
+          updateMarker(location, currentMarker);
+        }
+        if (map) {
+          map.animateToCoordinate(currentMarker.coords);
+        }
+      }
+    }
+    // GPS has just been enabled
+    if (!prevProps.geolocated && geolocated && locationToUpdate) {
+      if (map) {
+        map.animateToRegion({...initialRegion, ...locationToUpdate});
+        setGeolocated();
       }
     }
   }
 
   render() {
-    const { markers, update, region, currentIndex, select } = this.props;
+    const { setGeolocated, geolocated, locationToUpdate, markers, currentIndex, select } = this.props;
     const currentMarker = markers[currentIndex];
     return (
       <MapView
         style={styles.map}
+        onMapReady={() => {
+          if (geolocated && locationToUpdate) {
+            this._map.animateToRegion({...initialRegion, ...locationToUpdate});
+            setGeolocated();
+          }
+        }}
         ref={(c) => { this._map = c; }}
+        initialRegion={initialRegion}
         showsUserLocation
         followsUserLocation
         moveOnMarkerPress
         pitchEnabled={false}
         rotateEnabled={false}
-        region={region}
-        onRegionChangeComplete={region => {
-          update(region);
-        }}>
+        >
         {markers.map((marker, index) =>
           <Marker
             key={marker.id}
@@ -79,8 +104,8 @@ const mapDispatchToProps = (dispatch: Function) => ({
   select: id => {
     dispatch(select(id));
   },
-  update: region => {
-    dispatch(updateRegion(region));
+  setGeolocated: () => {
+    dispatch({ type: 'SET_GEOLOCATED'});
   },
   updateMarker: (location, marker) => {
     updateMarkerWithLocationData(location, marker, dispatch);
@@ -88,8 +113,9 @@ const mapDispatchToProps = (dispatch: Function) => ({
 });
 
 const mapStateToProps = state => ({
-  region: state.location.region,
   location: state.location.location,
+  locationToUpdate: state.location.locationToUpdate,
+  geolocated: state.location.geolocated,
   currentIndex: state.epicerie.currentSelected,
   markers: Object.keys(state.epicerie.markers).map(key => state.epicerie.markers[key]),
 });
