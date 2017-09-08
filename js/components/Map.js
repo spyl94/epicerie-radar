@@ -28,9 +28,9 @@ class Map extends Component {
   componentDidUpdate(prevProps) {
     const map = this._map;
     const { setGeolocated, location, locationToUpdate, geolocated, markers, currentIndex, updateMarker } = this.props;
-    const currentMarker = markers[currentIndex];
     // An epicerie has just been selected
     if (prevProps.currentIndex != currentIndex) {
+      const currentMarker = markers[currentIndex];
       if (currentMarker) {
         if (geolocated) {
           updateMarker(location, currentMarker);
@@ -64,6 +64,7 @@ class Map extends Component {
         ref={(c) => { this._map = c; }}
         initialRegion={initialRegion}
         showsUserLocation
+        showsMyLocationButton
         followsUserLocation
         moveOnMarkerPress
         pitchEnabled={false}

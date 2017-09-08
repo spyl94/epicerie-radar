@@ -47,7 +47,7 @@ class EntryPoint extends Component {
           locationError(dispatch);
         }
         getAndSetCurrentLocation(dispatch);
-      });
+    });
 
     BackHandler.addEventListener('backPress', () => dispatch({ type: 'BACK' }));
   }
