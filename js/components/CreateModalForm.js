@@ -15,7 +15,7 @@ import Input from './Input';
 import Fetcher from '../services/Fetcher';
 import PickOpeningHoursRow from './PickOpeningHoursRow';
 import RadioButton from './RadioButton';
-import { Container, Content, Form } from 'native-base';
+import { Form } from 'native-base';
 import { getGoogleAutocompleteUrl } from '../services/geolocation';
 import type { Marker, Dispatch } from '../types';
 
@@ -39,12 +39,12 @@ const validate = (values: RequiredFormValues) => {
 };
 
 const onSubmit = (
-  { name, address, description, hours, horairesAreKnown }: Marker,
+  { name, address, description, hours }: Marker,
   dispatch: Dispatch,
   { position },
 ) => {
   const body = {
-    title: "Un utilisateur vient d'ajouter des informations.",
+    title: "Un utilisateur suggère une épicerie.",
     body: `
 **Nouvelle épicerie**
 \`\`\`json
@@ -73,20 +73,25 @@ ${JSON.stringify(
 `,
   };
   return Fetcher.post('/issues', body)
-    .then(() => {
+    .then(
+      () => {
       Alert.alert(
-        'Merci pour votre aide!',
-        'Nous traitons votre message et on ajoute les données à la prochaine mise à jour!',
+        'Merci pour votre aide !',
+        'Nous vérifions les informations et ajoutons votre épicerie dès que possible !',
       );
       dispatch({ type: 'BACK' });
-    })
-    .catch(() => {
+    },
+    () => {
       Alert.alert('Un problème est survenu', 'Essayez à nouveau.');
       dispatch({ type: 'BACK' });
-    });
+    }
+  );
 };
 
 const days = [
+  { day: 'Tous', code: 'all' },
+  { day: 'Semaine', code: 'week' },
+  { day: 'Week end', code: 'weekend' },
   { day: 'Lundi', code: 'mon' },
   { day: 'Mardi', code: 'thu' },
   { day: 'Mercredi', code: 'tue' },
@@ -106,10 +111,10 @@ class CreateModalForm extends Component<{}, Props> {
     loading: false,
     dataSource: null,
   };
-  dataSource = new ListView.DataSource({
-    rowHasChanged: (r1, r2) => r1 !== r2,
-  });
-  autocompleteRequestTokens = [];
+  // dataSource = new ListView.DataSource({
+  //   rowHasChanged: (r1, r2) => r1 !== r2,
+  // });
+  // autocompleteRequestTokens = [];
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.term && nextProps.term != this.props.term) {
@@ -121,19 +126,19 @@ class CreateModalForm extends Component<{}, Props> {
       // const cancelTokenSource = axios.CancelToken.source();
       // this.autocompleteRequestTokens.push(cancelTokenSource)
 
-      const url = getGoogleAutocompleteUrl(nextProps.term, nextProps.position);
-      Fetcher.get(url)
-        .then(response => {
-          this.setState({
-            dataSource: this.dataSource.cloneWithRows(
-              response.data.predictions,
-            ),
-            loading: false,
-          });
-        })
-        .catch(() => {
-          this.setState({ loading: false });
-        });
+      // const url = getGoogleAutocompleteUrl(nextProps.term, nextProps.position);
+      // Fetcher.get(url)
+      //   .then(response => {
+      //     this.setState({
+      //       dataSource: this.dataSource.cloneWithRows(
+      //         response.data.predictions,
+      //       ),
+      //       loading: false,
+      //     });
+      //   })
+      //   .catch(() => {
+      //     this.setState({ loading: false });
+      //   });
     }
     // else if (!nextProps.term || nextProps.term === '') {
     //   this.setState({
@@ -190,7 +195,7 @@ class CreateModalForm extends Component<{}, Props> {
           clearButtonMode={'always'}
           onSubmitEditing={() => this.focusNextField('3')}
         />
-        {
+        {/* {
           <View style={{ position: 'relative', alignSelf: 'stretch' }}>
             <View style={{ position: 'absolute', top: 0, left: 0, right: 0 }}>
               {this.state.dataSource &&
@@ -218,7 +223,7 @@ class CreateModalForm extends Component<{}, Props> {
                 />}
             </View>
           </View>
-        }
+        } */}
         <Field
           ref="3"
           withRef
@@ -267,8 +272,12 @@ const connector = connect((state: State) => ({
   horairesAreKnown: formValueSelector('create')(state, 'horairesAreKnown'),
   initialValues: {
     hours: {},
+    description: '',
     horairesAreKnown: 'Horaires inconnus',
     daysOpen: {
+      all: false,
+      week: false,
+      weekend: false,
       mon: false,
       thu: false,
       tue: false,

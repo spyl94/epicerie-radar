@@ -48,14 +48,13 @@ const INITIAL_LATITUDE = 48.853;
 const INITIAL_LONGITUDE = 2.35;
 
 export const loadUpToDateMarkers = (dispatch: Dispatch) => {
-  Fetcher.get(
-    'https://raw.githubusercontent.com/spyl94/epicerie-radar/master/data.json',
-    {referrer: "Trololo"}
-  )
-    .then((markers: Markers) => {
-      dispatch({ type: 'LOAD_MARKERS', markers });
+  Fetcher
+    .get('/contents/data.json')
+    .then(response => {
+      dispatch({ type: 'LOAD_MARKERS', markers: JSON.parse(atob(response.content)) });
     })
-    .catch(() => {
+    .catch(error => {
+      console.log('loadMarkers error:', error);
       dispatch({ type: 'LOAD_MARKERS', markers: data });
     });
 };

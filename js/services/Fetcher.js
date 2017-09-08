@@ -18,15 +18,15 @@ const json = (response: ?Object) => (response ? response.json() : {});
 
 const createHeaders = (): { [string]: string } => {
   return {
-    Accept: 'application/json',
+    Accept: 'application/vnd.github.v3+json',
     Authorization: 'token ' + config.GH_TOKEN,
     'Content-Type': 'application/json',
   };
 };
 
 class Fetcher {
-  get(url: string) {
-    return fetch(url, {
+  get(uri: string) {
+    return fetch(config.api + uri, {
       method: 'GET',
       headers: createHeaders(),
     })
