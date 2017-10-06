@@ -8,6 +8,14 @@
     }
   },
   {
+    "name": "Karis Alimentation",
+    "address": "40 Rue Jean Payra, 66000 Perpignan",
+    "coords": {
+      "latitude": 42.702564,
+      "longitude": 2.893369
+    }
+  },
+  {
     "name": "Épicerie du Maillard",
     "address": "5 rue bali Franklin Roosevelt, Nantes",
     "coords": {
