@@ -1,5 +1,82 @@
 [
   {
+    "name": "Verger de Courbevoie",
+    "address": "21 rue de Colombes",
+    "coords": {
+      "latitude": 48.897856,
+      "longitude": 2.256373
+    }
+  },
+  {
+    "name": "Alimentation exotique",
+    "address": "49 rue Crozatier",
+    "coords": {
+      "latitude": 48.848474,
+      "longitude": 2.380029
+    },
+    "openingHours": "10:00-02:00"
+  },
+  {
+    "name": "Alimentation générale de l'angle",
+    "address": "112 boulevard de charonne",
+    "coords": {
+      "latitude": 48.854385,
+      "longitude": 2.396516
+    },
+    "openingHours": "10:00-02:00"
+  },
+  {
+    "name": "Alimentation du Faubourg",
+    "address": "77 rue du Faubourg saint Denis",
+    "coords": {
+      "latitude": 48.873137,
+      "longitude": 2.354337
+    },
+    "openingHours": "10:00-00:00"
+  },
+  {
+    "name": "alimentation générale",
+    "address": "14 rue de Lagny, montreuil",
+    "coords": {
+      "latitude": 48.848899,
+      "longitude": 2.428511
+    }
+  },
+  {
+    "name": "Dos Santos",
+    "address": "11 avenue du bois de la chapelle petit lancy",
+    "coords": {
+      "latitude": 46.190880,
+      "longitude": 6.107910
+    }
+  },
+  {
+  "name": "L'epicerie Monge",
+  "address": "65 rue monge 21000 dijon",
+  "coords": {
+    "latitude": 47.318235,
+    "longitude": 5.033206
+  },
+  "description": "épicerie de nuit",
+  "openingHours": "21:00-04:00"  
+  },
+  {
+    "name": "Chez Milk (Happy Market)",
+    "address": "8 rue des Trois Frères",
+    "coords": {
+      "latitude": 48.884278,
+      "longitude": 2.341389
+    }
+  },
+  {
+   "name": "Mini Château Rouge",
+   "address": "36 rue Doudeauville",
+   "coords": {
+    "latitude": 48.888731,
+    "longitude": 2.355534
+   }
+  },
+  {
     "name": "Alimentation générale",
     "address": "5 boulevard Magenta, Paris",
     "coords": {
