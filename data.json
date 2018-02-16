@@ -1,5 +1,14 @@
 [
   {
+    "name": "Super market de Châtelet",
+    "address": "7 rue de la ferronnerie",
+    "coords": {
+      "latitude": 48.860162,
+      "longitude": 2.347779
+    },
+    "openingHours": "10:00-02:00"
+  },
+  {
     "name": "Verger de Courbevoie",
     "address": "21 rue de Colombes",
     "coords": {
