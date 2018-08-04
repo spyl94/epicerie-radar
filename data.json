@@ -1,5 +1,41 @@
 [
   {
+    "name": "Monoprix",
+    "address": "47 Rue de Berri 75008 Paris",
+    "coords": {
+      "latitude": 48.874592,
+      "longitude": 2.307906
+    },
+    "openingHours": "10:00-00:00"
+  },
+  {
+    "name": "Mini Market",
+    "address": "2 Quai de Gesvres 75004 Paris",
+    "coords": {
+      "latitude": 48.856347,
+      "longitude": 2.350343
+    },
+    "openingHours": "19:25-02:00"
+  },
+  {
+    "name": "L'orée de montmartre",
+    "address": "8 Rue du Faubourg Montmartre 75009 Paris",
+    "coords": {
+      "latitude": 48.872168,
+      "longitude": 2.343308
+    },
+    "openingHours": "19:25-02:00"
+  },
+  {
+    "name": "Souvenirs de Paris",
+    "address": "1 Quai aux Fleurs 75004 Paris",
+    "coords": {
+      "latitude": 48.852918,
+      "longitude": 2.351957
+    },
+    "openingHours": "10:00-02:00"
+  },
+  {
     "name": "Super market de Châtelet",
     "address": "7 rue de la ferronnerie",
     "coords": {
@@ -648,7 +684,8 @@
       "latitude": 48.890524999999997,
       "longitude": 2.3335499999999998
     },
-    "name": "MASSA"
+    "name": "MASSA",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "103 Rue Manin, 75019 Paris",
@@ -656,7 +693,8 @@
       "latitude": 48.883339999999997,
       "longitude": 2.3872870000000002
     },
-    "name": "Ikerchalene Lahcen"
+    "name": "Ikerchalene Lahcen",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "104 bd Berthier, 75017 Paris",
@@ -664,7 +702,8 @@
       "latitude": 48.889676999999999,
       "longitude": 2.3026629999999999
     },
-    "name": "El Akhawayne"
+    "name": "El Akhawayne",
+    "openingHours": "10:00-02:00"
   },
   {
   "name": "Epicerie",
@@ -682,7 +721,8 @@
       "latitude": 48.865915999999999,
       "longitude": 2.3785259999999999
     },
-    "name": "ALIMENTATION GÉNÉRALE OBERKAMPF"
+    "name": "ALIMENTATION GÉNÉRALE OBERKAMPF",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "106 av Jean Jaurès, 75019 Paris",
@@ -698,7 +738,8 @@
       "latitude": 48.865141000000001,
       "longitude": 2.2882799999999999
     },
-    "name": "La Parisienne"
+    "name": "La Parisienne",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "108 cours Vincennes, 75012 Paris",
@@ -706,7 +747,8 @@
       "latitude": 48.846722,
       "longitude": 2.4091619999999998
     },
-    "name": "Marche Rapide"
+    "name": "Marche Rapide",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "108 Rue Faubourg du Temple, 75011 Paris",
@@ -714,7 +756,8 @@
       "latitude": 48.871384999999997,
       "longitude": 2.3755289999999998
     },
-    "name": "Montacir Tahar"
+    "name": "Montacir Tahar",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "11 bd Clichy, 75009 Paris",
@@ -722,7 +765,8 @@
       "latitude": 48.881981000000003,
       "longitude": 2.338419
     },
-    "name": "Adrar Larbi"
+    "name": "Adrar Larbi",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "11 bd de Clichy, 75018 Paris",
@@ -730,7 +774,8 @@
       "latitude": 48.881981000000003,
       "longitude": 2.338419
     },
-    "name": "LE MINI-MARCHÉ CLICHY"
+    "name": "LE MINI-MARCHÉ CLICHY",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "11 Rue Daval, 75011 Paris",
@@ -746,7 +791,8 @@
       "latitude": 48.898172000000002,
       "longitude": 2.3251759999999999
     },
-    "name": "Cocci Market MF Avenir"
+    "name": "Cocci Market MF Avenir",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "11 Rue Halles, 75001 Paris",
@@ -771,7 +817,8 @@
       "latitude": 48.878875999999998,
       "longitude": 2.370968
     },
-    "name": "Azarel"
+    "name": "Azarel",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "11 Rue Ménilmontant, 75020 Paris",
@@ -787,7 +834,8 @@
       "latitude": 48.842367000000003,
       "longitude": 2.3248190000000002
     },
-    "name": "Afriad Tahr"
+    "name": "Afriad Tahr",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "11 Rue Polonceau, 75018 Paris",
@@ -803,7 +851,8 @@
       "latitude": 48.839821000000001,
       "longitude": 2.3057340000000002
     },
-    "name": "El Mouaid Abdellah"
+    "name": "El Mouaid Abdellah",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "11 Rue Sorbier, 75020 Paris",
@@ -811,7 +860,8 @@
       "latitude": 48.868046999999997,
       "longitude": 2.3904899999999998
     },
-    "name": "El Mokhtari Ahmed"
+    "name": "El Mokhtari Ahmed",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "110 Rue Meaux, 75019 Paris",
@@ -835,7 +885,8 @@
       "latitude": 48.839531999999998,
       "longitude": 2.4039549999999998
     },
-    "name": "Kh-Market"
+    "name": "Kh-Market",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "111 Rue d'Avron, 75020 Paris",
@@ -851,7 +902,8 @@
       "latitude": 48.888724000000003,
       "longitude": 2.3055370000000002
     },
-    "name": "Primer Tocqueville"
+    "name": "Primer Tocqueville",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "112 av Italie, 75013 Paris",
@@ -867,7 +919,8 @@
       "latitude": 48.884922000000003,
       "longitude": 2.3944619999999999
     },
-    "name": "Saravanamuthu Pathmalojany"
+    "name": "Saravanamuthu Pathmalojany",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "113 bd Jourdan, 75014 Paris",
@@ -883,7 +936,8 @@
       "latitude": 48.852893999999999,
       "longitude": 2.3772709999999999
     },
-    "name": "Zaghdoun Clément"
+    "name": "Zaghdoun Clément",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "114 bd Belleville, 75020 Paris",
@@ -899,7 +953,8 @@
       "latitude": 48.840843,
       "longitude": 2.2880410000000002
     },
-    "name": "Taupin Michel"
+    "name": "Taupin Michel",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "114 Rue Sèvres, 75015 Paris",
@@ -923,7 +978,8 @@
       "latitude": 48.846058999999997,
       "longitude": 2.3797969999999999
     },
-    "name": "Vittorio (SARL)"
+    "name": "Vittorio (SARL)",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "118 av Mozart, 75016 Paris",
@@ -944,10 +1000,11 @@
   {
     "address": "119 bd Hôpital, 75013 Paris",
     "coords": {
-      "latitude": 36.298605999999999,
-      "longitude": -88.310027000000005
+      "latitude": 48.835702,
+      "longitude": 2.358986
     },
-    "name": "Z.A.D"
+    "name": "Z.A.D",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "119 Rue St Maur, 75011 Paris",
@@ -955,7 +1012,8 @@
       "latitude": 48.866410000000002,
       "longitude": 2.3764310000000002
     },
-    "name": "PROXI NINARA"
+    "name": "PROXI NINARA",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "12 av de Saint Ouen, 75018 Paris",
@@ -971,7 +1029,8 @@
       "latitude": 48.884751000000001,
       "longitude": 2.36402
     },
-    "name": "El Kamel Mouez"
+    "name": "El Kamel Mouez",
+    "openingHours": "10:00-02:00"
   },
   {
     "name": "superette morland",
@@ -987,7 +1046,8 @@
     "coords": {
       "latitude": 48.865913,
       "longitude": 2.337145
-    }
+    },
+    "openingHours": "10:00-02:00"
   },
   {
     "name": "alimentation generale ",
@@ -1002,7 +1062,8 @@
   {
     "name": "alimentation général ",
     "address": "2 avenue simon bolivar",
-    "coords": { "latitude": 48.874037, "longitude": 2.385333 }
+    "coords": { "latitude": 48.874037, "longitude": 2.385333 },
+    "openingHours": "10:00-02:00"
   },
   {
     "name": "baba alimentation général",
@@ -1015,7 +1076,8 @@
   {
     "name": "supérette avenue laumiere",
     "address": "11 avenue laumiere",
-    "coords": { "latitude": 48.8832, "longitude": 2.380741 }
+    "coords": { "latitude": 48.8832, "longitude": 2.380741 },
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "12 bd Morland, 75004 Paris",
@@ -1023,7 +1085,8 @@
       "latitude": 48.849122000000001,
       "longitude": 2.3646479999999999
     },
-    "name": "Ben Maamar Abderrazak"
+    "name": "Ben Maamar Abderrazak",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "12 Rue Belleville, 75020 Paris",
@@ -1039,7 +1102,8 @@
       "latitude": 48.857677000000002,
       "longitude": 2.2765550000000001
     },
-    "name": "Philippine Mini Mart"
+    "name": "Philippine Mini Mart",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "12 Rue Carmes, 75005 Paris",
@@ -1047,7 +1111,8 @@
       "latitude": 48.849418,
       "longitude": 2.3475619999999999
     },
-    "name": "Oueghlani Salem"
+    "name": "Oueghlani Salem",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "12 Rue Fbg St Denis, 75010 Paris",
@@ -1063,7 +1128,8 @@
       "latitude": 48.893481999999999,
       "longitude": 2.326279
     },
-    "name": "La Jonquière"
+    "name": "La Jonquière",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "12 Rue Marx Dormoy, 75018 Paris",
@@ -1079,7 +1145,8 @@
       "latitude": 48.890982000000001,
       "longitude": 2.3757450000000002
     },
-    "name": "Khou Thien Hok"
+    "name": "Khou Thien Hok",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "12 Rue Péclet, 75015 Paris",
@@ -1095,7 +1162,8 @@
       "latitude": 48.873756,
       "longitude": 2.3450150000000001
     },
-    "name": "Souissi Mohamed"
+    "name": "Souissi Mohamed",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "122 av Villiers, 75017 Paris",
@@ -1111,7 +1179,8 @@
       "latitude": 48.837386000000002,
       "longitude": 2.2577219999999998
     },
-    "name": "Akdime Abdellah"
+    "name": "Akdime Abdellah",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "123 bd Masséna, 75013 Paris",
@@ -1128,7 +1197,8 @@
       "latitude": 48.837406000000001,
       "longitude": 2.3110400000000002
     },
-    "name": "Wang Shenshen"
+    "name": "Wang Shenshen",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "124 Rue Cherche Midi, 75006 Paris",
@@ -1144,7 +1214,8 @@
       "latitude": 48.889913999999997,
       "longitude": 2.341971
     },
-    "name": "Fromagerie Damremont"
+    "name": "Fromagerie Damremont",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "128 bd Davout, 75020 Paris",
@@ -1160,7 +1231,8 @@
       "latitude": 48.857247999999998,
       "longitude": 2.3924729999999998
     },
-    "name": "Azzi Lahoucine"
+    "name": "Azzi Lahoucine",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "129 Rue Oberkampf, 75011 Paris",
@@ -1168,7 +1240,8 @@
       "latitude": 48.866396000000002,
       "longitude": 2.3796390000000001
     },
-    "name": "Aux Halles De La Viande"
+    "name": "Aux Halles De La Viande",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "13 bd Beaumarchais, 75004 Paris",
@@ -1176,7 +1249,8 @@
       "latitude": 48.854678999999997,
       "longitude": 2.3682660000000002
     },
-    "name": "Bastille Market"
+    "name": "Bastille Market",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "13 Rue Plantes, 75014 Paris",
@@ -1192,7 +1266,8 @@
       "latitude": 48.864716000000001,
       "longitude": 2.4011529999999999
     },
-    "name": "COCCI-MARKET BELGRAND"
+    "name": "COCCI-MARKET BELGRAND",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "13 Rue Borrégo, 75020 Paris",
@@ -1208,7 +1283,8 @@
       "latitude": 48.869050999999999,
       "longitude": 2.289895
     },
-    "name": "Cope Marche"
+    "name": "Cope Marche",
+    "openingHours": "10:00-02:00"
   },
   {
     "address": "13 Rue Custine, 75018 Paris",
