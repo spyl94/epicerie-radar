@@ -1,12 +1,15 @@
 // @flow
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { addNavigationHelpers } from 'react-navigation';
-import AppNavigator from './AppNavigator';
-import { startShowMapScreenTimer } from '../redux/modules/nav';
-import { loadUpToDateMarkers } from '../redux/modules/epicerie';
-import { getAndSetCurrentLocation, locationError } from '../redux/modules/location';
-import { Platform, BackHandler } from 'react-native';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { addNavigationHelpers } from "react-navigation";
+import AppNavigator from "./AppNavigator";
+import { startShowMapScreenTimer } from "../redux/modules/nav";
+import { loadUpToDateMarkers } from "../redux/modules/epicerie";
+import {
+  getAndSetCurrentLocation,
+  locationError
+} from "../redux/modules/location";
+import { Platform, BackHandler } from "react-native";
 import LocationServicesDialogBox from "react-native-android-location-services-dialog-box";
 import Permissions from "react-native-permissions";
 
@@ -23,8 +26,7 @@ const checkLocationIsEnabled = async () => {
       }
     ).catch(error => error);
     return checkLocation.enabled;
-  }
-  else {
+  } else {
     const checkLocation = await Permissions.check("location");
     if (checkLocation === "denied" && Permissions.canOpenSettings()) {
       Permissions.openSettings();
@@ -32,24 +34,23 @@ const checkLocationIsEnabled = async () => {
 
     return checkLocation === "undetermined"
       ? true
-      : checkLocation === "authorized"
+      : checkLocation === "authorized";
   }
 };
 
 class EntryPoint extends Component {
-
   componentDidMount() {
     const { dispatch } = this.props;
     startShowMapScreenTimer(dispatch);
     loadUpToDateMarkers(dispatch);
     checkLocationIsEnabled().then(enabled => {
-        if (!enabled) {
-          locationError(dispatch);
-        }
-        getAndSetCurrentLocation(dispatch);
+      if (!enabled) {
+        locationError(dispatch);
+      }
+      getAndSetCurrentLocation(dispatch);
     });
 
-    BackHandler.addEventListener('backPress', () => dispatch({ type: 'BACK' }));
+    BackHandler.addEventListener("backPress", () => dispatch({ type: "BACK" }));
   }
 
   render() {

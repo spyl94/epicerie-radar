@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import {
   Text,
   ListView,
@@ -8,32 +8,32 @@ import {
   Alert,
   TouchableHighlight,
   ActivityIndicator,
-  StyleSheet,
-} from 'react-native';
-import { formValueSelector, Field, reduxForm } from 'redux-form';
-import Input from './Input';
-import Fetcher from '../services/Fetcher';
-import PickOpeningHoursRow from './PickOpeningHoursRow';
-import RadioButton from './RadioButton';
-import { Form } from 'native-base';
-import { getGoogleAutocompleteUrl } from '../services/geolocation';
-import type { Marker, Dispatch } from '../types';
+  StyleSheet
+} from "react-native";
+import { formValueSelector, Field, reduxForm } from "redux-form";
+import Input from "./Input";
+import Fetcher from "../services/Fetcher";
+import PickOpeningHoursRow from "./PickOpeningHoursRow";
+import RadioButton from "./RadioButton";
+import { Form } from "native-base";
+import { getGoogleAutocompleteUrl } from "../services/geolocation";
+import type { Marker, Dispatch } from "../types";
 
 type Props = {
-  position: Object,
+  position: Object
 };
 type RequiredFormValues = {
   name: String,
-  address: String,
+  address: String
 };
 
 const validate = (values: RequiredFormValues) => {
   const errors = {};
   if (!values.name || values.name.length < 2) {
-    errors.name = 'Required';
+    errors.name = "Required";
   }
   if (!values.address || values.address.length < 2) {
-    errors.address = 'Required';
+    errors.address = "Required";
   }
   return errors;
 };
@@ -41,7 +41,7 @@ const validate = (values: RequiredFormValues) => {
 const onSubmit = (
   { name, address, description, hours }: Marker,
   dispatch: Dispatch,
-  { position },
+  { position }
 ) => {
   const body = {
     title: "Un utilisateur suggère une épicerie.",
@@ -54,13 +54,13 @@ ${JSON.stringify(
         address,
         coords: {
           latitude: null,
-          longitude: null,
+          longitude: null
         },
         description,
-        hours,
+        hours
       },
       undefined,
-      2,
+      2
     )}
 \`\`\`
 **Position de l'utilisateur**
@@ -68,37 +68,36 @@ ${JSON.stringify(
 \`${JSON.stringify(
       position,
       undefined,
-      2,
+      2
     )}\` ([Streetview](http://maps.google.com/maps?q=&layer=c&cbll=${position.latitude},${position.longitude}&cbp=11,0,0,0,0))
-`,
+`
   };
-  return Fetcher.post('/issues', body)
-    .then(
-      () => {
+  return Fetcher.post("/issues", body).then(
+    () => {
       Alert.alert(
-        'Merci pour votre aide !',
-        'Nous vérifions les informations et ajoutons votre épicerie dès que possible !',
+        "Merci pour votre aide !",
+        "Nous vérifions les informations et ajoutons votre épicerie dès que possible !"
       );
-      dispatch({ type: 'BACK' });
+      dispatch({ type: "BACK" });
     },
     () => {
-      Alert.alert('Un problème est survenu', 'Essayez à nouveau.');
-      dispatch({ type: 'BACK' });
+      Alert.alert("Un problème est survenu", "Essayez à nouveau.");
+      dispatch({ type: "BACK" });
     }
   );
 };
 
-const days = [
-  { day: 'Tous', code: 'all' },
-  { day: 'Semaine', code: 'week' },
-  { day: 'Week end', code: 'weekend' },
-  { day: 'Lundi', code: 'mon' },
-  { day: 'Mardi', code: 'thu' },
-  { day: 'Mercredi', code: 'tue' },
-  { day: 'Jeudi', code: 'wed' },
-  { day: 'Vendredi', code: 'fri' },
-  { day: 'Samedi', code: 'sat' },
-  { day: 'Dimanche', code: 'sun' },
+export const days = [
+  { day: "Tous", code: "all" },
+  { day: "Semaine", code: "week" },
+  { day: "Week end", code: "weekend" },
+  { day: "Lundi", code: "mon" },
+  { day: "Mardi", code: "thu" },
+  { day: "Mercredi", code: "tue" },
+  { day: "Jeudi", code: "wed" },
+  { day: "Vendredi", code: "fri" },
+  { day: "Samedi", code: "sat" },
+  { day: "Dimanche", code: "sun" }
 ];
 
 class CreateModalForm extends Component<{}, Props> {
@@ -109,7 +108,7 @@ class CreateModalForm extends Component<{}, Props> {
 
   state = {
     loading: false,
-    dataSource: null,
+    dataSource: null
   };
   // dataSource = new ListView.DataSource({
   //   rowHasChanged: (r1, r2) => r1 !== r2,
@@ -164,7 +163,7 @@ class CreateModalForm extends Component<{}, Props> {
       horairesAreKnown,
       invalid,
       submitting,
-      handleSubmit,
+      handleSubmit
     } = this.props;
     const disabled = invalid || submitting;
     return (
@@ -174,12 +173,12 @@ class CreateModalForm extends Component<{}, Props> {
           withRef
           autoFocus
           component={Input}
-          label={'Nom'}
+          label={"Nom"}
           name="name"
-          highlightColor={'#00BCD4'}
+          highlightColor={"#00BCD4"}
           returnKeyType="next"
           blurOnSubmit={false}
-          onSubmitEditing={() => this.focusNextField('2')}
+          onSubmitEditing={() => this.focusNextField("2")}
         />
         <Field
           ref="2"
@@ -187,13 +186,13 @@ class CreateModalForm extends Component<{}, Props> {
           component={Input}
           name="address"
           label="Adresse"
-          highlightColor={'#00BCD4'}
+          highlightColor={"#00BCD4"}
           returnKeyType="next"
           autoCapitalize="none"
           autoCorrect={false}
           blurOnSubmit={false}
-          clearButtonMode={'always'}
-          onSubmitEditing={() => this.focusNextField('3')}
+          clearButtonMode={"always"}
+          onSubmitEditing={() => this.focusNextField("3")}
         />
         {/* {
           <View style={{ position: 'relative', alignSelf: 'stretch' }}>
@@ -232,31 +231,31 @@ class CreateModalForm extends Component<{}, Props> {
           name="description"
           label={`Description (facultatif)`}
           numberOfLines={3}
-          highlightColor={'#00BCD4'}
+          highlightColor={"#00BCD4"}
           // onSubmitEditing={handleSubmit(onSubmit)}
           returnKeyType="done"
         />
         <Text style={{ marginTop: 15 }} />
         <Field
           name="horairesAreKnown"
-          options={['Horaires connus', 'Horaires inconnus']}
+          options={["Horaires connus", "Horaires inconnus"]}
           component={RadioButton}
         />
         <Text style={{ marginTop: 15 }} />
-        {horairesAreKnown === 'Horaires connus' &&
+        {horairesAreKnown === "Horaires connus" &&
           days.map((day, index) =>
             <PickOpeningHoursRow
-              style={{ flex: 1, flexDirection: 'row', marginBottom: 30 }}
+              style={{ flex: 1, flexDirection: "row", marginBottom: 30 }}
               form={form}
               day={day}
               key={index}
-            />,
+            />
           )}
         <Text style={{ marginTop: 20 }} />
         {submitting
           ? <ActivityIndicator />
           : <Button
-              color={disabled ? '#31A69A' : '#178c80'}
+              color={disabled ? "#31A69A" : "#178c80"}
               disabled={disabled}
               onPress={!disabled ? handleSubmit(onSubmit) : () => {}}
               title="Envoyer"
@@ -268,12 +267,12 @@ class CreateModalForm extends Component<{}, Props> {
 
 const connector = connect((state: State) => ({
   position: state.location.location,
-  term: formValueSelector('create')(state, 'address'),
-  horairesAreKnown: formValueSelector('create')(state, 'horairesAreKnown'),
+  term: formValueSelector("create")(state, "address"),
+  horairesAreKnown: formValueSelector("create")(state, "horairesAreKnown"),
   initialValues: {
     hours: {},
-    description: '',
-    horairesAreKnown: 'Horaires inconnus',
+    description: "",
+    horairesAreKnown: "Horaires inconnus",
     daysOpen: {
       all: false,
       week: false,
@@ -284,24 +283,24 @@ const connector = connect((state: State) => ({
       wed: false,
       fri: false,
       sat: false,
-      sun: false,
-    },
-  },
+      sun: false
+    }
+  }
 }));
 
 const styles = StyleSheet.create({
   row: {
     flex: 1,
-    flexDirection: 'column',
-    backgroundColor: '#FFF',
-    padding: 10,
-  },
+    flexDirection: "column",
+    backgroundColor: "#FFF",
+    padding: 10
+  }
 });
 
 export default connector(
   reduxForm({
-    form: 'create',
+    form: "create",
     onSubmit,
-    validate,
-  })(CreateModalForm),
+    validate
+  })(CreateModalForm)
 );
