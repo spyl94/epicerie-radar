@@ -1,5 +1,65 @@
 [
   {
+  "name": "Lycamobile",
+  "address": "2 Rue Florence Blumenthal 75016 Paris",
+  "coords": {
+    "latitude": 48.882317,
+    "longitude": 2.325716
+  },
+  "description": "",
+    "openingHours": "13:00-02:00"
+  },
+  {
+  "name": "Archives mini market",
+  "address": "15 rue des archives",
+  "coords": {
+    "latitude": 48.858258,
+    "longitude": 2.354875
+  },
+  "description": "",
+  "hours": {}
+  }
+  {
+  "name": "Votre marché",
+  "address": "51 rue de lancry",
+  "coords": {
+    "latitude": 48.871573,
+    "longitude": 2.362075
+  },
+  "description": "Tel 01 42 08 65 50",
+  "openingHours": "10:00-02:00"
+  },
+  {
+  "name": "bagneux market",
+  "address": "188 Avenue aristide briand 92220 Bagneux",
+  "coords": {
+    "latitude": 48.794731,
+    "longitude": 2.321086
+  },
+  "description": "",
+  "openingHours": "11:00-02:00"
+  },
+  {
+  "name": "Les magasins couche tard",
+  "address": "93 avenue denfert rochereau Paris",
+  "coords": {
+    "latitude": 48.834932,
+    "longitude": 2.333295
+  },
+  "description": "",
+  "openingHours": "08:30-01:00; Fr,Sa 08:30-02:00"
+  },
+  {
+  "name": "epo",
+  "address": "142 Avenue De Semoy Paris",
+  "coords": {
+    "latitude": 48.859489,
+    "longitude": 2.320582
+  },
+  "description": "",
+  "hours": {}
+  },
+  {
     "name": "Monoprix",
     "address": "47 Rue de Berri 75008 Paris",
     "coords": {
@@ -7,15 +67,6 @@
       "longitude": 2.307906
     },
     "openingHours": "10:00-00:00"
-  },
-  {
-    "name": "Mini Market",
-    "address": "2 Quai de Gesvres 75004 Paris",
-    "coords": {
-      "latitude": 48.856347,
-      "longitude": 2.350343
-    },
-    "openingHours": "19:25-02:00"
   },
   {
     "name": "L'orée de montmartre",
@@ -32,15 +83,6 @@
     "coords": {
       "latitude": 48.852918,
       "longitude": 2.351957
-    },
-    "openingHours": "10:00-02:00"
-  },
-  {
-    "name": "Super market de Châtelet",
-    "address": "7 rue de la ferronnerie",
-    "coords": {
-      "latitude": 48.860162,
-      "longitude": 2.347779
     },
     "openingHours": "10:00-02:00"
   },
@@ -68,7 +110,7 @@
       "latitude": 48.854385,
       "longitude": 2.396516
     },
-    "openingHours": "10:00-02:00"
+    "openingHours": "10:00-01:00"
   },
   {
     "name": "Alimentation du Faubourg",
@@ -179,15 +221,6 @@
       "longitude": 2.333876
     },
     "openingHours": "09:00-22:00"
-  },
-  {
-    "name": "Alimentation chemin vert",
-    "address": "144 rue du chemin vert",
-    "coords": {
-      "latitude": 48.862421,
-      "longitude": 2.386486
-    },
-    "openingHours": "09:00-02:00"
   },
   {
     "name": "Alimentation générale",
@@ -962,7 +995,8 @@
       "latitude": 48.845626000000003,
       "longitude": 2.311979
     },
-    "name": "El Yousfi Mohamed"
+    "name": "El Yousfi Mohamed",
+    "openingHours": "11:00-02:00"
   },
   {
     "address": "116 Rue Monge, 75005 Paris",
@@ -2831,7 +2865,8 @@
       "latitude": 48.836377,
       "longitude": 2.40033
     },
-    "phone": "01 44 68 33 87"
+    "phone": "01 44 68 33 87",
+    "openingHours": "10:00-22:00"
   },
   {
     "name": "Alimentation générale",
