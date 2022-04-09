@@ -19,7 +19,7 @@
     "immutable": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",
     "lottie-react-native": "^2.2.0",
-    "moment": "^2.18.1",
+    "moment": "^2.29.2",
     "native-base": "^2.3.0",
     "opening_hours": "^3.5.0",
     "react": "16.0.0-alpha.12",
